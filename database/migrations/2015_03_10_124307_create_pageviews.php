@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Pageviews extends Migration {
+class CreatePageviews extends Migration {
 
 	/**
 	 * Run the migrations.

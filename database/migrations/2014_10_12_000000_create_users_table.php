@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration {
 			$table->string('username');
 			$table->string('password', 60);
 
+			$table->boolean('admin')->default(0);
+
 			$table->integer('college');
 			$table->string('stuid');
 			$table->string('name');
