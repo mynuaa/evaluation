@@ -14,7 +14,7 @@ class CreateApplies extends Migration {
 	{
 		Schema::create('applies', function($table){
 			$table->increments('id');
-			$table->integer('user_id');
+			$table->integer('user_id')->unique();
 
 			$table->tinyInteger('type');
 			$table->tinyInteger('opition');

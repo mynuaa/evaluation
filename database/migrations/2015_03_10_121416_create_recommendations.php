@@ -21,7 +21,7 @@ class CreateRecommendations extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 
-			$table->index(['to_id', 'from_id']);
+			$table->unique(['to_id', 'from_id']);
 		});
 	}
 
