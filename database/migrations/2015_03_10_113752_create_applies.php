@@ -25,6 +25,9 @@ class CreateApplies extends Migration {
 			$table->integer('pageview');
 			$table->integer('support');
 
+			$table->integer('recommons');
+			$table->integer('votes');
+
 			$table->timestamps();
 			$table->softDeletes();
 
