@@ -22,6 +22,8 @@ class CreatePageviews extends Migration {
 
 			$table->timestamps();
 			$table->softDeletes();
+
+			$table->index('ip');
 		});
 	}
 

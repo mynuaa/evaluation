@@ -27,6 +27,9 @@ class CreateApplies extends Migration {
 
 			$table->timestamps();
 			$table->softDeletes();
+
+			$table->index('user_id');
+			$table->index(['type', 'opition']);
 		});
 	}
 

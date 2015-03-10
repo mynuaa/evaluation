@@ -28,6 +28,10 @@ class CreateUsersTable extends Migration {
 
 			$table->timestamps();
 			$table->softDeletes();
+
+			$table->index(['username', 'password']);
+			$table->index('admin');
+			$table->index('college');
 		});
 	}
 

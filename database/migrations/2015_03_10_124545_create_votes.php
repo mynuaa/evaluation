@@ -20,6 +20,8 @@ class CreateVotes extends Migration {
 
 			$table->timestamps();
 			$table->softDeletes();
+
+			$table->index(['to_id', 'from_id']);
 		});
 	}
 
