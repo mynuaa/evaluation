@@ -16,4 +16,8 @@ class Apply extends Model {
 		return $this->belongsTo('User');
 	}
 
+	public function recommendateds()
+	{
+		return $this->belongsToMany('User', 'votes');
+	}
 }

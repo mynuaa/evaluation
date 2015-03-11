@@ -38,14 +38,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasOne('Apply');
 	}
 
-	public function recommendeds()
+	public function isAdmin()
 	{
-		return $this->hasMany('Recommendation', 'to_id');
+		return $this->admin == 1;
 	}
 
-	public function voteds()
+	public function scopeAdmin($query)
 	{
-		return $this->belongsToMany('Vote', 'votes', 'to_id', 'from_id');
+		return $query->where('admin', '=', 1);
 	}
-
 }
