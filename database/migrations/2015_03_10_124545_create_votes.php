@@ -15,13 +15,13 @@ class CreateVotes extends Migration {
 		Schema::create('votes', function($table){
 			$table->increments('id');
 
-			$table->integer('from_id');
-			$table->integer('to_id');
+			$table->integer('user_id');
+			$table->integer('apply_id');
 
 			$table->timestamps();
 			$table->softDeletes();
 
-			$table->unique(['to_id', 'from_id']);
+			$table->unique(['apply_id', 'user_id']);
 		});
 	}
 
