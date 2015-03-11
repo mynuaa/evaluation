@@ -14,14 +14,15 @@ class CreateRecommendations extends Migration {
 	{
 		Schema::create('recommendations', function($table){
 			$table->increments('id');
-			$table->integer('from_id');
-			$table->integer('to_id');
+
+			$table->integer('user_id');
+			$table->integer('apply_id');
 			$table->text('content');
 
 			$table->timestamps();
 			$table->softDeletes();
 
-			$table->unique(['to_id', 'from_id']);
+			$table->unique(['apply_id', 'user_id']);
 		});
 	}
 
