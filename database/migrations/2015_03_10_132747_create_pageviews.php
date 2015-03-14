@@ -15,6 +15,7 @@ class CreatePageviews extends Migration {
 		Schema::create('pageviews', function($table){
 			$table->increments('id');
 
+			$table->integer('uid');
 			$table->integer('ip')->unsigned();
 			$table->string('url');
 			$table->string('useragent');
