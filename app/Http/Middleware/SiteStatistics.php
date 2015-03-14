@@ -13,7 +13,11 @@ class SiteStatistics {
 	 */
 	public function handle($request, Closure $next)
 	{
-		return $next($request);
+		$response = $next($request);
+
+		
+
+		return $response;
 	}
 
 }

@@ -11,16 +11,16 @@ class SiteStatistics extends Command implements SelfHandling, ShouldBeQueued {
 
 	use InteractsWithQueue, SerializesModels;
 
-	protected 
+	protected $data;
 
 	/**
 	 * Create a new command instance.
 	 *
 	 * @return void
 	 */
-	public function __construct($infos)
+	public function __construct($data)
 	{
-		$this->
+		$this->data = $data;
 	}
 
 	/**
