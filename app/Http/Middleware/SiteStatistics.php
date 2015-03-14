@@ -1,9 +1,12 @@
 <?php namespace App\Http\Middleware;
 
-use Closure;
+use Closure, Auth, Request, Bus;
+use App\Commands\SaveStatistics;
+use Illuminate\Foundation\Bus\DispatchesCommands as Dispatch;
 
 class SiteStatistics {
 
+	use Dispatch;
 	/**
 	 * Handle an incoming request.
 	 *
@@ -13,9 +16,19 @@ class SiteStatistics {
 	 */
 	public function handle($request, Closure $next)
 	{
+		$data = [
+			'url' => $request->url(),
+			'ip' => ip2long($request->server('REMOTE_ADDR')),
+			'useragent' => $request->server('HTTP_USER_AGENT'),
+			'refer' => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null,
+			'uid' => Auth::check() ? Auth::user()->id : null
+		];
+
 		$response = $next($request);
 
-		
+		Bus::dispatch(
+			new SaveStatistics($data)
+		);
 
 		return $response;
 	}

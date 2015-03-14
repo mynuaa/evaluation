@@ -7,7 +7,7 @@ class Pageview extends Model {
 
 	use SoftDeletes;
 
-	protected $fillable = ['ip', 'url', 'useragent', 'refer'];
+	protected $fillable = ['ip', 'uid', 'url', 'useragent', 'refer'];
 
 	protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 

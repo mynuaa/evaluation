@@ -7,7 +7,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
-class SiteStatistics extends Command implements SelfHandling, ShouldBeQueued {
+use App\Pageview;
+
+class SaveStatistics extends Command implements SelfHandling, ShouldBeQueued {
 
 	use InteractsWithQueue, SerializesModels;
 
@@ -30,7 +32,7 @@ class SiteStatistics extends Command implements SelfHandling, ShouldBeQueued {
 	 */
 	public function handle()
 	{
-		//
+		$pageview = PageView::create($this->data);
 	}
 
 }
