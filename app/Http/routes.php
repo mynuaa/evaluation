@@ -16,6 +16,7 @@ Route::get('/', 'WelcomeController@index');
 Route::controllers([
 	'home' => 'HomeController',
 	'test' => 'TestController',
-	'user' => 'UserController'
+	'user' => 'UserController',
+	'apply' => 'ApplyController'
 ]);
 

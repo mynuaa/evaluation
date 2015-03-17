@@ -16,7 +16,7 @@ class SiteStatistics {
 	 */
 	public function handle($request, Closure $next)
 	{
-		var_dump(Session::all());
+		// var_dump(Session::all());
 		$data = [
 			'url' => $request->url(),
 			'ip' => ip2long($request->server('REMOTE_ADDR')),
