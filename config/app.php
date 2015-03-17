@@ -193,6 +193,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+		'DedVerify'		=> 'App\Services\DedVerify'
 	],
 
 ];

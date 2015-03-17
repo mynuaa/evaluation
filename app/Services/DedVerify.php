@@ -1,23 +1,11 @@
-<?php namespace App;
+<?php namespace App\Services;
 
-class Ded {
+class DedVerify {
 
-	public $stuid = "";
-	public $password = "";
-	private $flag = false;
-
-	public function __construct($stuid, $password)
-	{
-		$this->stuid = $stuid;
-		$this->password = $password;
-
-		$this->verify();
-	}
-
-	private function verify()
+	public function verify($stuid, $password)
 	{
 		$url = "http://ded.nuaa.edu.cn/NetEAn/User/check.asp";
-		$post = "user=".$this->stuid."&pwd=".$this->password;
+		$post = "user=".$stuid."&pwd=".$password;
 		$cookie = tmpfile();
 
 		$curl = curl_init();
@@ -39,12 +27,7 @@ class Ded {
 		$response = curl_exec($curl);
 		curl_close($curl);
 
-		$this->flag = (strstr($response, 'switch (0){') != false);
-	}
-
-	public function isValid()
-	{
-		return $this->flag;
+		return (strstr($response, 'switch (0){') != false);
 	}
 
 }

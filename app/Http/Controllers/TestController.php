@@ -5,13 +5,14 @@ use App\Http\Controllers\Controller;
 use League\Flysystem\Filesystem;
 use Illuminate\Http\Request;
 use Storage;
-use App\Ded;
+use DedVerify;
 
 class TestController extends Controller {
 
-	public function getIndex()
+	public function getIndex(DedVerify $ded)
 	{
-		var_dump(\DB::connection()->enableQueryLog());
+		var_dump($ded->verify("161220227", "St022515"));
+		// var_dump(\DB::connection()->enableQueryLog());
 	}
 
 	public function getConfirm($stuid = "sx1416078", $password = "luan030104")
