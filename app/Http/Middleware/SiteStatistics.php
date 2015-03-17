@@ -1,6 +1,6 @@
 <?php namespace App\Http\Middleware;
 
-use Closure, Auth, Request, Bus;
+use Closure, Auth, Request, Bus, Session;
 use App\Commands\SaveStatistics;
 use Illuminate\Foundation\Bus\DispatchesCommands as Dispatch;
 
@@ -16,6 +16,7 @@ class SiteStatistics {
 	 */
 	public function handle($request, Closure $next)
 	{
+		var_dump(Session::all());
 		$data = [
 			'url' => $request->url(),
 			'ip' => ip2long($request->server('REMOTE_ADDR')),
