@@ -10,6 +10,7 @@ class ApplyController extends Controller {
 
 	public function getApply()
 	{
+		var_dump(Auth::user());
 		return view('apply.apply');//->withApply(Auth::user()->apply()->first());
 	}
 
