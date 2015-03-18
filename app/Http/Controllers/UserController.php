@@ -30,11 +30,12 @@ class UserController extends Controller {
 		{
 			if ($ded->verify($username, $password))
 			{
-				echo "Ded login successed.";
-				User::create([
+				$user = User::create([
 					'username' => $username,
 					'password' => bcrypt($password)
 				]);
+				Auth::login($user);
+				echo "Ded login successed.";
 			}
 			else
 			{
