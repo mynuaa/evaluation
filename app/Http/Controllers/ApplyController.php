@@ -35,4 +35,11 @@ class ApplyController extends Controller {
 
 		echo "Apply successed.";
 	}
+
+	public function getShow($stuid)
+	{
+		$apply = Apply::stuid($stuid);
+
+		var_dump($apply->first());
+	}
 }

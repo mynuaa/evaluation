@@ -23,6 +23,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasOne('App\Apply');
 	}
 
+	public function scopeStuid($query, $stuid)
+	{
+		return $query->whereUsername($stuid);
+	}
+
 	// public function isAdmin()
 	// {
 	// 	return $this->admin == 1;

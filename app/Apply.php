@@ -14,8 +14,13 @@ class Apply extends Model {
 		return $this->belongsTo('App\User');
 	}
 
+	public function scopeStuid($query, $stuid)
+	{
+		return $query->whereUserId(User::stuid($stuid)->first()->id);
+	}
+
 	// public function recommendateds()
 	// {
-	// 	return $this->belongsToMany('User', 'votes');
+	// 	return $this->belongsToMany('User', 'votes');$_POST['variable']
 	// }
 }
