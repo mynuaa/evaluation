@@ -17,21 +17,29 @@ class CreateApplies extends Migration {
 			$table->integer('user_id')->unique();
 
 			$table->tinyInteger('type');
-			$table->tinyInteger('opition');
 
+			$table->string('name');
+			$table->integer('college');
+			$table->enum('sex', ['F', 'M']);
+			$table->string('native_place');
+			$table->string('political');
+			$table->integer('major');
+
+			$table->string('title');
 			$table->text('whoami');
 			$table->longText('story');
+			$table->text('insufficient');
 
-			$table->integer('pageview');
-			$table->integer('support');
+			$table->integer('pageview')->default(0);
+			$table->integer('support')->default(0);
 
-			$table->integer('recommons');
-			$table->integer('votes');
+			$table->integer('recommons')->default(0);
+			$table->integer('votes')->default(0);
 
 			$table->timestamps();
 			$table->softDeletes();
 
-			$table->index(['type', 'opition']);
+			$table->index(['type']);
 		});
 	}
 

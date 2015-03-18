@@ -7,9 +7,7 @@ class Apply extends Model {
 
 	use SoftDeletes;
 
-	protected $fillable = ['user_id', 'type', 'opition', 'whoami', 'story'];
-
-	protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+	protected $guarded = ['id', 'deleted_at'];
 
 	public function user()
 	{

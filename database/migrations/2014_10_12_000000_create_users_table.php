@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration {
 
 			$table->integer('college');
 			$table->string('name');
+			$table->integer('avatar');
 
 			$table->rememberToken();
 
@@ -30,7 +31,6 @@ class CreateUsersTable extends Migration {
 
 			$table->index(['username', 'password']);
 			$table->index('admin');
-			$table->index('college');
 		});
 	}
 
