@@ -22,7 +22,7 @@ class LoginPostRequest extends Request {
 	public function rules()
 	{
 		return [
-			'username' => 'required',
+			'username' => 'required|',
 			'password' => 'required'
 		];
 	}

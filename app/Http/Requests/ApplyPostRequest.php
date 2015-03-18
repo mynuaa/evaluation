@@ -11,7 +11,7 @@ class ApplyPostRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -22,7 +22,17 @@ class ApplyPostRequest extends Request {
 	public function rules()
 	{
 		return [
-			
+			'type' => 'required|numeric',
+			'name' => 'required',
+			'college' => 'required|numeric',
+			'sex' => 'required|alpha',
+			'native_place' => 'required',
+			'political' => 'required',
+			'major' => 'required',
+			'title' => 'required',
+			'whoami' => 'required',
+			'story' => 'required',
+			'insufficient' => 'required',
 		];
 	}
 
