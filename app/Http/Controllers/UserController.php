@@ -17,13 +17,8 @@ class UserController extends Controller {
 		return view('user.login');
 	}
 
-	public function postLogin(DedVerify $ded, Request $request)
+	public function postLogin(DedVerify $ded, LoginPostRequest $request)
 	{
-		$this->validate($request, [
-			'username' => 'required',
-			'password' => 'required'
-		]);
-
 		$username = $request['username'];
 		$password = $request['password'];
 
@@ -36,7 +31,10 @@ class UserController extends Controller {
 			if ($ded->verify($username, $password))
 			{
 				echo "Ded login successed.";
-				User::create(['username' => $username, 'password' => bcrypt($password)]);
+				User::create([
+					'username' => $username,
+					'password' => bcrypt($password)
+				]);
 			}
 			else
 			{

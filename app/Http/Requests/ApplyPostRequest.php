@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class LoginPostRequest extends Request {
+class ApplyPostRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -11,7 +11,7 @@ class LoginPostRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return false;
 	}
 
 	/**
@@ -22,8 +22,7 @@ class LoginPostRequest extends Request {
 	public function rules()
 	{
 		return [
-			'username' => 'required',
-			'password' => 'required'
+			
 		];
 	}
 

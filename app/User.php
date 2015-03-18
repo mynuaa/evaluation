@@ -33,10 +33,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token', 'created_at', 'updated_at', 'deleted_at'];
 
-	// public function apply()
-	// {
-	// 	return $this->hasOne('Apply');
-	// }
+	public function apply()
+	{
+		return $this->hasOne('App\Apply');
+	}
 
 	// public function isAdmin()
 	// {

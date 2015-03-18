@@ -13,11 +13,11 @@ class Apply extends Model {
 
 	public function user()
 	{
-		return $this->belongsTo('User');
+		return $this->belongsTo('App\User');
 	}
 
-	public function recommendateds()
-	{
-		return $this->belongsToMany('User', 'votes');
-	}
+	// public function recommendateds()
+	// {
+	// 	return $this->belongsToMany('User', 'votes');
+	// }
 }
