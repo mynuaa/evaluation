@@ -16,10 +16,9 @@ class SiteStatistics {
 	 */
 	public function handle($request, Closure $next)
 	{
-		// var_dump(Session::all());
 		$data = [
 			'url' => $request->url(),
-			'ip' => ip2long($request->server('REMOTE_ADDR')),
+			'ip' => $request->server('REMOTE_ADDR'),
 			'useragent' => $request->server('HTTP_USER_AGENT'),
 			'refer' => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null,
 			'uid' => Auth::check() ? Auth::user()->id : null

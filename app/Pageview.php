@@ -11,8 +11,17 @@ class Pageview extends Model {
 
 	protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 
-	function scopeIp($query, $ip)
+	public function setIpAttribute($value)
 	{
-		return $query->where('ip', '=', $ip);
+		$this->attributes['ip'] = ip2long($value);
 	}
+
+	public function getIpAttribute($value)
+	{
+		return long2ip($value);
+	}
+	// function scopeIp($query, $ip)
+	// {
+	// 	return $query->where('ip', '=', $ip);
+	// }
 }

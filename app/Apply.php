@@ -7,7 +7,7 @@ class Apply extends Model {
 
 	use SoftDeletes;
 
-	protected $guarded = ['id', 'deleted_at'];
+	protected $guarded = ['id', 'deleted_at', 'created_at', 'updated_at'];
 
 	public function user()
 	{
