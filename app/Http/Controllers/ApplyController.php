@@ -17,25 +17,22 @@ class ApplyController extends Controller {
 	{
 		$user = Auth::user();
 
-		$apply = $user->apply()->first();
+		$apply = Apply::firstOrNew(['user_id' => $user->id]);
+	
+		$apply['type'] = $request['type'];
+		$apply['name'] = $request['name'];
+		$apply['college'] = $request['college'];
+		$apply['sex'] = $request['sex'];
+		$apply['native_place'] = $request['native_place'];
+		$apply['political'] = $request['political'];
+		$apply['major'] = $request['major'];
+		$apply['title'] = $request['title'];
+		$apply['whoami'] = $request['whoami'];
+		$apply['story'] = $request['story'];
+		$apply['insufficient'] = $request['insufficient'];
 
-		var_dump($apply);
+		$user->apply()->save($apply);
 
-		// $apply = new Apply([			
-		// 	'type' => $request['type'],
-		// 	'name' => $request['name'],
-		// 	'college' => $request['college'],
-		// 	'sex' => $request['sex'],
-		// 	'native_place' => $request['native_place'],
-		// 	'political' => $request['political'],
-		// 	'major' => $request['major'],
-		// 	'title' => $request['title'],
-		// 	'whoami' => $request['whoami'],
-		// 	'story' => $request['story'],
-		// 	'insufficient' => $request['insufficient'],
-		// ]);
-
-		// $user->apply()->save($apply);
+		echo "Apply successed.";
 	}
-
 }
