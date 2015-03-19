@@ -42,4 +42,11 @@ class ApplyController extends Controller {
 
 		var_dump($apply->first());
 	}
+
+	public function getList($type)
+	{
+		foreach (Apply::type($type)->get() as $apply) {
+			var_dump($apply);
+		}
+	}
 }

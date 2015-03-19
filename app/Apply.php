@@ -19,6 +19,11 @@ class Apply extends Model {
 		return $query->whereUserId(User::stuid($stuid)->first()->id);
 	}
 
+	public function scopeType($query, $type)
+	{
+		return $query->whereType($type);
+	}
+
 	// public function recommendateds()
 	// {
 	// 	return $this->belongsToMany('User', 'votes');$_POST['variable']
