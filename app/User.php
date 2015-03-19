@@ -28,6 +28,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $query->whereUsername($stuid);
 	}
 
+	public function recommendations()
+	{
+		return $this->belongsToMany('App\Apply', 'recommendations');
+	}
+
 	// public function isAdmin()
 	// {
 	// 	return $this->admin == 1;

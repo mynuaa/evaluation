@@ -19,8 +19,8 @@ class SiteStatistics {
 		$data = [
 			'url' => $request->url(),
 			'ip' => $request->server('REMOTE_ADDR'),
-			'useragent' => $request->server('HTTP_USER_AGENT'),
-			'refer' => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null,
+			'useragent' => $request->header('user-agent'),
+			'refer' => $request->header('referer'),
 			'uid' => Auth::check() ? Auth::user()->id : null
 		];
 

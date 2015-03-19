@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest;
 
+use Input;
+
 class ApplyController extends Controller {
 
 	public function getApply()
@@ -46,6 +48,8 @@ class ApplyController extends Controller {
 		else{
 			abort(404, 'This people has no application.');
 		}
+
+		return view('apply.show');
 	}
 
 	public function getList($type)
@@ -53,5 +57,21 @@ class ApplyController extends Controller {
 		foreach (Apply::type($type)->get() as $apply) {
 			var_dump($apply);
 		}
+	}
+
+	public function postRecommendation(Request $request)
+	{
+		$refer = $request->header('referer');
+		preg_match("/(\d+)$/", $refer, $matches);
+		$stuid = $matches[0];
+
+		$apply = Apply::stuid($stuid)->first();
+		
+		Auth::user()->recommendations()->attach($apply->id, ['content' => Input::get('content')]);
+
+		// var_dump($toUser->recommendations()->first());
+
+		// var_dump($toUser);
+		// return Input::get('content');
 	}
 }
