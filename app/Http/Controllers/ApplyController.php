@@ -38,9 +38,14 @@ class ApplyController extends Controller {
 
 	public function getShow($stuid)
 	{
-		$apply = Apply::stuid($stuid);
+		$apply = Apply::stuid($stuid)->first();
 
-		var_dump($apply->first());
+		if ($apply){
+			var_dump($apply);
+		}
+		else{
+			abort(404, 'This people has no application.');
+		}
 	}
 
 	public function getList($type)
