@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFlagUserTable extends Migration {
+class CreateApplyFlagTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,12 @@ class CreateFlagUserTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('flag_user', function($table){
+		Schema::create('apply_flag', function($table){
 			$table->increments('id');
-			$table->integer('user_id');
+			$table->integer('apply_id');
 			$table->integer('flag_id');
 
-			$table->unique(['user_id', 'flag_id']);
+			$table->unique(['apply_id', 'flag_id']);
 		});
 	}
 
@@ -28,7 +28,7 @@ class CreateFlagUserTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('flag_user');
+		Schema::drop('apply_flag');
 	}
 
 }
