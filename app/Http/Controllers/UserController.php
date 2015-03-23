@@ -51,4 +51,9 @@ class UserController extends Controller {
 
 		return redirect('/');
 	}
+
+	public function getUpdate()
+	{
+		return view('user.update');
+	}
 }
