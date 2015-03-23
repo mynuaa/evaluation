@@ -40,7 +40,7 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('user/login')->whitMessage(['type' => 'error', 'content' => trans('message.login_needed')]);
+				return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login_needed')]);
 			}
 		}
 
