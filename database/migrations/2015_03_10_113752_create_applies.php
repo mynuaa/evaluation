@@ -23,7 +23,7 @@ class CreateApplies extends Migration {
 			$table->enum('sex', ['F', 'M']);
 			$table->string('native_place');
 			$table->string('political');
-			$table->integer('major');
+			$table->string('major');
 
 			$table->string('title');
 			$table->text('whoami');
