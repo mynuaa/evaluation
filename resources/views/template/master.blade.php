@@ -13,7 +13,13 @@
 		<div class="rs-container">
 			<h1 class="fl">五四评优</h1>
 			<nav id="nav-user" class="rs-nav fr">
-				<ul class="rs-user-nav"></ul>
+				<ul class="rs-user-nav">
+				@if (Auth::check())
+				<a href="#"><li>注销</li></a>
+				@else
+				<a href="{{ url('user/login') }}"><li>登录</li></a>
+				@endif
+				</ul>
 			</nav>
 		</div>
 	</div>
@@ -34,8 +40,7 @@
 	<!-- 页脚 -->
 	<div class="rs-footer center">
 		<div class="rs-container">
-			<div>©纸飞机南航青年网络社区</div>
-			<div class="tip">请使用IE9以上的浏览器。</div>
+			<div>©纸飞机南航青年网络社区 2015</div>
 		</div>
 	</div>
 </body>
