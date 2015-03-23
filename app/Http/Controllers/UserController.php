@@ -35,27 +35,20 @@ class UserController extends Controller {
 					'password' => bcrypt($password)
 				]);
 				Auth::login($user, true);
-				echo "Ded login successed.";
 			}
 			else
 			{
-				echo "Login faild.";
-				return redirect('user/login');
+				return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login_failed')]);
 			}
 		}
 
-		return redirect('/');
+		return redirect('/')->withMessage(['type' => 'error', 'content' => trans('message.login_successed')]);
 	}
 
 	public function getLogout()
 	{
 		Auth::logout();
 
-		return redirect()->back();
-	}
-
-	public function getUpdate()
-	{
-		return view('user.update');
+		return redirect('/');
 	}
 }

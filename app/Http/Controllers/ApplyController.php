@@ -11,6 +11,11 @@ use Session;
 
 class ApplyController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation']]);
+	}
+
 	public function getApply()
 	{
 		return view('apply.apply')->withApply(Auth::user()->apply()->first());
