@@ -30,7 +30,7 @@ class UserController extends Controller {
 		{
 			if ($ded->verify($username, $password))
 			{
-				$user = User::firstOrNew(['username'] => $username);
+				$user = User::firstOrNew(['username' => $username]);
 				$user->password = bcrypt($password);
 				$user->save();
 				
