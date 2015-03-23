@@ -11,6 +11,11 @@ use Session;
 
 class ApplyController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation']]);
+	}
+
 	public function getApply()
 	{
 		return view('apply.apply')->withApply(Auth::user()->apply()->first());
@@ -36,7 +41,7 @@ class ApplyController extends Controller {
 
 		$user->apply()->save($apply);
 
-		echo "Apply successed.";
+		return redirect('apply/apply')->withMessage(['type' => 'info', 'content' => trans('apply_successed')]);
 	}
 
 	public function getShow($id)
@@ -44,13 +49,11 @@ class ApplyController extends Controller {
 		$apply = Apply::find($id);
 
 		if ($apply){
-			var_dump($apply->first());
+			return view('apply.show')->withApply($apply->first());
 		}
 		else{
 			abort(404, 'Application not found.');
 		}
-
-		return view('apply.show')->withId($id);
 	}
 
 	public function getList($type)
