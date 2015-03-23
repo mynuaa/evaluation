@@ -14,13 +14,13 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
-			<input name="sex" type="radio" value="M" checked>男
-			<input name="sex" type="radio" value="F">女
+			<input name="sex" type="radio" value="M" checked id="male"><label for="male">男</label>
+			<input name="sex" type="radio" value="F" id="female"><label for="female">女</label>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>申请类型</legend>
-			<input name="type" type="radio" value="0" checked>校级评选
-			<input name="type" type="radio" value="1">院内评选
+			<input name="type" type="radio" value="0" checked id="school"><label for="school">校级评选</label>
+			<input name="type" type="radio" value="1" id="department"><label for="department">院内评选</label>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>详细信息</legend>
