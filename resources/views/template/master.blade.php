@@ -15,7 +15,7 @@
 			<nav id="nav-user" class="rs-nav fr">
 				<ul class="rs-user-nav">
 				@if (Auth::check())
-				<a href="#"><li>注销</li></a>
+				<a href="{{ url('user/logout') }}"><li>注销</li></a>
 				@else
 				<a href="{{ url('user/login') }}"><li>登录</li></a>
 				@endif
