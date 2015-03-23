@@ -34,7 +34,7 @@
 	<!-- 页脚 -->
 	<div class="rs-footer center">
 		<div class="rs-container">
-			<div>Powered by 纸飞机南航青年网络社区</div>
+			<div>©纸飞机南航青年网络社区</div>
 			<div class="tip">请使用IE9以上的浏览器。</div>
 		</div>
 	</div>
