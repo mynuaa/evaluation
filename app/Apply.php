@@ -14,17 +14,6 @@ class Apply extends Model {
 		return $this->belongsTo('App\User');
 	}
 
-	public function scopeStuid($query, $stuid)
-	{
-		$user = User::stuid($stuid)->first();
-		if ($user){
-			return $query->whereUserId($user->id);
-		}
-		else{
-			abort(404, 'User with student id `'.$stuid.'` not found.');
-		}
-	}
-
 	public function scopeType($query, $type)
 	{
 		return $query->whereType($type);

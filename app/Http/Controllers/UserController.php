@@ -22,7 +22,7 @@ class UserController extends Controller {
 		$username = $request['username'];
 		$password = $request['password'];
 
-		if (Auth::attempt(['username' => $username, 'password' => $password]))
+		if (Auth::attempt(['username' => $username, 'password' => $password], true))
 		{
 			echo "Login successed!";
 		}
@@ -34,7 +34,7 @@ class UserController extends Controller {
 					'username' => $username,
 					'password' => bcrypt($password)
 				]);
-				Auth::login($user);
+				Auth::login($user, true);
 				echo "Ded login successed.";
 			}
 			else

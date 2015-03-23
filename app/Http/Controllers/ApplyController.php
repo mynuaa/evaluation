@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest;
 
-use Input;
+use Input, App\Recommendation, App\Http\Requests\RecommendPostRequest;
+use Session;
 
 class ApplyController extends Controller {
 
@@ -38,18 +39,18 @@ class ApplyController extends Controller {
 		echo "Apply successed.";
 	}
 
-	public function getShow($stuid)
+	public function getShow($id)
 	{
-		$apply = Apply::stuid($stuid)->first();
+		$apply = Apply::find($id);
 
 		if ($apply){
-			var_dump($apply);
+			var_dump($apply->first());
 		}
 		else{
-			abort(404, 'This people has no application.');
+			abort(404, 'Application not found.');
 		}
 
-		return view('apply.show');
+		return view('apply.show')->withId($id);
 	}
 
 	public function getList($type)
@@ -59,19 +60,16 @@ class ApplyController extends Controller {
 		}
 	}
 
-	public function postRecommendation(Request $request)
+	public function postRecommendation(RecommendPostRequest $request, $applyid)
 	{
-		$refer = $request->header('referer');
-		preg_match("/(\d+)$/", $refer, $matches);
-		$stuid = $matches[0];
-
-		$apply = Apply::stuid($stuid)->first();
+		$apply = Apply::find($applyid);
 		
-		Auth::user()->recommendations()->attach($apply->id, ['content' => Input::get('content')]);
-
-		// var_dump($toUser->recommendations()->first());
-
-		// var_dump($toUser);
-		// return Input::get('content');
+		if ($apply){
+			Auth::user()->recommendations()->attach($apply->first(), ['content' => Input::get('content')]);
+			return "Recommend successed.";
+		}
+		else{
+			abort(500, 'Wrong apply id from referer.');
+		}
 	}
 }

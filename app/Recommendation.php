@@ -11,13 +11,22 @@ class Recommendation extends Model {
 
 	protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 
-	public function user()
+	public function scopeUser($query, $userid)
 	{
-		return $this->belongsTo('User');
+		return $query->whereUserId($userid);
 	}
 
-	public function apply()
+	public function scopeApply($query, $applyid)
 	{
-		return $this->belongsTo('Apply');
+		return $query->whereApplyId($applyid);
 	}
+	// public function user()
+	// {
+	// 	return $this->belongsTo('User');
+	// }
+
+	// public function apply()
+	// {
+	// 	return $this->belongsTo('Apply');
+	// }
 }
