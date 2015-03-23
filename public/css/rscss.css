@@ -112,18 +112,20 @@ ul,ol{margin:5px 0;}
 	padding:0.5em;
 	box-sizing:border-box;
 }
-.rs-msg-primary{
-	border-color:#1ABC9C;
-	color:#1ABC9C;
+.rs-msg-info{
+	background:#D9EDF7;
+	border-color:#2980B9;
+	color:#2980B9;
 }
 .rs-msg-success{
-	border-color:#2ECC71;
-	color:#2ECC71;
+	background:#DFF0D8;
+	border-color:#27AE60;
+	color:#27AE60;
 }
 .rs-msg-error{
 	background:#F2DEDE;
-	border-color:#E74C3C;
-	color:#E74C3C;
+	border-color:#C0392B;
+	color:#C0392B;
 }
 /*样式*/
 .left{text-align:left;}

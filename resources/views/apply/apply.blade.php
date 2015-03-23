@@ -8,9 +8,9 @@
 	<form action="#" method="post" class="rs-form left">
 		<fieldset class="form-group">
 			<legend>基本信息</legend>
-			<input name="name" type="text" placeholder="{{ $apply['name'] or '姓名' }}">
-			<input name="college" type="number" placeholder="{{ $apply['college'] or '学院' }}">
-			<input name="title" type="text" placeholder="{{ $apply['title'] or '给我起个标题' }}">
+			<input name="name" type="text" value="{{ $apply['name'] }}" placeholder="姓名">
+			<input name="college" type="number" value="{{ $apply['college'] }}" placeholder="学院">
+			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="给我起个标题">
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
@@ -24,17 +24,19 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>详细信息</legend>
-			<input name="native_place" type="text" placeholder="{{ $apply['native_place'] or '籍贯' }}">
-			<input name="political" type="text" placeholder="{{ $apply['political'] or '政治面貌' }}">
-			<input name="major" type="text" placeholder="{{ $apply['major'] or '主修专业' }}">
+			<input name="native_place" type="text" value="{{ $apply['native_place'] }}" placeholder="籍贯">
+			<input name="political" type="text" value="{{ $apply['political'] }}" placeholder="政治面貌">
+			<input name="major" type="text" value="{{ $apply['major'] }}" placeholder="主修专业">
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>自我描述</legend>
-			<textarea name="whoami" type="text" placeholder="{{ $apply['whoami'] or '我是怎样的人' }}" class="fullwidth"></textarea>
-			<textarea name="story" type="text" placeholder="{{ $apply['story'] or '我的故事'}}" class="fullwidth"></textarea>
-			<textarea name="insufficient" type="text" placeholder="{{ $apply['insufficient'] or '我的不足'}}" class="fullwidth"></textarea>
+			<textarea name="whoami" type="text" placeholder="我是怎样的人" class="fullwidth">{{ $apply['whoami'] }}</textarea>
+			<textarea name="story" type="text" placeholder="我的故事" class="fullwidth">{{ $apply['story'] }}</textarea>
+			<textarea name="insufficient" type="text" placeholder="我的不足" class="fullwidth">{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
-		<input type="submit" class="btn-success">
+		<div class="form-btns">
+			<input type="submit" class="btn-success" value="提交">
+		</div>
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	</form>
 </div>

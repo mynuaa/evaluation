@@ -21,7 +21,7 @@
 			<input type="password" name="password" placeholder="密码">
 		</div>
 		<div class="form-btns">
-			<input type="submit" class="btn-success">
+			<input type="submit" class="btn-success" value="登录">
 		</div>
 		<input type="hidden" name="_token" value="{{ csrf_token() }}"/>
 	</form>
