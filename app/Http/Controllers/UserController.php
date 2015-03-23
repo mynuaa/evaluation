@@ -30,10 +30,10 @@ class UserController extends Controller {
 		{
 			if ($ded->verify($username, $password))
 			{
-				$user = User::create([
-					'username' => $username,
-					'password' => bcrypt($password)
-				]);
+				$user = User::firstOrNew(['username'] => $username);
+				$user->password = bcrypt($password);
+				$user->save();
+				
 				Auth::login($user, true);
 			}
 			else
