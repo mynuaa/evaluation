@@ -75,6 +75,7 @@ abbr[title]{
 	border-bottom:1px dotted #666;
 	margin:0 0.2em;
 }
+ul,ol{margin:5px 0;}
 /*隐藏元素*/
 .hidden{display:none !important;}
 @media screen and (max-width:639px){.hidden-phone{display:none !important;}}
@@ -107,8 +108,9 @@ abbr[title]{
 .rs-popup-fadeout{opacity:0;margin-top:-4px;}
 /*提示条*/
 .rs-msg{
-	border-radius:5px;
-	border:2px solid;
+	border:1px solid;
+	padding:0.5em;
+	box-sizing:border-box;
 }
 .rs-msg-primary{
 	border-color:#1ABC9C;
@@ -118,9 +120,17 @@ abbr[title]{
 	border-color:#2ECC71;
 	color:#2ECC71;
 }
+.rs-msg-error{
+	background:#F2DEDE;
+	border-color:#E74C3C;
+	color:#E74C3C;
+}
 /*样式*/
 .left{text-align:left;}
-.center{text-align:center;}
+.center{
+	text-align:center;
+	margin:0 auto;
+}
 .right{text-align:right;}
 .block{display:block !important;}
 .inline{display:inline !important;}
@@ -149,6 +159,9 @@ h6{font-size:0.83em;}
 	color:#FFF;
 	height:50px;
 	position:relative;
+}
+.rs-message{
+	margin:0.5em 0;
 }
 .rs-container{
 	max-width:960px;

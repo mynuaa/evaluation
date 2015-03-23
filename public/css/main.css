@@ -240,15 +240,11 @@
 	font-size:80%;
 	color:#999;
 }
-[rs-view]{
-	width:80%;
-	float:left;
-	padding:5px 0;
-	box-sizing:border-box;
-	overflow:hidden;
-}
-[rs-view] h3{
+.page-title{
 	text-align:center;
+	margin:0.8em 0;
+	font-size:1.25em;
+	font-weight:bold;
 }
 .rs-sidebar{
 	width:20%;

@@ -8,6 +8,7 @@
 	<title>@yield('title') - 纸飞机南航青年网络社区</title>
 </head>
 <body>
+	<!-- 页眉 -->
 	<div class="rs-header">
 		<div class="rs-container">
 			<h1 class="fl">五四评优</h1>
@@ -16,13 +17,22 @@
 			</nav>
 		</div>
 	</div>
-	@if (isset($message))
-	<div class="rs-msg rs-msg-{{ $message['type'] }}">{{ $message['content'] }}</div>
+	<!-- 消息显示块 -->
+	@if (Session::has('message'))
+	<div class="rs-message">
+		<div class="rs-container">
+			<div class="rs-msg rs-msg-{{ session('message')['type'] }}">
+				{{ session('message')['content'] }}
+			</div>
+		</div>
+	</div>
 	@endif
+	<!-- 主体内容 -->
 	<div class="rs-container">
 		@yield('content')
 	</div>
-	<div class="rs-footer">
+	<!-- 页脚 -->
+	<div class="rs-footer center">
 		<div class="rs-container">
 			<div>Powered by 纸飞机南航青年网络社区</div>
 			<div class="tip">请使用IE9以上的浏览器。</div>
