@@ -40,8 +40,11 @@ class UserController extends Controller {
 			else
 			{
 				echo "Login faild.";
+				return redirect('user/login');
 			}
 		}
+
+		return redirect('/');
 	}
 
 	public function getLogout()
