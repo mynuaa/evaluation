@@ -41,7 +41,7 @@ class ApplyController extends Controller {
 
 		$user->apply()->save($apply);
 
-		return redirect('apply/apply')->withMessage(['type' => 'info', 'content' => trans('apply_successed')]);
+		return redirect('apply/apply')->withMessage(['type' => 'success', 'content' => trans('message.apply_successed')]);
 	}
 
 	public function getShow($id)
