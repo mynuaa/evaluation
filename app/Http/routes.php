@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::controllers([
-	'home' => 'HomeController',
 	'test' => 'TestController',
 	'user' => 'UserController',
 	'apply' => 'ApplyController'
