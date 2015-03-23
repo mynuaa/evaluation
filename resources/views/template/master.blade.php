@@ -16,6 +16,9 @@
 			</nav>
 		</div>
 	</div>
+	@if (isset($message))
+	<div class="rs-msg rs-msg-{{ $message['type'] }}">{{ $message['content'] }}</div>
+	@endif
 	<div class="rs-container">
 		@yield('content')
 	</div>

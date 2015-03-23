@@ -105,6 +105,19 @@ abbr[title]{
 .rs-popup-fadein{opacity:0;margin-top:4px;}
 .rs-popup-show{opacity:1;margin-top:0;}
 .rs-popup-fadeout{opacity:0;margin-top:-4px;}
+/*提示条*/
+.rs-msg{
+	border-radius:5px;
+	border:2px solid;
+}
+.rs-msg-primary{
+	border-color:#1ABC9C;
+	color:#1ABC9C;
+}
+.rs-msg-success{
+	border-color:#2ECC71;
+	color:#2ECC71;
+}
 /*样式*/
 .left{text-align:left;}
 .center{text-align:center;}
