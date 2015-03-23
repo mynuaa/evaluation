@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 use App\Services\DedVerify;
 use App\Http\Requests\LoginPostRequest;
 
-use Validator, Auth, App\User;
+use Validator, Auth, App\User, Input;
+
+use App\Http\Requests\UpdatePostRequest;
 
 class UserController extends Controller {
+
+	public function __construct()
+	{
+		$this->middleware('auth', ['only' => ['getUpdate', 'postUpdate']]);
+	}
 
 	public function getLogin()
 	{
@@ -42,7 +49,7 @@ class UserController extends Controller {
 			}
 		}
 
-		return redirect('/')->withMessage(['type' => 'error', 'content' => trans('message.login_successed')]);
+		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login_successed')]);
 	}
 
 	public function getLogout()
@@ -55,5 +62,17 @@ class UserController extends Controller {
 	public function getUpdate()
 	{
 		return view('user.update');
+	}
+
+	public function postUpdate(UpdatePostRequest $request)
+	{
+		$user = Auth::user();
+
+		$user->name = $request['name'];
+		$user->college = $request['college'];
+
+		$user->save();
+
+		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.update_successed')]);
 	}
 }
