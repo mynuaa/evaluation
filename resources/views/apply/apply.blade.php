@@ -36,17 +36,51 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>标签</legend>
-			<div class="rs-tabs">
-				<div class="rs-tab">学霸<a onclick="removeTag(this.parentNode)">×</a></div>
-				<div class="rs-tab">+</div>
+			<div class="rs-tabs" id="tags">
+				<input type="text" id="curTag" class="rs-tab" placeholder="..." onmousedown="this.placeholder=''" onblur="this.placeholder='...'">
+				<a onclick="addTag()"><i class="fa fa-check"></i></a>
 			</div>
 		</fieldset>
-		<input type="hidden" name="flags[]" value="好人">
-		<input type="hidden" name="flags[]" value="学霸">
+		<fieldset class="hidden" id="hiddens"></fieldset>
 		<div class="form-btns">
 			<input type="submit" class="btn-success" value="提交">
 		</div>
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	</form>
 </div>
+@stop
+
+@section('scripts')
+function addTag(){
+	if(document.querySelectorAll(".rs-tab").length-1==3){
+		alert("最多只能添加三个标签哦~");
+		return false;
+	}
+	var curTag=document.getElementById("curTag");
+	var value=curTag.value;
+	if(value==""){
+		alert("标签内容不能为空！");
+		return false;
+	}
+	var input=document.createElement("input");
+	input.className="tag_"+value;
+	input.type="hidden";
+	input.name="flags[]";
+	input.value=value;
+	document.getElementById("hiddens").appendChild(input);
+	var tag=document.createElement("div");
+	tag.className="rs-tab";
+	tag.innerHTML=value+'<a onclick="removeTag(this.parentNode)">×</a>';
+	document.getElementById("tags").insertBefore(tag,curTag);
+	curTag.value="";
+	curTag.blur();
+}
+function removeTag(dom){
+	var tagName=dom.innerText.replace("×","");
+	var list=document.querySelectorAll(".tag_"+tagName);
+	for(var i=0;i<list.length;i++){
+		list[i].parentNode.removeChild(list[i]);
+	}
+	dom.parentNode.removeChild(dom);
+}
 @stop

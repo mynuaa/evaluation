@@ -48,5 +48,8 @@
 			<div>©纸飞机南航青年网络社区 2015</div>
 		</div>
 	</div>
+	<script>
+		@yield('scripts')
+	</script>
 </body>
 </html>
