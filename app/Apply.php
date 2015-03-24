@@ -19,8 +19,8 @@ class Apply extends Model {
 		return $query->whereType($type);
 	}
 
-	// public function recommendateds()
-	// {
-	// 	return $this->belongsToMany('User', 'votes');$_POST['variable']
-	// }
+	public function recommendations()
+	{
+		return $this->hasMany('App\Recommendation');
+	}
 }

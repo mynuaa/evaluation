@@ -16,7 +16,7 @@ class UserController extends Controller {
 
 	public function __construct()
 	{
-		$this->middleware('auth', ['only' => ['getUpdate', 'postUpdate']]);
+		$this->middleware('auth', ['only' => ['getUpdate', 'postUpdate', 'logout']]);
 	}
 
 	public function getLogin()
@@ -56,7 +56,7 @@ class UserController extends Controller {
 	{
 		Auth::logout();
 
-		return redirect('/');
+		return redirect('/')->withMessage(['type' => '']);
 	}
 
 	public function getUpdate()

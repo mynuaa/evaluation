@@ -49,7 +49,11 @@ class ApplyController extends Controller {
 		$apply = Apply::find($id);
 
 		if ($apply){
-			return view('apply.show')->withApply($apply->first())->withId($id);
+			$apply->increment('pageview');
+
+			$recommendations = $apply->recommendations;
+
+			return view('apply.show')->withApply($apply)->withId($id);
 		}
 		else{
 			abort(404, 'Application not found.');
