@@ -30,6 +30,10 @@ class CreateApplies extends Migration {
 			$table->longText('story');
 			$table->text('insufficient');
 
+			$table->string('tag1');
+			$table->string('tag2');
+			$table->string('tag3');
+
 			$table->integer('repost')->default(0);
 			$table->integer('pageview')->default(0);
 			$table->integer('support')->default(0);
