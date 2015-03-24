@@ -282,6 +282,37 @@
 	border:1px dashed #E74C3C;
 	padding:1em 1em 1em 2.5em;
 }
+.rs-tabs-toggle{
+	position:absolute;
+	top:5px;
+	right:5px;
+}
+@media screen and (max-width:639px){
+	.rs-tabs-toggle:after{
+		content:"+";
+		display:inline-block;
+		width:25px;
+		height:25px;
+		line-height:25px;
+		font-family:"SimHei";
+		text-align:center;
+		border-radius:50%;
+		border:2px solid #FFF;
+		background:#333;
+		color:#FFF;
+	}
+	.rs-tabs{
+		height:43px;
+		padding-right:30px;
+		box-sizing:border-box;
+	}
+	.rs-tabs-expand{
+		height:auto !important;
+	}
+	.rs-tabs-expand .rs-tabs-toggle:after{
+		content:"-";
+	}
+}
 @media screen and (max-width:810px){
 	[rs-view]{
 		width:100%;
@@ -350,11 +381,6 @@
 		overflow:auto;
 		transition:all 200ms;
 	}
-	/*.show-sidebar.rs-sidebar:after{
-		border-width:1px;
-		height:15px !important;
-		transition:all 200ms;
-	}*/
 	.show-sidebar .rs-sidebar{
 		height:auto;
 	}

@@ -11,6 +11,7 @@
 	</div>
 	<span>院级评优：</span>
 	<div class="rs-tabs">
+		<div class="rs-tabs-toggle hidden-tablet hidden-desktop" onclick="toggleExpand(this)"></div>
 		@foreach (trans('college') as $cid => $cname)
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
 		@endforeach
@@ -25,4 +26,16 @@
 		<input type="submit" class="btn-success">
 	</fieldset>
 </form>
+@stop
+
+@section('scripts')
+function toggleExpand(dom){
+	dom=dom.parentNode;
+	if(dom.className.indexOf("rs-tabs-expand")>=0){
+		dom.className=dom.className.replace(" rs-tabs-expand","");
+	}
+	else{
+		dom.className+=" rs-tabs-expand";
+	}
+}
 @stop
