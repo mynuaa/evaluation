@@ -277,6 +277,11 @@ body>.rs-container{
 	transition:border-color 200ms;
 	border-color:#129FEA;
 }
+select{
+	height:32px;
+	border:1px solid #BBB;
+	border-radius:4px;
+}
 textarea{height:8em !important;}
 .rs-form-aligned label{
 	display:inline-block;

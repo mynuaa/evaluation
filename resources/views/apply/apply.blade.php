@@ -65,7 +65,7 @@ function addTag(){
 	var input=document.createElement("input");
 	input.className="tag_"+value;
 	input.type="hidden";
-	input.name="flags[]";
+	input.name="tags[]";
 	input.value=value;
 	document.getElementById("hiddens").appendChild(input);
 	var tag=document.createElement("div");

@@ -15,12 +15,14 @@
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
 		@endforeach
 	</div>
-	<div class="rs-tabs">
+	<fieldset>
+		<legend>搜索</legend>
 		<select name="type" id="type">
 			<option value="stuid">学号</option>
 			<option value="name">姓名</option>
 		</select>
-		<input type="text" name="key">
-	</div>
+		<input type="text" name="key" style="display:inline-block;width:8em">
+		<input type="submit" class="btn-success">
+	</fieldset>
 </form>
 @stop
