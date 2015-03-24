@@ -11,14 +11,19 @@
 	<!-- 页眉 -->
 	<div class="rs-header">
 		<div class="rs-container">
-			<h1 class="fl">五四评优</h1>
+			<a href="{{ url('/') }}"><h1 class="fl pointer white">五四评优</h1></a>
+			<nav id="nav-main" class="rs-nav fl">
+				<ul class="rs-main-nav">
+					<a href="{{ url('apply/apply') }}"><li name="common/message">我要申报</li></a>
+				</ul>
+			</nav>
 			<nav id="nav-user" class="rs-nav fr">
 				<ul class="rs-user-nav">
-				@if (Auth::check())
-				<a href="{{ url('user/logout') }}"><li>注销</li></a>
-				@else
-				<a href="{{ url('user/login') }}"><li>登录</li></a>
-				@endif
+					@if (Auth::check())
+					<a href="{{ url('user/logout') }}"><li>注销</li></a>
+					@else
+					<a href="{{ url('user/login') }}"><li>登录</li></a>
+					@endif
 				</ul>
 			</nav>
 		</div>

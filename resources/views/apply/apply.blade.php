@@ -34,8 +34,15 @@
 			<textarea name="story" type="text" placeholder="我的故事" class="fullwidth">{{ $apply['story'] }}</textarea>
 			<textarea name="insufficient" type="text" placeholder="我的不足" class="fullwidth">{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
-		<input type="text" name="flags[]" value="好人">
-		<input type="text" name="flags[]" value="学霸">
+		<fieldset class="form-group">
+			<legend>标签</legend>
+			<div class="rs-tabs">
+				<div class="rs-tab">学霸<a onclick="removeTag(this.parentNode)">×</a></div>
+				<div class="rs-tab">+</div>
+			</div>
+		</fieldset>
+		<input type="hidden" name="flags[]" value="好人">
+		<input type="hidden" name="flags[]" value="学霸">
 		<div class="form-btns">
 			<input type="submit" class="btn-success" value="提交">
 		</div>
