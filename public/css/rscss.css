@@ -395,7 +395,7 @@ td,th,.td,.th{
 	vertical-align:bottom;
 	margin:8px 0 8px 8px;
 }
-.rs-tabs input[type=text]{
+.rs-tab input[type=text]{
 	height:27px;
 	line-height:27px;
 	border:none;
@@ -406,7 +406,7 @@ td,th,.td,.th{
 	width:100px;
 	vertical-align:bottom;
 }
-.rs-tabs input[type=text]+a{
+.rs-tab input[type=text]+a{
 	display:inline-block;
 	margin:8px auto;
 	position:relative;
@@ -417,10 +417,10 @@ td,th,.td,.th{
 	height:27px;
 	line-height:27px;
 }
-.rs-tabs ::-webkit-input-placeholder{
+.rs-tab ::-webkit-input-placeholder{
 	color:#FFF;
 }
-.rs-tabs input[type=text]:focus{
+.rs-tab input[type=text]:focus{
 	border:none;
 }
 .rs-tab a{

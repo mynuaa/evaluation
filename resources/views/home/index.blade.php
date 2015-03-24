@@ -1,17 +1,26 @@
 @extends('template.master')
 
-@section('title')首页@stop
+@section('title')五四评优@stop
 
 @section('content')
-<a href="{{ url('search/school') }}">校级</a>
-<a href="{{ url('search/college') }}">院级</a>
-	<li>
-		<a href="{{ url('search/college/{id}') }}">**院</a>
-	</li>
-
-<form action='{{ url("search") }}' method='get'>
-	<input name="by">
-	<input name="type" value='stuid'>
-	<input name="type" value='name'>
+<h3>五四评优</h3>
+<form action="{{ url('search/details') }}" method="get" class="rs-form">
+	<span>校级评优：</span>
+	<div class="rs-tabs">
+		<a href="{{ url('search/school') }}" class="rs-tab">校级</a>
+	</div>
+	<span>院级评优：</span>
+	<div class="rs-tabs">
+		@foreach (trans('college') as $cid => $cname)
+		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
+		@endforeach
+	</div>
+	<div class="rs-tabs">
+		<select name="type" id="type">
+			<option value="stuid">学号</option>
+			<option value="name">姓名</option>
+		</select>
+		<input type="text" name="key">
+	</div>
 </form>
 @stop
