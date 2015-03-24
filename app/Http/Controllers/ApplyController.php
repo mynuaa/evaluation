@@ -9,6 +9,8 @@ use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest;
 use Input, App\Recommendation, App\Http\Requests\RecommendPostRequest;
 use Session;
 
+use App\Flag;
+
 class ApplyController extends Controller {
 
 	public function __construct()
@@ -40,7 +42,7 @@ class ApplyController extends Controller {
 		$apply['insufficient'] = $request['insufficient'];
 
 		$user->apply()->save($apply);
-
+		
 		return redirect('apply/apply')->withMessage(['type' => 'success', 'content' => trans('message.apply_successed')]);
 	}
 

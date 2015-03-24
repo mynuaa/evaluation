@@ -14,6 +14,7 @@ class CreateFlagsTable extends Migration {
 	{
 		Schema::create('flags', function($table){
 			$table->increments('id');
+			$table->integer('user_id');
 			$table->string('name');
 		});
 	}
