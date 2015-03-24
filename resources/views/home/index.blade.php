@@ -21,6 +21,7 @@
 			<option value="name">姓名</option>
 		</select>
 		<input type="text" name="key">
+		<input type="submit" class="btn-success">
 	</div>
 </form>
 @stop

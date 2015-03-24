@@ -22,7 +22,7 @@ class DetailsGetRequest extends Request {
 	public function rules()
 	{
 		return [
-			'type' => 'required|integer|between:0,2',
+			'type' => 'required|in:stuid,name',
 			'key' => 'required'
 		];
 	}

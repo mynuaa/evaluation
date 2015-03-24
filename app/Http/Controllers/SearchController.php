@@ -24,6 +24,11 @@ class SearchController extends Controller {
 
 	public function getDetails(DetailsGetRequest $request)
 	{
-		
+		$type = $request->get('type');
+		$key = $request->get('key');
+
+		$applies = Apply::where($type, $key);
+
+		return view('search.view')->withApplies($applies);
 	}
 }
