@@ -19,6 +19,7 @@ class CreateApplies extends Migration {
 			$table->tinyInteger('type');
 
 			$table->string('name');
+			$table->string('stuid');
 			$table->integer('college');
 			$table->enum('sex', ['F', 'M']);
 			$table->string('native_place');

@@ -19,6 +19,11 @@ class Apply extends Model {
 		return $query->whereType($type);
 	}
 
+	public function scopeCollege($query, $collegeid)
+	{
+		return $query->whereCollege($collegeid);
+	}
+
 	public function recommendations()
 	{
 		return $this->hasMany('App\Recommendation');
