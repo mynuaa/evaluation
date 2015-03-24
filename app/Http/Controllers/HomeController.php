@@ -20,7 +20,9 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home.index');
+		$applies = Apply::all();
+
+		return view('home.index')->withApplies($applies);
 	}
 
 }
