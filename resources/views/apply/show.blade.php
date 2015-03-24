@@ -12,4 +12,8 @@
 	<input type='submit' value="推荐">
 	<input name="_token" type="hidden" value="{{ csrf_token() }}">
 </form>
+
+@include('template.share')
+
 @stop
+
