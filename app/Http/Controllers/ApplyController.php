@@ -38,6 +38,9 @@ class ApplyController extends Controller {
 		$apply['whoami'] = $request['whoami'];
 		$apply['story'] = $request['story'];
 		$apply['insufficient'] = $request['insufficient'];
+		$apply['tag1'] = isset($request['tags'][0]) ? $request['tags'][0] : '';
+		$apply['tag2'] = isset($request['tags'][1]) ? $request['tags'][1] : '';
+		$apply['tag3'] = isset($request['tags'][2]) ? $request['tags'][2] : '';
 
 		$user->apply()->save($apply);
 

@@ -34,6 +34,8 @@
 			<textarea name="story" type="text" placeholder="我的故事" class="fullwidth">{{ $apply['story'] }}</textarea>
 			<textarea name="insufficient" type="text" placeholder="我的不足" class="fullwidth">{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
+		<input type="text" name="flags[]" value="好人">
+		<input type="text" name="flags[]" value="学霸">
 		<div class="form-btns">
 			<input type="submit" class="btn-success" value="提交">
 		</div>
