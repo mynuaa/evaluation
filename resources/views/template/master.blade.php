@@ -8,21 +8,39 @@
 	<title>@yield('title') - 纸飞机南航青年网络社区</title>
 </head>
 <body>
+	<!-- 页眉 -->
 	<div class="rs-header">
 		<div class="rs-container">
 			<h1 class="fl">五四评优</h1>
 			<nav id="nav-user" class="rs-nav fr">
-				<ul class="rs-user-nav"></ul>
+				<ul class="rs-user-nav">
+				@if (Auth::check())
+				<a href="{{ url('user/logout') }}"><li>注销</li></a>
+				@else
+				<a href="{{ url('user/login') }}"><li>登录</li></a>
+				@endif
+				</ul>
 			</nav>
 		</div>
 	</div>
+	<!-- 消息显示块 -->
+	@if (Session::has('message'))
+	<div class="rs-message">
+		<div class="rs-container">
+			<div class="rs-msg rs-msg-{{ session('message')['type'] }}">
+				{{ session('message')['content'] }}
+			</div>
+		</div>
+	</div>
+	@endif
+	<!-- 主体内容 -->
 	<div class="rs-container">
 		@yield('content')
 	</div>
-	<div class="rs-footer">
+	<!-- 页脚 -->
+	<div class="rs-footer center">
 		<div class="rs-container">
-			<div>Powered by 纸飞机南航青年网络社区</div>
-			<div class="tip">请使用IE9以上的浏览器。</div>
+			<div>©纸飞机南航青年网络社区 2015</div>
 		</div>
 	</div>
 </body>

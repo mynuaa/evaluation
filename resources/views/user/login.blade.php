@@ -1,12 +1,16 @@
 @extends('template.master')
 
-@section('title')
-用户登录
-@stop
+@section('title')用户登录@stop
 
 @section('content')
+<div class="page-title">用户登录</div>
+<div class="center">
+	<ol class="left ilb tip-order" style="max-width:400px">
+		<li>请使用教务处账号登录</li>
+		<li>请使用IE9以上的浏览器</li>
+	</ol>
+</div>
 <div class="rs-form-outer">
-	<h3>用户登录</h3>
 	<form action="#" method="post" class="rs-form center">
 		<div class="iconed-text">
 			<i class="fa fa-user"></i>
@@ -16,7 +20,9 @@
 			<i class="fa fa-lock"></i>
 			<input type="password" name="password" placeholder="密码">
 		</div>
-		<input type="submit" class="btn-success">
+		<div class="form-btns">
+			<input type="submit" class="btn-success" value="登录">
+		</div>
 		<input type="hidden" name="_token" value="{{ csrf_token() }}"/>
 	</form>
 </div>

@@ -62,7 +62,7 @@ h4,h5{margin:0.5em 0;}
 div{position:relative;}
 var{white-space:nowrap;}
 em{font-style:normal;color:#C00;}
-a{color:#3B8BBA;text-decoration:none;}
+a{color:#900;text-decoration:none;}
 a:hover{text-decoration:underline;}
 blockquote{
 	border-left:5px solid #DDD;
@@ -75,6 +75,7 @@ abbr[title]{
 	border-bottom:1px dotted #666;
 	margin:0 0.2em;
 }
+ul,ol{margin:5px 0;}
 /*隐藏元素*/
 .hidden{display:none !important;}
 @media screen and (max-width:639px){.hidden-phone{display:none !important;}}
@@ -105,9 +106,33 @@ abbr[title]{
 .rs-popup-fadein{opacity:0;margin-top:4px;}
 .rs-popup-show{opacity:1;margin-top:0;}
 .rs-popup-fadeout{opacity:0;margin-top:-4px;}
+/*提示条*/
+.rs-msg{
+	border:1px solid;
+	padding:0.5em;
+	box-sizing:border-box;
+}
+.rs-msg-info{
+	background:#D9EDF7;
+	border-color:#2980B9;
+	color:#2980B9;
+}
+.rs-msg-success{
+	background:#DFF0D8;
+	border-color:#27AE60;
+	color:#27AE60;
+}
+.rs-msg-error{
+	background:#F2DEDE;
+	border-color:#C0392B;
+	color:#C0392B;
+}
 /*样式*/
 .left{text-align:left;}
-.center{text-align:center;}
+.center{
+	text-align:center;
+	margin:0 auto;
+}
 .right{text-align:right;}
 .block{display:block !important;}
 .inline{display:inline !important;}
@@ -132,10 +157,13 @@ h5{font-size:1em;}
 h6{font-size:0.83em;}
 /*内容*/
 .rs-header{
-	background:#0E90D2;
+	background:#E74C3C;
 	color:#FFF;
 	height:50px;
 	position:relative;
+}
+.rs-message{
+	margin:1em 0;
 }
 .rs-container{
 	max-width:960px;
@@ -143,7 +171,7 @@ h6{font-size:0.83em;}
 	padding:0 10px;
 }
 body>.rs-container{
-	margin-bottom:110px;
+	margin-bottom:70px;
 	overflow:hidden;
 }
 .rs-header h1{
@@ -170,12 +198,12 @@ body>.rs-container{
 	float:left;
 	padding:0 20px;
 	height:100%;
-	transition:all 200ms;
 }
 .rs-nav li:hover{
-	background:#0C81BC;
+	background:#C0392B;
 	cursor:pointer;
 }
+.rs-nav li{color:#FFF;}
 .rs-nav-selected,.rs-nav-selected:hover{
 	background:#0B76AC !important;
 }
@@ -192,21 +220,12 @@ body>.rs-container{
 	border-color:transparent transparent #F9F9F9 transparent;
 }
 .rs-footer{
-	min-height:55px;
 	width:100%;
-	margin-top:10px;
-	background:#555;
-	color:#FFF;
 	padding:20px 0;
 	position:absolute;
 	bottom:0;
-}
-@media screen and (max-width:810px){
-	/*.rs-header*/
-	.rs-nav{background:#0E90D2;height:auto;position:absolute;top:50px;right:0;z-index:2;transition:all 200ms;}
-	.rs-nav ul{margin:0;height:auto;}
-	.rs-nav ul li{display:block;float:none;padding:0 40px;}
-	.rs-nav ul li:active{background:#0C81BC;}
+	border-top:1px dashed #E74C3C;
+	color:#E74C3C;
 }
 /*表单*/
 .rs-form{
