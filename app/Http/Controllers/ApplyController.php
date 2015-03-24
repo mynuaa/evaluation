@@ -57,30 +57,19 @@ class ApplyController extends Controller {
 
 			$recommendations = $apply->recommendations;
 
-			return view('apply.show')->withApply($apply)->withId($id);
+			return view('apply.show')->withApply($apply);
 		}
 		else{
 			abort(404, 'Application not found.');
 		}
 	}
 
-	public function getList($type)
+	public function postRecommendation(RecommendPostRequest $request)
 	{
-		foreach (Apply::type($type)->get() as $apply) {
-			var_dump($apply);
-		}
-	}
+		$apply = Apply::find($request['applyid']);
 
-	public function postRecommendation(RecommendPostRequest $request, $applyid)
-	{
-		$apply = Apply::find($applyid);
-		
-		if ($apply){
-			Auth::user()->recommendations()->attach($apply->first(), ['content' => Input::get('content')]);
-			return "Recommend successed.";
-		}
-		else{
-			abort(500, 'Wrong apply id from referer.');
-		}
+		Auth::user()->recommendations()->attach($apply, ['content' => Input::get('content')]);
+
+		return redirect('apply/show/'.$request['applyid'])->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed')]);
 	}
 }
