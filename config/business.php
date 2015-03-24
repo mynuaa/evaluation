@@ -6,5 +6,6 @@ return [
 		1 => 'college',
 		'school' => 0,
 		'college' => 1
-	]
+	],
+	'paginate' => 30,
 ];

@@ -22,7 +22,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$applies = Apply::all();
+		$applies = Apply::paginate(config('business.paginate'));
 
 		return view('home.index')->withApplies($applies);
 	}

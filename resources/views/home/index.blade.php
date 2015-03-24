@@ -25,4 +25,7 @@
 		<input type="submit" class="btn-success">
 	</fieldset>
 </form>
+
+{{ $applies->render() }}
+
 @stop
