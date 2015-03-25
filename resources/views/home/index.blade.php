@@ -11,7 +11,7 @@
 	</div>
 	<span>院级评优：</span>
 	<div class="rs-tabs">
-		<div class="rs-tabs-toggle hidden-tablet hidden-desktop" onclick="toggleExpand(this)"></div>
+		<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer" onclick="toggleExpand(this)"></div>
 		@foreach (trans('college') as $cid => $cname)
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
 		@endforeach

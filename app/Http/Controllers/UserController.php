@@ -56,7 +56,7 @@ class UserController extends Controller {
 	{
 		Auth::logout();
 
-		return redirect('/')->withMessage(['type' => '']);
+		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.logout_successed')]);
 	}
 
 	public function getUpdate()
