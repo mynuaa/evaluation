@@ -18,12 +18,12 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
-			<input name="sex" type="radio" value="男" @if ($apply['sex'] == "男") checked @endif id="male"><label for="male">男</label>
+			<input name="sex" type="radio" value="男" @if ($apply['sex'] == "男" || $apply['sex'] == '') checked @endif id="male"><label for="male">男</label>
 			<input name="sex" type="radio" value="女" @if ($apply['sex'] == "女") checked @endif id="female"><label for="female">女</label>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>申请类型</legend>
-			<input name="type" type="radio" value="0" @if ($apply['type'] == 0) checked @endif id="school"><label for="school">校级评选</label>
+			<input name="type" type="radio" value="0" @if ($apply['type'] == 0 || $apply['type'] == '') checked @endif id="school"><label for="school">校级评选</label>
 			<input name="type" type="radio" value="1" @if ($apply['type'] == 1) checked @endif id="department"><label for="department">院内评选</label>
 		</fieldset>
 		<fieldset class="form-group">
