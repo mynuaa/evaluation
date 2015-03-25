@@ -39,6 +39,7 @@ class UserController extends Controller {
 			{
 				$user = User::firstOrNew(['username' => $username]);
 				$user->password = bcrypt($password);
+				$user->avatar = intval($username) % config('business.avatar.max');
 				$user->save();
 				
 				Auth::login($user, true);

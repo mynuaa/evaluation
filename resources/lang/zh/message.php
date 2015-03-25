@@ -10,5 +10,5 @@ return [
 	'recommend_successed' => '成功提交评论！',
 	'recommend_too_much' => '每个人最多只能提交'.config('business.recommend.max').'份推荐！',
 	'recommend_before' => '您已经推荐过这个人啦！',
-	'update_info' => '需要录入姓名、学院信息已保证更好的使用！'
+	'user_info_needed' => '需要录入姓名、学院信息已保证更好的使用！'
 ];
