@@ -9,18 +9,22 @@
 		<fieldset class="form-group">
 			<legend>基本信息</legend>
 			<input name="name" type="text" value="{{ $apply['name'] }}" placeholder="姓名">
-			<input name="college" type="number" value="{{ $apply['college'] }}" placeholder="学院">
-			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="给我起个标题">
+			<select name="college">
+				@foreach (trans('college') as $cid => $cname)
+				<option value="{{ $cid }}"@if ($apply['college'] == $cid) selected @endif>{{ $cname }}</option>
+				@endforeach
+			</select>
+			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="我的宣言">
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
-			<input name="sex" type="radio" value="M" checked id="male"><label for="male">男</label>
-			<input name="sex" type="radio" value="F" id="female"><label for="female">女</label>
+			<input name="sex" type="radio" value="男" @if ($apply['sex'] == "男") checked @endif id="male"><label for="male">男</label>
+			<input name="sex" type="radio" value="女" @if ($apply['sex'] == "女") checked @endif id="female"><label for="female">女</label>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>申请类型</legend>
-			<input name="type" type="radio" value="0" checked id="school"><label for="school">校级评选</label>
-			<input name="type" type="radio" value="1" id="department"><label for="department">院内评选</label>
+			<input name="type" type="radio" value="0" @if ($apply['type'] == 0) checked @endif id="school"><label for="school">校级评选</label>
+			<input name="type" type="radio" value="1" @if ($apply['type'] == 1) checked @endif id="department"><label for="department">院内评选</label>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>详细信息</legend>
@@ -38,7 +42,7 @@
 			<legend>标签</legend>
 			<div class="rs-tabs" id="tags">
 				<input type="text" id="curTag" class="rs-tab" placeholder="..." onmousedown="this.placeholder=''" onblur="this.placeholder='...'">
-				<a onclick="addTag()"><i class="fa fa-check"></i></a>
+				<a onclick="addTag()" class="pointer"><i class="fa fa-check"></i></a>
 			</div>
 		</fieldset>
 		<fieldset class="hidden" id="hiddens"></fieldset>

@@ -278,9 +278,11 @@ body>.rs-container{
 	border-color:#129FEA;
 }
 select{
+	width:168px;
 	height:32px;
 	border:1px solid #BBB;
 	border-radius:4px;
+	font-size:0.9em;
 }
 textarea{height:8em !important;}
 .rs-form-aligned label{

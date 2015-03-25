@@ -17,9 +17,9 @@ class SearchController extends Controller {
 
 	public function getCollege($cid)
 	{
-		$applies = Apply::type(config('business.type.school'))->college($cid)->get();
+		$applies = Apply::type(config('business.type.college'))->college($cid)->get();
 
-		return view('search.view')->withApplies($applies);		
+		return view('search.view')->withApplies($applies);
 	}
 
 	public function getDetails(DetailsGetRequest $request)

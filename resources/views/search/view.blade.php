@@ -30,15 +30,10 @@
 <div class="card-fluid">
 	<div class="card-outer">
 		<div class="card-inner">
-			<div class="card-title">{{ $stu['title'] }}</div>
-			<div class="card-content">
-				<div class="card-name">{{ $stu['name'] }}</div>
-				<div class="card-major">{{ $stu['major'] }}</div>
-				<div class="card-sex">{{ $stu['sex'] }}</div>
-			</div>
-			<div class="card-info">
-				<div class="card-time">{{ $stu['created_at'] }}</div>
-			</div>
+			<div class="card-avatar"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt=""></div>
+			<div class="card-title">{{ $stu->title }}</div>
+			<div class="card-content">{{ $stu->name }}，{{ $stu->major }}专业</div>
+			<div class="card-describtion">{{ $stu->whoami }}</div>
 		</div>
 	</div>
 </div>
