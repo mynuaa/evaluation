@@ -150,7 +150,10 @@ ul,ol{margin:5px 0;}
 .bggreen{background:#2ECC71 !important;}
 .pointer{cursor:pointer;}
 .fullwidth{width:100% !important;}
-.indent{text-indent:2em;}
+.indent{
+	margin:0.5em 0;
+	text-indent:2em;
+}
 /*标题*/
 h1{font-size:2em;}
 h2{font-size:1.5em;}
