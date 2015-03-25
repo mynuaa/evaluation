@@ -64,6 +64,7 @@ var{white-space:nowrap;}
 em{font-style:normal;color:#C00;}
 a{color:#900;text-decoration:none;}
 a:hover{text-decoration:underline;}
+a.no-underline:hover{text-decoration:none !important;}
 blockquote{
 	border-left:5px solid #DDD;
 	font-size:0.9em;
@@ -140,13 +141,13 @@ ul,ol{margin:5px 0;}
 .fl{float:left;margin-left:0 !important;}
 .fr{float:right;margin-right:0 !important;}
 .cl{overflow:hidden;}
-.red{color:red;}
-.blue{color:#3498DB;}
-.green{color:#2ECC71;}
-.white{color:#FFF;}
-.bgred{background:red;}
-.bgblue{background:#3498DB;}
-.bggreen{background:#2ECC71;}
+.red{color:red !important;}
+.blue{color:#3498DB !important;}
+.green{color:#2ECC71 !important;}
+.white{color:#FFF !important;}
+.bgred{background:red !important;}
+.bgblue{background:#3498DB !important;}
+.bggreen{background:#2ECC71 !important;}
 .pointer{cursor:pointer;}
 .fullwidth{width:100% !important;}
 .indent{text-indent:2em;}

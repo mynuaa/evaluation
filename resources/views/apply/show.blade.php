@@ -11,6 +11,9 @@
 		<div>{{ $apply->major }}专业</div>
 	</div>
 </div>
+<div>
+	<p class="tip">浏览：{{ $apply->pageview }}次</p>
+</div>
 <h5>我是这样一个人</h5>
 <p class="indent">{{ $apply->whoami }}</p>
 <h5>我的故事</h5>
@@ -32,6 +35,7 @@
 		<input type="submit" value="推荐" class="btn-success">
 	</div>
 </form>
+{!! $apply->recommendations[0] !!}
 <h3>我要分享</h3>
 @include('template.share')
 @stop

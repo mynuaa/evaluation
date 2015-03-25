@@ -93,13 +93,13 @@
 .card-outer{
 	background:#FFF;
 	border:2px solid #BBB;
-	margin:10px auto 0;
+	margin:10px auto;
 	overflow:hidden;
 	color:#000;
 }
 .card-outer:hover{border:2px solid #E74C3C;}
 .card-inner{
-	overflow:auto;
+	overflow:hidden;
 	-webkit-overflow-scrolling:touch;
 }
 .card-title>img{
@@ -120,6 +120,7 @@
 	font-size:0.9em;
 	margin:20px 0;
 }
+.card-outer .card-author{margin:8px 0;}
 .list{
 	width:100%;
 	margin:0;
