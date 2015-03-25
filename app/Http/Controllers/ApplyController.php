@@ -27,21 +27,21 @@ class ApplyController extends Controller {
 
 		$apply = Apply::firstOrNew(['user_id' => $user->id]);
 	
-		$apply['type'] = $request['type'];
-		$apply['stuid'] = Auth::user()->username;
-		$apply['name'] = $request['name'];
-		$apply['college'] = $request['college'];
-		$apply['sex'] = $request['sex'];
-		$apply['native_place'] = $request['native_place'];
-		$apply['political'] = $request['political'];
-		$apply['major'] = $request['major'];
-		$apply['title'] = $request['title'];
-		$apply['whoami'] = $request['whoami'];
-		$apply['story'] = $request['story'];
-		$apply['insufficient'] = $request['insufficient'];
-		$apply['tag1'] = isset($request['tags'][0]) ? $request['tags'][0] : '';
-		$apply['tag2'] = isset($request['tags'][1]) ? $request['tags'][1] : '';
-		$apply['tag3'] = isset($request['tags'][2]) ? $request['tags'][2] : '';
+		$apply->type = $request['type'];
+		$apply->stuid = Auth::user()->username;
+		$apply->name = $request['name'];
+		$apply->college = $request['college'];
+		$apply->sex = $request['sex'];
+		$apply->native_place = $request['native_place'];
+		$apply->political = $request['political'];
+		$apply->major = $request['major'];
+		$apply->title = $request['title'];
+		$apply->whoami = $request['whoami'];
+		$apply->story = $request['story'];
+		$apply->insufficient = $request['insufficient'];
+		$apply->tag1 = isset($request['tags'][0]) ? $request['tags'][0] : '';
+		$apply->tag2 = isset($request['tags'][1]) ? $request['tags'][1] : '';
+		$apply->tag3 = isset($request['tags'][2]) ? $request['tags'][2] : '';
 
 		$user->apply()->save($apply);
 
