@@ -28,4 +28,9 @@ class Apply extends Model {
 	{
 		return $this->belongsToMany('App\User', 'recommendations');
 	}
+
+	public function getSex($value)
+	{
+		
+	}
 }
