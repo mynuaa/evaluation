@@ -31,7 +31,7 @@ class UserController extends Controller {
 
 		if (Auth::attempt(['username' => $username, 'password' => $password], true))
 		{
-			echo "Login successed!";
+			return redirect('user/update')->withMessage('type' => 'info', 'content' => trans('message.update_info'));
 		}
 		else
 		{
@@ -64,7 +64,7 @@ class UserController extends Controller {
 		return view('user.update');
 	}
 
-	public function postUpdate(UpdatePostRequest $request)
+	public function postUpdate(UpdatePostRequest $request)z
 	{
 		$user = Auth::user();
 
