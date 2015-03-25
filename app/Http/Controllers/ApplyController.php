@@ -80,4 +80,22 @@ class ApplyController extends Controller {
 
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed')]);
 	}
+
+	public function getVote($id)
+	{
+		$votes = Auth::user()->votes();
+
+		if ($votes->where('apply_id', $id)->exists())
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.voted_before')]);
+		}
+		if ($votes->count() >= config('business.vote.max'))
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote_too_much')]);
+		}
+
+		$votes->attach($id);
+
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.vote_successed')]);
+	}
 }

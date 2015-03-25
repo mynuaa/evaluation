@@ -62,7 +62,7 @@ class UserController extends Controller {
 
 	public function getUpdate()
 	{
-		return view('user.update');
+		return view('user.update')->withUser(Auth::user());
 	}
 
 	public function postUpdate(UpdatePostRequest $request)
