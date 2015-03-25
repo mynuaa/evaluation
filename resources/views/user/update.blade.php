@@ -11,7 +11,7 @@
 			<input name="name" type="text" placeholder="真实姓名">
 		</div>
 		<div class="iconed-text">
-			<i class="fa fa-lock"></i>
+			<i class="fa fa-graduation-cap"></i>
 			<input name="college" type="text" placeholder="学院">
 		</div>
 		<div class="form-btns">
