@@ -27,16 +27,18 @@
 	</fieldset>
 </form>
 @foreach ($applies as $stu)
-<div class="card-fluid">
-	<div class="card-outer">
-		<div class="card-inner">
-			<div class="card-avatar"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt=""></div>
-			<div class="card-title">{{ $stu->title }}</div>
-			<div class="card-content">{{ $stu->name }}，{{ $stu->major }}专业</div>
-			<div class="card-describtion">{{ $stu->whoami }}</div>
+<a href="{{ url('apply/show/' . $stu['id']) }}">
+	<div class="card-fluid">
+		<div class="card-outer">
+			<div class="card-inner">
+				<div class="card-avatar"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt=""></div>
+				<div class="card-title">{{ $stu->title }}</div>
+				<div class="card-content">{{ $stu->name }}，{{ $stu->major }}专业</div>
+				<div class="card-describtion">{{ $stu->whoami }}</div>
+			</div>
 		</div>
 	</div>
-</div>
+</a>
 @endforeach
 {!! $applies !!}
 {{-- $applies->render() --}}

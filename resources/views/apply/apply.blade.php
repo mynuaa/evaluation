@@ -11,7 +11,7 @@
 			<input name="name" type="text" value="{{ $apply['name'] }}" placeholder="姓名">
 			<select name="college">
 				@foreach (trans('college') as $cid => $cname)
-				<option value="{{ $cid }}"@if ($apply['college'] == $cid) selected @endif>{{ $cname }}</option>
+				<option value="{{ $cid }}"@if ($apply['college'] == $cid || ($apply['college'] == '' && $cid == substr($stuid, 0, 2))) selected @endif>{{ $cname }}</option>
 				@endforeach
 			</select>
 			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="我的宣言">
