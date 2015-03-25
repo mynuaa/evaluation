@@ -10,10 +10,11 @@
 			<i class="fa fa-user"></i>
 			<input name="name" type="text" placeholder="真实姓名">
 		</div>
-		<div class="iconed-text">
-			<i class="fa fa-graduation-cap"></i>
-			<input name="college" type="text" placeholder="学院">
-		</div>
+		<select name="college">
+			@foreach (trans('college') as $cid => $cname)
+			<option value="{{ $cid }}"@if ($apply['college'] == $cid || ($apply['college'] == '' && $cid == substr($stuid, 0, 2))) selected @endif>{{ $cname }}</option>
+			@endforeach
+		</select>
 		<div class="form-btns">
 			<input type="submit" class="btn-success" value="更新">
 		</div>
