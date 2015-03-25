@@ -1,6 +1,6 @@
 @extends('template.master')
 
-@section('title')五四评优@stop
+@section('title')用户搜索@stop
 
 @section('content')
 <h3>五四评优</h3>
@@ -26,6 +26,20 @@
 		<input type="submit" class="btn-success">
 	</fieldset>
 </form>
+@foreach ($applies as $stu)
+<div class="card-fluid">
+	<div class="card-outer">
+		<div class="card-inner">
+			<div class="card-avatar"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt=""></div>
+			<div class="card-title">{{ $stu->title }}</div>
+			<div class="card-content">{{ $stu->name }}，{{ $stu->major }}专业</div>
+			<div class="card-describtion">{{ $stu->whoami }}</div>
+		</div>
+	</div>
+</div>
+@endforeach
+{!! $applies !!}
+{{-- $applies->render() --}}
 @stop
 
 @section('scripts')
