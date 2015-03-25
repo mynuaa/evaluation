@@ -20,8 +20,4 @@ class Pageview extends Model {
 	{
 		return long2ip($value);
 	}
-	// function scopeIp($query, $ip)
-	// {
-	// 	return $query->where('ip', '=', $ip);
-	// }
 }
