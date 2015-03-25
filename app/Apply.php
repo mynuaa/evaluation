@@ -26,6 +26,6 @@ class Apply extends Model {
 
 	public function recommendations()
 	{
-		return $this->hasMany('App\Recommendation');
+		return $this->belongsToMany('App\User', 'recommendations');
 	}
 }
