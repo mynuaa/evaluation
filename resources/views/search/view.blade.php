@@ -28,14 +28,11 @@
 </form>
 @foreach ($applies as $stu)
 <a href="{{ url('apply/show/' . $stu['id']) }}">
-	<div class="card-fluid">
-		<div class="card-outer">
-			<div class="card-inner">
-				<div class="card-avatar"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt=""></div>
-				<div class="card-title">{{ $stu->title }}</div>
-				<div class="card-content">{{ $stu->name }}，{{ $stu->major }}专业</div>
-				<div class="card-describtion">{{ $stu->whoami }}</div>
-			</div>
+	<div class="card-outer">
+		<div class="card-inner">
+			<div class="card-title"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="">{{ $stu->title }}</div>
+			<div class="card-content card-author">{{ $stu->name }}，{{ $stu->major }}专业</div>
+			<div class="card-content card-describtion">{{ $stu->whoami }}</div>
 		</div>
 	</div>
 </a>
