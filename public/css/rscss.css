@@ -433,12 +433,12 @@ td,th,.td,.th{
 .rs-tabs input[type=text]:focus{
 	border:none;
 }
-.rs-tabs a{
+.rs-tab a{
 	color:#FFF;
 	margin:auto 0 auto 5px;
 	padding:0 5px;
 }
-.rs-tabs a:hover{
+.rs-tab a:hover{
 	cursor:pointer;
 	text-decoration:none;
 }
