@@ -13,12 +13,18 @@ class UserInfoUpdate {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if (Auth::check() && ($request->path() != 'user/update'))
+		if (Auth::check())
 		{
-			$user = Auth::user();
-			if (($user->name == null) || $user->college == null)
+			$path = $request->path();
+			$whitelist = ['user/update', 'user/logout', '/'];
+			
+			if ( ! in_array($path, $whitelist) )
 			{
-				return redirect('user/update')->withMessage(['type' => 'warning', 'content' => trans('message.user_info_needed')]);
+				$user = Auth::user();
+				if (($user->name == null) || $user->college == null)
+				{
+					return redirect('user/update')->withMessage(['type' => 'warning', 'content' => trans('message.user_info_needed')]);
+				}
 			}
 		}
 
