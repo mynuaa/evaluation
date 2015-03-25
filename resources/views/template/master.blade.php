@@ -15,7 +15,9 @@
 			<a href="{{ url('/') }}"><h1 class="fl pointer white">五四评优</h1></a>
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav">
-					<a href="{{ url('apply/apply') }}"><li name="common/message">我要申报</li></a>
+					<a href="{{ url('apply/apply') }}">
+						<li name="common/message">我要申报</li>
+					</a>
 				</ul>
 			</nav>
 			<nav id="nav-user" class="rs-nav fr">

@@ -3,6 +3,7 @@
 @section('title')用户搜索@stop
 
 @section('content')
+<img src="http://my.nuaa.edu.cn/source/plugin/evaluation/template/banner.jpg" width="100%" alt="">
 <h3>五四评优</h3>
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<span>校级评优：</span>
@@ -27,16 +28,15 @@
 	</fieldset>
 </form>
 @foreach ($applies as $stu)
-<div class="card-fluid">
+<a href="{{ url('apply/show/' . $stu['id']) }}">
 	<div class="card-outer">
 		<div class="card-inner">
-			<div class="card-avatar"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt=""></div>
-			<div class="card-title">{{ $stu->title }}</div>
-			<div class="card-content">{{ $stu->name }}，{{ $stu->major }}专业</div>
-			<div class="card-describtion">{{ $stu->whoami }}</div>
+			<div class="card-title"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}">{{ $stu->title }}</div>
+			<div class="card-content card-author">{{ $stu->name }}，{{ $stu->major }}专业</div>
+			<div class="card-content card-describtion">{{ $stu->whoami }}</div>
 		</div>
 	</div>
-</div>
+</a>
 @endforeach
 {{-- {!! $applies !!} --}}
 {{-- $applies->render() --}}

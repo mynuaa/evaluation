@@ -11,7 +11,7 @@
 			<input name="name" type="text" value="{{ $apply['name'] }}" placeholder="姓名">
 			<select name="college">
 				@foreach (trans('college') as $cid => $cname)
-				<option value="{{ $cid }}"@if ($apply['college'] == $cid) selected @endif>{{ $cname }}</option>
+				<option value="{{ $cid }}"@if ($apply['college'] == $cid || ($apply['college'] == '' && $cid == substr($stuid, 0, 2))) selected @endif>{{ $cname }}</option>
 				@endforeach
 			</select>
 			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="我的宣言">
@@ -41,11 +41,22 @@
 		<fieldset class="form-group">
 			<legend>标签</legend>
 			<div class="rs-tabs" id="tags">
+				@for ($i = 1; $i <= 3; $i++)
+					@if ($apply['tag' . $i] != '')
+						<div class="rs-tab">{{ $apply['tag' . $i] }}<a onclick="removeTag(this.parentNode)">×</a></div>
+					@endif
+				@endfor
 				<input type="text" id="curTag" class="rs-tab" placeholder="..." onmousedown="this.placeholder=''" onblur="this.placeholder='...'">
-				<a onclick="addTag()" class="pointer"><i class="fa fa-check"></i></a>
+				<a onclick="addTag()" class="pointer">+</a>
 			</div>
 		</fieldset>
-		<fieldset class="hidden" id="hiddens"></fieldset>
+		<fieldset class="hidden" id="hiddens">
+			@for ($i = 1; $i <= 3; $i++)
+				@if ($apply['tag' . $i] != '')
+					<input type="hidden" name="tags[]" value="{{ $apply['tag' . $i] }}">
+				@endif
+			@endfor
+		</fieldset>
 		<div class="form-btns">
 			<input type="submit" class="btn-success" value="提交">
 		</div>
