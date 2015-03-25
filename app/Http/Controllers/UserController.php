@@ -31,7 +31,7 @@ class UserController extends Controller {
 
 		if (Auth::attempt(['username' => $username, 'password' => $password], true))
 		{
-			return redirect('user/update')->withMessage(['type' => 'info', 'content' => trans('message.update_info')]);
+			return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login_successed')]);
 		}
 		else
 		{
@@ -46,7 +46,7 @@ class UserController extends Controller {
 			}
 			else
 			{
-				return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login_failed')]);
+				return redirect('user/update')->withMessage(['type' => 'info', 'content' => trans('message.user_info_needed')]);
 			}
 		}
 
