@@ -11,12 +11,15 @@
 		<div>{{ $apply->major }}专业</div>
 	</div>
 </div>
+<div>
+	<p class="tip">浏览：{{ $apply->pageview }}次</p>
+</div>
 <h5>我是这样一个人</h5>
-<p class="indent">{{ $apply->whoami }}</p>
+<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', $apply->whoami . "\n") !!}</p>
 <h5>我的故事</h5>
-<p class="indent">{{ $apply->story }}</p>
+<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', $apply->story . "\n") !!}</p>
 <h5>我的不足</h5>
-<p class="indent">{{ $apply->insufficient }}</p>
+<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', $apply->insufficient . "\n") !!}</p>
 <div class="rs-form fullwidth">
 	<div class="rs-form-btns">
 		<input type="button" value="返回" class="btn-primary" onclick="window.history.go(-1)">
@@ -32,7 +35,6 @@
 		<input type="submit" value="推荐" class="btn-success">
 	</div>
 </form>
-{{ $apply->recommendations }}
 <h3>我要分享</h3>
 @include('template.share')
 @stop
