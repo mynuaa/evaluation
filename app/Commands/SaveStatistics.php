@@ -32,7 +32,7 @@ class SaveStatistics extends Command implements SelfHandling, ShouldBeQueued {
 	 */
 	public function handle()
 	{
-		$pageview = PageView::create($this->data);
+		PageView::create($this->data);
 	}
 
 }

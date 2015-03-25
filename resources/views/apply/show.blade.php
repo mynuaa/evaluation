@@ -35,7 +35,6 @@
 		<input type="submit" value="推荐" class="btn-success">
 	</div>
 </form>
-{!! $apply->recommendations[0] !!}
 <h3>我要分享</h3>
 @include('template.share')
 @stop
