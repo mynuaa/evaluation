@@ -23,7 +23,7 @@
 <div class="rs-form fullwidth">
 	<div class="rs-form-btns">
 		<input type="button" value="返回" class="btn-primary" onclick="window.history.go(-1)">
-		<input type='button' value="投票" class="btn-success" onclick="window.location.href='{{ url('vote/vote') }}'">
+		<input type='button' value="投票" class="btn-success" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
 	</div>
 </div>
 <h3>我要推荐</h3>

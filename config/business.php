@@ -11,6 +11,9 @@ return [
 	'recommend' => [
 		'max' => 5
 	],
+	'vote' => [
+		'max' => 5
+	],
 	'avatar' => [
 		'max' => 10
 	]
