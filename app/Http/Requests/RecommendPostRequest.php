@@ -13,7 +13,16 @@ class RecommendPostRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		$recommendations = Auth::user()->recommendations();
+
+		if ($recommendations->count() >= config('business.recommend.max'))
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_too_much')]);
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 	/**

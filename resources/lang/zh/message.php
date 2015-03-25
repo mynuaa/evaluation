@@ -7,5 +7,6 @@ return [
 	'logout_successed' => '用户已注销！',
 	'apply_successed' => '申报成功！',
 	'update_successed' => '资料更新成功',
-	'recommend_successed' => '成功提交评论！'
+	'recommend_successed' => '成功提交评论！',
+	'recommend_too_much' => '每个人最多只能提交'.config('business.recommend.max').'份推荐！',
 ];

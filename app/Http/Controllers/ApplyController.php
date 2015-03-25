@@ -18,7 +18,7 @@ class ApplyController extends Controller {
 
 	public function getApply()
 	{
-		return view('apply.apply')->withApply(Auth::user()->apply()->first());
+		return view('apply.apply')->withApply(Auth::user()->apply);
 	}
 
 	public function postApply(ApplyPostRequest $request)
@@ -53,9 +53,8 @@ class ApplyController extends Controller {
 		$apply = Apply::find($id);
 
 		if ($apply){
-			$apply->increment('pageview');
 
-			$recommendations = $apply->recommendations;
+			$apply->increment('pageview');
 
 			return view('apply.show')->withApply($apply);
 		}
@@ -68,7 +67,7 @@ class ApplyController extends Controller {
 	{
 		$apply = Apply::find($request['applyid']);
 
-		Auth::user()->recommendations()->attach($apply, ['content' => Input::get('content')]);
+		$apply->recommendations()->attach(Auth::user(), ['content' => $request->content]);
 
 		return redirect('apply/show/'.$request['applyid'])->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed')]);
 	}
