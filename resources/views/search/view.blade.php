@@ -38,7 +38,7 @@
 	</div>
 </div>
 @endforeach
-{!! $applies !!}
+{{-- {!! $applies !!} --}}
 {{-- $applies->render() --}}
 @stop
 
