@@ -13,18 +13,6 @@ class RecommendPostRequest extends Request {
 	 */
 	public function authorize()
 	{
-		$recommendations = Auth::user()->recommendations();
-
-		if ($recommendations->where('apply_id', Input::get('applyid'))->exists())
-		{
-			abort(500, trans('message.recommend_before'));
-		}
-
-		if ($recommendations->count() >= config('business.recommend.max'))
-		{
-			abort(500, trans('message.recommend_too_much'));
-		}
-
 		return true;
 	}
 

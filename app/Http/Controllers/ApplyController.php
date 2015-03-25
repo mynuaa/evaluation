@@ -64,11 +64,20 @@ class ApplyController extends Controller {
 	}
 
 	public function postRecommendation(RecommendPostRequest $request)
-	{
-		$apply = Apply::find($request['applyid']);
+	{		
+		$recommendations = Auth::user()->recommendations();
 
-		$apply->recommendations()->attach(Auth::user(), ['content' => $request->content]);
+		if ($recommendations->where('apply_id', $request->applyid)->exists())
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_before')]);
+		}
+		if ($recommendations->count() >= config('business.recommend.max'))
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_too_much')]);
+		}
 
-		return redirect('apply/show/'.$request['applyid'])->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed')]);
+		$recommendations->attach($request->applyid, ['content' => $request->content]);
+
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed')]);
 	}
 }
