@@ -75,6 +75,7 @@
 	<div class="rs-footer center">
 		<div class="rs-container">
 			<div>©纸飞机南航青年网络社区 2015</div>
+			<a class="tip">项目时间轴</a>
 		</div>
 	</div>
 	<script>

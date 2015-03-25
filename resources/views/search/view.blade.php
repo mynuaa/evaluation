@@ -1,20 +1,20 @@
 @extends('template.master')
 
-@section('title')用户搜索@stop
+@section('title')五四评优@stop
 
 @section('content')
-<img src="http://my.nuaa.edu.cn/source/plugin/evaluation/template/banner.jpg" width="100%" alt="五四评优" class="hidden-phone">
+<img src="{{ asset('/img/banner.jpg') }}" width="100%" alt="五四评优" class="hidden-phone">
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<div class="rs-tabs">
 		<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer" onclick="toggleExpand(this)"></div>
-		<a href="{{ url('search/school') }}" class="rs-tab" style="background:#16A085">校级</a>
+		<a href="{{ url('search/school') }}" class="rs-tab">校级</a>
 		@foreach (trans('college') as $cid => $cname)
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
 		@endforeach
 	</div>
 	<fieldset>
-		<legend><b>搜索</b></legend>
-		<select name="type" id="type">
+		<legend><b>全局搜索</b></legend>
+		<select name="type" id="type" style="width:5em">
 			<option value="stuid">学号</option>
 			<option value="name">姓名</option>
 		</select>
@@ -28,7 +28,7 @@
 		<div class="card-inner">
 			<div class="card-title"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}">{{ $stu->title }}</div>
 			<div class="card-content card-author">{{ $stu->name }}，{{ $stu->major }}专业</div>
-			<div class="card-content card-describtion">{{ $stu->whoami }}</div>
+			<div class="card-content card-describtion">{{ substr($stu->whoami, 0, 150) . "..." }}</div>
 		</div>
 	</div>
 </a>

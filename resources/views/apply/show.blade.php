@@ -7,9 +7,10 @@
 <div class="card-author cl">
 	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
 	<div class="fl">
-		<div>{{ $apply->name }}（{{ $apply->stuid }}）</div>
+		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
 		<div>{{ $apply->major }}专业</div>
 	</div>
+	<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
 </div>
 <h5>我是这样一个人</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->whoami) . "\n") !!}</p>
@@ -17,12 +18,14 @@
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->story) . "\n") !!}</p>
 <h5>我的不足</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
-<div class="rs-form fullwidth">
-	<div class="rs-form-btns">
-		<input type='button' value="投票" class="btn-success" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
-		<p class="tip">浏览：{{ $apply->pageview }}次</p>
-	</div>
+@if ($apply->tag1 != '')
+<div class="rs-tabs" style="height:auto">
+	<div class="rs-tab">{{ $apply->tag1 }}</div>
+	@if ($apply->tag2 != '')<div class="rs-tab">{{ $apply->tag2 }}</div>@endif
+	@if ($apply->tag3 != '')<div class="rs-tab">{{ $apply->tag3 }}</div>@endif
 </div>
+@endif
+<p class="tip">浏览：{{ $apply->pageview }}次</p>
 <hr>
 <h3>我要推荐</h3>
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">

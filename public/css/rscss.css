@@ -58,6 +58,10 @@ pre,code,kbd,samp,var{
 	margin:0.2em;
 	padding:0.1em 0.4em;
 }
+hr{
+	border:none;
+	border-top:1px dashed #BBB;
+}
 h4,h5{margin:0.5em 0;}
 div{position:relative;}
 var{white-space:nowrap;}
@@ -168,7 +172,7 @@ h6{font-size:0.83em;}
 	padding:0 10px;
 }
 body>.rs-container{
-	margin-bottom:70px;
+	margin-bottom:100px;
 	overflow:hidden;
 }
 .rs-header h1{

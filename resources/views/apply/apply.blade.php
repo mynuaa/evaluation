@@ -40,14 +40,16 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>标签</legend>
-			<div class="rs-tabs" id="tags">
+			<div class="rs-tabs" id="tags" style="height:auto;padding:0">
 				@for ($i = 1; $i <= 3; $i++)
 					@if ($apply['tag' . $i] != '')
 						<div class="rs-tab">{{ $apply['tag' . $i] }}<a onclick="removeTag(this.parentNode)">×</a></div>
 					@endif
 				@endfor
-				<input type="text" id="curTag" class="rs-tab" placeholder="..." onmousedown="this.placeholder=''" onblur="this.placeholder='...'">
-				<a onclick="addTag()" class="pointer">+</a>
+				<div class="rs-tab" id="curTag" style="padding:0 8px 0 0;width:100px;white-space:nowrap">
+					<input type="text" class="rs-tab" id="curValue" maxlength="15" style="margin:0;font-size:1em" placeholder="..." onmousedown="this.placeholder=''" onblur="this.placeholder='...'">
+					<a onclick="addTag()" class="pointer" style="margin:0">+</a>
+				</div>
 			</div>
 		</fieldset>
 		<fieldset class="hidden" id="hiddens">
@@ -67,12 +69,12 @@
 
 @section('scripts')
 function addTag(){
-	if(document.querySelectorAll(".rs-tab").length-1==3){
+	if(document.querySelectorAll(".rs-tab").length==5){
 		alert("最多只能添加三个标签哦~");
 		return false;
 	}
 	var curTag=document.getElementById("curTag");
-	var value=curTag.value;
+	var value=document.getElementById("curValue").value;
 	if(value==""){
 		alert("标签内容不能为空！");
 		return false;
@@ -87,7 +89,7 @@ function addTag(){
 	tag.className="rs-tab";
 	tag.innerHTML=value+'<a onclick="removeTag(this.parentNode)">×</a>';
 	document.getElementById("tags").insertBefore(tag,curTag);
-	curTag.value="";
+	curValue.value="";
 	curTag.blur();
 }
 function removeTag(dom){

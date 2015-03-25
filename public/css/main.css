@@ -92,7 +92,8 @@
 }
 .card-outer{
 	background:#FFF;
-	border:2px solid #BBB;
+	border:2px solid #DDD;
+	border-radius:5px;
 	margin:10px auto;
 	overflow:hidden;
 	color:#000;
@@ -163,6 +164,7 @@
 	display:table;
 	table-layout:fixed;
 	width:100%;
+	word-break:break-all;
 	box-sizing:border-box;
 }
 .card-content-inner{
@@ -296,7 +298,7 @@
 		color:#FFF;
 	}
 	.rs-tabs{
-		height:43px;
+		height:45px;
 		padding-right:30px;
 		box-sizing:border-box;
 	}
