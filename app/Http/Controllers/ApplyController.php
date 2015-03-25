@@ -18,7 +18,7 @@ class ApplyController extends Controller {
 
 	public function getApply()
 	{
-		return view('apply.apply')->withApply(Auth::user()->apply);
+		return view('apply.apply')->withApply(Auth::user()->apply)->withStuid(Auth::user()->username);
 	}
 
 	public function postApply(ApplyPostRequest $request)
