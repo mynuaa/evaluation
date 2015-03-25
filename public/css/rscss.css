@@ -149,6 +149,7 @@ ul,ol{margin:5px 0;}
 .bggreen{background:#2ECC71;}
 .pointer{cursor:pointer;}
 .fullwidth{width:100% !important;}
+.indent{text-indent:2em;}
 /*标题*/
 h1{font-size:2em;}
 h2{font-size:1.5em;}
@@ -404,7 +405,7 @@ td,th,.td,.th{
 	vertical-align:bottom;
 	margin:8px 0 8px 8px;
 }
-.rs-tab input[type=text]{
+.rs-tabs input[type=text]{
 	height:27px;
 	line-height:27px;
 	border:none;
@@ -415,7 +416,7 @@ td,th,.td,.th{
 	width:100px;
 	vertical-align:bottom;
 }
-.rs-tab input[type=text]+a{
+.rs-tabs input[type=text]+a{
 	display:inline-block;
 	margin:8px auto;
 	position:relative;
@@ -426,18 +427,18 @@ td,th,.td,.th{
 	height:27px;
 	line-height:27px;
 }
-.rs-tab ::-webkit-input-placeholder{
+.rs-tabs ::-webkit-input-placeholder{
 	color:#FFF;
 }
-.rs-tab input[type=text]:focus{
+.rs-tabs input[type=text]:focus{
 	border:none;
 }
-.rs-tab a{
+.rs-tabs a{
 	color:#FFF;
 	margin:auto 0 auto 5px;
 	padding:0 5px;
 }
-.rs-tab a:hover{
+.rs-tabs a:hover{
 	cursor:pointer;
 	text-decoration:none;
 }

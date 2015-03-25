@@ -42,7 +42,7 @@
 			<legend>标签</legend>
 			<div class="rs-tabs" id="tags">
 				<input type="text" id="curTag" class="rs-tab" placeholder="..." onmousedown="this.placeholder=''" onblur="this.placeholder='...'">
-				<a onclick="addTag()" class="pointer"><i class="fa fa-check"></i></a>
+				<a onclick="addTag()" class="pointer">+</a>
 			</div>
 		</fieldset>
 		<fieldset class="hidden" id="hiddens"></fieldset>

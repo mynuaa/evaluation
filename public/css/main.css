@@ -109,8 +109,16 @@
 	margin-right:10px;
 	vertical-align:middle;
 }
+.card-author>img{
+	width:40px;
+	height:40px;
+	border-radius:50%;
+	margin-right:8px;
+	vertical-align:middle;
+}
 .card-author{
 	font-size:0.9em;
+	margin:20px 0;
 }
 .list{
 	width:100%;
