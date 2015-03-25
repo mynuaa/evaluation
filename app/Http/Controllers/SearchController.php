@@ -8,6 +8,13 @@ use App\Apply, App\Http\Requests\DetailsGetRequest;
 
 class SearchController extends Controller {
 
+	public function index()
+	{
+		$applies = Apply::all();
+
+		return view('search.view')->withApplies($applies);
+	}
+
 	public function getSchool()
 	{
 		$applies = Apply::type(config('business.type.school'))->get();
@@ -24,10 +31,10 @@ class SearchController extends Controller {
 
 	public function getDetails(DetailsGetRequest $request)
 	{
-		$type = $request->get('type');
-		$key = $request->get('key');
+		$type = $request->type;
+		$key = $request->key;
 
-		$applies = Apply::where($type, $key);
+		$applies = Apply::where($type, $key)->get();
 
 		return view('search.view')->withApplies($applies);
 	}

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'SearchController@index');
 
 Route::controllers([
 	'user' => 'UserController',

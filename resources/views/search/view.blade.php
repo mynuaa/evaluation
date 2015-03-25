@@ -40,7 +40,7 @@
 	</div>
 </a>
 @endforeach
-{!! $applies !!}
+{{-- {!! $applies !!} --}}
 {{-- $applies->render() --}}
 @stop
 
