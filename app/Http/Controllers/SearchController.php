@@ -8,6 +8,13 @@ use App\Apply, App\Http\Requests\DetailsGetRequest;
 
 class SearchController extends Controller {
 
+	public function index()
+	{
+		$applies = Apply::all();
+
+		return view('search.view')->withApplies($applies);
+	}
+
 	public function getSchool()
 	{
 		$applies = Apply::type(config('business.type.school'))->get();
