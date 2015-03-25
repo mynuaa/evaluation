@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration {
 
 			$table->boolean('admin')->default(0);
 
-			$table->integer('college');
-			$table->string('name');
+			$table->integer('college')->nullable();
+			$table->string('name')->nullable();
 			$table->integer('avatar');
 
 			$table->rememberToken();
