@@ -90,6 +90,15 @@
 @media screen and (max-width:810px){
 	.rs-nav-selected:after{display:none;}
 }
+.user-avatar{
+	border:1px solid #FFF;
+	border-radius:50%;
+	overflow:hidden;
+	width:30px;
+	height:30px;
+	margin:10px;
+	box-sizing:border-box;
+}
 .card-outer{
 	background:#FFF;
 	border:2px solid #DDD;
