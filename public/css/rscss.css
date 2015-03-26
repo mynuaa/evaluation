@@ -393,7 +393,7 @@ td,th,.td,.th{
 	margin:10px 0;
 	border-radius:5px;
 	border:1px solid #CCC;
-	overflow:auto;
+	overflow:hidden;
 }
 .rs-tab{
 	border-radius:2px;

@@ -6,7 +6,7 @@
 <img src="{{ asset('/img/banner.jpg') }}" width="100%" alt="五四评优" class="hidden-phone">
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<div class="rs-tabs">
-		<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer" onclick="toggleExpand(this)"></div>
+		<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer fa fa-chevron-down" onclick="toggleExpand(this)"></div>
 		<a href="{{ url('search/school') }}" class="rs-tab">校级</a>
 		@foreach (trans('college') as $cid => $cname)
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
@@ -38,6 +38,7 @@
 
 @section('scripts')
 function toggleExpand(dom){
+	dom.className=(dom.className.indexOf("-up")>=0)?dom.className.replace("-up","-down"):dom.className.replace("-down","-up");
 	dom=dom.parentNode;
 	if(dom.className.indexOf("rs-tabs-expand")>=0){
 		dom.className=dom.className.replace(" rs-tabs-expand","");

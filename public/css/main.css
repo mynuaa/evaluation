@@ -280,22 +280,20 @@
 }
 .rs-tabs-toggle{
 	position:absolute;
-	top:5px;
-	right:5px;
+	top:0;
+	right:0;
 }
 @media screen and (max-width:639px){
-	.rs-tabs-toggle:after{
-		content:"+";
+	.rs-tabs-toggle{
+		width:30px;
+		height:43px;
+	}
+	.rs-tabs-toggle:before{
 		display:inline-block;
-		width:25px;
-		height:25px;
-		line-height:25px;
-		font-family:"SimHei";
+		width:30px;
+		height:43px;
+		line-height:43px;
 		text-align:center;
-		border-radius:50%;
-		border:2px solid #FFF;
-		background:#333;
-		color:#FFF;
 	}
 	.rs-tabs{
 		height:45px;
@@ -304,9 +302,6 @@
 	}
 	.rs-tabs-expand{
 		height:auto !important;
-	}
-	.rs-tabs-expand .rs-tabs-toggle:after{
-		content:"-";
 	}
 }
 @media screen and (max-width:810px){
