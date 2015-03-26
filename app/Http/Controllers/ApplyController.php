@@ -71,19 +71,21 @@ class ApplyController extends Controller {
 	}
 
 	public function postRecommendation(RecommendPostRequest $request)
-	{		
-		$recommendations = Auth::user()->recommendations();
+	{
+		$user = Auth::user();
 
-		if ($recommendations->where('apply_id', $request->applyid)->exists())
+		if ($user->isRecommendTooMuch())
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_too_much')]);			
+		}
+
+		if ($user->isRecommended($request->applyid))
 		{
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_before')]);
 		}
-		if ($recommendations->count() >= config('business.recommend.max'))
-		{
-			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_too_much')]);
-		}
 
-		$recommendations->attach($request->applyid, ['content' => $request->content]);
+		$user->recommendations()->attach($request->applyid, ['content' => $request->content]);
+		Apply::find($request->applyid)->increment('recommendations');
 
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed')]);
 	}
@@ -92,7 +94,7 @@ class ApplyController extends Controller {
 	{
 		$votes = Auth::user()->votes();
 
-		if ($votes->where('apply_id', $id)->exists())
+		if (Auth::user()->isVoted($id))
 		{
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.voted_before')]);
 		}
