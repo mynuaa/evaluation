@@ -28,7 +28,7 @@ class ApplyController extends Controller {
 		$apply = Apply::firstOrNew(['user_id' => $user->id]);
 	
 		$apply->type = $request->type;
-		$apply->stuid = Auth::user()->username;
+		$apply->stuid = $user->username;
 		$apply->name = $request->name;
 		$apply->college = $request->college;
 		$apply->sex = $request->sex;
@@ -92,12 +92,24 @@ class ApplyController extends Controller {
 
 	public function getVote($id)
 	{
-		$votes = Auth::user()->votes();
 
 		if (Auth::user()->isVoted($id))
 		{
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.voted_before')]);
 		}
+
+		$apply = Apply::find($id);
+
+		if ($apply->type = config('business.type.college'))
+		{
+			if ($apply->college != Auth::user()->college)
+			{
+				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote_cross_college')]);
+			}
+		}
+
+		$votes = Auth::user()->votes();
+
 		if ($votes->count() >= config('business.vote.max'))
 		{
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote_too_much')]);
