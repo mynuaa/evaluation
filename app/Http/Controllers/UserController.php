@@ -76,4 +76,9 @@ class UserController extends Controller {
 
 		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.update_successed')]);
 	}
+
+	public function getRecommendations()
+	{
+		dd(Auth::user()->recommendations());
+	}
 }
