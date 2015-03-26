@@ -102,6 +102,7 @@ class ApplyController extends Controller {
 		}
 
 		$votes->attach($id);
+		Apply::find($id)->increment('votes');
 
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.vote_successed')]);
 	}
