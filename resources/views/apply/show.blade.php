@@ -28,6 +28,9 @@
 <p class="tip">浏览：{{ $apply->pageview }}次</p>
 <hr>
 <h3>我要推荐</h3>
+@if ($apply->isRecommended)
+<div class="rs-msg rs-msg-error">你已经推荐过这个人啦！</div>
+@else
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
 	<input name="_token" type="hidden" value="{{ csrf_token() }}">
@@ -36,6 +39,11 @@
 		<input type="submit" value="推荐" class="btn-success">
 	</div>
 </form>
+@endif
+{!! $apply !!}
+@foreach ($apply->recommendations as $rec)
+{{$rec}}
+@endforeach
 <h3>我要分享</h3>
 @include('template.share')
 @stop

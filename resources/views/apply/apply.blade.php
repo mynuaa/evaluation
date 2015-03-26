@@ -14,7 +14,7 @@
 				<option value="{{ $cid }}"@if ($apply['college'] == $cid || ($apply['college'] == '' && $cid == substr($stuid, 0, 2))) selected @endif>{{ $cname }}</option>
 				@endforeach
 			</select>
-			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="我的宣言">
+			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="标题">
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
