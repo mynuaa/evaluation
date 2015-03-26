@@ -33,7 +33,9 @@ class ApplyPostRequest extends Request {
 			'whoami' => 'required',
 			'story' => 'required',
 			'insufficient' => 'required',
-			'tags' => 'array'
+			'tags' => 'array',
+			'imgs' => 'array',
+			'intros' => 'array'
 		];
 	}
 }
