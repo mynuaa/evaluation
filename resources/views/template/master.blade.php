@@ -1,3 +1,25 @@
+<!--
+                    _ooOoo_
+                   o8888888o
+                   88" . "88
+                   (| -_- |)
+                   O\  =  /O
+                ____/`---'\____
+              .'  \\|     |//  `.
+             /  \\|||  :  |||//  \
+            /  _||||| -:- |||||-  \
+            |   | \\\  -  /// |   |
+            | \_|  ''\---/''  |   |
+            \  .-\__  `-`  ___/-. /
+          ___`. .'  /--.--\  `. . __
+       ."" '<  `.___\_<|>_/___.'  >'"".
+      | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+      \  \ `-.   \_ __\ /__ _/   .-` /  /
+ ======`-.____`-.___\_____/___.-`____.-'======
+                    `=---='
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            佛祖保佑       永无BUG
+-->
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -7,6 +29,10 @@
 	<link rel="stylesheet" href="{{ asset('/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 	<title>@yield('title') - 纸飞机南航青年网络社区</title>
+	<!--[if lt IE 9]>
+	<script src="{{ asset('/js/html5.js') }}"></script>
+	<script src="{{ asset('/js/ieBetter.js') }}"></script>
+	<![endif]-->
 </head>
 <body>
 	<!-- 页眉 -->
@@ -15,7 +41,9 @@
 			<a href="{{ url('/') }}"><h1 class="fl pointer white">五四评优</h1></a>
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav">
-					<a href="{{ url('apply/apply') }}"><li name="common/message">我要申报</li></a>
+					<a href="{{ url('apply/apply') }}">
+						<li name="common/message">我要申报</li>
+					</a>
 				</ul>
 			</nav>
 			<nav id="nav-user" class="rs-nav fr">
@@ -51,6 +79,7 @@
 	<div class="rs-footer center">
 		<div class="rs-container">
 			<div>©纸飞机南航青年网络社区 2015</div>
+			<a class="tip">项目时间轴</a>
 		</div>
 	</div>
 	<script>

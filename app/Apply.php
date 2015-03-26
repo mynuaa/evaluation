@@ -24,8 +24,13 @@ class Apply extends Model {
 		return $query->whereCollege($collegeid);
 	}
 
+	// public function recommendations()
+	// {
+	// 	return $this->belongsToMany('App\User', 'recommendations');
+	// }
+
 	public function recommendations()
 	{
-		return $this->hasMany('App\Recommendation');
+		return $this->hasMany('App\recommendation');
 	}
 }

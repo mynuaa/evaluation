@@ -18,7 +18,7 @@ class ApplyController extends Controller {
 
 	public function getApply()
 	{
-		return view('apply.apply')->withApply(Auth::user()->apply()->first());
+		return view('apply.apply')->withApply(Auth::user()->apply)->withStuid(Auth::user()->username);
 	}
 
 	public function postApply(ApplyPostRequest $request)
@@ -27,21 +27,21 @@ class ApplyController extends Controller {
 
 		$apply = Apply::firstOrNew(['user_id' => $user->id]);
 	
-		$apply['type'] = $request['type'];
-		$apply['stuid'] = Auth::user()->username;
-		$apply['name'] = $request['name'];
-		$apply['college'] = $request['college'];
-		$apply['sex'] = $request['sex'];
-		$apply['native_place'] = $request['native_place'];
-		$apply['political'] = $request['political'];
-		$apply['major'] = $request['major'];
-		$apply['title'] = $request['title'];
-		$apply['whoami'] = $request['whoami'];
-		$apply['story'] = $request['story'];
-		$apply['insufficient'] = $request['insufficient'];
-		$apply['tag1'] = isset($request['tags'][0]) ? $request['tags'][0] : '';
-		$apply['tag2'] = isset($request['tags'][1]) ? $request['tags'][1] : '';
-		$apply['tag3'] = isset($request['tags'][2]) ? $request['tags'][2] : '';
+		$apply->type = $request['type'];
+		$apply->stuid = Auth::user()->username;
+		$apply->name = $request['name'];
+		$apply->college = $request['college'];
+		$apply->sex = $request['sex'];
+		$apply->native_place = $request['native_place'];
+		$apply->political = $request['political'];
+		$apply->major = $request['major'];
+		$apply->title = $request['title'];
+		$apply->whoami = $request['whoami'];
+		$apply->story = $request['story'];
+		$apply->insufficient = $request['insufficient'];
+		$apply->tag1 = isset($request['tags'][0]) ? $request['tags'][0] : '';
+		$apply->tag2 = isset($request['tags'][1]) ? $request['tags'][1] : '';
+		$apply->tag3 = isset($request['tags'][2]) ? $request['tags'][2] : '';
 
 		$user->apply()->save($apply);
 
@@ -53,34 +53,49 @@ class ApplyController extends Controller {
 		$apply = Apply::find($id);
 
 		if ($apply){
+
 			$apply->increment('pageview');
 
-			$recommendations = $apply->recommendations;
-
-			return view('apply.show')->withApply($apply)->withId($id);
+			return view('apply.show')->withApply($apply);
 		}
 		else{
 			abort(404, 'Application not found.');
 		}
 	}
 
-	public function getList($type)
-	{
-		foreach (Apply::type($type)->get() as $apply) {
-			var_dump($apply);
+	public function postRecommendation(RecommendPostRequest $request)
+	{		
+		$recommendations = Auth::user()->recommendations();
+
+		if ($recommendations->where('apply_id', $request->applyid)->exists())
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_before')]);
 		}
+		if ($recommendations->count() >= config('business.recommend.max'))
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_too_much')]);
+		}
+
+		$recommendations->attach($request->applyid, ['content' => $request->content]);
+
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed')]);
 	}
 
-	public function postRecommendation(RecommendPostRequest $request, $applyid)
+	public function getVote($id)
 	{
-		$apply = Apply::find($applyid);
-		
-		if ($apply){
-			Auth::user()->recommendations()->attach($apply->first(), ['content' => Input::get('content')]);
-			return "Recommend successed.";
+		$votes = Auth::user()->votes();
+
+		if ($votes->where('apply_id', $id)->exists())
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.voted_before')]);
 		}
-		else{
-			abort(500, 'Wrong apply id from referer.');
+		if ($votes->count() >= config('business.vote.max'))
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote_too_much')]);
 		}
+
+		$votes->attach($id);
+
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.vote_successed')]);
 	}
 }

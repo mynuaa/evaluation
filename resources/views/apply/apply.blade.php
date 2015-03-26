@@ -9,18 +9,22 @@
 		<fieldset class="form-group">
 			<legend>基本信息</legend>
 			<input name="name" type="text" value="{{ $apply['name'] }}" placeholder="姓名">
-			<input name="college" type="number" value="{{ $apply['college'] }}" placeholder="学院">
-			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="给我起个标题">
+			<select name="college">
+				@foreach (trans('college') as $cid => $cname)
+				<option value="{{ $cid }}"@if ($apply['college'] == $cid || ($apply['college'] == '' && $cid == substr($stuid, 0, 2))) selected @endif>{{ $cname }}</option>
+				@endforeach
+			</select>
+			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="我的宣言">
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
-			<input name="sex" type="radio" value="M" checked id="male"><label for="male">男</label>
-			<input name="sex" type="radio" value="F" id="female"><label for="female">女</label>
+			<input name="sex" type="radio" value="男" @if ($apply['sex'] == "男" || $apply['sex'] == '') checked @endif id="male"><label for="male">男</label>
+			<input name="sex" type="radio" value="女" @if ($apply['sex'] == "女") checked @endif id="female"><label for="female">女</label>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>申请类型</legend>
-			<input name="type" type="radio" value="0" checked id="school"><label for="school">校级评选</label>
-			<input name="type" type="radio" value="1" id="department"><label for="department">院内评选</label>
+			<input name="type" type="radio" value="0" @if ($apply['type'] == 0 || $apply['type'] == '') checked @endif id="school"><label for="school">校级评选</label>
+			<input name="type" type="radio" value="1" @if ($apply['type'] == 1) checked @endif id="department"><label for="department">院内评选</label>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>详细信息</legend>
@@ -36,12 +40,25 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>标签</legend>
-			<div class="rs-tabs" id="tags">
-				<input type="text" id="curTag" class="rs-tab" placeholder="..." onmousedown="this.placeholder=''" onblur="this.placeholder='...'">
-				<a onclick="addTag()"><i class="fa fa-check"></i></a>
+			<div class="rs-tabs" id="tags" style="height:auto;padding:0">
+				@for ($i = 1; $i <= 3; $i++)
+					@if ($apply['tag' . $i] != '')
+						<div class="rs-tab">{{ $apply['tag' . $i] }}<a onclick="removeTag(this.parentNode)">×</a></div>
+					@endif
+				@endfor
+				<div class="rs-tab" id="curTag" style="padding:0 8px 0 0;width:100px;white-space:nowrap">
+					<input type="text" class="rs-tab" id="curValue" maxlength="15" style="margin:0;font-size:1em" placeholder="..." onmousedown="this.placeholder=''" onblur="this.placeholder='...'">
+					<a onclick="addTag()" class="pointer" style="margin:0">+</a>
+				</div>
 			</div>
 		</fieldset>
-		<fieldset class="hidden" id="hiddens"></fieldset>
+		<fieldset class="hidden" id="hiddens">
+			@for ($i = 1; $i <= 3; $i++)
+				@if ($apply['tag' . $i] != '')
+					<input type="hidden" name="tags[]" value="{{ $apply['tag' . $i] }}">
+				@endif
+			@endfor
+		</fieldset>
 		<div class="form-btns">
 			<input type="submit" class="btn-success" value="提交">
 		</div>
@@ -52,12 +69,12 @@
 
 @section('scripts')
 function addTag(){
-	if(document.querySelectorAll(".rs-tab").length-1==3){
+	if(document.querySelectorAll(".rs-tab").length==5){
 		alert("最多只能添加三个标签哦~");
 		return false;
 	}
 	var curTag=document.getElementById("curTag");
-	var value=curTag.value;
+	var value=document.getElementById("curValue").value;
 	if(value==""){
 		alert("标签内容不能为空！");
 		return false;
@@ -72,7 +89,7 @@ function addTag(){
 	tag.className="rs-tab";
 	tag.innerHTML=value+'<a onclick="removeTag(this.parentNode)">×</a>';
 	document.getElementById("tags").insertBefore(tag,curTag);
-	curTag.value="";
+	curValue.value="";
 	curTag.blur();
 }
 function removeTag(dom){

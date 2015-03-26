@@ -31,7 +31,7 @@ class UserController extends Controller {
 
 		if (Auth::attempt(['username' => $username, 'password' => $password], true))
 		{
-			echo "Login successed!";
+			return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login_successed')]);
 		}
 		else
 		{
@@ -39,13 +39,14 @@ class UserController extends Controller {
 			{
 				$user = User::firstOrNew(['username' => $username]);
 				$user->password = bcrypt($password);
+				$user->avatar = intval($username) % config('business.avatar.max');
 				$user->save();
 				
 				Auth::login($user, true);
 			}
 			else
 			{
-				return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login_failed')]);
+				return redirect('user/update')->withMessage(['type' => 'info', 'content' => trans('message.user_info_needed')]);
 			}
 		}
 
@@ -56,12 +57,12 @@ class UserController extends Controller {
 	{
 		Auth::logout();
 
-		return redirect('/')->withMessage(['type' => '']);
+		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.logout_successed')]);
 	}
 
 	public function getUpdate()
 	{
-		return view('user.update');
+		return view('user.update')->withUser(Auth::user());
 	}
 
 	public function postUpdate(UpdatePostRequest $request)

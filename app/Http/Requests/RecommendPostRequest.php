@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-use App\Recommendation, Auth, Session;
+use App\Recommendation, Auth, Session, Input;
 
 class RecommendPostRequest extends Request {
 
@@ -13,7 +13,7 @@ class RecommendPostRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return ! Recommendation::user(Auth::user()->id)->apply($this->route('one'))->exists();
+		return true;
 	}
 
 	/**
@@ -24,6 +24,7 @@ class RecommendPostRequest extends Request {
 	public function rules()
 	{
 		return [
+			'applyid' => 'required|integer|exists:applies,id',
 			'content' => 'required'
 		];
 	}
