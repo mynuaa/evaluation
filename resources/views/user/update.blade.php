@@ -12,7 +12,7 @@
 		</div>
 		<select name="college">
 			@foreach (trans('college') as $cid => $cname)
-			<option value="{{ $cid }}"@if ($apply['college'] == $cid || ($apply['college'] == '' && $cid == substr($stuid, 0, 2))) selected @endif>{{ $cname }}</option>
+			<option value="{{ $cid }}"@if ($cid == substr($stuid, 0, 2)) selected @endif>{{ $cname }}</option>
 			@endforeach
 		</select>
 		<div class="form-btns">
