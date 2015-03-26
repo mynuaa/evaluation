@@ -15,6 +15,6 @@ return [
 		'max' => 5
 	],
 	'avatar' => [
-		'max' => 10
+		'max' => 5
 	]
 ];
