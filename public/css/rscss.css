@@ -192,21 +192,26 @@ body>.rs-container{
 	height:50px;
 	display:inline-block;
 }
+.rs-nav a{
+	overflow:auto;
+}
 .rs-nav li{
 	position:relative;
 	display:inline-block;
 	width:auto;
 	float:left;
 	padding:0 15px;
+	width:72px;
 	height:100%;
+	text-align:center;
 }
 .rs-nav li:hover{
 	background:#C0392B;
 	cursor:pointer;
 }
-.rs-nav li{color:#FFF;}
-.rs-nav-selected,.rs-nav-selected:hover{
-	background:#0B76AC !important;
+.rs-nav li{
+	background: #E74C3C;
+	color:#FFF;
 }
 .rs-nav-selected:after{
 	position:absolute;
@@ -219,6 +224,26 @@ body>.rs-container{
 	border-style:none solid solid;
 	border-width:0 8px 8px;
 	border-color:transparent transparent #F9F9F9 transparent;
+}
+.rs-user-nav{
+	width:102px;
+	background:#E74C3C;
+	overflow: hidden;
+	z-index: 10;
+}
+.user-logged.rs-user-nav:hover{
+	height:152px;
+	overflow: visible;
+	background:#C0392B;
+}
+.rs-user-nav:hover li{
+	height:50px;
+	z-index: 10;
+	border-bottom: solid 1px;
+}
+.ri-user-nav img{
+	border:solid 1px;
+	border-radius: 10px;
 }
 .rs-footer{
 	width:100%;

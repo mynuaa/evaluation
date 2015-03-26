@@ -19,13 +19,17 @@
 				</ul>
 			</nav>
 			<nav id="nav-user" class="rs-nav fr">
-				<ul class="rs-user-nav">
-					@if (Auth::check())
+				@if (Auth::check())
+				<ul class="rs-user-nav user-logged">
+					<li><img src=".." class="user-avatar"></li>
+					<a href="{{ url('user/update') }}"><li>更新资料</li></a>
 					<a href="{{ url('user/logout') }}"><li>注销</li></a>
-					@else
-					<a href="{{ url('user/login') }}"><li>登录</li></a>
-					@endif
 				</ul>
+				@else
+				<ul class="rs-user-nav">
+					<a href="{{ url('user/login') }}"><li>登录</li></a>
+				</ul>
+				@endif
 			</nav>
 		</div>
 	</div>
