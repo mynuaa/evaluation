@@ -79,6 +79,6 @@ class UserController extends Controller {
 
 	public function getRecommendations()
 	{
-		dd(Auth::user()->recommendations());
+		return view('user/recommendations')->withRecommendations(Auth::user()->recommendations);
 	}
 }
