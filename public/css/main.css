@@ -93,6 +93,7 @@
 .user-avatar{
 	border:1px solid #FFF;
 	border-radius:50%;
+	overflow:hidden;
 	width:30px;
 	height:30px;
 	margin:10px;

@@ -49,7 +49,7 @@
 			<nav id="nav-user" class="rs-nav fr">
 				@if (Auth::check())
 				<ul class="rs-user-nav user-logged">
-					<li><img src=".." class="user-avatar"></li>
+					<li class="user-avatar-outer"><img src=".." class="user-avatar"></li>
 					<a href="{{ url('user/update') }}"><li>更新资料</li></a>
 					<a href="{{ url('user/logout') }}"><li>注销</li></a>
 				</ul>

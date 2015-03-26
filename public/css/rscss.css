@@ -191,6 +191,7 @@ body>.rs-container{
 .rs-nav{
 	height:50px;
 	display:inline-block;
+	position:relative;
 }
 .rs-nav a{
 	overflow:auto;
@@ -201,17 +202,16 @@ body>.rs-container{
 	width:auto;
 	float:left;
 	padding:0 15px;
-	width:72px;
+	width:70px;
 	height:100%;
 	text-align:center;
+}
+.rs-nav li{
+	color:#FFF;
 }
 .rs-nav li:hover{
 	background:#C0392B;
 	cursor:pointer;
-}
-.rs-nav li{
-	background: #E74C3C;
-	color:#FFF;
 }
 .rs-nav-selected:after{
 	position:absolute;
@@ -226,24 +226,27 @@ body>.rs-container{
 	border-color:transparent transparent #F9F9F9 transparent;
 }
 .rs-user-nav{
-	width:102px;
+	width:100px;
+	height:50px;
 	background:#E74C3C;
-	overflow: hidden;
-	z-index: 10;
+	overflow:hidden;
+	z-index:10;
+	position:absolute;
+	right:0;
+	transition:all 200ms;
 }
-.user-logged.rs-user-nav:hover{
-	height:152px;
-	overflow: visible;
+.rs-user-nav:hover{
+	height:150px;
 	background:#C0392B;
+	transition:all 200ms;
 }
 .rs-user-nav:hover li{
 	height:50px;
-	z-index: 10;
-	border-bottom: solid 1px;
+	z-index:10;
 }
-.ri-user-nav img{
-	border:solid 1px;
-	border-radius: 10px;
+.rs-user-nav li:hover{
+	transition:all 200ms;
+	text-shadow:0 0 2px #FFF;
 }
 .rs-footer{
 	width:100%;
