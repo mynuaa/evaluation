@@ -28,7 +28,9 @@
 <p class="tip">浏览：{{ $apply->pageview }}次</p>
 <hr>
 <h3>我要推荐</h3>
-@if ($apply->isRecommended)
+@if (!Auth::check())
+<div class="rs-msg rs-msg-warning">登录之后才可以推荐哦！</div>
+@elseif ($apply->isRecommended)
 <div class="rs-msg rs-msg-info">你已经推荐过这个人啦！</div>
 @else
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">
