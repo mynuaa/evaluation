@@ -8,7 +8,7 @@
 	<form action="#" method="post" class="rs-form left">
 		<fieldset class="form-group">
 			<legend>基本信息</legend>
-			<input name="name" type="text" value="{{ $apply['name'] }}" placeholder="姓名">
+			<input name="name" type="text" value="{{ $apply['name'] or Auth::user()->name }}" placeholder="姓名">
 			<select name="college">
 				@foreach (trans('college') as $cid => $cname)
 				<option value="{{ $cid }}"@if ($apply['college'] == $cid || ($apply['college'] == '' && $cid == substr($stuid, 0, 2))) selected @endif>{{ $cname }}</option>
