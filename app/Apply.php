@@ -31,6 +31,6 @@ class Apply extends Model {
 
 	public function recommendations()
 	{
-		return $this->hasMany('App\recommendation');
+		return $this->hasMany('App\Recommendation');
 	}
 }

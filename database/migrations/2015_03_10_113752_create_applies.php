@@ -52,7 +52,7 @@ class CreateApplies extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 
-			$table->index(['type']);
+			$table->index(['type', 'college']);
 		});
 	}
 
