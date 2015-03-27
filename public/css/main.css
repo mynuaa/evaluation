@@ -131,6 +131,13 @@
 	margin:20px 0;
 }
 .card-outer .card-author{margin:8px 0;}
+.cmt-avatar{
+	width:24px;
+	height:24px;
+	position:absolute;
+	top:8px;
+	right:8px;
+}
 .list{
 	width:100%;
 	margin:0;

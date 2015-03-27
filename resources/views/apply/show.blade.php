@@ -20,9 +20,9 @@
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
 @if ($apply->tag1 != '')
 <div class="rs-tabs" style="height:auto">
-	<div class="rs-tab">{{ $apply->tag1 }}</div>
-	@if ($apply->tag2 != '')<div class="rs-tab">{{ $apply->tag2 }}</div>@endif
-	@if ($apply->tag3 != '')<div class="rs-tab">{{ $apply->tag3 }}</div>@endif
+	<div class="rs-tab" title="{{ $apply->tag1 }}">{{ $apply->tag1 }}</div>
+	@if ($apply->tag2 != '')<div class="rs-tab" title="{{ $apply->tag2 }}">{{ $apply->tag2 }}</div>@endif
+	@if ($apply->tag3 != '')<div class="rs-tab" title="{{ $apply->tag3 }}">{{ $apply->tag3 }}</div>@endif
 </div>
 @endif
 <p class="tip">浏览：{{ $apply->pageview }}次</p>
@@ -40,9 +40,14 @@
 	</div>
 </form>
 @endif
-{!! $apply !!}
 @foreach ($apply->recommendations as $rec)
-{!!$rec!!}
+<div class="card-outer">
+	<div class="card-inner">
+		<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
+		<h5 class="card-content">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}</h5>
+		<div class="card-content card-describtion">{{ $rec->content }}</div>
+	</div>
+</div>
 @endforeach
 <h3>我要分享</h3>
 @include('template.share')
