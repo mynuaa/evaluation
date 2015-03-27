@@ -16,7 +16,7 @@ class UserController extends Controller {
 
 	public function __construct()
 	{
-		$this->middleware('auth', ['only' => ['getUpdate', 'postUpdate', 'logout']]);
+		$this->middleware('auth', ['only' => ['getUpdate', 'postUpdate', 'getLogout', 'getRecommendations']]);
 	}
 
 	public function getLogin()
