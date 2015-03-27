@@ -61,7 +61,7 @@ class ApplyController extends Controller {
 		if ($apply){
 
 			$apply->increment('pageview');
-			$apply->isRecommended = Auth::user()->isRecommended($id);
+			$apply->isRecommended = Auth::check() ? Auth::user()->isRecommended($id) : true;
 
 			return view('apply.show')->withApply($apply);
 		}
