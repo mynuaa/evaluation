@@ -62,6 +62,7 @@ class ApplyController extends Controller {
 
 			$apply->increment('pageview');
 			$apply->isRecommended = Auth::check() ? Auth::user()->isRecommended($id) : true;
+			$apply->isVoted = Auth::check() ? Auth::user()->isVoted($id) : true;
 
 			return view('apply.show')->withApply($apply);
 		}
