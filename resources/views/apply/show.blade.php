@@ -48,7 +48,7 @@
 	</div>
 </form>
 @endif
-@foreach ($apply->recommendations as $rec)
+@foreach ($apply->recommendations() as $rec)
 <div class="card-outer">
 	<div class="card-inner">
 		<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
