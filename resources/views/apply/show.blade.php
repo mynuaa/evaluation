@@ -10,7 +10,7 @@
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
 		<div>{{ $apply->major }}专业</div>
 	</div>
-	<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
+	<input type="button" value="投票({{ $apply->votes }})" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
 </div>
 <h5>我是这样一个人</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->whoami) . "\n") !!}</p>
@@ -20,16 +20,18 @@
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
 @if ($apply->tag1 != '')
 <div class="rs-tabs" style="height:auto">
-	<div class="rs-tab">{{ $apply->tag1 }}</div>
-	@if ($apply->tag2 != '')<div class="rs-tab">{{ $apply->tag2 }}</div>@endif
-	@if ($apply->tag3 != '')<div class="rs-tab">{{ $apply->tag3 }}</div>@endif
+	<div class="rs-tab" title="{{ $apply->tag1 }}">{{ $apply->tag1 }}</div>
+	@if ($apply->tag2 != '')<div class="rs-tab" title="{{ $apply->tag2 }}">{{ $apply->tag2 }}</div>@endif
+	@if ($apply->tag3 != '')<div class="rs-tab" title="{{ $apply->tag3 }}">{{ $apply->tag3 }}</div>@endif
 </div>
 @endif
 <p class="tip">浏览：{{ $apply->pageview }}次</p>
 <hr>
 <h3>我要推荐</h3>
-@if ($apply->isRecommended)
-<div class="rs-msg rs-msg-error">你已经推荐过这个人啦！</div>
+@if (!Auth::check())
+<div class="rs-msg rs-msg-warning">登录之后才可以推荐哦！</div>
+@elseif ($apply->isRecommended)
+<div class="rs-msg rs-msg-info">你已经推荐过这个人啦！</div>
 @else
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
@@ -40,9 +42,14 @@
 	</div>
 </form>
 @endif
-{!! $apply !!}
 @foreach ($apply->recommendations as $rec)
-{!!$rec!!}
+<div class="card-outer">
+	<div class="card-inner">
+		<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
+		<h5 class="card-content">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}</h5>
+		<div class="card-content card-describtion">{{ $rec->content }}</div>
+	</div>
+</div>
 @endforeach
 <h3>我要分享</h3>
 @include('template.share')
