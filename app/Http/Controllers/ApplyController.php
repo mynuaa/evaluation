@@ -121,4 +121,9 @@ class ApplyController extends Controller {
 
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.vote_successed')]);
 	}
+
+	public function getLike($id)
+	{
+		Apply::find($id)->increment('like');
+	}
 }
