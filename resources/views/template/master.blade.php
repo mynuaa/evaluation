@@ -44,6 +44,9 @@
 					<a href="{{ url('apply/apply') }}">
 						<li name="common/message">我要申报</li>
 					</a>
+					<a href="{{ url('user/recommendations') }}">
+						<li name="common/message">我的推荐</li>
+					</a>
 				</ul>
 			</nav>
 			<nav id="nav-user" class="rs-nav fr">
