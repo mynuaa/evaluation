@@ -42,7 +42,7 @@
 @endif
 {!! $apply !!}
 @foreach ($apply->recommendations as $rec)
-{{$rec}}
+{!!$rec!!}
 @endforeach
 <h3>我要分享</h3>
 @include('template.share')
