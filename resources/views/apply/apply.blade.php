@@ -59,6 +59,10 @@
 				@endif
 			@endfor
 		</fieldset>
+		<p>
+			<input type="checkbox" id="promise" checked>
+			<label for="promise" style="width:auto;max-width:75%;line-height:1em;text-align:left;vertical-align:middle"><b>本人承诺</b>：如果当选百佳青年学生，愿意作为优秀学生典型至少参加一次优秀学生事迹交流类活动。</label>
+		</p>
 		<div class="form-btns">
 			<input type="submit" class="btn-success" value="提交">
 		</div>

@@ -16,5 +16,9 @@ return [
 	],
 	'avatar' => [
 		'max' => 10
+	],
+	'deadline' => [
+		'apply' => '',
+		'vote' => ''
 	]
 ];
