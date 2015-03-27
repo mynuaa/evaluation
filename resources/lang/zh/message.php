@@ -13,5 +13,6 @@ return [
 	'vote_successed' => '投票成功！',
 	'voted_too_much' => '每个人最多只能投'.config('business.recommend.max').'票！',
 	'voted_before' => '您已经给这个人投过票啦！',
+	'vote_cross_college' => '您不能跨院对院级投票的同学进行投票！',
 	'user_info_needed' => '需要录入姓名、学院信息已保证更好的使用！'
 ];

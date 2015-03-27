@@ -44,9 +44,9 @@ class CreateApplies extends Migration {
 
 			$table->integer('repost')->default(0);
 			$table->integer('pageview')->default(0);
-			$table->integer('support')->default(0);
+			$table->integer('like')->default(0);
 
-			$table->integer('recommons')->default(0);
+			$table->integer('recommendations')->default(0);
 			$table->integer('votes')->default(0);
 
 			$table->timestamps();
