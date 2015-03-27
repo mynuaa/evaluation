@@ -235,7 +235,7 @@ body>.rs-container{
 	right:0;
 	transition:all 200ms;
 }
-.rs-user-nav:hover{
+.user-logged.rs-user-nav:hover{
 	height:150px;
 	background:#C0392B;
 	transition:all 200ms;

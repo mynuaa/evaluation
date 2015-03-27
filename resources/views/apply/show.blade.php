@@ -10,7 +10,13 @@
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
 		<div>{{ $apply->major }}专业</div>
 	</div>
-	<input type="button" value="投票({{ $apply->votes }})" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
+	@if (Auth::check())
+		@if ($apply->isVoted)
+		<input type="button" value="投票({{ $apply->votes }})" class="fr" disabled>
+		@else
+		<input type="button" value="投票({{ $apply->votes }})" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
+		@endif
+	@endif
 </div>
 <h5>我是这样一个人</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->whoami) . "\n") !!}</p>
@@ -29,7 +35,7 @@
 <hr>
 <h3>我要推荐</h3>
 @if (!Auth::check())
-<div class="rs-msg rs-msg-warning">登录之后才可以推荐哦！</div>
+<div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">登录</a>之后才可以推荐哦！</div>
 @elseif ($apply->isRecommended)
 <div class="rs-msg rs-msg-info">你已经推荐过这个人啦！</div>
 @else
