@@ -10,7 +10,7 @@
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
 		<div>{{ $apply->major }}专业</div>
 	</div>
-	<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
+	<input type="button" value="投票({{ $apply->votes }})" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
 </div>
 <h5>我是这样一个人</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->whoami) . "\n") !!}</p>
@@ -29,7 +29,7 @@
 <hr>
 <h3>我要推荐</h3>
 @if ($apply->isRecommended)
-<div class="rs-msg rs-msg-error">你已经推荐过这个人啦！</div>
+<div class="rs-msg rs-msg-info">你已经推荐过这个人啦！</div>
 @else
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
