@@ -26,8 +26,8 @@ class UserController extends Controller {
 
 	public function postLogin(DedVerify $ded, LoginPostRequest $request)
 	{
-		$username = $request['username'];
-		$password = $request['password'];
+		$username = $request->username;
+		$password = $request->password;
 
 		if (Auth::attempt(['username' => $username, 'password' => $password], true))
 		{
@@ -69,8 +69,9 @@ class UserController extends Controller {
 	{
 		$user = Auth::user();
 
-		$user->name = $request['name'];
-		$user->college = $request['college'];
+		$user->name = $request->name;
+		$user->college = $request->college;
+		$user->avatar = $request->avatar;
 
 		$user->save();
 
