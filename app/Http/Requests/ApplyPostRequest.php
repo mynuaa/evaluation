@@ -23,8 +23,6 @@ class ApplyPostRequest extends Request {
 	{
 		return [
 			'type' => 'required|numeric',
-			'name' => 'required',
-			'college' => 'required|numeric',
 			'sex' => 'required|alpha',
 			'native_place' => 'required',
 			'political' => 'required',

@@ -29,8 +29,8 @@ class ApplyController extends Controller {
 	
 		$apply->type = $request->type;
 		$apply->stuid = $user->username;
-		$apply->name = $request->name;
-		$apply->college = $request->college;
+		$apply->name = Auth::user()->name;
+		$apply->college = Auth::user()->college;
 		$apply->sex = $request->sex;
 		$apply->native_place = $request->native_place;
 		$apply->political = $request->political;
