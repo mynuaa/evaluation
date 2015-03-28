@@ -6,7 +6,7 @@ class DedVerify {
 	{
 		$url = "http://ded.nuaa.edu.cn/NetEAn/User/check.asp";
 		$post = "user=".$stuid."&pwd=".$password;
-		$cookie = tmpfile();
+		$cookie = tempnam(storage_path().'/framework/cache', 'COOKIE_');
 
 		$curl = curl_init();
 		curl_setopt_array($curl, [
