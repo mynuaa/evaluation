@@ -223,6 +223,7 @@
 	z-index:1;
 }
 .avatar-choose-outer{
+	background:#FFF;
 	max-width:550px;
 	margin:5px auto;
 }
@@ -239,6 +240,9 @@
 .avatar-choose:hover{
 	border-color:#E74C3C;
 	cursor:pointer;
+}
+.avatar-chosen{
+	border-color:#E74C3C;
 }
 @media screen and (max-width:480px){.card-fluid{width:100%;}}
 @media screen and (min-width:481px) and (max-width:720px){.card-fluid{width:50%;}}
