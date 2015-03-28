@@ -22,7 +22,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 ::-webkit-scrollbar-button{display:none;}
 [disabled]{
 	background:#EBEBE4;
-	color:#333;
+	color:#333 !important;
 	cursor:no-drop;
 }
 @media screen and (max-width:810px){
