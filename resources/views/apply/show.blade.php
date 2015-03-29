@@ -48,8 +48,8 @@
 	</div>
 </form>
 @endif
-@foreach ($apply->recommendations() as $rec)
-<div class="card-outer">
+@foreach ($apply->recommendations()->get() as $rec)
+<div class="card-outer card-transition" id="apply_a_{{ $rec->id }}">
 	<div class="card-inner">
 		<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
 		<h5 class="card-content">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}</h5>
@@ -59,4 +59,19 @@
 @endforeach
 <h3>我要分享</h3>
 @include('template.share')
+@stop
+
+@section('scripts')
+var hash=window.location.hash;
+if(/apply_a_\d/.test(hash)){
+	if(hash[0]=="#")hash=hash.substr(1);
+	var d=document.getElementById(hash);
+	d.className+=" card-important";
+	setTimeout(function(){
+		d.className=d.className.replace(" card-important","");
+		setTimeout(function(){
+			d.className=d.className.replace(" card-transition","");
+		},2000);
+	},10);
+}
 @stop

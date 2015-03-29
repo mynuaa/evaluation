@@ -12,7 +12,7 @@
 			<select name="college" disabled>
 				<option value="{{ Auth::user()->college }}">{{ trans('college')[Auth::user()->college] }}</option>
 			</select>
-			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="标题">
+			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="标题" required>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
@@ -26,15 +26,15 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>详细信息</legend>
-			<input name="native_place" type="text" value="{{ $apply['native_place'] }}" placeholder="籍贯">
-			<input name="political" type="text" value="{{ $apply['political'] }}" placeholder="政治面貌">
-			<input name="major" type="text" value="{{ $apply['major'] }}" placeholder="主修专业">
+			<input name="native_place" type="text" value="{{ $apply['native_place'] }}" placeholder="籍贯" required>
+			<input name="political" type="text" value="{{ $apply['political'] }}" placeholder="政治面貌" required>
+			<input name="major" type="text" value="{{ $apply['major'] }}" placeholder="主修专业" required>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>自我描述</legend>
-			<textarea name="whoami" type="text" placeholder="我是怎样的人" class="fullwidth">{{ $apply['whoami'] }}</textarea>
-			<textarea name="story" type="text" placeholder="我的故事" class="fullwidth">{{ $apply['story'] }}</textarea>
-			<textarea name="insufficient" type="text" placeholder="我的不足" class="fullwidth">{{ $apply['insufficient'] }}</textarea>
+			<textarea name="whoami" type="text" placeholder="我是怎样的人" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
+			<textarea name="story" type="text" placeholder="我的故事" class="fullwidth" required>{{ $apply['story'] }}</textarea>
+			<textarea name="insufficient" type="text" placeholder="我的不足" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>标签</legend>
@@ -58,7 +58,7 @@
 			@endfor
 		</fieldset>
 		<p>
-			<input type="checkbox" id="promise" checked>
+			<input type="checkbox" id="promise" checked disabled>
 			<label for="promise" style="width:auto;max-width:75%;line-height:1em;text-align:left;vertical-align:middle"><b>本人承诺</b>：如果当选百佳青年学生，愿意作为优秀学生典型至少参加一次优秀学生事迹交流类活动。</label>
 		</p>
 		<div class="form-btns">
