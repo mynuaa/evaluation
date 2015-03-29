@@ -26,6 +26,11 @@ class Recommendation extends Model {
 		return $this->belongsTo('App\User');
 	}
 
+	public function apply()
+	{
+		return $this->belongsTo('App\Apply');
+	}
+
 	// public function apply()
 	// {
 	// 	return $this->belongsTo('Apply');
