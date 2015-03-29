@@ -67,6 +67,11 @@ if(/apply_a_\d/.test(hash)){
 	if(hash[0]=="#")hash=hash.substr(1);
 	var d=document.getElementById(hash);
 	d.className+=" card-important";
-	setTimeout(function(){d.className=d.className.replace(" card-important","");},10);
+	setTimeout(function(){
+		d.className=d.className.replace(" card-important","");
+		setTimeout(function(){
+			d.className=d.className.replace(" card-transition","");
+		},2000);
+	},10);
 }
 @stop
