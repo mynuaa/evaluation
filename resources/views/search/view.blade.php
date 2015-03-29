@@ -7,6 +7,7 @@
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<div class="rs-tabs">
 		<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer fa fa-chevron-down" onclick="toggleExpand(this)"></div>
+		<a href="{{ url('/') }}" class="rs-tab">全部</a>
 		<a href="{{ url('search/school') }}" class="rs-tab">校级</a>
 		@foreach (trans('college') as $cid => $cname)
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>

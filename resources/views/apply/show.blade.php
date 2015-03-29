@@ -11,10 +11,14 @@
 		<div>{{ $apply->major }}专业</div>
 	</div>
 	@if (Auth::check())
-		@if ($apply->isVoted)
-		<input type="button" value="投票({{ $apply->votes }})" class="fr" disabled>
+		@if (Auth::user()->name == $apply->name)
+			<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
 		@else
-		<input type="button" value="投票({{ $apply->votes }})" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
+			@if ($apply->isVoted)
+			<input type="button" value="已投" class="fr" disabled>
+			@else
+			<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
+			@endif
 		@endif
 	@endif
 </div>
@@ -48,15 +52,17 @@
 	</div>
 </form>
 @endif
-@foreach ($apply->recommendations()->get() as $rec)
-<div class="card-outer card-transition" id="apply_a_{{ $rec->id }}">
-	<div class="card-inner">
-		<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
-		<h5 class="card-content">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}</h5>
-		<div class="card-content card-describtion">{{ $rec->content }}</div>
+<div id="card-transition" class="card-transition">
+	@foreach ($apply->recommendations()->get() as $rec)
+	<div class="card-outer" id="apply_a_{{ $rec->id }}">
+		<div class="card-inner">
+			<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
+			<h5 class="card-content">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}</h5>
+			<div class="card-content card-describtion">{{ $rec->content }}</div>
+		</div>
 	</div>
+	@endforeach
 </div>
-@endforeach
 <h3>我要分享</h3>
 @include('template.share')
 @stop
@@ -70,8 +76,12 @@ if(/apply_a_\d/.test(hash)){
 	setTimeout(function(){
 		d.className=d.className.replace(" card-important","");
 		setTimeout(function(){
-			d.className=d.className.replace(" card-transition","");
+			d=d.parentNode;
+			d.className="";
 		},2000);
 	},10);
+}
+else{
+	document.getElementById("card-transition").className="";
 }
 @stop
