@@ -107,6 +107,12 @@
 	overflow:hidden;
 	color:#000;
 }
+.card-transition{
+	transition:all 1s linear;
+}
+.card-important{
+	border-color:green;
+}
 .card-outer:hover{border:2px solid #E74C3C;}
 .card-inner{
 	overflow:hidden;
