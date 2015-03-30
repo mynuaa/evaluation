@@ -27,7 +27,7 @@ class ApplyPostRequest extends Request {
 			'native_place' => 'required',
 			'political' => 'required',
 			'major' => 'required',
-			'title' => 'required',
+			'title' => 'required|max:15',
 			'whoami' => 'required',
 			'story' => 'required',
 			'insufficient' => 'required',

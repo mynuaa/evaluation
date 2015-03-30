@@ -25,7 +25,7 @@ class RecommendPostRequest extends Request {
 	{
 		return [
 			'applyid' => 'required|integer|exists:applies,id',
-			'content' => 'required'
+			'content' => 'required|min:50'
 		];
 	}
 
