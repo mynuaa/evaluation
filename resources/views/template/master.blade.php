@@ -55,7 +55,7 @@
 			<nav id="nav-user" class="rs-nav fr">
 				@if (Auth::check())
 				<ul class="rs-user-nav user-logged">
-					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar"></li>
+					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar" onclick="void(0)"></li>
 					<a href="{{ url('user/update') }}"><li>更新资料</li></a>
 					<a href="{{ url('user/logout') }}"><li>退出登录</li></a>
 				</ul>

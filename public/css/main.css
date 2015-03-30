@@ -123,14 +123,21 @@
 	overflow:hidden;
 	-webkit-overflow-scrolling:touch;
 }
-.card-title>img{
-	width:25px;
-	height:25px;
-	border-radius:50%;
-	margin-right:10px;
+.card-inner img{
+	width:75px;
+	height:75px;
+	margin:5px 5px 0 0;
 	vertical-align:middle;
+	position:absolute;
+	top:0;
+	right:0;
 }
-.card-author>img{
+.card-titles{
+	float:left;
+	padding-right:85px;
+	box-sizing:border-box;
+}
+.card-author img{
 	width:40px;
 	height:40px;
 	border-radius:50%;
