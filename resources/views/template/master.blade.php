@@ -28,7 +28,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/rscss.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
-	<title>@yield('title') - 纸飞机南航青年网络社区</title>
+	<title>@yield('title') - 南航校团委五四评优</title>
 	<!--[if lt IE 9]>
 	<script src="{{ asset('/js/html5.js') }}"></script>
 	<script src="{{ asset('/js/ieBetter.js') }}"></script>
@@ -81,7 +81,7 @@
 	<!-- 页脚 -->
 	<div class="rs-footer center">
 		<div class="rs-container">
-			<div>©纸飞机南航青年网络社区 2015</div>
+			<div>骄傲的使用来自©<a href="http://my.nuaa.edu.cn">纸飞机南航青年网络社区</a>的技术</div>
 			<a class="tip">项目时间轴</a>
 		</div>
 	</div>
