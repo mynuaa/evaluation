@@ -52,6 +52,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		return $this->votes()->where('apply_id', $applyid)->exists();
 	}
+
+	public function remain()
+	{
+		return [
+			'vote' => config('business.vote.max') - $this->votes()->count(),
+			'recommend' => config('business.recommend.max') - $this->recommendations()->count()
+		];
+	}
 	// public function scopeStuid($query, $stuid)
 	// {
 	// 	return $query->whereUsername($stuid);
