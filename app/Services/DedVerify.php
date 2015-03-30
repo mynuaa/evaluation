@@ -27,7 +27,7 @@ class DedVerify {
 		$response = curl_exec($curl);
 		curl_close($curl);
 
-		fclose($cookie);
+		// fclose($cookie);
 
 		return (strstr($response, 'switch (0){') != false);
 	}
