@@ -41,11 +41,14 @@
 			<a href="{{ url('/') }}"><h1 class="fl pointer white">五四评优</h1></a>
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav">
+					<a href="{{ url('/') }}">
+						<li>返回主页</li>
+					</a>
 					<a href="{{ url('apply/apply') }}">
-						<li name="common/message">我要申报</li>
+						<li>我要申报</li>
 					</a>
 					<a href="{{ url('user/recommendations') }}">
-						<li name="common/message">我的推荐</li>
+						<li>我的推荐</li>
 					</a>
 				</ul>
 			</nav>
@@ -54,7 +57,7 @@
 				<ul class="rs-user-nav user-logged">
 					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar"></li>
 					<a href="{{ url('user/update') }}"><li>更新资料</li></a>
-					<a href="{{ url('user/logout') }}"><li>注销</li></a>
+					<a href="{{ url('user/logout') }}"><li>退出登录</li></a>
 				</ul>
 				@else
 				<ul class="rs-user-nav">

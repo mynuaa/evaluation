@@ -35,7 +35,13 @@
 	@if ($apply->tag3 != '')<div class="rs-tab" title="{{ $apply->tag3 }}">{{ $apply->tag3 }}</div>@endif
 </div>
 @endif
-<p class="tip">浏览：{{ $apply->pageview }}次</p>
+<p class="tip">
+	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
+	<a href="{{ url('apply/like/' . $apply->id) }}" class="fr">
+		<i class="fa fa-thumbs-o-up"></i>
+		赞一下
+	</a>
+</p>
 <hr>
 <h3>我要推荐</h3>
 @if (!Auth::check())

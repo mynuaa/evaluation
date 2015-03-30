@@ -24,7 +24,7 @@
 	</fieldset>
 </form>
 @foreach ($applies as $stu)
-<a href="{{ url('apply/show/' . $stu['id']) }}" target="_blank" class="no-underline">
+<a href="{{ url('apply/show/' . $stu['id']) }}" class="no-underline">
 	<div class="card-outer">
 		<div class="card-inner">
 			<div class="card-title"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}">{{ $stu->title }}</div>
