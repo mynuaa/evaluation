@@ -26,7 +26,7 @@ class ApplyController extends Controller {
 		$user = Auth::user();
 
 		$apply = Apply::firstOrNew(['user_id' => $user->id]);
-	
+
 		$apply->type = $request->type;
 		$apply->stuid = $user->username;
 		$apply->name = Auth::user()->name;
@@ -77,7 +77,7 @@ class ApplyController extends Controller {
 
 		if ($user->isRecommendTooMuch())
 		{
-			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_too_much')]);			
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_too_much')]);
 		}
 
 		if ($user->isRecommended($request->applyid))
