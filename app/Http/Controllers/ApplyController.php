@@ -72,7 +72,7 @@ class ApplyController extends Controller {
 		return redirect('apply/apply')->withMessage(['type' => 'success', 'content' => trans('message.apply_successed')]);
 	}
 
-	public function getShow($id)
+	public function getShow($id, Request $request)
 	{
 		$apply = Apply::find($id);
 
@@ -82,7 +82,9 @@ class ApplyController extends Controller {
 			$apply->isRecommended = Auth::check() ? Auth::user()->isRecommended($id) : true;
 			$apply->isVoted = Auth::check() ? Auth::user()->isVoted($id) : true;
 
-			return view('apply.show')->withApply($apply);
+			return view('apply.show')->withApply($apply)->withIsWechat(
+				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
+			);
 		}
 		else{
 			abort(404, 'Application not found.');

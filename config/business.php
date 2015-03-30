@@ -27,5 +27,6 @@ return [
 		'bmp' => 'image/bmp',
 		'png' => 'image/png',
 	],
-	'upload' => storage_path()."/app/photos/"
+	'upload' => storage_path()."/app/photos/",
+	'WeChat_UA' => 'MicroMessenger'
 ];
