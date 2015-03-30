@@ -20,5 +20,12 @@ return [
 	'deadline' => [
 		'apply' => '',
 		'vote' => ''
-	]
+	],
+	'MIME' => [
+		'jpg' => 'image/jpeg',
+		'jpeg' => 'image/jpeg',
+		'bmp' => 'image/bmp',
+		'png' => 'image/png',
+	],
+	'upload' => storage_path()."/app/photos/"
 ];
