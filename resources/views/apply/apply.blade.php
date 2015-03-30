@@ -5,7 +5,7 @@
 @section('content')
 <div class="page-title">个人申报</div>
 <div class="rs-form-outer">
-	<form action="#" method="post" class="rs-form left">
+	<form action="#" method="post" class="rs-form left" enctype="multipart/form-data">
 		<fieldset class="form-group">
 			<legend>基本信息</legend>
 			<input name="name" type="text" value="{{ $apply['name'] or Auth::user()->name }}" placeholder="姓名" disabled>
@@ -36,6 +36,12 @@
 			<textarea name="story" type="text" placeholder="我的故事" class="fullwidth" required>{{ $apply['story'] }}</textarea>
 			<textarea name="insufficient" type="text" placeholder="我的不足" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
+		<input type='file' name='imgs[]'>
+		<input type='file' name='imgs[]'>
+		<input type='file' name='imgs[]'>
+		<input type='text' name='intros[]'>
+		<input type='text' name='intros[]'>
+		<input type='text' name='intros[]'>
 		<fieldset class="form-group">
 			<legend>标签</legend>
 			<div class="rs-tabs" id="tags" style="height:auto;padding:0">

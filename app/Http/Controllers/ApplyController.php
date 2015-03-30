@@ -23,6 +23,21 @@ class ApplyController extends Controller {
 
 	public function postApply(ApplyPostRequest $request)
 	{
+		$request->photos = [];
+		foreach ($request->file('imgs') as $file) {
+			if ($file)
+			{
+				if (in_array($file->getClientMimeType(), config('business.MIME')) && in_array($file->getClientOriginalExtension(), array_keys(config('business.MIME')))){
+					$filename = md5($file->getClientOriginalName().$file->getClientSize()).'.'.$file->getClientOriginalExtension();
+					$file->move(config('business.upload'), $filename);
+					$request->photos[] = $filename;
+				}
+				else{
+					abort(500, trans('invalid_file_type.'));
+				}
+			}
+		}
+
 		$user = Auth::user();
 
 		$apply = Apply::firstOrNew(['user_id' => $user->id]);
@@ -42,9 +57,12 @@ class ApplyController extends Controller {
 		$apply->tag1 = isset($request->tags[0]) ? $request->tags[0] : '';
 		$apply->tag2 = isset($request->tags[1]) ? $request->tags[1] : '';
 		$apply->tag3 = isset($request->tags[2]) ? $request->tags[2] : '';
-		$apply->img1 = isset($request->imgs[0]) ? $request->imgs[0] : '';
-		$apply->img2 = isset($request->imgs[1]) ? $request->imgs[1] : '';
-		$apply->img3 = isset($request->imgs[2]) ? $request->imgs[2] : '';
+
+		foreach ($request->photos as $key => $photo) {
+			$keyname = 'img'.($key+1);
+			$apply->$keyname = $photo;
+		}
+
 		$apply->intro1 = isset($request->intros[0]) ? $request->intros[0] : '';
 		$apply->intro2 = isset($request->intros[1]) ? $request->intros[1] : '';
 		$apply->intro3 = isset($request->intros[2]) ? $request->intros[2] : '';
@@ -54,7 +72,7 @@ class ApplyController extends Controller {
 		return redirect('apply/apply')->withMessage(['type' => 'success', 'content' => trans('message.apply_successed')]);
 	}
 
-	public function getShow($id)
+	public function getShow($id, Request $request)
 	{
 		$apply = Apply::find($id);
 
@@ -64,7 +82,9 @@ class ApplyController extends Controller {
 			$apply->isRecommended = Auth::check() ? Auth::user()->isRecommended($id) : true;
 			$apply->isVoted = Auth::check() ? Auth::user()->isVoted($id) : true;
 
-			return view('apply.show')->withApply($apply);
+			return view('apply.show')->withApply($apply)->withIsWechat(
+				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
+			);
 		}
 		else{
 			abort(404, 'Application not found.');
