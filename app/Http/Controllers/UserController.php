@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Services\DedVerify;
+use App\Services\HrVerify;
 use App\Http\Requests\LoginPostRequest;
 
 use Validator, Auth, App\User, Input;
@@ -24,7 +25,7 @@ class UserController extends Controller {
 		return view('user.login');
 	}
 
-	public function postLogin(DedVerify $ded, LoginPostRequest $request)
+	public function postLogin(HrVerify $hr, DedVerify $ded, LoginPostRequest $request)
 	{
 		$username = $request->username;
 		$password = $request->password;
@@ -35,7 +36,7 @@ class UserController extends Controller {
 		}
 		else
 		{
-			if ($ded->verify($username, $password))
+			if ($ded->verify($username, $password) || $hr->verify($username, $password))
 			{
 				$user = User::firstOrNew(['username' => $username]);
 				$user->password = bcrypt($password);
