@@ -156,7 +156,7 @@
 	top:8px;
 	right:8px;
 }
-.cmt-author{padding-right:36px;}
+.cmt-author{padding-right:36px !important;}
 .list{
 	width:100%;
 	margin:0;
