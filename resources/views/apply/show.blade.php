@@ -11,7 +11,7 @@
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
 		<div>{{ $apply->major }}专业</div>
 	</div>
-	@if (Auth::check())
+	{{-- @if (Auth::check())
 		@if (Auth::user()->name == $apply->name)
 			<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
 		@else
@@ -21,14 +21,8 @@
 			<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
 			@endif
 		@endif
-	@endif
+	@endif --}}
 </div>
-<h5>我是这样一个人</h5>
-<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->whoami) . "\n") !!}</p>
-<h5>我的故事</h5>
-<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->story) . "\n") !!}</p>
-<h5>我的不足</h5>
-<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
 <h5>我的青春最风采</h5>
 <div class="row">
 	@for ($i = 1; $i <= 3; $i++)
@@ -40,6 +34,12 @@
 		@endif
 	@endfor
 </div>
+<h5>我是这样一个人</h5>
+<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->whoami) . "\n") !!}</p>
+<h5>我的故事</h5>
+<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->story) . "\n") !!}</p>
+<h5>我的不足</h5>
+<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
 @if ($apply->tag1 != '')
 <div class="rs-tabs" style="height:auto">
 	<div class="rs-tab" title="{{ $apply->tag1 }}">{{ $apply->tag1 }}</div>
