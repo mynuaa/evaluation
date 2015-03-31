@@ -17,14 +17,14 @@ class SearchController extends Controller {
 
 	public function getSchool()
 	{
-		$applies = Apply::type(config('business.type.school'))->paginate(config('business.paginate'))->get();
+		$applies = Apply::type(config('business.type.school'))->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies);
 	}
 
 	public function getCollege($cid)
 	{
-		$applies = Apply::type(config('business.type.college'))->college($cid)->paginate(config('business.paginate'))->get();
+		$applies = Apply::type(config('business.type.college'))->college($cid)->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies);
 	}
@@ -34,7 +34,7 @@ class SearchController extends Controller {
 		$type = $request->type;
 		$key = $request->key;
 
-		$applies = Apply::where($type, $key)->paginate(config('business.paginate'))->get();
+		$applies = Apply::where($type, $key)->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies);
 	}
