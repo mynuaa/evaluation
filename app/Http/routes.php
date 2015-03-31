@@ -18,3 +18,4 @@ Route::controllers([
 	'apply' => 'ApplyController',
 	'search' => 'SearchController'
 ]);
+Route::resource('photo', 'PhotoController');
