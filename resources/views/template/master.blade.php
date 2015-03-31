@@ -96,7 +96,7 @@
 			<div>自豪地采用</div>
 			<div>『<a href="http://my.nuaa.edu.cn" target="_blank">©纸飞机南航青年网络社区</a>』</div>
 			<div>提供的技术支持</div>
-			<a class="tip">&lt;想看项目时间轴就点我&gt;</a>
+			{{-- <a class="tip">&lt;想看项目时间轴就点我&gt;</a> --}}
 		</div>
 	</div>
 	<script>
