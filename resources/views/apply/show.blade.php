@@ -38,10 +38,9 @@
 @endif
 <p class="tip">
 	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
-	@if ($apply->isLiked)
-	<a href="{{ url('apply/like/' . $apply->id) }}">
-		<i class="fa fa-thumbs-o-up"></i>
-		赞一下
+	@if ($is_wechat)
+	<a class="pointer" id="btnLike">
+		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
 	@endif
 </p>
@@ -99,4 +98,13 @@ function checkForm(){
 		return false;
 	}
 }
+document.getElementById("btnLike").onclick=function(){
+	var xhr=new XMLHttpRequest();
+	xhr.open("GET",'{{ url('apply/like/' . $apply->id) }}',true);
+	xhr.withCredentials=true;
+	xhr.timeout=5000;
+	xhr.send("");
+	this.innerHTML='<i class="fa fa-thumbs-up"></i>&nbsp;已赞';
+	this.onclick=function(){return false;};
+};
 @stop
