@@ -29,7 +29,7 @@ class ApplyController extends Controller {
 			{
 				if (in_array($file->getClientMimeType(), config('business.MIME')) && in_array($file->getClientOriginalExtension(), array_keys(config('business.MIME')))){
 					$filename = md5($file->getClientOriginalName().$file->getClientSize()).'.'.$file->getClientOriginalExtension();
-					$file->move(config('business.photo'), $filename);
+					$file->move(storage_path() . "/app/photos", $filename);
 					$request->photos[] = $filename;
 				}
 				else{
