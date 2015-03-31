@@ -28,5 +28,8 @@ return [
 		'png' => 'image/png',
 	],
 	'photo' => "photos/",
-	'WeChat_UA' => 'MicroMessenger'
+	'WeChat_UA' => 'MicroMessenger',
+	'flag' => [
+		'max' => 5
+	]
 ];
