@@ -11,7 +11,7 @@
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
 		<div>{{ $apply->major }}专业</div>
 	</div>
-	@if (Auth::check())
+	{{-- @if (Auth::check())
 		@if (Auth::user()->name == $apply->name)
 			<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
 		@else
@@ -21,7 +21,18 @@
 			<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
 			@endif
 		@endif
-	@endif
+	@endif --}}
+</div>
+<h5>我的青春最风采</h5>
+<div class="row">
+	@for ($i = 1; $i <= 3; $i++)
+		@if ($apply['img' . $i] !== '')
+		<div class="col-4">
+			<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:100%">
+			<p>{{ $apply['intro' . $i] }}</p>
+		</div>
+		@endif
+	@endfor
 </div>
 <h5>我是这样一个人</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->whoami) . "\n") !!}</p>
@@ -29,17 +40,6 @@
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->story) . "\n") !!}</p>
 <h5>我的不足</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
-<h5>我的青春最风采</h5>
-<div class="row">
-	@for ($i = 1; $i <= 3; $i++)
-		@if ($apply['img' . $i] !== '')
-		<div class="col-4">
-			<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150">
-			<p>{{ $apply['intro' . $i] }}</p>
-		</div>
-		@endif
-	@endfor
-</div>
 @if ($apply->tag1 != '')
 <div class="rs-tabs" style="height:auto">
 	<div class="rs-tab" title="{{ $apply->tag1 }}">{{ $apply->tag1 }}</div>
@@ -62,6 +62,12 @@
 @elseif ($apply->isRecommended)
 <div class="rs-msg rs-msg-info">你已经推荐过这个人啦！</div>
 @else
+<h5>注意事项</h5>
+<ul>
+	<li>每人获得10个实名推荐即可获得参评资格。</li>
+	<li>每个师生只可推荐5人，不区分学院。数量有限，请珍惜！</li>
+	<li>推荐词至少50字，一定要言之有物</li>
+</ul>
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth" onsubmit="checkForm()">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
 	<input name="_token" type="hidden" value="{{ csrf_token() }}">
