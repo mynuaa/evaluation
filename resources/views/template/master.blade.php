@@ -54,7 +54,7 @@
 			</nav>
 			<nav id="nav-user" class="rs-nav fr">
 				@if (Auth::check())
-				<ul class="rs-user-nav user-logged">
+				<ul class="rs-user-nav user-logged" id="tabUsr">
 					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar" onclick="void(0)"></li>
 					<a href="{{ url('user/update') }}"><li>更新资料</li></a>
 					<a href="{{ url('user/logout') }}"><li>退出登录</li></a>
@@ -96,7 +96,7 @@
 			<div>自豪地采用</div>
 			<div>『<a href="http://my.nuaa.edu.cn" target="_blank">©纸飞机南航青年网络社区</a>』</div>
 			<div>提供的技术支持</div>
-			<a class="tip">&lt;想看项目时间轴就点我&gt;</a>
+			{{-- <a class="tip">&lt;想看项目时间轴就点我&gt;</a> --}}
 		</div>
 	</div>
 	<script>
@@ -105,6 +105,7 @@
 			var url=window.location.href;
 			if(url.indexOf("user/recommendations")>=0)document.getElementById("tabRec").className+=" rs-nav-selected";
 			else if(url.indexOf("apply/apply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
+			else if(url.indexOf("user")>=0)document.getElementById("tabUsr").className+=" rs-nav-selected";
 			else document.getElementById("tabMain").className+=" rs-nav-selected";
 		})(window);
 	</script>

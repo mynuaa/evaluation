@@ -41,12 +41,12 @@
 			@for ($i = 1; $i <= 3; $i++)
 			<div class="col-4">
 				@if ($apply['img' . $i] !== '')
-				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" width="100%">
+				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150">
 			@else
-				<p>还没有上传图片哦！</p>
+				<p style="height:150px;margin:0">还没有上传图片哦！</p>
 				@endif
 				<p><input type="file" name="imgs[]"></p>
-				<p><input type="text" name="intros[]" placeholder="写点介绍吧！"></p>
+				<p><input type="text" name="intros[]" placeholder="写点介绍吧！" @if ($apply['intro' . $i] !== '') value="{{ $apply['intro' . $i] }}" @endif></p>
 			</div>
 			@endfor
 		</div>

@@ -29,6 +29,17 @@
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->story) . "\n") !!}</p>
 <h5>我的不足</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
+<h5>我的青春最风采</h5>
+<div class="row">
+	@for ($i = 1; $i <= 3; $i++)
+		@if ($apply['img' . $i] !== '')
+		<div class="col-4">
+			<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150">
+			<p>{{ $apply['intro' . $i] }}</p>
+		</div>
+		@endif
+	@endfor
+</div>
 @if ($apply->tag1 != '')
 <div class="rs-tabs" style="height:auto">
 	<div class="rs-tab" title="{{ $apply->tag1 }}">{{ $apply->tag1 }}</div>
@@ -38,10 +49,9 @@
 @endif
 <p class="tip">
 	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
-	@if ($apply->isLiked)
-	<a href="{{ url('apply/like/' . $apply->id) }}">
-		<i class="fa fa-thumbs-o-up"></i>
-		赞一下
+	@if ($is_wechat)
+	<a class="pointer" id="btnLike">
+		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
 	@endif
 </p>
@@ -52,7 +62,7 @@
 @elseif ($apply->isRecommended)
 <div class="rs-msg rs-msg-info">你已经推荐过这个人啦！</div>
 @else
-<form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth" onsubmit="checkForm(this)">
+<form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth" onsubmit="checkForm()">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
 	<input name="_token" type="hidden" value="{{ csrf_token() }}">
 	<textarea name="content" id="applyContent" class="fullwidth" placeholder="我想极力推荐{{ $apply->name }}同学，因为……"></textarea>
@@ -66,7 +76,7 @@
 	<div class="card-outer" id="apply_a_{{ $rec->id }}">
 		<div class="card-inner">
 			<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
-			<h5 class="card-content">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}, {{ $rec->user->username }}</h5>
+			<h5 class="card-content cmt-author">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}, {{ $rec->user->username }}</h5>
 			<div class="card-content card-describtion">{{ $rec->content }}</div>
 		</div>
 	</div>
@@ -93,11 +103,19 @@ if(/apply_a_\d/.test(hash)){
 else{
 	document.getElementById("card-transition").className="";
 }
-function checkForm(form){
+function checkForm(){
 	if(document.getElementById("applyContent").value.length<50){
 		alert("推荐内容要求50字以上！");
 		return false;
 	}
-	return true;
 }
+document.getElementById("btnLike").onclick=function(){
+	var xhr=new XMLHttpRequest();
+	xhr.open("GET",'{{ url('apply/like/' . $apply->id) }}',true);
+	xhr.withCredentials=true;
+	xhr.timeout=5000;
+	xhr.send("");
+	this.innerHTML='<i class="fa fa-thumbs-up"></i>&nbsp;已赞';
+	this.onclick=function(){return false;};
+};
 @stop

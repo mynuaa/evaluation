@@ -245,6 +245,9 @@ body>.rs-container{
 	background:#C0392B;
 	cursor:pointer;
 }
+.rs-nav-selected{
+	background:#C0392B !important;
+}
 .rs-nav-selected:after{
 	position:absolute;
 	left:50%;
