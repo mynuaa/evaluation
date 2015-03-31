@@ -29,6 +29,17 @@
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->story) . "\n") !!}</p>
 <h5>我的不足</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
+<h5>我的青春最风采</h5>
+<div class="row">
+	@for ($i = 1; $i <= 3; $i++)
+		@if ($apply['img' . $i] !== '')
+		<div class="col-4">
+			<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150">
+			<p>{{ $apply['intro' . $i] }}</p>
+		</div>
+		@endif
+	@endfor
+</div>
 @if ($apply->tag1 != '')
 <div class="rs-tabs" style="height:auto">
 	<div class="rs-tab" title="{{ $apply->tag1 }}">{{ $apply->tag1 }}</div>
