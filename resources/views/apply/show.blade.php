@@ -28,7 +28,7 @@
 	@for ($i = 1; $i <= 3; $i++)
 		@if ($apply['img' . $i] !== '')
 		<div class="col-4">
-			<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:100%">
+			<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%">
 			<p>{{ $apply['intro' . $i] }}</p>
 		</div>
 		@endif
@@ -62,16 +62,16 @@
 @elseif ($apply->isRecommended)
 <div class="rs-msg rs-msg-info">你已经推荐过这个人啦！</div>
 @else
-<h5>注意事项</h5>
-<ul>
-	<li>每人获得10个实名推荐即可获得参评资格。</li>
-	<li>每个师生只可推荐5人，不区分学院。数量有限，请珍惜！</li>
-	<li>推荐词至少50字，一定要言之有物</li>
-</ul>
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth" onsubmit="checkForm()">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
 	<input name="_token" type="hidden" value="{{ csrf_token() }}">
 	<textarea name="content" id="applyContent" class="fullwidth" placeholder="我想极力推荐{{ $apply->name }}同学，因为……"></textarea>
+	<h5>注意事项</h5>
+	<ul>
+		<li>每人获得10个实名推荐即可获得参评资格。</li>
+		<li>每个师生只可推荐5人，不区分学院。数量有限，请珍惜！</li>
+		<li>推荐词至少50字，一定要言之有物</li>
+	</ul>
 	<div class="rs-form-btns">
 		<input type="submit" value="推荐" class="btn-success">
 	</div>

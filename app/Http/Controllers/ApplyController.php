@@ -108,9 +108,9 @@ class ApplyController extends Controller {
 		$user->recommendations()->attach($request->applyid, ['content' => $request->content]);
 		Apply::find($request->applyid)->increment('recommendations');
 
-		$remain = Auth::user()->remain();
+		$remain = $user->remain();
 
-		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed') . "你还可以推荐{$remain['recommend']}人。"]);
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed') . "你还可以推荐${remain['recommend']}人。"]);
 	}
 
 	public function getVote($id)
@@ -144,9 +144,7 @@ class ApplyController extends Controller {
 
 		$remain = Auth::user()->remain();
 
-		return redirect()->back()->withMessage(['type' => 'success',. 'content' => 
-			trans('message.vote_successed') . "你还可以投{$remain['vote']}票。"
-		]);
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.vote_successed') . "你还可以投${remain['vote']}票。"]);
 	}
 
 	public function getLike($id)
