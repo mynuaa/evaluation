@@ -41,7 +41,7 @@
 			@for ($i = 1; $i <= 3; $i++)
 			<div class="col-4">
 				@if ($apply['img' . $i] !== '')
-				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150">
+				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:100%">
 			@else
 				<p style="height:150px;margin:0">还没有上传图片哦！</p>
 				@endif
