@@ -65,7 +65,7 @@
 	<div class="card-outer" id="apply_a_{{ $rec->id }}">
 		<div class="card-inner">
 			<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
-			<h5 class="card-content">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}, {{ $rec->user->username }}</h5>
+			<h5 class="card-content cmt-author">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}, {{ $rec->user->username }}</h5>
 			<div class="card-content card-describtion">{{ $rec->content }}</div>
 		</div>
 	</div>
