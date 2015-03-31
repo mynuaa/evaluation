@@ -27,6 +27,6 @@ return [
 		'bmp' => 'image/bmp',
 		'png' => 'image/png',
 	],
-	'upload' => "http://my.nuaa.edu.cn/evaluation/storage/app/photos/",
+	'photo' => "photos/",
 	'WeChat_UA' => 'MicroMessenger'
 ];

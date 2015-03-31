@@ -41,8 +41,8 @@
 			@for ($i = 1; $i <= 3; $i++)
 			<div class="col-4">
 				@if ($apply['img' . $i] !== '')
-				<img src="{{ config('business.upload') . $apply['img' . $i] }}" width="100%">
-				@else
+				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" width="100%">
+			@else
 				<p>还没有上传图片哦！</p>
 				@endif
 				<p><input type="file" name="imgs[]"></p>
