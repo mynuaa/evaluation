@@ -29,7 +29,7 @@ return [
 	],
 	'photo' => "photos/",
 	'WeChat_UA' => 'MicroMessenger',
-	'flag' => [
+	'tag' => [
 		'max' => 5
 	]
 ];
