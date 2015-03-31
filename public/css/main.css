@@ -90,6 +90,15 @@
 @media screen and (max-width:810px){
 	.rs-nav-selected:after{display:none;}
 }
+.card-avatar{
+	width:75px;
+	height:75px;
+	margin:5px 5px 0 0;
+	vertical-align:middle;
+	position:absolute;
+	top:0;
+	right:0;
+}
 .user-avatar{
 	border:1px solid #FFF;
 	border-radius:50%;
@@ -122,15 +131,6 @@
 .card-inner{
 	overflow:hidden;
 	-webkit-overflow-scrolling:touch;
-}
-.card-titles+img{
-	width:75px;
-	height:75px;
-	margin:5px 5px 0 0;
-	vertical-align:middle;
-	position:absolute;
-	top:0;
-	right:0;
 }
 .card-titles{
 	float:left;

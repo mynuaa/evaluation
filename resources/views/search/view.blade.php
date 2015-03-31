@@ -32,7 +32,7 @@
 				<div class="card-title">{{ $stu->title }}</div>
 				<div class="card-content card-author">{{ $stu->name }}，{{ $stu->major }}专业</div>
 			</div>
-			<img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}">
+			<img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}" class="card-avatar">
 			<div class="card-content card-describtion">{{ substr($stu->whoami, 0, 150) . "..." }}</div>
 		</div>
 	</div>
