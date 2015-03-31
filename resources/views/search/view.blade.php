@@ -3,6 +3,7 @@
 @section('title')五四评优@stop
 
 @section('content')
+<br>
 <img src="{{ asset('/img/banner.jpg') }}" width="100%" alt="五四评优" class="hidden-phone">
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<div class="rs-tabs">
@@ -24,11 +25,14 @@
 	</fieldset>
 </form>
 @foreach ($applies as $stu)
-<a href="{{ url('apply/show/' . $stu['id']) }}" target="_blank" class="no-underline">
+<a href="{{ url('apply/show/' . $stu['id']) }}" class="no-underline">
 	<div class="card-outer">
 		<div class="card-inner">
-			<div class="card-title"><img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}">{{ $stu->title }}</div>
-			<div class="card-content card-author">{{ $stu->name }}，{{ $stu->major }}专业</div>
+			<div class="card-titles">
+				<div class="card-title">{{ $stu->title }}</div>
+				<div class="card-content card-author">{{ $stu->name }}，{{ $stu->major }}专业</div>
+			</div>
+			<img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}">
 			<div class="card-content card-describtion">{{ substr($stu->whoami, 0, 150) . "..." }}</div>
 		</div>
 	</div>

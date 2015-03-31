@@ -36,7 +36,15 @@
 	@if ($apply->tag3 != '')<div class="rs-tab" title="{{ $apply->tag3 }}">{{ $apply->tag3 }}</div>@endif
 </div>
 @endif
-<p class="tip">浏览：{{ $apply->pageview }}次</p>
+<p class="tip">
+	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
+	@if ($apply->isLiked)
+	<a href="{{ url('apply/like/' . $apply->id) }}">
+		<i class="fa fa-thumbs-o-up"></i>
+		赞一下
+	</a>
+	@endif
+</p>
 <hr>
 <h3>我要推荐</h3>
 @if (!Auth::check())
@@ -44,10 +52,10 @@
 @elseif ($apply->isRecommended)
 <div class="rs-msg rs-msg-info">你已经推荐过这个人啦！</div>
 @else
-<form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">
+<form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth" onsubmit="checkForm(this)">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
 	<input name="_token" type="hidden" value="{{ csrf_token() }}">
-	<textarea name="content" class="fullwidth" placeholder="我想极力推荐{{ $apply->name }}同学，因为……"></textarea>
+	<textarea name="content" id="applyContent" class="fullwidth" placeholder="我想极力推荐{{ $apply->name }}同学，因为……"></textarea>
 	<div class="rs-form-btns">
 		<input type="submit" value="推荐" class="btn-success">
 	</div>
@@ -84,5 +92,12 @@ if(/apply_a_\d/.test(hash)){
 }
 else{
 	document.getElementById("card-transition").className="";
+}
+function checkForm(form){
+	if(document.getElementById("applyContent").value.length<50){
+		alert("推荐内容要求50字以上！");
+		return false;
+	}
+	return true;
 }
 @stop
