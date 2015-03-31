@@ -32,18 +32,18 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>自我描述</legend>
-			<textarea name="whoami" type="text" placeholder="我是怎样的人" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
-			<textarea name="story" type="text" placeholder="我的故事" class="fullwidth" required>{{ $apply['story'] }}</textarea>
-			<textarea name="insufficient" type="text" placeholder="我的不足" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
+			<textarea name="whoami" type="text" placeholder="一句话介绍我是谁" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
+			<textarea name="story" type="text" placeholder="我的故事（字数不少于300，没有上限）" class="fullwidth" required>{{ $apply['story'] }}</textarea>
+			<textarea name="insufficient" type="text" placeholder="我的不足（有待继续努力的地方）" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
 		<legend>我的青春最精彩</legend>
 		<div class="row">
 			@for ($i = 1; $i <= 3; $i++)
 			<div class="col-4">
 				@if ($apply['img' . $i] !== '')
-				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:100%">
-			@else
-				<p style="height:150px;margin:0">还没有上传图片哦！</p>
+				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%">
+				@else
+				<div style="width:90%;height:150px;border:1px solid #BBB;border-radius:5px"></div>
 				@endif
 				<p><input type="file" name="imgs[]"></p>
 				<p><input type="text" name="intros[]" placeholder="写点介绍吧！" @if ($apply['intro' . $i] !== '') value="{{ $apply['intro' . $i] }}" @endif></p>

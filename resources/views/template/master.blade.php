@@ -28,7 +28,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/rscss.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
-	<title>@yield('title') - 南航校团委五四评优</title>
+	<title>@yield('title') - 南航五四评优</title>
 	<!--[if lt IE 9]>
 	<script src="{{ asset('/js/html5.js') }}"></script>
 	<script src="{{ asset('/js/ieBetter.js') }}"></script>

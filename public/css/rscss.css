@@ -510,3 +510,39 @@ td,th,.td,.th{
 	text-decoration:none;
 }
 .rs-frame{overflow:auto;}
+.pagination{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	overflow:hidden;
+	border:1px solid #BBB;
+	border-radius:5px;
+	display:inline-block;
+}
+.pagination li{
+	/*display:inline-block;*/
+	border-left:1px solid #BBB;
+	float:left;
+}
+.pagination li:first-child{
+	border:none;
+}
+.pagination li:hover{
+	background:#DDD;
+}
+.pagination a,.pagination span{
+	display:inline-block;
+	width:32px;
+	height:32px;
+	line-height:32px;
+	text-align:center;
+	text-decoration:none !important;
+}
+.pagination .active{
+	background:#BBB !important;
+}
+.pagination .disabled{
+	background:transparent !important;
+	color:#BBB;
+	cursor:no-drop;
+}

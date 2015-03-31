@@ -7,7 +7,7 @@ return [
 		'school' => 0,
 		'college' => 1
 	],
-	'paginate' => 30,
+	'paginate' => 1,
 	'recommend' => [
 		'max' => 5
 	],
