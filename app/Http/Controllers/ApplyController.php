@@ -24,13 +24,13 @@ class ApplyController extends Controller {
 	public function postApply(ApplyPostRequest $request)
 	{
 		$request->photos = [];
-		foreach ($request->file('imgs') as $file) {
+		foreach ($request->file('imgs') as $key => $file) {
 			if ($file)
 			{
 				if (in_array($file->getClientMimeType(), config('business.MIME')) && in_array($file->getClientOriginalExtension(), array_keys(config('business.MIME')))){
 					$filename = md5($file->getClientOriginalName().$file->getClientSize()).'.'.$file->getClientOriginalExtension();
 					$file->move(storage_path() . "/app/photos", $filename);
-					$request->photos[] = $filename;
+					$request->photos[$key] = $filename;
 				}
 				else{
 					abort(500, trans('invalid_file_type.'));
@@ -113,6 +113,7 @@ class ApplyController extends Controller {
 
 	public function getVote($id)
 	{
+		return redirect()->back()->withMessage(['type' => 'error', 'content' => '投票还没开始啊喂~']);
 
 		if (Auth::user()->isVoted($id))
 		{
