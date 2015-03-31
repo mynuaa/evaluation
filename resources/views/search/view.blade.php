@@ -3,6 +3,7 @@
 @section('title')五四评优@stop
 
 @section('content')
+<br>
 <img src="{{ asset('/img/banner.jpg') }}" width="100%" alt="五四评优" class="hidden-phone">
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<div class="rs-tabs">

@@ -46,6 +46,7 @@ html,body{
 	position:absolute;
 	width:100%;
 	min-height:100%;
+	overflow-x:hidden;
 }
 html{
 	background:#F9F9F9;
@@ -177,7 +178,7 @@ h6{font-size:0.83em;}
 	padding:0 10px;
 }
 body>.rs-container{
-	margin-bottom:100px;
+	margin-bottom:130px;
 }
 .rs-header h1{
 	font-size:1.2em;
@@ -197,7 +198,11 @@ body>.rs-container{
 }
 @media screen and (max-width:525px){
 	.rs-main-nav{
+		position:absolute;
 		width:100px;
+		height:50px;
+		overflow:hidden;
+		z-index:10;
 		transition:all 200ms;
 	}
 	.rs-main-nav:before{
@@ -211,10 +216,8 @@ body>.rs-container{
 		float:left;
 	}
 	.rs-main-nav:hover{
-		position:absolute;
 		background:#C0392B;
 		height:200px;
-		z-index:10;
 	}
 }
 .rs-nav{
@@ -273,15 +276,16 @@ body>.rs-container{
 	height:50px;
 	z-index:10;
 }
-.rs-user-nav li:hover{
+.rs-user-nav li:hover,.rs-main-nav li:hover{
 	transition:all 200ms;
-	text-shadow:0 0 2px #FFF;
+	text-shadow:0 0 5px #FFF;
 }
 .rs-footer{
 	width:100%;
 	padding:20px 0;
 	position:absolute;
 	bottom:0;
+	font-size:80%;
 	border-top:1px dashed #E74C3C;
 	color:#E74C3C;
 }

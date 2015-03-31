@@ -42,13 +42,13 @@
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav">
 					<a href="{{ url('/') }}">
-						<li>返回主页</li>
+						<li id="tabMain">我要推荐</li>
 					</a>
 					<a href="{{ url('apply/apply') }}">
-						<li>我要申报</li>
+						<li id="tabApp">我要申报</li>
 					</a>
 					<a href="{{ url('user/recommendations') }}">
-						<li>我的推荐</li>
+						<li id="tabRec">我的推荐</li>
 					</a>
 				</ul>
 			</nav>
@@ -67,6 +67,15 @@
 			</nav>
 		</div>
 	</div>
+	<!--[if lt IE 9]>
+	<div class="rs-message">
+		<div class="rs-container">
+			<div class="rs-msg rs-msg-warning">
+				需要使用Chrome、Firefox、IE≥9等现代浏览器访问本页面。<a href="http://browsehappy.com/" target="_blank">点此下载</a>
+			</div>
+		</div>
+	</div>
+	<![endif]-->
 	<!-- 消息显示块 -->
 	@if (Session::has('message'))
 	<div class="rs-message">
@@ -84,12 +93,20 @@
 	<!-- 页脚 -->
 	<div class="rs-footer center">
 		<div class="rs-container">
-			<div>骄傲的使用来自©<a href="http://my.nuaa.edu.cn">纸飞机南航青年网络社区</a>的技术</div>
-			<a class="tip">项目时间轴</a>
+			<div>自豪地采用</div>
+			<div>『<a href="http://my.nuaa.edu.cn" target="_blank">©纸飞机南航青年网络社区</a>』</div>
+			<div>提供的技术支持</div>
+			<a class="tip">&lt;想看项目时间轴就点我&gt;</a>
 		</div>
 	</div>
 	<script>
 		@yield('scripts')
+		(function(window){
+			var url=window.location.href;
+			if(url.indexOf("user/recommendations")>=0)document.getElementById("tabRec").className+=" rs-nav-selected";
+			else if(url.indexOf("apply/apply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
+			else document.getElementById("tabMain").className+=" rs-nav-selected";
+		})(window);
 	</script>
 </body>
 </html>

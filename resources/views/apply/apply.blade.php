@@ -4,15 +4,15 @@
 
 @section('content')
 <div class="page-title">个人申报</div>
-<div class="rs-form-outer">
-	<form action="#" method="post" class="rs-form left" enctype="multipart/form-data">
+<div class="rs-form-outer fullwidth">
+	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data">
 		<fieldset class="form-group">
 			<legend>基本信息</legend>
 			<input name="name" type="text" value="{{ $apply['name'] or Auth::user()->name }}" placeholder="姓名" disabled>
 			<select name="college" disabled>
 				<option value="{{ Auth::user()->college }}">{{ trans('college')[Auth::user()->college] }}</option>
 			</select>
-			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="标题" required>
+			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="标题" maxlength="15" required>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
@@ -36,12 +36,20 @@
 			<textarea name="story" type="text" placeholder="我的故事" class="fullwidth" required>{{ $apply['story'] }}</textarea>
 			<textarea name="insufficient" type="text" placeholder="我的不足" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
-		<input type='file' name='imgs[]'>
-		<input type='file' name='imgs[]'>
-		<input type='file' name='imgs[]'>
-		<input type='text' name='intros[]'>
-		<input type='text' name='intros[]'>
-		<input type='text' name='intros[]'>
+		<legend>我的青春最精彩</legend>
+		<div class="row">
+			@for ($i = 1; $i <= 3; $i++)
+			<div class="col-4">
+				@if ($apply['img' . $i] !== '')
+				<img src="{{ config('business.upload') . $apply['img' . $i] }}" width="100%">
+				@else
+				<p>还没有上传图片哦！</p>
+				@endif
+				<p><input type="file" name="imgs[]"></p>
+				<p><input type="text" name="intros[]" placeholder="写点介绍吧！"></p>
+			</div>
+			@endfor
+		</div>
 		<fieldset class="form-group">
 			<legend>标签</legend>
 			<div class="rs-tabs" id="tags" style="height:auto;padding:0">
