@@ -97,7 +97,7 @@
 	vertical-align:middle;
 	position:absolute;
 	top:0;
-	right:0;
+	left:0;
 }
 .user-avatar{
 	border:1px solid #FFF;
@@ -133,8 +133,8 @@
 	-webkit-overflow-scrolling:touch;
 }
 .card-titles{
-	float:left;
-	padding-right:85px;
+	float:right;
+	padding-left:85px;
 	box-sizing:border-box;
 }
 .card-author img{

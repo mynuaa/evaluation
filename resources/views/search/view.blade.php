@@ -28,7 +28,7 @@
 <a href="{{ url('apply/show/' . $stu['id']) }}" class="no-underline">
 	<div class="card-outer">
 		<div class="card-inner">
-			<div class="card-titles">
+			<div class="card-titles fullwidth">
 				<div class="card-title">{{ $stu->title }}</div>
 				<div class="card-content card-author">{{ $stu->name }}，{{ $stu->major }}专业</div>
 			</div>
