@@ -40,7 +40,7 @@
 			<textarea name="story" type="text" placeholder="我的故事（字数不少于300，没有上限）" class="fullwidth" required>{{ $apply['story'] }}</textarea>
 			<textarea name="insufficient" type="text" placeholder="我的不足（有待继续努力的地方）" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
-		<legend>我的青春最精彩</legend>
+		<legend>我的青春最精彩<span class="tip">&nbsp;&nbsp;图片展示区</span></legend>
 		<div class="row">
 			@for ($i = 1; $i <= 3; $i++)
 			<div class="col-4">
