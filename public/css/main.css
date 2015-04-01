@@ -93,7 +93,7 @@
 .card-avatar{
 	width:75px;
 	height:75px;
-	margin:5px 5px 0 0;
+	margin:5px 0 0 5px;
 	vertical-align:middle;
 	position:absolute;
 	top:0;
@@ -134,7 +134,7 @@
 }
 .card-titles{
 	float:right;
-	padding-left:85px;
+	padding-left:80px;
 	box-sizing:border-box;
 }
 .card-author img{
