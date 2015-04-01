@@ -3,7 +3,6 @@
 @section('title'){{ $apply->title }}@stop
 
 @section('content')
-
 <h3>{{ $apply->title }}</h3>
 <div class="card-author cl">
 	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
