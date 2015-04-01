@@ -41,7 +41,7 @@
 			@for ($i = 1; $i <= 3; $i++)
 			<div class="col-4">
 				@if ($apply['img' . $i] !== '')
-				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%">
+				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%;border-radius:5px">
 				@else
 				<div style="width:90%;height:150px;border:1px solid #BBB;border-radius:5px"></div>
 				@endif
