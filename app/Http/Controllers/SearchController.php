@@ -10,23 +10,35 @@ class SearchController extends Controller {
 
 	public function index()
 	{
-		$applies = Apply::paginate(config('business.paginate'));
+		$applies_origin = Apply::paginate(config('business.paginate'));
 
-		return view('search.view')->withApplies($applies);
+		$applies = array_sort($applies_origin->items(), function($value){
+			return rand();
+		});
+
+		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies);
 	}
 
 	public function getSchool()
 	{
-		$applies = Apply::type(config('business.type.school'))->paginate(config('business.paginate'));
+		$applies_origin = Apply::type(config('business.type.school'))->paginate(config('business.paginate'));
 
-		return view('search.view')->withApplies($applies);
+		$applies = array_sort($applies_origin->items(), function($value){
+			return rand();
+		});
+
+		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies);
 	}
 
 	public function getCollege($cid)
 	{
-		$applies = Apply::type(config('business.type.college'))->college($cid)->paginate(config('business.paginate'));
+		$applies_origin = Apply::type(config('business.type.college'))->college($cid)->paginate(config('business.paginate'));
 
-		return view('search.view')->withApplies($applies);
+		$applies = array_sort($applies_origin->items(), function($value){
+			return rand();
+		});
+
+		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies);
 	}
 
 	public function getDetails(DetailsGetRequest $request)
@@ -34,8 +46,12 @@ class SearchController extends Controller {
 		$type = $request->type;
 		$key = $request->key;
 
-		$applies = Apply::where($type, $key)->paginate(config('business.paginate'));
+		$applies_origin = Apply::where($type, $key)->paginate(config('business.paginate'));
 
-		return view('search.view')->withApplies($applies);
+		$applies = array_sort($applies_origin->items(), function($value){
+			return rand();
+		});
+
+		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies);
 	}
 }

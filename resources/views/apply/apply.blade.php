@@ -13,7 +13,7 @@
 				<option value="{{ Auth::user()->college }}">{{ trans('college')[Auth::user()->college] }}</option>
 			</select>
 			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="自起标题" maxlength="15" required>
-			<p class="tip">* 自选标题，将在评选网站首页、在扫码转朋友圈时体现，控制在15字以内。做个出色的标题党！</p>
+			<p class="tip">* 自起标题，将在评选网站首页、在扫码转朋友圈时体现，控制在15字以内。做个出色的标题党！</p>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
@@ -24,6 +24,9 @@
 			<legend>申请类型</legend>
 			<input name="type" type="radio" value="0" @if ($apply['type'] == 0 || $apply['type'] == '') checked @endif id="school"><label for="school">校级评选</label>
 			<input name="type" type="radio" value="1" @if ($apply['type'] == 1) checked @endif id="department"><label for="department">院内评选</label>
+			<p class="tip">* 如果你觉得熟悉自己、支持自己的人可能遍布全校而不仅限于本学院，则可选择“接受全校投票”；</p>
+			<p class="tip"> * 如果你觉得自己社交圈子不是特别广、比较低调，熟悉自己、可能投自己票的人主要都在本学院，请选择“只接受本学院投票”。</p>
+			<p class="tip">* 申报者的事迹材料都可以被全校师生看到，不影响曝光率：）</p>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>详细信息</legend>
@@ -33,11 +36,11 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>自我描述</legend>
-			<textarea name="whoami" type="text" placeholder="介绍一下我是谁~" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
+			<textarea name="whoami" type="text" placeholder="介绍一下我是谁~将在评选网站首页出现，请字斟句酌。" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
 			<textarea name="story" type="text" placeholder="我的故事（字数不少于300，没有上限）" class="fullwidth" required>{{ $apply['story'] }}</textarea>
 			<textarea name="insufficient" type="text" placeholder="我的不足（有待继续努力的地方）" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
-		<legend>我的青春最精彩</legend>
+		<legend>我的青春最精彩<span class="tip">&nbsp;&nbsp;图片展示区</span></legend>
 		<div class="row">
 			@for ($i = 1; $i <= 3; $i++)
 			<div class="col-4">
@@ -51,7 +54,7 @@
 			</div>
 			@endfor
 		</div>
-		<p class="tip">* 请上传最能体现自己事迹特征、多彩生活、奋斗向上、充满正能量的照片。</p>
+		<p class="tip" style="color:red">* 请上传最能体现自己事迹特征、多彩生活、奋斗向上、充满正能量的照片。</p>
 		<fieldset class="form-group">
 			<legend>标签</legend>
 			<div class="rs-tabs" id="tags" style="height:auto;padding:0">
