@@ -12,7 +12,8 @@
 			<select name="college" disabled>
 				<option value="{{ Auth::user()->college }}">{{ trans('college')[Auth::user()->college] }}</option>
 			</select>
-			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="标题" maxlength="15" required>
+			<input name="title" type="text" value="{{ $apply['title'] }}" placeholder="自起标题" maxlength="15" required>
+			<p class="tip">* 自选标题，将在评选网站首页、在扫码转朋友圈时体现，控制在15字以内。做个出色的标题党！</p>
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>性别</legend>
@@ -32,7 +33,7 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>自我描述</legend>
-			<textarea name="whoami" type="text" placeholder="一句话介绍我是谁" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
+			<textarea name="whoami" type="text" placeholder="介绍一下我是谁~" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
 			<textarea name="story" type="text" placeholder="我的故事（字数不少于300，没有上限）" class="fullwidth" required>{{ $apply['story'] }}</textarea>
 			<textarea name="insufficient" type="text" placeholder="我的不足（有待继续努力的地方）" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
@@ -50,6 +51,7 @@
 			</div>
 			@endfor
 		</div>
+		<p class="tip">* 请上传最能体现自己事迹特征、多彩生活、奋斗向上、充满正能量的照片。</p>
 		<fieldset class="form-group">
 			<legend>标签</legend>
 			<div class="rs-tabs" id="tags" style="height:auto;padding:0">
