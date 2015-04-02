@@ -62,6 +62,7 @@
 		<li>每人获得10个实名推荐即可获得参评资格。</li>
 		<li>每个师生只可推荐5人，不区分学院。数量有限，请珍惜！</li>
 		<li>推荐词至少50字，一定要言之有物</li>
+		<li>无意义的简单字符、重复性内容会被审核为无效推荐！实名推荐，请对自己的名誉负责哈！</li>
 	</ul>
 	<div class="rs-form-btns">
 		<input type="submit" value="推荐" class="btn-success">
