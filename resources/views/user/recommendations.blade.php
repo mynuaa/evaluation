@@ -3,7 +3,7 @@
 @section('title')我的推荐@stop
 
 @section('content')
-@if (empty($recommendations))
+@if ($recommendations->count() != 0)
 	@foreach ($recommendations as $rec)
 	<a href="{{ url('apply/show/' . $rec->apply_id) . '#apply_a_' . $rec->id }}">
 		<div class="card-outer">
