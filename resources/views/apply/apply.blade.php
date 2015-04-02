@@ -5,7 +5,7 @@
 @section('content')
 <div class="page-title">个人申报</div>
 <div class="rs-form-outer fullwidth">
-	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data">
+	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data" onsubmit="checkForm()">
 		<fieldset class="form-group">
 			<legend>基本信息</legend>
 			<input name="name" type="text" value="{{ $apply['name'] or Auth::user()->name }}" placeholder="姓名" disabled>
@@ -37,7 +37,7 @@
 		<fieldset class="form-group">
 			<legend>自我描述</legend>
 			<textarea name="whoami" type="text" placeholder="介绍一下我是谁~将在评选网站首页出现，请字斟句酌。" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
-			<textarea name="story" type="text" placeholder="我的故事（字数不少于300，没有上限）" class="fullwidth" required>{{ $apply['story'] }}</textarea>
+			<textarea name="story" id="story" type="text" placeholder="我的故事（字数不少于400，没有上限）" class="fullwidth" required>{{ $apply['story'] }}</textarea>
 			<textarea name="insufficient" type="text" placeholder="我的不足（有待继续努力的地方）" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
 		</fieldset>
 		<legend>我的青春最精彩<span class="tip">&nbsp;&nbsp;图片展示区</span></legend>
@@ -120,5 +120,11 @@ function removeTag(dom){
 		list[i].parentNode.removeChild(list[i]);
 	}
 	dom.parentNode.removeChild(dom);
+}
+function checkForm(){
+	if(document.getElementById("story").length<400){
+		alert("“我的故事”必须大于400字！");
+		return false;
+	}
 }
 @stop
