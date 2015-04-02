@@ -25,7 +25,7 @@
 	</fieldset>
 </form>
 @foreach ($applies as $stu)
-<a href="{{ url('apply/show/' . $stu['id']) }}" class="no-underline">
+<a href="{{ url('apply/show/' . $stu['id']) }}" class="no-underline" target="_blank">
 	<div class="card-outer">
 		<div class="card-inner">
 			<div class="card-titles fullwidth">

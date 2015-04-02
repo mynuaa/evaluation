@@ -46,14 +46,6 @@
 	@if ($apply->tag3 != '')<div class="rs-tab" title="{{ $apply->tag3 }}">{{ $apply->tag3 }}</div>@endif
 </div>
 @endif
-<p class="tip">
-	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
-	@if ($is_wechat)
-	<a class="pointer" id="btnLike">
-		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
-	</a>
-	@endif
-</p>
 <hr>
 <h3>我要推荐</h3>
 @if (!Auth::check())
@@ -70,6 +62,7 @@
 		<li>每人获得10个实名推荐即可获得参评资格。</li>
 		<li>每个师生只可推荐5人，不区分学院。数量有限，请珍惜！</li>
 		<li>推荐词至少50字，一定要言之有物</li>
+		<li>无意义的简单字符、重复性内容会被审核为无效推荐！实名推荐，请对自己的名誉负责哈！</li>
 	</ul>
 	<div class="rs-form-btns">
 		<input type="submit" value="推荐" class="btn-success">
@@ -87,6 +80,15 @@
 	</div>
 	@endforeach
 </div>
+<p class="tip">已浏览：{{ $apply->pageview > 3000 ? $apply->pageview : '3000+' }}次。</p>
+{{-- <p class="tip">
+	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
+	@if ($is_wechat)
+	<a class="pointer" id="btnLike">
+		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
+	</a>
+	@endif
+</p> --}}
 <h3>我要分享</h3>
 @include('template.share')
 @stop
