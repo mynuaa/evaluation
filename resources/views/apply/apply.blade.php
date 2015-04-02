@@ -24,7 +24,7 @@
 			<legend>申请类型</legend>
 			<input name="type" type="radio" value="0" @if ($apply['type'] == 0 || $apply['type'] == '') checked @endif id="school"><label for="school">校级评选</label>
 			<input name="type" type="radio" value="1" @if ($apply['type'] == 1) checked @endif id="department"><label for="department">院内评选</label>
-			<p class="tip">* 如果你觉得熟悉自己、支持自己的人可能遍布全校而不仅限于本学院，则可选择“接受全校投票”；</p>
+			<p class="tip">* 如果你觉得熟悉自己、支持自己的人可能遍布全校而不仅限于本学院，则可选择“接受全校投票”；参与校级层面的“竞争”,得票可能多，但“竞争”更激烈。</p>
 			<p class="tip"> * 如果你觉得自己社交圈子不是特别广、比较低调，熟悉自己、可能投自己票的人主要都在本学院，请选择“只接受本学院投票”。</p>
 			<p class="tip">* 申报者的事迹材料都可以被全校师生看到，不影响曝光率：）</p>
 		</fieldset>
