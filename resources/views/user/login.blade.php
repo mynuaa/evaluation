@@ -8,6 +8,7 @@
 	<ol class="left ilb tip-order" style="max-width:400px">
 		<li>本科生请使用教务处账号登录</li>
 		<li>研究生请用研究生院账号密码登录</li>
+		<li>教师请用人事处网站账号密码登录</li>
 		<li>请使用IE9以上的浏览器</li>
 	</ol>
 </div>
