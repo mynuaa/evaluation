@@ -79,7 +79,7 @@
 	</div>
 	@endforeach
 </div>
-<p class="tip">已浏览：{{ $apply->pageview }}次。</p>
+<p class="tip">已浏览：{{ $apply->pageview > 3000 ? $apply->pageview : '3000+' }}次。</p>
 {{-- <p class="tip">
 	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
 	@if ($is_wechat)
