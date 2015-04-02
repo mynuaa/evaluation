@@ -79,14 +79,15 @@
 	</div>
 	@endforeach
 </div>
-<p class="tip">
+<p class="tip">已浏览：{{ $apply->pageview }}次。</p>
+{{-- <p class="tip">
 	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
 	@if ($is_wechat)
 	<a class="pointer" id="btnLike">
 		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
 	@endif
-</p>
+</p> --}}
 <h3>我要分享</h3>
 @include('template.share')
 @stop
