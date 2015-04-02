@@ -46,14 +46,6 @@
 	@if ($apply->tag3 != '')<div class="rs-tab" title="{{ $apply->tag3 }}">{{ $apply->tag3 }}</div>@endif
 </div>
 @endif
-<p class="tip">
-	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
-	@if ($is_wechat)
-	<a class="pointer" id="btnLike">
-		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
-	</a>
-	@endif
-</p>
 <hr>
 <h3>我要推荐</h3>
 @if (!Auth::check())
@@ -87,6 +79,14 @@
 	</div>
 	@endforeach
 </div>
+<p class="tip">
+	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
+	@if ($is_wechat)
+	<a class="pointer" id="btnLike">
+		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
+	</a>
+	@endif
+</p>
 <h3>我要分享</h3>
 @include('template.share')
 @stop
