@@ -55,6 +55,7 @@
 			@endfor
 		</div>
 		<p class="tip" style="color:red">* 请上传最能体现自己事迹特征、多彩生活、奋斗向上、充满正能量的照片。</p>
+		<p class="tip" style="color:red">* 点击下面提交整个网页后图片才会保存。</p>
 		<fieldset class="form-group">
 			<legend>标签</legend>
 			<div class="rs-tabs" id="tags" style="height:auto;padding:0">
