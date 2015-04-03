@@ -21,5 +21,6 @@ return [
 	'lang' => [
 		'name' => 'English',
 		'value' => 'en'
-	]
+	],
+	'mail' => '如果您有已经请发送邮件至：',
 ];

@@ -21,5 +21,6 @@ return [
 	'lang' => [
 		'name' => '简体中文',
 		'value' => 'zh'
-	]
+	],
+	'mail' => 'If you have any questions, please mail to ',
 ];
