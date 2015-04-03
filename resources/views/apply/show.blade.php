@@ -108,7 +108,7 @@ if(/apply_a_\d/.test(hash)){
 			d=d.parentNode;
 			d.className="";
 		},2000);
-	},10);
+	},100);
 }
 else{
 	document.getElementById("card-transition").className="";

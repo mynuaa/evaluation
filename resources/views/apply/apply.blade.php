@@ -5,7 +5,7 @@
 @section('content')
 <div class="page-title">{{ trans('apply.title') }}</div>
 <div class="rs-form-outer fullwidth">
-	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data">
+	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data" onsubmit="checkForm()">
 		<fieldset class="form-group">
 			<legend>{{ trans('apply.basic') }}</legend>
 			<input name="name" type="text" value="{{ $apply['name'] or Auth::user()->name }}" placeholder="姓名" disabled>
@@ -47,7 +47,7 @@
 			@for ($i = 1; $i <= 3; $i++)
 			<div class="col-4">
 				@if ($apply['img' . $i] !== '')
-				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%">
+				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%;border-radius:5px">
 				@else
 				<div style="width:90%;height:150px;border:1px solid #BBB;border-radius:5px"></div>
 				@endif
@@ -124,5 +124,11 @@ function removeTag(dom){
 		list[i].parentNode.removeChild(list[i]);
 	}
 	dom.parentNode.removeChild(dom);
+}
+function checkForm(){
+	if(document.getElementById("story").length<400){
+		alert("“我的故事”必须大于400字！");
+		return false;
+	}
 }
 @stop
