@@ -50,6 +50,9 @@
 					<a href="{{ url('user/recommendations') }}">
 						<li id="tabRec">我的推荐</li>
 					</a>
+					<a href="{{ url('/') . '?lang=' . {{ Lang::get('lang') }} }}">
+						<li id="tabRec">{{ Lang::get('lang_full') }}</li>
+					</a>
 				</ul>
 			</nav>
 			<nav id="nav-user" class="rs-nav fr">
