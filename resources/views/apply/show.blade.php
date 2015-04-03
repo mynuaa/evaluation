@@ -10,7 +10,7 @@
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
 		<div>{{ $apply->major }}专业</div>
 	</div>
-	{{-- @if (Auth::check())
+	<?php /*@if (Auth::check())
 		@if (Auth::user()->name == $apply->name)
 			<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
 		@else
@@ -20,7 +20,7 @@
 			<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
 			@endif
 		@endif
-	@endif --}}
+	@endif */?>
 </div>
 <h5>我的青春最风采</h5>
 <div class="row">
@@ -80,15 +80,15 @@
 	</div>
 	@endforeach
 </div>
-<p class="tip">已浏览：{{ $apply->pageview > 3000 ? $apply->pageview : '3000+' }}次。</p>
-{{-- <p class="tip">
-	<span>浏览：{{ $apply->pageview }}次，收到了{{ $apply->like }}个赞。</span>
+ <p class="tip">
+ 	<span>已浏览：{{ $apply->pageview < 3000 ? $apply->pageview : '3000+' }}次。</span>
+{{--	<span>收到了{{ $apply->like }}个赞。</span>
 	@if ($is_wechat)
 	<a class="pointer" id="btnLike">
 		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
-	@endif
-</p> --}}
+	@endif --}}
+</p>
 <h3>我要分享</h3>
 @include('template.share')
 @stop
