@@ -53,7 +53,7 @@ return [
 	'not_empty' => '标签内容不能为空！',
 	'max_three' => '最多只能添加三个标签哦~',
 
-	'professional' => ' 专业',
+	'professional' => ':name 专业',
 	'want_recommend' => '我要推荐',
 	'want_share' => '我要分享',
 	'pageview' => '浏览量: :time 次。',

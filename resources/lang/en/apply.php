@@ -52,7 +52,7 @@ return [
 	'not_empty' => 'You had better type something in your tag.',
 	'max_three' => 'You can write at most three tags.',
 
-	'professional' => ' Professional',
+	'professional' => 'Major In :name',
 	'want_recommend' => 'I wanna recommend',
 	'want_share' => 'Share to',
 	'pageview' => 'Page view: :time.',
