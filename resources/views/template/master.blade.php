@@ -99,6 +99,7 @@
 			<div>{{ trans('app.powerby.0') }}</div>
 			<div>『<a href="http://my.nuaa.edu.cn" target="_blank">{{ trans('app.powerby.1') }}</a>』</div>
 			<div>{{ trans('app.powerby.2') }}</div>
+			<div>如果您有意见请发邮件<a href="mailto:nuaatw@163.com">nuaatw@163.com</div>
 		</div>
 	</div>
 	<script>
