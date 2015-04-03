@@ -2,7 +2,7 @@
 
 return [
 	'title' => 'User Information',
-	'real_name' => 'Real Name',
+	'real_name' => 'RealName',
 	'college' => 'College',
 	'avatar' => 'Avatar',
 	'update' => 'Update',
