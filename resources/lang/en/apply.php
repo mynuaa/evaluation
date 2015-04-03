@@ -57,4 +57,6 @@ return [
 	'want_share' => 'Share to',
 	'pageview' => 'Page view: :time.',
 	'recommend_min' => 'Write at least :num words here.',
+
+	'need_login' => 'to get better use.'
 ];

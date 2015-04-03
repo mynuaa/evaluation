@@ -52,7 +52,7 @@
 <hr>
 <h3>{{ trans('apply.want_recommend') }}</h3>
 @if (!Auth::check())
-<div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">登录</a>之后才可以推荐哦！</div>
+<div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}！</div>
 @elseif ($apply->isRecommended)
 <div class="rs-msg rs-msg-info">{{ trans('message.recommend.before') }}</div>
 @else

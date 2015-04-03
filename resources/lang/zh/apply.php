@@ -58,4 +58,6 @@ return [
 	'want_share' => '我要分享',
 	'pageview' => '浏览量: :time 次。',
 	'recommend_min' => '评论需要最少 :num 个字',
+
+	'need_login' => '后才能推荐哦~'
 ];
