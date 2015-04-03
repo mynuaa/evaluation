@@ -50,7 +50,7 @@
 					<a href="{{ url('user/recommendations') }}">
 						<li id="tabRec">{{ trans('app.banner.recommendation') }}</li>
 					</a>
-					<a href="{{ url('/') . '?lang=' . {{ Lang::get('app.lang.value') }} }}">
+					<a href="{{ url('/') . '?lang=' . Lang::get('app.lang.value') }}">
 						<li id="tabRec">{{ Lang::get('app.lang.name') }}</li>
 					</a>
 				</ul>
