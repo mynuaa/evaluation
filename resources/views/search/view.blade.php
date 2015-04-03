@@ -1,6 +1,6 @@
 @extends('template.master')
 
-@section('title')五四评优@stop
+@section('title'){{ trans('app.name') }}@stop
 
 @section('content')
 <br>
@@ -8,20 +8,20 @@
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<div class="rs-tabs">
 		<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer fa fa-chevron-down" onclick="toggleExpand(this)"></div>
-		<a href="{{ url('/') }}" class="rs-tab">全部</a>
-		<a href="{{ url('search/school') }}" class="rs-tab">校级</a>
+		<a href="{{ url('/') }}" class="rs-tab">{{ trans('search.all') }}</a>
+		<a href="{{ url('search/school') }}" class="rs-tab">{{ trans('search.school') }}</a>
 		@foreach (trans('college') as $cid => $cname)
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
 		@endforeach
 	</div>
 	<fieldset>
-		<legend><b>全局搜索</b></legend>
+		<legend><b>{{ trans('search.global') }}</b></legend>
 		<select name="type" id="type" style="width:5em">
-			<option value="stuid">学号</option>
-			<option value="name">姓名</option>
+			<option value="stuid">{{ trans('search.stuid') }}</option>
+			<option value="name">{{ trans('search.name') }}</option>
 		</select>
 		<input type="search" name="key" style="display:inline-block;width:8em">
-		<input type="submit" value="搜索" class="btn-success">
+		<input type="submit" value="{{ trans('search.search') }}" class="btn-success">
 	</fieldset>
 </form>
 @foreach ($applies as $stu)
@@ -30,7 +30,7 @@
 		<div class="card-inner">
 			<div class="card-titles fullwidth">
 				<div class="card-title">{{ $stu->title }}</div>
-				<div class="card-content card-author">{{ $stu->name }}，{{ $stu->major }}专业</div>
+				<div class="card-content card-author">{{ $stu->name }}，{{ $stu->major }}{{ trans('apply.professional') }}</div>
 			</div>
 			<img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}" class="card-avatar">
 			<div class="card-content card-describtion">{{ substr($stu->whoami, 0, 150) . "..." }}</div>

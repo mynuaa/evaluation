@@ -1,17 +1,17 @@
 @extends('template.master')
 
-@section('title')个人信息@stop
+@section('title'){{ trans('update.title') }}@stop
 
 @section('content')
-<div class="page-title">个人信息</div>
+<div class="page-title">{{ trans('update.title') }}</div>
 <div class="rs-form-outer">
 	<form action="#" method="post" class="rs-form-aligned center">
 		<p>
-			<label for="name">真实姓名：</label>
+			<label for="name">{{ trans('update.real_name') }}：</label>
 			<input name="name" id="name" type="text" value="{{ $user->name }}">
 		</p>
 		<p>
-			<label for="college">学院：</label>
+			<label for="college">{{ trans('update.college') }}：</label>
 			<select name="college" id="college">
 				@foreach (trans('college') as $cid => $cname)
 				<option value="{{ $cid }}"@if ($cid == $user->college || (!$user->college && $cid == substr($user->username, 0, 2))) selected @endif>{{ $cname }}</option>
@@ -20,11 +20,11 @@
 		</p>
 		<div class="avatar-choose-outer">
 			@for ($i = 0; $i < 10; $i++)
-			<img src="{{ asset('/img/avatar-' . $i . '.png') }}" class="avatar-choose @if ($user->avatar == $i) avatar-chosen @endif" onclick="setChosen(this)" alt="{{ '头像' . $i }}">
+			<img src="{{ asset('/img/av	atar-' . $i . '.png') }}" class="avatar-choose @if ($user->avatar == $i) avatar-chosen @endif" onclick="setChosen(this)" alt="{{ trans('update.avatar') . $i }}">
 			@endfor
 		</div>
 		<div class="form-btns">
-			<input type="submit" class="btn-success" value="更新">
+			<input type="submit" class="btn-success" value="{{ trans('update.update') }}">
 		</div>
 		<input type="hidden" name="avatar" value="0" id="chosen">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">

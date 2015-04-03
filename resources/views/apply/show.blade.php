@@ -8,7 +8,7 @@
 	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
 	<div class="fl">
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
-		<div>{{ $apply->major }}专业</div>
+		<div>{{ $apply->major . trans('apply.professional') }}</div>
 	</div>
 	@if (Auth::user()->isAdmin())
 	<input type="button" value="删除" class="btn-danger fr" onclick="if(confirm('真特么要删？不考虑考虑了？'))window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
@@ -25,7 +25,7 @@
 		@endif
 	@endif */?>
 </div>
-<h5>我的青春最风采</h5>
+<h5>{{ trans('apply.photo') }}</h5>
 <div class="row">
 	@for ($i = 1; $i <= 3; $i++)
 		@if ($apply['img' . $i] !== '')
@@ -36,11 +36,11 @@
 		@endif
 	@endfor
 </div>
-<h5>我是这样一个人</h5>
+<h5>{{ trans('apply.whoami') }}</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->whoami) . "\n") !!}</p>
-<h5>我的故事</h5>
+<h5>{{ trans('apply.story') }}</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->story) . "\n") !!}</p>
-<h5>我的不足</h5>
+<h5>{{ trans('apply.disadvantages') }}</h5>
 <p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
 @if ($apply->tag1 != '')
 <div class="rs-tabs" style="height:auto">
@@ -50,11 +50,11 @@
 </div>
 @endif
 <hr>
-<h3>我要推荐</h3>
+<h3>{{ trans('apply.want_recommend') }}</h3>
 @if (!Auth::check())
 <div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">登录</a>之后才可以推荐哦！</div>
 @elseif ($apply->isRecommended)
-<div class="rs-msg rs-msg-info">你已经推荐过这个人啦！</div>
+<div class="rs-msg rs-msg-info">{{ trans('message.recommend.before') }}</div>
 @else
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth" onsubmit="checkForm()">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
@@ -68,7 +68,7 @@
 		<li>无意义的简单字符、重复性内容会被审核为无效推荐！实名推荐，请对自己的名誉负责哈！</li>
 	</ul>
 	<div class="rs-form-btns">
-		<input type="submit" value="推荐" class="btn-success">
+		<input type="submit" value="{{ trans('apply.submit') }}" class="btn-success">
 	</div>
 </form>
 @endif
@@ -84,7 +84,7 @@
 	@endforeach
 </div>
  <p class="tip">
- 	<span>已浏览：{{ $apply->pageview < 3000 ? $apply->pageview : '3000+' }}次。</span>
+ 	<span>{{ trans('apply.pageview', ['time' => $apply->pageview < 3000 ? $apply->pageview : '3000+']) }}</span>
 {{--@if ($is_wechat)
 	<span>收到了{{ $apply->like }}个赞。</span>	
 	<a class="pointer" id="btnLike">
@@ -92,7 +92,7 @@
 	</a>
 	@endif --}}
 </p>
-<h3>我要分享</h3>
+<h3>{{ trans('apply.want_share') }}</h3>
 @include('template.share')
 @stop
 
@@ -115,7 +115,7 @@ else{
 }
 function checkForm(){
 	if(document.getElementById("applyContent").value.length<50){
-		alert("推荐内容要求50字以上！");
+		alert({{ trans('apply.recommend_min', ['num' => 50]) }});
 		return false;
 	}
 }

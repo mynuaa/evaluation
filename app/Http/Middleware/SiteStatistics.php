@@ -4,6 +4,8 @@ use Closure, Auth, Request, Bus, Session;
 use App\Commands\SaveStatistics;
 use Illuminate\Foundation\Bus\DispatchesCommands as Dispatch;
 
+use App;
+
 class SiteStatistics {
 
 	use Dispatch;
@@ -16,6 +18,7 @@ class SiteStatistics {
 	 */
 	public function handle($request, Closure $next)
 	{
+		App::setLocale('en');
 		$data = [
 			'url' => $request->url(),
 			'ip' => $request->server('REMOTE_ADDR'),

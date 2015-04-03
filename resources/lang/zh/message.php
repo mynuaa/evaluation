@@ -1,18 +1,32 @@
 <?php
 
 return [
-	'login_needed' => '请先登录！',
-	'login_successed' => '登录成功！',
-	'login_failed' => '登录失败',
-	'logout_successed' => '用户已注销！',
-	'apply_successed' => '申报成功！',
-	'update_successed' => '资料更新成功',
-	'recommend_successed' => '成功提交评论！',
-	'recommend_too_much' => '每个人最多只能提交'.config('business.recommend.max').'份推荐！',
-	'recommend_before' => '您已经推荐过这个人啦！',
-	'vote_successed' => '投票成功！',
-	'voted_too_much' => '每个人最多只能投'.config('business.recommend.max').'票！',
-	'voted_before' => '您已经给这个人投过票啦！',
-	'vote_cross_college' => '您不能跨院对院级投票的同学进行投票！',
-	'user_info_needed' => '需要录入姓名、学院信息已保证更好的使用！'
+	'login' => [
+		'needed' => '需要登录使用更多功能！',
+		'success' => '登录成功！',
+		'failed' => '登录失败！',
+	],
+	'logout' => [
+		'success' => '注销成功！',
+	],
+	'apply' => [
+		'success' => '申报成功！',
+	],
+	'update' => [
+		'success' => '资料更新！',
+	],
+	'recommend' => [
+		'seccess' => '成功推荐！',
+		'too_much' => '哎呀，你推荐的太多了！',
+		'before' => '已经推荐过了呦~',
+	],
+	'vote' => [
+		'success' => '已经投上了宝贵的一票！',
+		'too_much' => '哎呀，怎么可以投这么多票呢！',
+		'before' => '知道你俩关系好，可是你只能给他投一票哦~',
+		'cross_college' => '咳咳，跨学院投票是不被允许的~~',
+	],
+	'user' => [
+		'info_need' => '先完善下个人信息好了~',
+	],
 ];

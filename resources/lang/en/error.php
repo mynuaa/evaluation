@@ -4,8 +4,8 @@ return [
 	'404' => [
 		'title' => '404_Not_Found',
 		'content' => [
-			'你找到界面找不到了唉=。=',
+			'The Page You Looking For Is Missing!',
 		],
 	],
-	'back' => '点击返回上一页.',
+	'back' => 'Click to back page.',
 ];

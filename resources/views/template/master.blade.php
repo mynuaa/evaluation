@@ -28,7 +28,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/rscss.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
-	<title>@yield('title') - 南航五四评优</title>
+	<title>@yield('title') - {{ trans('app.nuaa').' '.trans('app.name') }}</title>
 	<!--[if lt IE 9]>
 	<script src="{{ asset('/js/html5.js') }}"></script>
 	<script src="{{ asset('/js/ieBetter.js') }}"></script>
@@ -38,17 +38,17 @@
 	<!-- 页眉 -->
 	<div class="rs-header">
 		<div class="rs-container">
-			<a href="{{ url('/') }}"><h1 class="fl pointer white">五四评优</h1></a>
+			<a href="{{ url('/') }}"><h1 class="fl pointer white">{{ trans('app.name') }}</h1></a>
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav">
 					<a href="{{ url('/') }}">
-						<li id="tabMain">我要推荐</li>
+						<li id="tabMain">{{ trans('app.banner.recommend') }}</li>
 					</a>
 					<a href="{{ url('apply/apply') }}">
-						<li id="tabApp">我要申报</li>
+						<li id="tabApp">{{ trans('app.banner.apply') }}</li>
 					</a>
 					<a href="{{ url('user/recommendations') }}">
-						<li id="tabRec">我的推荐</li>
+						<li id="tabRec">{{ trans('app.banner.recommendation') }}</li>
 					</a>
 				</ul>
 			</nav>
@@ -56,12 +56,12 @@
 				@if (Auth::check())
 				<ul class="rs-user-nav user-logged" id="tabUsr">
 					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar" onclick="void(0)"></li>
-					<a href="{{ url('user/update') }}"><li>更新资料</li></a>
-					<a href="{{ url('user/logout') }}"><li>退出登录</li></a>
+					<a href="{{ url('user/update') }}"><li>{{ trans('app.banner.update') }}</li></a>
+					<a href="{{ url('user/logout') }}"><li>{{ trans('app.banner.logout') }}</li></a>
 				</ul>
 				@else
 				<ul class="rs-user-nav">
-					<a href="{{ url('user/login') }}"><li>登录</li></a>
+					<a href="{{ url('user/login') }}"><li>{{ trans('app.banner.login') }}</li></a>
 				</ul>
 				@endif
 			</nav>
@@ -71,7 +71,7 @@
 	<div class="rs-message">
 		<div class="rs-container">
 			<div class="rs-msg rs-msg-warning">
-				需要使用Chrome、Firefox、IE≥9等现代浏览器访问本页面。<a href="http://browsehappy.com/" target="_blank">点此下载</a>
+				{{ trans('app.ie') }}<a href="http://browsehappy.com/" target="_blank">{{ trans('app.download') }}</a>
 			</div>
 		</div>
 	</div>
@@ -93,10 +93,9 @@
 	<!-- 页脚 -->
 	<div class="rs-footer center">
 		<div class="rs-container">
-			<div>自豪地采用</div>
-			<div>『<a href="http://my.nuaa.edu.cn" target="_blank">©纸飞机南航青年网络社区</a>』</div>
-			<div>提供的技术支持</div>
-			{{-- <a class="tip">&lt;想看项目时间轴就点我&gt;</a> --}}
+			<div>{{ trans('app.powerby.0') }}</div>
+			<div>『<a href="http://my.nuaa.edu.cn" target="_blank">{{ trans('app.powerby.1') }}</a>』</div>
+			<div>{{ trans('app.powerby.2') }}</div>
 		</div>
 	</div>
 	<script>

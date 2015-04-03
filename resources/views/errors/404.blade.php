@@ -34,11 +34,10 @@
 	}
 </style>
 <div id="contain">
-	<div id="header">404_Not_Found</div>
-	<div id="head">你似乎访问了</div>
-	<div id="head">一个<b>不存在</b>的页面</div>
-	<div id="content">
-		<li class="pointer" onclick="window.history.go(-1)">返回上一级</li>
-	</div>
+	<div id="header">{{ trans('error.404.title') }}</div>
+	@foreach(trans('error.404.content') as $value)		
+		<p id="content" style="text-identent:5em">{{ $value }}</p>
+	@endforeach
+	<p class="pointer right" onclick="window.history.go(-1)">{{ trans('error.back') }}&nbsp;&nbsp;&nbsp;</p>
 </div>
 @stop
