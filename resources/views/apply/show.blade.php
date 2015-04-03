@@ -8,7 +8,7 @@
 	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
 	<div class="fl">
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
-		<div>{{ $apply->major . trans('apply.professional') }}</div>
+		<div>{{ trans('apply.professional', ['name' => $apply->major]) }}</div>
 	</div>
 	@if (Auth::check() && Auth::user()->isAdmin())
 	<input type="button" value="删除" class="btn-danger fr" onclick="if(confirm('真特么要删？不考虑考虑了？'))window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
