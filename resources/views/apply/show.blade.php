@@ -10,7 +10,7 @@
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
 		<div>{{ $apply->major . trans('apply.professional') }}</div>
 	</div>
-	@if (Auth::user()->isAdmin())
+	@if (Auth::check() && Auth::user()->isAdmin())
 	<input type="button" value="删除" class="btn-danger fr" onclick="if(confirm('真特么要删？不考虑考虑了？'))window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
 	@endif
 	<?php /*@if (Auth::check())
