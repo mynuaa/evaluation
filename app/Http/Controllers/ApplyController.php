@@ -69,7 +69,7 @@ class ApplyController extends Controller {
 
 		$user->apply()->save($apply);
 
-		return redirect('apply/apply')->withMessage(['type' => 'success', 'content' => trans('message.apply_successed')]);
+		return redirect('apply/apply')->withMessage(['type' => 'success', 'content' => trans('message.apply.success')]);
 	}
 
 	public function getShow($id, Request $request)
@@ -97,12 +97,12 @@ class ApplyController extends Controller {
 
 		if ($user->isRecommendTooMuch())
 		{
-			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_too_much')]);
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.too_much')]);
 		}
 
 		if ($user->isRecommended($request->applyid))
 		{
-			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend_before')]);
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.before')]);
 		}
 
 		$user->recommendations()->attach($request->applyid, ['content' => $request->content]);
@@ -110,7 +110,7 @@ class ApplyController extends Controller {
 
 		$remain = $user->remain();
 
-		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend_successed') . "你还可以推荐${remain['recommend']}人。"]);
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success') . "你还可以推荐${remain['recommend']}人。"]);
 	}
 
 	public function getVote($id)
@@ -119,7 +119,7 @@ class ApplyController extends Controller {
 
 		if (Auth::user()->isVoted($id))
 		{
-			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.voted_before')]);
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.before')]);
 		}
 
 		$apply = Apply::find($id);
@@ -128,7 +128,7 @@ class ApplyController extends Controller {
 		{
 			if ($apply->college != Auth::user()->college)
 			{
-				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote_cross_college')]);
+				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.cross_college')]);
 			}
 		}
 
@@ -136,7 +136,7 @@ class ApplyController extends Controller {
 
 		if ($votes->count() >= config('business.vote.max'))
 		{
-			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote_too_much')]);
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much')]);
 		}
 
 		$votes->attach($id);
@@ -144,7 +144,7 @@ class ApplyController extends Controller {
 
 		$remain = Auth::user()->remain();
 
-		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.vote_successed') . "你还可以投${remain['vote']}票。"]);
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.vote.success') . "你还可以投${remain['vote']}票。"]);
 	}
 
 	public function getLike($id)

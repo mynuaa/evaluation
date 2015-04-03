@@ -32,7 +32,7 @@ class UserController extends Controller {
 
 		if (Auth::attempt(['username' => $username, 'password' => $password], true))
 		{
-			return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login_successed')]);
+			return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
 		}
 		else
 		{
@@ -47,18 +47,18 @@ class UserController extends Controller {
 			}
 			else
 			{
-				return redirect('user/update')->withMessage(['type' => 'info', 'content' => trans('message.user_info_needed')]);
+				return redirect('user/update')->withMessage(['type' => 'info', 'content' => trans('message.user.info_need')]);
 			}
 		}
 
-		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login_successed')]);
+		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
 	}
 
 	public function getLogout()
 	{
 		Auth::logout();
 
-		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.logout_successed')]);
+		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.logout.success')]);
 	}
 
 	public function getUpdate()
@@ -76,7 +76,7 @@ class UserController extends Controller {
 
 		$user->save();
 
-		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.update_successed')]);
+		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.update.success')]);
 	}
 
 	public function getRecommendations()
