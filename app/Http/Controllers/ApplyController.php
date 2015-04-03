@@ -157,6 +157,8 @@ class ApplyController extends Controller {
 		if (Auth::user()->isAdmin())
 		{
 			Apply::find($id)->delete();
+
+			return redirect('/')->withMessage(['type' => 'success', 'content' => '删除成功 =。=']);
 		}
 		else
 		{

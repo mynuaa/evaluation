@@ -11,7 +11,7 @@
 		<div>{{ $apply->major }}专业</div>
 	</div>
 	@if (Auth::user()->isAdmin())
-	<input type="button" value="删除" class="btn-danger fr" onclick="window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
+	<input type="button" value="删除" class="btn-danger fr" onclick="if(confirm('真特么要删？不考虑考虑了？'))window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
 	@endif
 	<?php /*@if (Auth::check())
 		@if (Auth::user()->name == $apply->name)
