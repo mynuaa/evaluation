@@ -18,7 +18,6 @@ class SiteStatistics {
 	 */
 	public function handle($request, Closure $next)
 	{
-		App::setLocale('en');
 		$data = [
 			'url' => $request->url(),
 			'ip' => $request->server('REMOTE_ADDR'),

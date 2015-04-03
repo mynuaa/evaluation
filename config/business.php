@@ -31,5 +31,9 @@ return [
 	'WeChat_UA' => 'MicroMessenger',
 	'tag' => [
 		'max' => 5
+	],
+	'languages' => [
+		'default' => 'zh',
+		'en'
 	]
 ];
