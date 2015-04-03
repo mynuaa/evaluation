@@ -13,7 +13,7 @@ class ApplyController extends Controller {
 
 	public function __construct()
 	{
-		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation']]);
+		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
 	}
 
 	public function getApply()
@@ -150,5 +150,17 @@ class ApplyController extends Controller {
 	public function getLike($id)
 	{
 		Apply::find($id)->increment('like');
+	}
+
+	public function getDelete($id)
+	{
+		if (Auth::user()->isAdmin())
+		{
+			Apply::find($id)->delete();
+		}
+		else
+		{
+			abort(403, 'Access denied.');
+		}
 	}
 }

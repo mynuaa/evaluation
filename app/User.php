@@ -65,10 +65,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	// 	return $query->whereUsername($stuid);
 	// }
 
-	// public function isAdmin()
-	// {
-	// 	return $this->admin == 1;
-	// }
+	public function isAdmin()
+	{
+		return $this->admin == 1;
+	}
 
 	// public function scopeAdmin($query)
 	// {

@@ -10,6 +10,9 @@
 		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
 		<div>{{ $apply->major }}专业</div>
 	</div>
+	@if (Auth::user()->isAdmin())
+	<input type="button" value="删除" class="btn-danger fr" onclick="window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
+	@endif
 	<?php /*@if (Auth::check())
 		@if (Auth::user()->name == $apply->name)
 			<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
@@ -82,8 +85,8 @@
 </div>
  <p class="tip">
  	<span>已浏览：{{ $apply->pageview < 3000 ? $apply->pageview : '3000+' }}次。</span>
-{{--	<span>收到了{{ $apply->like }}个赞。</span>
-	@if ($is_wechat)
+{{--@if ($is_wechat)
+	<span>收到了{{ $apply->like }}个赞。</span>	
 	<a class="pointer" id="btnLike">
 		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
