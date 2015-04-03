@@ -13,7 +13,7 @@ return [
 		'success' => 'Apply Successed!',
 	],
 	'update' => [
-		'success' => 'Apply Successed!',
+		'success' => 'Update Successed!',
 	],
 	'recommend' => [
 		'seccess' => 'Recommend Successed!',
