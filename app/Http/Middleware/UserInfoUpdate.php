@@ -23,7 +23,7 @@ class UserInfoUpdate {
 				$user = Auth::user();
 				if (($user->name == null) || $user->college == null)
 				{
-					return redirect('user/update')->withMessage(['type' => 'warning', 'content' => trans('message.user_info_needed')]);
+					return redirect('user/update')->withMessage(['type' => 'warning', 'content' => trans('message.user.info_need')]);
 				}
 			}
 		}

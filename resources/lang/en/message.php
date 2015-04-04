@@ -2,7 +2,7 @@
 
 return [
 	'login' => [
-		'needed' => 'Login First!',
+		'need' => 'Login First!',
 		'success' => 'Login Successed!',
 		'failed' => 'Login Failed!',
 	],
