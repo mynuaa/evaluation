@@ -28,5 +28,13 @@ return [
 			'type' => 'info',
 			'content' => 'wrong file type error, fixed.'
 		],
+		[
+			'type' => 'info',
+			'content' => 'Retry upload your images, mail to 532000663@qq.com and ask for help.'
+		],
+		[
+			'type' => 'info',
+			'content' => 'Images with extensions like .jpg .png .bmp .jpeg is permitted.'
+		],
 	]
 ];

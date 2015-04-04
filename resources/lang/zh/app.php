@@ -28,5 +28,13 @@ return [
 			'type' => 'info',
 			'content' => '上传文件类型错误，已修复。'
 		],
+		[
+			'type' => 'info',
+			'content' => '之前未能上传成功的请重试，依旧有错误请联系532000663。'
+		],
+		[
+			'type' => 'info',
+			'content' => '图片支持的后缀名为.jpg .png .bmp .jpeg。'
+		],
 	]
 ];
