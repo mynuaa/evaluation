@@ -14,13 +14,20 @@
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
 		@endforeach
 	</div>
+	@foreach(trans('app.notice') as $value)
 	<div class="rs-message">
 		<div class="rs-container">
-			@foreach(trans('app.notice') as $value)
 			<div class="rs-msg rs-msg-{{ $value['type'] }}">
 				{{ strtoupper($value['type']) }} : {{ $value['content'] }}
 			</div>
-			@endforeach
+		</div>
+	</div>
+	@endforeach
+	<div class="rs-message">
+		<div class="rs-container">
+			<div class="rs-msg rs-msg-error">
+				{{ trans('app.statistics', $statistics) }}
+			</div>
 		</div>
 	</div>
 	<fieldset>

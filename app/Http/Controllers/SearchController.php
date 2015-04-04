@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Apply, App\Http\Requests\DetailsGetRequest;
+use App\Apply, App\Http\Requests\DetailsGetRequest, App\PageView, App\Recommendation;
 
 class SearchController extends Controller {
 
@@ -16,7 +16,7 @@ class SearchController extends Controller {
 			return rand();
 		});
 
-		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies);
+		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies)->withStatistics($this->statistics());
 	}
 
 	public function getSchool()
@@ -27,7 +27,7 @@ class SearchController extends Controller {
 			return rand();
 		});
 
-		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies);
+		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies)->withStatistics($this->statistics());
 	}
 
 	public function getCollege($cid)
@@ -38,7 +38,7 @@ class SearchController extends Controller {
 			return rand();
 		});
 
-		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies);
+		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies)->withStatistics($this->statistics());
 	}
 
 	public function getDetails(DetailsGetRequest $request)
@@ -52,6 +52,15 @@ class SearchController extends Controller {
 			return rand();
 		});
 
-		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies);
+		return view('search.view')->withAppliesOrigin($applies_origin)->withApplies($applies)->withStatistics($this->statistics());
+	}
+
+	private function statistics()
+	{
+		return [
+			'apply' => Apply::all()->count(),
+			'recommendation' => Recommendation::all()->count(),
+			'visit' => PageView::today()->count(),
+		];
 	}
 }

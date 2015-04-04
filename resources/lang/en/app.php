@@ -34,7 +34,8 @@ return [
 		],
 		[
 			'type' => 'info',
-			'content' => 'Images with extensions like .jpg .png .bmp .jpeg is permitted.'
+			'content' => 'Images with extensions like .jpg .png .bmp .jpeg are permitted.'
 		],
-	]
+	],
+	'statistics' => 'Up to now, we have :apply application, :recommendation recommendations, and :visit PVs.',
 ];
