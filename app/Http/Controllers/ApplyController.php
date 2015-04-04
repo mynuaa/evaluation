@@ -38,7 +38,7 @@ class ApplyController extends Controller {
 					$request->photos[$key] = $filename;
 				}
 				else{
-					abort(500, trans('message.file.wrong_type.'));
+					abort(500, trans('message.file.wrong_type'));
 				}
 			}
 		}
