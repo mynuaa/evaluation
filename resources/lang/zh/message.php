@@ -29,4 +29,8 @@ return [
 	'user' => [
 		'info_need' => '先完善下个人信息好了~',
 	],
+	'file' => [
+		'fail' => '文件上传好像出问题了，是不是文件太大？',
+		'wrong_type' => '文件类型错误，只允许上传.jpg .png .jpeg .bmp图形文件。'
+	],
 ];

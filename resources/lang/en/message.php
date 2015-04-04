@@ -29,4 +29,8 @@ return [
 	'user' => [
 		'info_need' => 'Type Information To Get Better Use.',
 	],
+	'file' => [
+		'fail' => 'Somen error on file upload.',
+		'wrong_type' => 'Type of file goes wrong, .jpg .png .jpeg .bmp file is permited.'
+	]
 ];
