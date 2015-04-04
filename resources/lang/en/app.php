@@ -23,4 +23,10 @@ return [
 		'value' => 'zh'
 	],
 	'mail' => 'If you have any questions, please mail to ',
+	'notice' => [
+		[
+			'type' => 'info',
+			'content' => 'wrong file type error, fixed.'
+		],
+	]
 ];

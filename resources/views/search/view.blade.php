@@ -4,7 +4,7 @@
 
 @section('content')
 <br>
-<img src="{{ asset('/img/banner.jpg') }}" width="100%" alt="五四评优" class="hidden-phone">
+<img src="{{ asset('/img/banner.jpg') }}" width="100%" alt="{{ trans('app.name') }}" class="hidden-phone">
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<div class="rs-tabs">
 		<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer fa fa-chevron-down" onclick="toggleExpand(this)"></div>
@@ -13,6 +13,15 @@
 		@foreach (trans('college') as $cid => $cname)
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
 		@endforeach
+	</div>
+	<div class="rs-message">
+		<div class="rs-container">
+			@foreach(trans('app.notice') as $value)
+			<div class="rs-msg rs-msg-{{ $value['type'] }}">
+				{{ strtoupper($value['type']) }} : {{ $value['content'] }}
+			</div>
+			@endforeach
+		</div>
 	</div>
 	<fieldset>
 		<legend><b>{{ trans('search.global') }}</b></legend>

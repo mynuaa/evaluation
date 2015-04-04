@@ -23,4 +23,10 @@ return [
 		'value' => 'en'
 	],
 	'mail' => '如果您有疑问请发送邮件至：',
+	'notice' => [
+		[
+			'type' => 'info',
+			'content' => '上传文件类型错误，已修复。'
+		],
+	]
 ];
