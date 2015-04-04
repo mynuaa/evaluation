@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Apply, App\Http\Requests\DetailsGetRequest, App\PageView, App\Recommendation;
+use App\Apply, App\Http\Requests\DetailsGetRequest, App\Pageview, App\Recommendation;
 
 class SearchController extends Controller {
 
