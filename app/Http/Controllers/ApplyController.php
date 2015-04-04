@@ -32,7 +32,7 @@ class ApplyController extends Controller {
 					return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.file.fail')]);
 				}
 
-				if (in_array($file->getClientMimeType(), config('business.MIME')) && in_array($file->getClientOriginalExtension(), array_keys(config('business.MIME')))){
+				if (in_array($file->getClientMimeType(), config('business.MIME'))){
 					$filename = md5($file->getClientOriginalName().$file->getClientSize()).'.'.$file->getClientOriginalExtension();
 					$file->move(storage_path() . "/app/photos", $filename);
 					$request->photos[$key] = $filename;
