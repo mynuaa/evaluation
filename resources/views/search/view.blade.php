@@ -18,7 +18,7 @@
 	<div class="rs-message">
 		<div class="rs-container">
 			<div class="rs-msg rs-msg-{{ $value['type'] }}">
-				{{ strtoupper($value['type']) }} : {{ $value['content'] }}
+				{{ strtoupper($value['type']) }} : {!! $value['content'] !!}
 			</div>
 		</div>
 	</div>
