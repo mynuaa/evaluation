@@ -60,7 +60,7 @@ class SearchController extends Controller {
 		return [
 			'apply' => Apply::all()->count(),
 			'recommendation' => Recommendation::all()->count(),
-			'visit' => Pageview::today()->count(),
+			// 'visit' => Pageview::today()->count(),
 		];
 	}
 }
