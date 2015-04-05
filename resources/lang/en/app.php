@@ -37,5 +37,5 @@ return [
 			'content' => 'Images with extensions like .jpg .png .bmp .jpeg are permitted.'
 		],
 	],
-	'statistics' => 'Up to now, we have :apply application, :recommendation recommendations, :visit PVs.',
+	'statistics' => 'Up to now, we have :apply application, :recommendation recommendations, and :visit PVs today.',
 ];
