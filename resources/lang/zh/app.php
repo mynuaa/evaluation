@@ -26,23 +26,15 @@ return [
 	'notice' => [
 		[
 			'type' => 'info',
-			'content' => '上传文件类型错误，已修复。'
-		],
-		[
-			'type' => 'info',
 			'content' => '之前未能上传成功的请重试，依旧有错误请联系532000663。'
 		],
 		[
 			'type' => 'info',
-			'content' => '图片支持的后缀名为.jpg .png .bmp .jpeg。'
+			'content' => '参与活动前请看<a href="http://my.nuaa.edu.cn/evaluation/notes.doc">活动须知</a>'
 		],
 		[
-			'type' => 'warning',
-			'content' => '图片上传错误请换校园网，外网上传存在不明错误。'
-		],
-		[
-			'type' => 'warning',
-			'content' => '活动前请看<a href="http://my.nuaa.edu.cn/evaluation/notes.doc">活动须知</a>'
+			'type' => 'error',
+			'content' => '警告！警告！不要用360浏览器！'
 		]
 	],
 	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，今日累计访问量:visit次。',
