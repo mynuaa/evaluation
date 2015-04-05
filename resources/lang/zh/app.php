@@ -37,7 +37,7 @@ return [
 			'content' => '警告！警告！不要用360浏览器！'
 		],
 		[
-			'type' => 'error',
+			'type' => 'warning',
 			'content' => '学号031410129的罗海宁访问量爆表，内容已删除。'
 		]
 	],

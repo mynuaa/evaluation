@@ -19,7 +19,7 @@
 			</select>
 		</p>
 		<div class="avatar-choose-outer">
-			@for ($i = 0; $i < 10; $i++)
+			@for ($i = 0; $i < 18; $i++)
 			<img src="{{ asset('/img/av	atar-' . $i . '.png') }}" class="avatar-choose @if ($user->avatar == $i) avatar-chosen @endif" onclick="setChosen(this)" alt="{{ trans('update.avatar') . $i }}">
 			@endfor
 		</div>
