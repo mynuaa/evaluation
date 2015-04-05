@@ -36,6 +36,10 @@ return [
 			'type' => 'info',
 			'content' => '图片支持的后缀名为.jpg .png .bmp .jpeg。'
 		],
+		[
+			'type' => 'warning',
+			'content' => '图片上传错误请换校园网，外网上传存在不明错误。'
+		],
 	],
 	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，今日累计访问量:visit次。',
 ];
