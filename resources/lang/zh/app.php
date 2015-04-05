@@ -22,7 +22,7 @@ return [
 		'name' => 'English',
 		'value' => 'en'
 	],
-	'mail' => '如果您有疑问请发送邮件至：',
+	'mail' => '举报邮箱：',
 	'notice' => [
 		[
 			'type' => 'info',
