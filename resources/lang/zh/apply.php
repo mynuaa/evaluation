@@ -31,7 +31,7 @@ return [
 	'whoami' => '我是这样的一个人',
 	'whoami_intro' => '介绍一下我是谁~将在评选网站首页出现，请字斟句酌。',
 	'story' => '我的故事',
-	'story_intro' => '我的故事（字数不少于300，没有上限）',
+	'story_intro' => '我的故事（字数不少于400，没有上限）',
 	'disadvantages' => '我的不足',
 	'disadvantages_intro' => '我的不足（有待继续努力的地方）',
 
