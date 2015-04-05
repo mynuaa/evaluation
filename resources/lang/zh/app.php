@@ -37,5 +37,5 @@ return [
 			'content' => '图片支持的后缀名为.jpg .png .bmp .jpeg。'
 		],
 	],
-	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，今日累计访问量:visit次。',
+	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，累计访问量:visit次。',
 ];
