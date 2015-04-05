@@ -115,7 +115,7 @@ else{
 }
 function checkForm(){
 	if(document.getElementById("applyContent").value.length<50){
-		alert({{ trans('apply.recommend_min', ['num' => 50]) }});
+		alert("{{ trans('apply.recommend_min', ['num' => 50]) }}");
 		return false;
 	}
 }
