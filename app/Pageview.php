@@ -20,6 +20,6 @@ class Pageview extends Model {
 
 	public function scopeToday($query)
 	{
-		return $query->where('created_at', '>', strtotime(date('Y-m-d')))->get();
+		return $query->where('created_at', '>', strtotime(date('Y-m-d')));
 	}
 }
