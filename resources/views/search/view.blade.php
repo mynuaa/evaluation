@@ -54,7 +54,7 @@
 	</div>
 </a>
 @endforeach
-{!! $applies_origin->render() !!}
+{!! $applies->render() !!}
 @stop
 
 @section('scripts')
