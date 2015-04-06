@@ -23,7 +23,7 @@ class UpdatePostRequest extends Request {
 	{
 		return [
 			'name' => 'required',
-			'college' => 'required|integer|max:16',
+			'college' => 'required|integer|max:100',
 		];
 	}
 
