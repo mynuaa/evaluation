@@ -6,7 +6,7 @@
 <style>
 	#contain{
 		margin: 20px auto;
-		max-width:350px;
+		max-width:550px;
 		height: 300px;
 		background: #E74C3C;
 		border-radius: 5px;
@@ -25,9 +25,7 @@
 		margin-top: 10px;
 	}
 	#content{
-		line-height: 20px;
 		padding-left: 30px;
-		margin-top: 30px;
 	}
 	#content li{
 		margin-top: 10px;
@@ -36,7 +34,7 @@
 <div id="contain">
 	<div id="header">{{ trans('error.500.title') }}</div>
 	@foreach(trans('error.500.content') as $value)		
-		<p id="content" style="text-identent:5em">{{ $value }}</p>
+		<p id="content">{{ $value }}</p>
 	@endforeach
 	<p class="pointer right" onclick="window.history.go(-1)">{{ trans('error.back') }}&nbsp;&nbsp;&nbsp;</p>
 </div>
