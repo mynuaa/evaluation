@@ -22,10 +22,10 @@ return [
 		'vote' => ''
 	],
 	'MIME' => [
-		'jpg',
-		'jpeg',
-		'bmp',
-		'png',
+		'jpg' => 'image/jpeg',
+		'jpeg' => 'image/jpeg',
+		'bmp' => 'image/bmp',
+		'png' => 'image/png',
 	],
 	'photo' => "photos/",
 	'WeChat_UA' => 'MicroMessenger',
