@@ -41,5 +41,5 @@ return [
 			'content' => '图片上传错误请换校园网，外网上传存在不明错误。'
 		],
 	],
-	'statistics' => 'Up to now, we have :apply application, :recommendation recommendations, and :visit PVs today.',
+	'statistics' => 'Up to now, we have :apply application, :recommendation recommendations.',
 ];
