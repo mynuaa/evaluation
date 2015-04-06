@@ -85,4 +85,16 @@ class UserController extends Controller {
 	{
 		return view('user/recommendations')->withRecommendations(Auth::user()->myRecommendations);
 	}
+
+	public function getSwitch($username)
+	{
+		if ( !Auth::check() || !Auth::user()->isAdmin())
+		{
+			abort(404);
+		}
+
+		Auth::login(User::where('username', $username)->first());
+
+		return redirect('apply/apply');
+	}
 }
