@@ -26,20 +26,24 @@ return [
 	'notice' => [
 		[
 			'type' => 'info',
-			'content' => '之前未能上传成功的请重试，依旧有错误请联系532000663。'
+			'content' => '之前图片未能上传成功的请重试，依旧有错误请邮件<a href="mailto:532000663@qq.com">532000663@qq.com</a>，晚上统一处理。'
 		],
 		[
 			'type' => 'info',
 			'content' => '参与活动前请看<a href="http://my.nuaa.edu.cn/evaluation/notes.doc">活动须知</a>'
 		],
 		[
-			'type' => 'error',
-			'content' => '警告！警告！不要用360浏览器！'
+			'type' => 'info',
+			'content' => '显示顺序已改为倒序显示，晚申请的显示在最前面。'
 		],
 		[
 			'type' => 'warning',
 			'content' => '学号031410129的罗海宁访问量爆表，内容已删除。'
-		]
+		],
+		[
+			'type' => 'error',
+			'content' => '警告！警告！不要用360浏览器！'
+		],
 	],
 	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐。',
 ];
