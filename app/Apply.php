@@ -36,6 +36,6 @@ class Apply extends Model {
 
 	public function scopeOrder($query)
 	{
-		return $query->orderBy('created_at', 'rand()');
+		return $query->orderByRaw('rand()');
 	}
 }
