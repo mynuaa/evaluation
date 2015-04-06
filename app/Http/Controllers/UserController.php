@@ -44,10 +44,12 @@ class UserController extends Controller {
 				$user->save();
 
 				Auth::login($user, true);
+
+				return redirect('user/update')->withMessage(['type' => 'info', 'content' => trans('message.user.info_need')]);
 			}
 			else
 			{
-				return redirect('user/update')->withMessage(['type' => 'info', 'content' => trans('message.user.info_need')]);
+				return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login.failed')]);
 			}
 		}
 
