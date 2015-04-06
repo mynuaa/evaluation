@@ -14,7 +14,7 @@ class PhotoController extends Controller {
 		if(Storage::exists(config('business.photo') . $name))
 		{
 			$photo = Storage::get(config('business.photo') . $name);
-			return response($photo, 200)->header('Content-Type', config('business.MIME.' . preg_replace('/^\w+\./', '', $name)));
+			return response($photo, 200)->header('Content-Type', config('business.MIME.' . strtolower(preg_replace('/^\w+\./', '', $name))));
 
 		}
 		else
