@@ -34,8 +34,8 @@ class Apply extends Model {
 		return $this->hasMany('App\Recommendation');
 	}
 
-	public function scopeDesc($query)
+	public function scopeOrder($query)
 	{
-		return $query->orderBy('created_at', 'desc');
+		return $query->orderBy('created_at', 'rand()');
 	}
 }

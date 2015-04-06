@@ -11,21 +11,21 @@ class SearchController extends Controller {
 
 	public function index()
 	{
-		$applies = Apply::desc()->paginate(config('business.paginate'));
+		$applies = Apply::order()->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
 
 	public function getSchool()
 	{
-		$applies = Apply::type(config('business.type.school'))->desc()->paginate(config('business.paginate'));
+		$applies = Apply::type(config('business.type.school'))->order()->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
 
 	public function getCollege($cid)
 	{
-		$applies = Apply::type(config('business.type.college'))->college($cid)->desc()->paginate(config('business.paginate'));
+		$applies = Apply::type(config('business.type.college'))->college($cid)->order()->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
@@ -35,7 +35,7 @@ class SearchController extends Controller {
 		$type = $request->type;
 		$key = $request->key;
 
-		$applies = Apply::where($type, $key)->desc()->paginate(config('business.paginate'));
+		$applies = Apply::where($type, $key)->order()->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
