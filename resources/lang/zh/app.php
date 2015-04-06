@@ -45,5 +45,5 @@ return [
 			'content' => '警告！警告！不要用360浏览器！'
 		],
 	],
-	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐。',
+	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，今日累计访问:visit人次。',
 ];

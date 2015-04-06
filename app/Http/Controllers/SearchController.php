@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Apply, App\Http\Requests\DetailsGetRequest, App\Pageview, App\Recommendation;
+use Cache;
 
 class SearchController extends Controller {
 
@@ -44,7 +45,9 @@ class SearchController extends Controller {
 		return [
 			'apply' => Apply::all()->count(),
 			'recommendation' => Recommendation::all()->count(),
-			// 'visit' => Pageview::today()->count(),
+			'visit' => Cache::get('visit', function(){
+				return Pageview::today()->count();
+			}),
 		];
 	}
 }

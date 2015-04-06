@@ -1,10 +1,10 @@
 <?php namespace App\Http\Middleware;
 
-use Closure, Auth, Request, Bus, Session;
+use Closure, Auth, Request, Bus, Session, Cache;
 use App\Commands\SaveStatistics;
 use Illuminate\Foundation\Bus\DispatchesCommands as Dispatch;
 
-use App;
+use App, App\Pageview;
 
 class SiteStatistics {
 
@@ -25,6 +25,13 @@ class SiteStatistics {
 			'refer' => $request->header('referer'),
 			'uid' => Auth::check() ? Auth::user()->id : null
 		];
+
+		if(Cache::has('visit')){
+			Cache::increment('visit');
+		}
+		else{
+			Cache::add('visit', Pageview::today()->count(), '30');
+		}
 
 		$response = $next($request);
 
