@@ -26,12 +26,12 @@ class SiteStatistics {
 			'uid' => Auth::check() ? Auth::user()->id : null
 		];
 
-		if(Cache::has('visit')){
-			Cache::increment('visit');
-		}
-		else{
-			Cache::forever('visit', Pageview::today()->count());
-		}
+		// if(Cache::has('visit')){
+		// 	Cache::increment('visit');
+		// }
+		// else{
+		// 	Cache::forever('visit', Pageview::today()->count());
+		// }
 
 		$response = $next($request);
 
