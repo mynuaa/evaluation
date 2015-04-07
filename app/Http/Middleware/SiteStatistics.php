@@ -30,7 +30,7 @@ class SiteStatistics {
 			Cache::increment('visit');
 		}
 		else{
-			Cache::add('visit', Pageview::today()->count(), '30');
+			Cache::forever('visit', Pageview::today()->count());
 		}
 
 		$response = $next($request);
