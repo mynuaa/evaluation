@@ -45,9 +45,7 @@ class SearchController extends Controller {
 		return [
 			'apply' => Apply::all()->count(),
 			'recommendation' => Recommendation::all()->count(),
-			'visit' => Cache::get('visit', function(){
-				return Pageview::today()->count();
-			}),
+			'visit' => Cache::get('visit', '10000+'),
 		];
 	}
 }
