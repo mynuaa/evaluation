@@ -26,10 +26,6 @@ return [
 	'notice' => [
 		[
 			'type' => 'info',
-			'content' => '之前图片未能上传成功的请重试，依旧有错误请邮件<a href="mailto:532000663@qq.com">532000663@qq.com</a>，晚上统一处理。'
-		],
-		[
-			'type' => 'info',
 			'content' => '参与活动前请看<a href="http://my.nuaa.edu.cn/evaluation/notes.doc">活动须知</a>'
 		],
 		[
@@ -38,16 +34,12 @@ return [
 		],
 		[
 			'type' => 'info',
-			'content' => '图片区点击可看大图！'
-		],
-		[
-			'type' => 'warning',
-			'content' => '学号031410129的罗海宁访问量爆表，已取消参评资格。'
+			'content' => '好消息：应广大同学的强烈要求，百佳青年学生的个人申报时间延长至4月9日24：00，特此公告。'
 		],
 		[
 			'type' => 'info',
-			'content' => '好消息：应广大同学的强烈要求，百佳青年学生的个人申报时间延长至4月9日24：00，特此公告。'
-		],
+			'content' => '学院类别按学院显示院内所有人的申报。'
+		]
 	],
 	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，今日累计访问:visit人次。',
 ];
