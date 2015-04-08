@@ -44,6 +44,10 @@ return [
 			'type' => 'warning',
 			'content' => '学号031410129的罗海宁访问量爆表，已取消参评资格。'
 		],
+		[
+			'type' => 'info',
+			'content' => '好消息：应广大同学的强烈要求，百佳青年学生的个人申报时间延长至4月9日24：00，特此公告。'
+		],
 	],
 	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，今日累计访问:visit人次。',
 ];
