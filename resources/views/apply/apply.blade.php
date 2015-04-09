@@ -85,7 +85,7 @@
 			<label for="promise" style="width:auto;max-width:75%;line-height:1em;text-align:left;vertical-align:middle"><b>{{ trans('apply.promise') }}</b>:&nbsp;{{ trans('apply.promise_content') }}</label>
 		</p>
 		<div class="form-btns">
-			<input type="submit" class="btn-success" value="{{ trans('apply.submit') }}">
+			<input type="submit" class="btn-success" value="{{ trans('apply.submit') }}" disabled>
 		</div>
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	</form>

@@ -51,27 +51,7 @@
 @endif
 <hr>
 <h3>{{ trans('apply.want_recommend') }}</h3>
-@if (!Auth::check())
-<div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}！</div>
-@elseif ($apply->isRecommended)
-<div class="rs-msg rs-msg-info">{{ trans('message.recommend.before') }}</div>
-@else
-<form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth" onsubmit="checkForm()">
-	<input name='applyid' type='hidden' value="{{ $apply->id }}">
-	<input name="_token" type="hidden" value="{{ csrf_token() }}">
-	<textarea name="content" id="applyContent" class="fullwidth" placeholder="我想极力推荐{{ $apply->name }}同学，因为……"></textarea>
-	<h5>注意事项</h5>
-	<ul>
-		<li>每人获得10个实名推荐即可获得参评资格。</li>
-		<li>每个师生只可推荐5人，不区分学院。数量有限，请珍惜！</li>
-		<li>推荐词至少50字，一定要言之有物</li>
-		<li>无意义的简单字符、重复性内容会被审核为无效推荐！实名推荐，请对自己的名誉负责哈！</li>
-	</ul>
-	<div class="rs-form-btns">
-		<input type="submit" value="{{ trans('apply.submit') }}" class="btn-success">
-	</div>
-</form>
-@endif
+<div class="rs-msg rs-msg-info">时间截止，停止推荐。</div>
 <div id="card-transition" class="card-transition">
 	@foreach ($apply->recommendations()->get() as $rec)
 	<div class="card-outer" id="apply_a_{{ $rec->id }}">

@@ -23,6 +23,8 @@ class ApplyController extends Controller {
 
 	public function postApply(ApplyPostRequest $request)
 	{
+		return view('apply.apply')->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
 			if ($file)
@@ -97,6 +99,8 @@ class ApplyController extends Controller {
 
 	public function postRecommendation(RecommendPostRequest $request)
 	{
+		return redirect()->back()->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+
 		$user = Auth::user();
 
 		if ($user->isRecommendTooMuch())
