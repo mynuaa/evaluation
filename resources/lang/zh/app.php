@@ -28,10 +28,13 @@ return [
 			'content' => '参与活动前请看<a href="http://my.nuaa.edu.cn/evaluation/notes.doc">活动须知</a>'
 		],
 		[
-			'content' => '南航师生可免注册登录，教师使用HR系统账号密码即可登录。'
+			'content' => '推荐数不到十人的申报已暂时隐藏，投票结束后显示。',
 		],
 		[
-			'content' => '推荐数不到十人的申报已暂时隐藏，投票结束后显示。'
+			'content' =>'实名登陆师生每人可投8票，本院4票，其他学院4票，数量有限，请珍惜。',
+		],
+		[
+			'content' => '院内投票候选人其他学院同学不能对其投票。'
 		]
 	],
 	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，今日累计访问:visit人次。',

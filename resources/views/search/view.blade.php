@@ -25,7 +25,7 @@
 	<div class="rs-message">
 		<div class="rs-container">
 			<div class="rs-msg rs-msg-{{ $value['type'] or 'info'}}">
-				{{ isset($value['type']) ? strtoupper($value['type']) . ':' : "" }} {!! $value['content'] !!}
+				{{ isset($value['type']) ? strtoupper($value['type']) : "INFO" }} : {!! $value['content'] !!}
 			</div>
 		</div>
 	</div>
