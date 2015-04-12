@@ -24,8 +24,8 @@
 	@foreach(trans('app.notice') as $value)
 	<div class="rs-message">
 		<div class="rs-container">
-			<div class="rs-msg rs-msg-{{ $value['type'] }}">
-				{{ strtoupper($value['type']) }} : {!! $value['content'] !!}
+			<div class="rs-msg rs-msg-{{ $value['type'] or 'info'}}">
+				{{ isset($value['type']) ? strtoupper($value['type']) . ':' : "" }} {!! $value['content'] !!}
 			</div>
 		</div>
 	</div>
