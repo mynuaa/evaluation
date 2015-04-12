@@ -123,8 +123,6 @@ class ApplyController extends Controller {
 
 	public function getVote($id)
 	{
-		return redirect()->back()->withMessage(['type' => 'error', 'content' => '投票还没开始啊喂~']);
-
 		if (Auth::user()->isVoted($id))
 		{
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.before')]);

@@ -13,7 +13,7 @@
 	@if (Auth::check() && Auth::user()->isAdmin())
 	<input type="button" value="删除" class="btn-danger fr" onclick="if(confirm('真特么要删？不考虑考虑了？'))window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
 	@endif
-	<?php /*@if (Auth::check())
+	@if (Auth::check())
 		@if (Auth::user()->name == $apply->name)
 			<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
 		@else
@@ -23,7 +23,9 @@
 			<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
 			@endif
 		@endif
-	@endif */?>
+	@else
+		<a href="{{ url('user/login') }}"><input type="button" value="登录后投票" class="btn-success fr"></a>
+	@endif
 </div>
 <h5>{{ trans('apply.photo') }}</h5>
 <div class="row">
