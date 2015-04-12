@@ -65,12 +65,12 @@
 </div>
  <p class="tip">
  	<span>{{ trans('apply.pageview', ['time' => $apply->pageview < 3000 ? $apply->pageview : '3000+']) }}</span>
-{{--@if ($is_wechat)
-	<span>收到了{{ $apply->like }}个赞。</span>	
+	@if ($is_wechat)
+	<span>收到了{{ $apply->like>3000 ? '3000+' : 3000 }}个赞。</span>	
 	<a class="pointer" id="btnLike">
 		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
-	@endif --}}
+	@endif
 </p>
 <h3>{{ trans('apply.want_share') }}</h3>
 @include('template.share')

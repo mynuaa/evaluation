@@ -27,8 +27,6 @@ return [
 		[
 			'content' => '参与活动前请看<a href="http://my.nuaa.edu.cn/evaluation/notes.doc">活动须知</a>'
 		],
-			'content' => '南航师生可免注册登录，教师使用HR系统账号密码即可登录。'
-		],
 		[
 			'content' => '南航师生可免注册登录，教师使用HR系统账号密码即可登录。'
 		],
