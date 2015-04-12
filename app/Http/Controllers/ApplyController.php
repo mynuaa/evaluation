@@ -123,6 +123,7 @@ class ApplyController extends Controller {
 
 	public function getVote($id)
 	{
+		//是否推荐过此人
 		if (Auth::user()->isVoted($id))
 		{
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.before')]);
@@ -130,27 +131,33 @@ class ApplyController extends Controller {
 
 		$apply = Apply::find($id);
 
+		//院内推荐
 		if ($apply->type = config('business.type.college'))
 		{
-			if ($apply->college != Auth::user()->college)
-			{
+			//是否是同一个学院
+			if ($apply->college != Auth::user()->college){
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.cross_college')]);
+			}
+
+			if (Auth::user()->voteTypeCount(config('business.type.college')) >= config('business.vote.college')){
+				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_college')]);
+			}
+		}
+		else{
+			if (Auth::user()->voteTypeCount(config('business.type.school')) >= config('business.vote.school')){
+				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_school')]);
 			}
 		}
 
-		$votes = Auth::user()->votes();
-
-		if ($votes->count() >= config('business.vote.max'))
-		{
-			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much')]);
-		}
-
-		$votes->attach($id);
+		Auth::user()->votes()->attach($id, ['type' => $apply->type]);
 		Apply::find($id)->increment('votes');
 
 		$remain = Auth::user()->remain();
 
-		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.vote.success') . "你还可以投${remain['vote']}票。"]);
+		return redirect()->back()->withMessage([
+			'type' => 'success',
+			'content' => trans('message.vote.success') . "院内可投${remain['college']}票，校内可投${remain['school']}。"
+		]);
 	}
 
 	public function getLike($id)

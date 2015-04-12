@@ -8,6 +8,8 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 
+use DB;
+
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword, SoftDeletes;
@@ -30,7 +32,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function votes()
 	{
-		return $this->belongsToMany('App\Apply', 'votes');
+		return $this->belongsToMany('App\Apply', 'votes')->withTimestamps()->withPivot('type');
 	}
 
 	public function myRecommendations()
@@ -57,7 +59,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		return [
 			'vote' => config('business.vote.max') - $this->votes()->count(),
-			'recommend' => config('business.recommend.max') - $this->recommendations()->count()
+			'college' => config('business.vote.college') - $this->voteTypeCount(config('business.type.college')),
+			'school' => config('business.vote.school') - $this->voteTypeCount(config('business.type.school'))
+			// 'recommend' => config('business.recommend.max') - $this->recommendations()->count()
 		];
 	}
 	// public function scopeStuid($query, $stuid)
@@ -68,6 +72,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function isAdmin()
 	{
 		return $this->admin == 1;
+	}
+
+	public function voteTypeCount($type)
+	{
+		return $this->votes()->where('votes.type', $type)->count();
 	}
 
 	// public function scopeAdmin($query)

@@ -23,6 +23,8 @@ return [
 	'vote' => [
 		'success' => '已经投上了宝贵的一票！',
 		'too_much' => '哎呀，怎么可以投这么多票呢！',
+		'too_much_college' => '院内投票已经投太多了！',
+		'too_much_school' => '校级投票已经太多了！',
 		'before' => '知道你俩关系好，可是你只能给他投一票哦~',
 		'cross_college' => '咳咳，院内评选中跨学院投票是不被允许的~~',
 	],
