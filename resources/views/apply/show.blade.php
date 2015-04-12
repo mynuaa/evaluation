@@ -7,7 +7,7 @@
 <div class="card-author cl">
 	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
 	<div class="fl">
-		<div>{{ $apply->name }}，{{ $apply->stuid }}</div>
+		<div>{{ $apply->name }}，{{ $apply->stuid }}，{{ trans("app.type." . config("business.type." . $apply->type)) }}</div>
 		<div>{{ trans('apply.professional', ['name' => $apply->major]) }}</div>
 	</div>
 	@if (Auth::check() && Auth::user()->isAdmin())

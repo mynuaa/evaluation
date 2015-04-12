@@ -35,4 +35,8 @@ return [
 		]
 	],
 	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，今日累计访问:visit人次。',
+	'type' => [
+		'college' => '院级评选',
+		'school' => '校级评选'
+	]
 ];
