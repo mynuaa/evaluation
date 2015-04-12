@@ -37,7 +37,7 @@ return [
 			'content' => '院内投票候选人其他学院同学不能对其投票。'
 		]
 	],
-	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐，今日累计访问:visit人次。',
+	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐/评论，今日累计访问:visit人次。',
 	'type' => [
 		'college' => '院级评选',
 		'school' => '校级评选'

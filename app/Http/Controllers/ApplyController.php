@@ -99,31 +99,31 @@ class ApplyController extends Controller {
 
 	public function postRecommendation(RecommendPostRequest $request)
 	{
-		return redirect()->back()->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+		// return redirect()->back()->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$user = Auth::user();
 
-		if ($user->isRecommendTooMuch())
-		{
-			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.too_much')]);
-		}
+		// if ($user->isRecommendTooMuch())
+		// {
+		// 	return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.too_much')]);
+		// }
 
-		if ($user->isRecommended($request->applyid))
-		{
-			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.before')]);
-		}
+		// if ($user->isRecommended($request->applyid))
+		// {
+		// 	return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.before')]);
+		// }
 
 		$user->recommendations()->attach($request->applyid, ['content' => $request->content]);
 		Apply::find($request->applyid)->increment('recommendations');
 
 		$remain = $user->remain();
 
-		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success') . "你还可以推荐${remain['recommend']}人。"]);
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
 	}
 
 	public function getVote($id)
 	{
-		//是否推荐过此人
+		//是否评论过此人
 		if (Auth::user()->isVoted($id))
 		{
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.before')]);
@@ -131,7 +131,7 @@ class ApplyController extends Controller {
 
 		$apply = Apply::find($id);
 
-		//院内推荐
+		//院内评论
 		if ($apply->type == config('business.type.college'))
 		{
 			//是否是同一个学院

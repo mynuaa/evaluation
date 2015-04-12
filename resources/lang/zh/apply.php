@@ -55,10 +55,10 @@ return [
 	'max_three' => '最多只能添加三个标签哦~',
 
 	'professional' => ':name 专业',
-	'want_recommend' => '我要推荐',
+	'want_recommend' => '我要评论',
 	'want_share' => '我要分享',
 	'pageview' => '浏览量: :time 次。',
 	'recommend_min' => '评论需要最少 :num 个字',
 
-	'need_login' => '后才能推荐哦~'
+	'need_login' => '后才能评论哦~'
 ];

@@ -53,7 +53,19 @@
 @endif
 <hr>
 <h3>{{ trans('apply.want_recommend') }}</h3>
-<div class="rs-msg rs-msg-info">时间截止，停止推荐。</div>
+@if (!Auth::check())
+<div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}锛</div>
+@else
+<form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">
+	<input name='applyid' type='hidden' value="{{ $apply->id }}">
+	<input name="_token" type="hidden" value="{{ csrf_token() }}">
+	<textarea name="content" id="applyContent" class="fullwidth" placeholder="想写点评论？"></textarea>
+
+	<div class="rs-form-btns">
+		<input type="submit" value="{{ trans('apply.submit') }}" class="btn-success">
+	</div>
+</form>
+@endif
 <div id="card-transition" class="card-transition">
 	@foreach ($apply->recommendations()->get() as $rec)
 	<div class="card-outer" id="apply_a_{{ $rec->id }}">
