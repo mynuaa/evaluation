@@ -25,7 +25,7 @@ class SearchController extends Controller {
 
 	public function getCollege($cid)
 	{
-		$applies = Apply::college($cid)->order()->paginate(config('business.paginate'));
+		$applies = Apply::type(config('business.type.college'))->college($cid)->order()->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
