@@ -9,11 +9,13 @@ use Storage;
 
 class PhotoController extends Controller {
 
-	public function show($name)
+	public function photo($name)
 	{
-		if(Storage::exists(config('business.photo') . $name))
+		$filename = '/photos/' . $name;
+
+		if(Storage::exists($filename))
 		{
-			$photo = Storage::get(config('business.photo') . $name);
+			$photo = Storage::get($filename);
 			return response($photo, 200)->header('Content-Type', config('business.MIME.' . strtolower(preg_replace('/^\w+\./', '', $name))));
 
 		}
@@ -25,9 +27,11 @@ class PhotoController extends Controller {
 
 	public function thumb($name)
 	{
-		if(Storage::exists(config('business.photo') . $name))
+		$filename = '/thumbs/' . $name;
+
+		if(Storage::exists($filename))
 		{
-			$photo = Storage::get(storage_path() . '/app/ophotos/' . $name);
+			$photo = Storage::get($filename);
 			return response($photo, 200)->header('Content-Type', config('business.MIME.' . strtolower(preg_replace('/^\w+\./', '', $name))));
 
 		}

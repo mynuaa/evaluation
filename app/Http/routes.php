@@ -21,4 +21,4 @@ Route::controllers([
 
 Route::get('thumb/{name}', 'PhotoController@thumb');
 
-Route::resource('photo', 'PhotoController');
+Route::get('photo/{name}', 'PhotoController@photo');
