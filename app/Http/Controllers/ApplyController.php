@@ -129,31 +129,35 @@ class ApplyController extends Controller {
 		}
 
 		$apply = Apply::find($id);
+		$user = Auth::user();
 
-		if ($apply->type == config('business.type.college'))
-		{
-			if ($apply->college != Auth::user()->college){
+		//院级评选只能本院投票
+		if ($apply->type == config('business.type.college')){
+			if ($apply->college != $user->college){
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.cross_college')]);
 			}
+		}
 
-			if (Auth::user()->voteTypeCount(config('business.type.college')) >= config('business.vote.college')){
-				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_college')]);
+		//同学院 || 不同学院
+		if ($user->college == $apply->college){
+			if ($user->countInner() >= config('business.vote.inner')){
+				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_inner')]);
 			}
 		}
 		else{
-			if (Auth::user()->voteTypeCount(config('business.type.school')) >= config('business.vote.school')){
-				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_school')]);
+			if ($user->countOuter() >= config('business.vote.outer')){
+				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_outer')]);
 			}
 		}
 
-		Auth::user()->votes()->attach($id, ['type' => $apply->type]);
-		Apply::find($id)->increment('votes');
+		$user->votes()->attach($id);
+		$apply->increment('votes');
 
 		$remain = Auth::user()->remain();
 
 		return redirect()->back()->withMessage([
 			'type' => 'success',
-			'content' => trans('message.vote.success') . "院内可投${remain['college']}票，校内可投${remain['school']}。"
+			'content' => trans('message.vote.success') . "同学院可投${remain['college']}票，不同学院可投${remain['school']}。"
 		]);
 	}
 

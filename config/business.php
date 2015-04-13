@@ -14,7 +14,9 @@ return [
 	'vote' => [
 		'max' => 8,
 		'college' => 4,
-		'school' => 4
+		'school' => 4,
+		'inner' => 4,
+		'outer' => 4
 	],
 	'avatar' => [
 		'max' => 10

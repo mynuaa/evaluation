@@ -59,8 +59,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		return [
 			'vote' => config('business.vote.max') - $this->votes()->count(),
-			'college' => config('business.vote.college') - $this->voteTypeCount(config('business.type.college')),
-			'school' => config('business.vote.school') - $this->voteTypeCount(config('business.type.school'))
+			'inner' => config('business.vote.inner') -> $this->countInner(),
+			'outer' => config('business.vote.outer') -> $this->countOuter(),
 			// 'recommend' => config('business.recommend.max') - $this->recommendations()->count()
 		];
 	}
