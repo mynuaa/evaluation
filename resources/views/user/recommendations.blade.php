@@ -8,7 +8,12 @@
 <div class="rs-message">
 	<div class="rs-container">
 		<div class="rs-msg rs-msg-info">
+			@if( ($remain['inner'] == 0) && ($remain['outer'] == 0))
+			您的投票已经全部生效，可以让人请客了嗯嗯~~
+			@else
 			同学院可投{{ $remain['inner'] }}票，不同学院可投{{ $remain['outer'] }}票。
+			投满{{ config('business.vote.max') }}票生效，还差{{ $remain['vote'] }}票。
+			@endif
 		</div>
 	</div>
 </div>
