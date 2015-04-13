@@ -35,7 +35,7 @@
 </style>
 <div id="contain">
 	<div id="header">503_Service_Unavailable</div>
-	<p id="content" style="text-identent:5em">五四评优网站系统最后完善中，将于4月4日10:00开放。</p>
-	<p id="content" style="text-align:right;">南航校团委&nbsp;&nbsp;&nbsp;</p>
+	<p id="content" style="text-identent:5em">系统正在升级更新，请稍后。</p>
+	<p id="content" style="text-align:right;">校团委&nbsp;&nbsp;&nbsp;</p>
 </div>
 @stop
