@@ -32,7 +32,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function votes()
 	{
-		return $this->belongsToMany('App\Apply', 'votes')->withTimestamps()->withPivot('type');
+		return $this->belongsToMany('App\Apply', 'votes')->withTimestamps();
 	}
 
 	public function myRecommendations()
