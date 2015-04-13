@@ -157,7 +157,7 @@ class ApplyController extends Controller {
 
 		return redirect()->back()->withMessage([
 			'type' => 'success',
-			'content' => trans('message.vote.success') . "同学院还可投${remain['inner']}票，不同学院还可投${remain['outer']}。"
+			'content' => trans('message.vote.success') . "同学院还可投${remain['inner']}票，不同学院还可投${remain['outer']}票。"
 		]);
 	}
 
