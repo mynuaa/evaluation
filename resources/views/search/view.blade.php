@@ -41,6 +41,7 @@
 	</fieldset>
 </form>
 @foreach ($applies as $stu)
+@if($stu)
 <a href="{{ url('apply/show/' . $stu['id']) }}" class="no-underline" target="_blank">
 	<div class="card-outer">
 		<div class="card-inner">
@@ -53,6 +54,7 @@
 		</div>
 	</div>
 </a>
+@endif
 @endforeach
 {!! $applies->render() !!}
 @stop

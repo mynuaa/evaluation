@@ -83,7 +83,10 @@ class UserController extends Controller {
 
 	public function getRecommendations()
 	{
-		return view('user/recommendations')->withRecommendations(Auth::user()->myRecommendations);
+		return view('user/recommendations')
+			->withRecommendations(Auth::user()->myRecommendations)
+			->withVotes(Auth::user()->Votes)
+			->withRemain(Auth::user()->remain());
 	}
 
 	public function getSwitch($username)
