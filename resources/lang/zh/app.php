@@ -35,6 +35,9 @@ return [
 		],
 		[
 			'content' => '院内投票候选人其他学院同学不能对其投票。'
+		],
+		[
+			'content' => '如果疑问可到<a href="http://my.nuaa.edu.cn/forum.php?mod=viewthread&tid=299907">五四评优专帖</a>提问，会有管理人员解答。'
 		]
 	],
 	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐/评论，今日累计访问:visit人次。',
