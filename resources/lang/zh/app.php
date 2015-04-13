@@ -37,6 +37,7 @@ return [
 			'content' => '如果疑问可到<a href="http://my.nuaa.edu.cn/forum.php?mod=viewthread&tid=299907">五四评优专帖</a>提问，会有管理人员解答。'
 		],
 		[
+			'type' => 'warning',
 			'content' => '投票投满有效，无效投票将于票数统计前剔除。'
 		]
 	],
