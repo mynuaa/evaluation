@@ -28,9 +28,6 @@ return [
 			'content' => '参与活动前请看<a href="http://my.nuaa.edu.cn/evaluation/notes.doc">活动须知</a>'
 		],
 		[
-			'content' => '推荐数不到十人的申报已暂时隐藏，投票结束后显示。',
-		],
-		[
 			'content' =>'实名登陆师生每人可投8票，本院4票，其他学院4票，数量有限，请珍惜。',
 		],
 		[
@@ -38,6 +35,9 @@ return [
 		],
 		[
 			'content' => '如果疑问可到<a href="http://my.nuaa.edu.cn/forum.php?mod=viewthread&tid=299907">五四评优专帖</a>提问，会有管理人员解答。'
+		],
+		[
+			'content' => '投票投满有效，无效投票将于票数统计前剔除。'
 		]
 	],
 	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐/评论，今日累计访问:visit人次。',
