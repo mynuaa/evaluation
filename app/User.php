@@ -64,10 +64,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			// 'recommend' => config('business.recommend.max') - $this->recommendations()->count()
 		];
 	}
-	// public function scopeStuid($query, $stuid)
-	// {
-	// 	return $query->whereUsername($stuid);
-	// }
 
 	public function isAdmin()
 	{
@@ -79,8 +75,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->votes()->where('votes.type', $type)->count();
 	}
 
-	// public function scopeAdmin($query)
-	// {
-	// 	return $query->where('admin', '=', 1);
-	// }
+	public function countInner()
+	{
+		return $this->votes()->where('college', $this->college)->count();
+	}
+
+	public function countOuter()
+	{
+		return $this->votes()->where('college', '!=', $this->college)->count();
+	}
 }

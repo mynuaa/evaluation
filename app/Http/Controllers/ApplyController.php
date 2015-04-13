@@ -123,7 +123,6 @@ class ApplyController extends Controller {
 
 	public function getVote($id)
 	{
-		//是否评论过此人
 		if (Auth::user()->isVoted($id))
 		{
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.before')]);
@@ -131,10 +130,8 @@ class ApplyController extends Controller {
 
 		$apply = Apply::find($id);
 
-		//院内评论
 		if ($apply->type == config('business.type.college'))
 		{
-			//是否是同一个学院
 			if ($apply->college != Auth::user()->college){
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.cross_college')]);
 			}
