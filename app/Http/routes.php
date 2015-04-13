@@ -19,6 +19,6 @@ Route::controllers([
 	'search' => 'SearchController'
 ]);
 
-Route::get('thumb', 'PhotoController@thumb');
+Route::get('thumb/{name}', 'PhotoController@thumb');
 
 Route::resource('photo', 'PhotoController');
