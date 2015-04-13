@@ -6,7 +6,7 @@ return [
 	'banner' => [
 		'recommend' => '我要推荐',
 		'apply' => '我要申报',
-		'recommendation' => '我的推荐',
+		'recommendation' => '投票推荐',
 		'login' => '登录',
 		'update' => '更新资料',
 		'logout' => '注销'
