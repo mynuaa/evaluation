@@ -28,7 +28,7 @@ return [
 			'content' => '参与活动前请看<a href="http://my.nuaa.edu.cn/evaluation/notes.doc">活动须知</a>'
 		],
 		[
-			'content' =>'实名登陆师生每人可投8票，本院4票，其他学院4票，数量有限，请珍惜。',
+			'content' =>'实名登陆师生每人可投且投满8票，本院4票，其他学院4票，数量有限，请珍惜。',
 		],
 		[
 			'content' => '院内投票候选人其他学院同学不能对其投票。'
@@ -41,7 +41,7 @@ return [
 			'content' => '投票投满有效，无效投票将于票数统计前剔除。'
 		]
 	],
-	'statistics' => '截止至目前，一共有:apply人申报，累计:recommendation条推荐/评论，今日累计访问:visit人次。',
+	'statistics' => '截止至目前，一共有:apply名候选人，:recommendation条推荐/评论，累计投票:vote人次。',
 	'type' => [
 		'college' => '院级评选',
 		'school' => '校级评选'
