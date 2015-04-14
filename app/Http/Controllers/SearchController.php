@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Apply, App\Http\Requests\DetailsGetRequest, App\Pageview, App\Recommendation;
+use App\Apply, App\Http\Requests\DetailsGetRequest, App\Pageview, App\Recommendation, App\Vote;
 use Cache;
 
 class SearchController extends Controller {
