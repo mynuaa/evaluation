@@ -37,6 +37,9 @@ return [
 			'content' => '投满八票主要两点考虑 : 因为存在大小院人多人少的问题，为了最大程度实现公平；二是引导大家阅读更多其他优秀同学的故事。投票，不是给认识的同学投票，是为优秀的同学投票。这才是评优的最大意义。'
 		],
 		[
+			'content' => '<a href="http://my.nuaa.edu.cn/evaluation/whatsmatter.doc">什么才是最重要</a>'
+		],
+		[
 			'type' => 'warning',
 			'content' => '投票投满有效，无效投票将于票数统计前剔除。'
 		]
