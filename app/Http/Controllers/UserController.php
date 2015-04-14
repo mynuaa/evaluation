@@ -32,7 +32,7 @@ class UserController extends Controller {
 
 		if (Auth::attempt(['username' => $username, 'password' => $password], true))
 		{
-			return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
+			return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
 		}
 		else
 		{
@@ -53,7 +53,7 @@ class UserController extends Controller {
 			}
 		}
 
-		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
+		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
 	}
 
 	public function getLogout()
