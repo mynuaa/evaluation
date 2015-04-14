@@ -22,7 +22,7 @@ return [
 		'name' => 'English',
 		'value' => 'en'
 	],
-	'mail' => '举报邮箱：',
+	'mail' => '如有疑问请发邮件或回复校团委微信消息，会有老师为你解答。',
 	'notice' => [
 		[
 			'content' => '参与活动前请看<a href="http://my.nuaa.edu.cn/evaluation/notes.doc">活动须知</a>'
@@ -32,9 +32,6 @@ return [
 		],
 		[
 			'content' => '院内投票候选人其他学院同学不能对其投票。'
-		],
-		[
-			'content' => '如果疑问可到<a href="http://my.nuaa.edu.cn/forum.php?mod=viewthread&tid=299907">五四评优专帖</a>提问，会有管理人员解答。'
 		],
 		[
 			'type' => 'warning',
