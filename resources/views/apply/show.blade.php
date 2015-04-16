@@ -14,7 +14,7 @@
 	<input type="button" value="删除" class="btn-danger fr" onclick="if(confirm('真特么要删？不考虑考虑了？'))window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
 	@endif
 	@if (Auth::check())
-		@if (Auth::user()->name == $apply->name)
+		@if (Auth::user()->name == $apply->name || Auth::user()->idAdmin())
 			<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
 		@else
 			@if ($apply->isVoted)
