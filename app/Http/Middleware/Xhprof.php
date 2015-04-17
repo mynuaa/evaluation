@@ -14,6 +14,7 @@ class xhprof {
 	public function handle($request, Closure $next)
 	{
 		if (Auth::user()->isAdmin()){
+			echo "<!--Xhprof Begin-->";
 			xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 		}
 		
@@ -29,6 +30,8 @@ class xhprof {
 
 			$xhprof_runs = new XHprofRuns_Default();
 			$run_id = $xhprof_runs->save_run($data, "test");
+
+			echo "<!--Xhprof End-->";
 		}
 	}
 
