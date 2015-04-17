@@ -14,5 +14,7 @@
 	$xhprof_runs = new XHprofRuns_Default();
 	$run_id = $xhprof_runs->save_run($data, "test");
 
+	echo $run_id;
+
 	var_dump($data);
 ?>
