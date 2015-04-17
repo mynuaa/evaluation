@@ -5,7 +5,7 @@
  * @package  Laravel
  * @author   Taylor Otwell <taylorotwell@gmail.com>
  */
-
+if (isset($_GET['debug'])) xhprof_enable();
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -55,3 +55,8 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
+
+if (isset($_GET['debug'])){
+	$data = xhprof_disable();
+	var_dump($data);
+}

@@ -13,17 +13,17 @@ class xhprof {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if (Auth::user()->isAdmin()){
-			echo "<!--Xhprof Begin-->";
-			//xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
-			xhprof_enable();
-		}
+		// if (Auth::user()->isAdmin()){
+		// 	echo "<!--Xhprof Begin-->";
+		// 	//xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
+		// 	xhprof_enable();
+		// }
 		
 		return $next($request);
 
-		if (Auth::user()->isAdmin()){
-			$data = xhprof_disable();
-			var_dump($data);
+		// if (Auth::user()->isAdmin()){
+		// 	$data = xhprof_disable();
+		// 	var_dump($data);
 
 			// $xhprof_root = "/usr/share/xhprof";
 
@@ -32,7 +32,7 @@ class xhprof {
 
 			// $xhprof_runs = new XHprofRuns_Default();
 			// $run_id = $xhprof_runs->save_run($data, "test");
-		}
+		// }
 	}
 
 }
