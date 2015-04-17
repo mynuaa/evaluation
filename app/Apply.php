@@ -36,6 +36,7 @@ class Apply extends Model {
 
 	public function scopeOrder($query)
 	{
-		return $query->orderByRaw('rand()');
+		return $query->orderBy('votes');
+		// return $query->orderByRaw('rand()');
 	}
 }
