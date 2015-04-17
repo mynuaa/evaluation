@@ -16,9 +16,10 @@ class Kernel extends HttpKernel {
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 		'App\Http\Middleware\VerifyCsrfToken',
-		'sitestatistics' => 'App\Http\Middleware\SiteStatistics',
+		'Sitestatistics' => 'App\Http\Middleware\SiteStatistics',
 		'UserInfoUpdate' => 'App\Http\Middleware\UserInfoUpdate',
-		'LocalLanguage' => 'App\Http\Middleware\LocalLanguage'
+		'LocalLanguage' => 'App\Http\Middleware\LocalLanguage',
+		'Xhprof' => 'App\Http\Middleware\Xhprof'
 	];
 
 	/**
