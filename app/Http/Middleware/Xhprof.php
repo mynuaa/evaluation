@@ -28,7 +28,7 @@ class xhprof {
 			include_once $xhprof_root."/xhprof_lib/utils/xhprof_runs.php";
 
 			$xhprof_runs = new XHprofRuns_Default();
-			$run_id = $xhprof_runs->save_run($xhprof_data, "test");
+			$run_id = $xhprof_runs->save_run($data, "test");
 		}
 	}
 
