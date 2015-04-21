@@ -21,15 +21,6 @@
 			</div>
 		</div>
 	</div>
-	@foreach(trans('app.notice') as $value)
-	<div class="rs-message">
-		<div class="rs-container">
-			<div class="rs-msg rs-msg-{{ $value['type'] or 'info'}}">
-				{{ isset($value['type']) ? strtoupper($value['type']) : "INFO" }} : {!! $value['content'] !!}
-			</div>
-		</div>
-	</div>
-	@endforeach
 	<fieldset>
 		<legend><b>{{ trans('search.global') }}</b></legend>
 		<select name="type" id="type" style="width:5em">
