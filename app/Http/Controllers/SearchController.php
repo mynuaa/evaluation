@@ -43,9 +43,9 @@ class SearchController extends Controller {
 	private function statistics()
 	{
 		return [
-			'apply' => Apply::all()->count(),
-			'recommendation' => Recommendation::all()->count(),
-			'vote' => Vote::all()->count(),
+			'apply' => Apply::count(),
+			'recommendation' => Recommendation::count(),
+			'vote' => Vote::count(),
 			// 'visit' => Cache::get('visit', '10000+'),
 		];
 	}
