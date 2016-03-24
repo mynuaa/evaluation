@@ -59,7 +59,7 @@
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
 	<input name="_token" type="hidden" value="{{ csrf_token() }}">
-	<textarea name="content" id="applyContent" class="fullwidth" placeholder="想写点评论？"></textarea>
+	<textarea name="content" id="applyContent" class="fullwidth" placeholder="在这里写上你的推荐吧！"></textarea>
 
 	<div class="rs-form-btns">
 		<input type="submit" value="{{ trans('apply.submit') }}" class="btn-success">

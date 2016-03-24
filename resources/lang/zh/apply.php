@@ -30,8 +30,8 @@ return [
 	'description' => '自我描述',
 	'whoami' => '我是这样的一个人',
 	'whoami_intro' => '介绍一下我是谁~将在评选网站首页出现，请字斟句酌。',
-	'story' => '我的故事',
-	'story_intro' => '我的故事（字数不少于400，没有上限）',
+	'story' => '我的青春故事',
+	'story_intro' => '我的青春故事（字数不少于400，没有上限）',
 	'disadvantages' => '我的不足',
 	'disadvantages_intro' => '我的不足（有待继续努力的地方）',
 
@@ -55,10 +55,10 @@ return [
 	'max_three' => '最多只能添加三个标签哦~',
 
 	'professional' => ':name 专业',
-	'want_recommend' => '我要评论',
+	'want_recommend' => '我要推荐',
 	'want_share' => '我要分享',
 	'pageview' => '浏览量: :time 次。',
-	'recommend_min' => '评论需要最少 :num 个字',
+	'recommend_min' => '推荐需要最少 :num 个字',
 
-	'need_login' => '后才能评论哦~'
+	'need_login' => '后才能推荐哦~'
 ];

@@ -127,7 +127,7 @@ function removeTag(dom){
 }
 function checkForm(){
 	if(document.getElementById("story").length<400){
-		alert("“我的故事”必须大于400字！");
+		alert("“我的青春故事”必须大于400字！");
 		return false;
 	}
 }

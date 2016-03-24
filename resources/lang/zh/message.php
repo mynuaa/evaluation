@@ -16,9 +16,9 @@ return [
 		'success' => '资料更新！',
 	],
 	'recommend' => [
-		'seccess' => '成功评论！',
-		'too_much' => '哎呀，你评论的太多了！',
-		'before' => '已经评论过了呦~',
+		'seccess' => '推荐成功！',
+		'too_much' => '哎呀，你推荐的太多了！',
+		'before' => '已经推荐过了呦~',
 	],
 	'vote' => [
 		'success' => '已经投上了宝贵的一票！',

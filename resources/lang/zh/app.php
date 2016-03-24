@@ -44,7 +44,7 @@ return [
 			'content' => '投票投满有效，无效投票将于票数统计前剔除。'
 		]
 	],
-	'statistics' => '截止至目前，一共有:apply名候选人，:recommendation条推荐/评论，累计投票:vote人次。',
+	'statistics' => '截止至目前，一共有:apply名候选人，:recommendation条推荐，累计投票:vote人次。',
 	'type' => [
 		'college' => '院级评选',
 		'school' => '校级评选'
