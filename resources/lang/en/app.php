@@ -1,20 +1,20 @@
 <?php
 
 return [
-	'nuaa' => 'Nuaa',
+	'nuaa' => 'Nuaa ',
 	'name' => 'May Fourth Youth Election',
 	'banner' => [
-		'recommend' => 'Recommend Here',
-		'apply' => 'Apply Here',
-		'recommendation' => 'My Recommendations',
+		'recommend' => 'Recommend',
+		'apply' => 'Apply',
+		'recommendation' => 'My Records',
 		'login' => 'Log in',
 		'update' => 'Update',
 		'logout' => 'Log out'
 	],
-	'ie' => 'Please use the browser which is better than IE 9.',
+	'ie' => 'Please use modern browser like Chrome, Firefox, IE(≥9), etc. to access this page.',
 	'download' => 'Click here',
 	'powerby' => [
-		'Power by',
+		'Proudly powered by',
 		'my.nuaa.edu.cn',
 		'',
 	],

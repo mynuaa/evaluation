@@ -23,11 +23,13 @@ return [
 	'vote' => [
 		'success' => 'Vote Successed!',
 		'too_much' => 'Vote Too Much!',
+		'too_much_inner' => 'You can\'t vote any other person inside your college!',
+		'too_much_outer' => 'You can\'t vote any other person outside your college!',
 		'before' => 'You Have Voted This Person Before!',
 		'cross_college' => 'You Can Not Vote People Cross College!',
 	],
 	'user' => [
-		'info_need' => 'Type Information To Get Better Use.',
+		'info_need' => 'Type Information To Get Better Functions.',
 	],
 	'file' => [
 		'fail' => 'Somen error on file upload.',

@@ -3,22 +3,19 @@
 @section('title'){{ trans('app.name') }}@stop
 
 @section('content')
-<br>
-<img src="{{ asset('/img/banner.jpg') }}" width="100%" alt="{{ trans('app.name') }}" class="hidden-phone">
+<img src="{{ asset('/img/banner.png') }}" width="100%" alt="{{ trans('app.name') }}" id="banner" class="hidden-phone">
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<div class="rs-tabs">
 		<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer fa fa-chevron-down" onclick="toggleExpand(this)"></div>
-		<a href="{{ url('/') }}" class="rs-tab">{{ trans('search.all') }}</a>
-		<a href="{{ url('search/school') }}" class="rs-tab">{{ trans('search.school') }}</a>
+		<a href="{{ url('/') }}" class="rs-tab"><strong>{{ trans('search.all') }}</strong></a>
+		<a href="{{ url('search/school') }}" class="rs-tab"><strong>{{ trans('search.school') }}</strong></a>
 		@foreach (trans('college') as $cid => $cname)
 		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
 		@endforeach
 	</div>
 	<div class="rs-message">
-		<div class="rs-container">
-			<div class="rs-msg rs-msg-info">
-				{{ trans('app.statistics', $statistics) }}
-			</div>
+		<div class="rs-msg rs-msg-info">
+			{{ trans('app.statistics', $statistics) }}
 		</div>
 	</div>
 	<fieldset>
@@ -41,7 +38,7 @@
 				<div class="card-content card-author">{{ $stu->name }}，{{ trans('apply.professional', ['name' => $stu->major]) }}</div>
 			</div>
 			<img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}" class="card-avatar">
-			<div class="card-content card-describtion">{{ substr($stu->whoami, 0, 150) . "..." }}</div>
+			<div class="card-content card-describtion">{{ substr(strip_tags($stu->whoami), 0, 150) . "..." }}</div>
 		</div>
 	</div>
 </a>

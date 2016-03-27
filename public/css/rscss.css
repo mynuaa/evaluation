@@ -12,16 +12,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 	outline:none;
 }
 @-ms-viewport{width:device-width;}
-::-webkit-scrollbar{
-	width:10px;
-	height:10px;
-}
-::-webkit-scrollbar-thumb{background-color:#666;}
-::-webkit-scrollbar-thumb:hover{background-color:#333;}
-::-webkit-scrollbar-thumb:active{background-color:#000;}
-::-webkit-scrollbar-button{display:none;}
 [disabled]{
-	background:#EBEBE4;
+	background:#EBEBE4 !important;
 	color:#333 !important;
 	cursor:no-drop;
 }
@@ -72,7 +64,7 @@ h4,h5{margin:0.5em 0;}
 div{position:relative;}
 var{white-space:nowrap;}
 em{font-style:normal;color:#C00;}
-a{color:#900;text-decoration:none;}
+a{color:#800;text-decoration:none;}
 a:hover{text-decoration:underline;}
 a.no-underline:hover{text-decoration:none !important;}
 blockquote{
@@ -123,6 +115,7 @@ ul,ol{margin:5px 0;}
 	color:#FFF;
 	font-size:0.9em;
 	padding:0.5em 0.8em;
+	margin:1em 0;
 	box-sizing:border-box;
 }
 .rs-msg-info{background:#337AB7;}
@@ -169,9 +162,6 @@ h6{font-size:0.83em;}
 	height:50px;
 	position:relative;
 }
-.rs-message{
-	margin:1em 0;
-}
 .rs-container{
 	max-width:960px;
 	margin:auto;
@@ -191,7 +181,7 @@ body>.rs-container{
 	padding:0;
 	height:50px;
 	line-height:50px;
-	margin-left:20px;
+	margin-left:10px;
 }
 .rs-main-nav>a{
 	overflow:hidden;
@@ -199,24 +189,25 @@ body>.rs-container{
 @media screen and (max-width:525px){
 	.rs-main-nav{
 		position:absolute;
-		width:100px;
 		height:50px;
 		overflow:hidden;
 		z-index:10;
 		transition:all 200ms;
 	}
 	.rs-main-nav:before{
-		content:"操作";
+		content:"≡";
 		display:block;
-		width:100px;
 		height:50px;
 		text-align:center;
+		font-family:"Courier New","SimHei";
+		font-size:2em;
+		font-weight:bold;
 	}
 	.rs-main-nav li{
 		float:left;
 	}
 	.rs-main-nav:hover{
-		background:#C0392B;
+		background:#800;
 		height:200px;
 	}
 }
@@ -232,21 +223,20 @@ body>.rs-container{
 	position:relative;
 	display:inline-block;
 	width:auto;
+	box-sizing:border-box;
 	float:left;
 	padding:0 15px;
-	width:70px;
 	height:50px;
 	text-align:center;
-}
-.rs-nav li{
+	white-space:nowrap;
 	color:#FFF;
-}
-.rs-nav li:hover{
-	background:#C0392B;
 	cursor:pointer;
 }
+.rs-nav li:hover{
+	background:#800;
+}
 .rs-nav-selected{
-	background:#C0392B !important;
+	background:#800 !important;
 }
 .rs-nav-selected:after{
 	position:absolute;
@@ -270,22 +260,30 @@ body>.rs-container{
 	right:0;
 	transition:all 200ms;
 }
+.rs-user-nav li{
+	width:100%;
+}
+.rs-user-nav:after{
+	display:none;
+}
 .user-logged.rs-user-nav:hover{
 	height:150px;
-	background:#C0392B;
+	background:#800;
 	transition:all 200ms;
 }
 .rs-user-nav:hover li{
 	height:50px;
 	z-index:10;
 }
+.rs-user-nav li,.rs-main-nav li{
+	transition:all 200ms !important;
+}
 .rs-user-nav li:hover,.rs-main-nav li:hover{
-	transition:all 200ms;
 	text-shadow:0 0 5px #FFF;
 }
 .rs-footer{
 	width:100%;
-	padding:20px 0;
+	padding:22px 0;
 	position:absolute;
 	bottom:0;
 	font-size:80%;
@@ -406,7 +404,7 @@ textarea{
 .btn-cancel{background:#95A5A6;}
 .btn-cancel:hover{background:#7F8C8D;}
 .btn-danger{background:#E74C3C;}
-.btn-danger:hover{background:#C0392B;}
+.btn-danger:hover{background:#800;}
 /*网格*/
 .row{width:100%;display:block;overflow:hidden;}
 .col-1{width:8.333333333%;}
@@ -456,7 +454,7 @@ td,th,.td,.th{
 .rs-tabs{
 	margin:10px 0;
 	border-radius:5px;
-	border:1px solid #CCC;
+	border:1px solid #E74C3C;
 	overflow:hidden;
 }
 .rs-tab{
@@ -465,7 +463,6 @@ td,th,.td,.th{
 	background:#E74C3C;
 	color:#FFF;
 	float:left;
-	font-weight:bold;
 	font-size:90%;
 	padding:4px 8px;
 	display:inline-block;
@@ -520,7 +517,6 @@ td,th,.td,.th{
 	display:inline-block;
 }
 .pagination li{
-	/*display:inline-block;*/
 	border-left:1px solid #BBB;
 	float:left;
 }

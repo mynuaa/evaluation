@@ -28,7 +28,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/rscss.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
-	<title>@yield('title') - {{ trans('app.nuaa').' '.trans('app.name') }}</title>
+	<title>@yield('title') - {{ trans('app.nuaa').trans('app.name') }}</title>
 	<!--[if lt IE 9]>
 	<script src="{{ asset('/js/html5.js') }}"></script>
 	<script src="{{ asset('/js/ieBetter.js') }}"></script>
@@ -38,7 +38,8 @@
 	<!-- 页眉 -->
 	<div class="rs-header">
 		<div class="rs-container">
-			<a href="{{ url('/') }}"><h1 class="fl pointer white">{{ trans('app.name') }}</h1></a>
+			<!-- <a href="{{ url('/') }}"><h1 class="fl pointer white">{{ trans('app.name') }}</h1></a> -->
+			<a href="{{ url('/') }}"><img src="{{ asset('/img/nuaa_logo.png') }}" height="100%"></a>
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav">
 					<a href="{{ url('/') }}">
@@ -51,47 +52,47 @@
 						<li id="tabRec">{{ trans('app.banner.recommendation') }}</li>
 					</a>
 					<a href="{{ url('/') . '?lang=' . Lang::get('app.lang.value') }}">
-						<li id="tabRec">{{ Lang::get('app.lang.name') }}</li>
+						<li id="tabLang">{{ Lang::get('app.lang.name') }}</li>
 					</a>
 				</ul>
 			</nav>
 			<nav id="nav-user" class="rs-nav fr">
 				@if (Auth::check())
 				<ul class="rs-user-nav user-logged" id="tabUsr">
-					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar" onclick="void(0)"></li>
+					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar"></li>
 					<a href="{{ url('user/update') }}"><li>{{ trans('app.banner.update') }}</li></a>
 					<a href="{{ url('user/logout') }}"><li>{{ trans('app.banner.logout') }}</li></a>
 				</ul>
 				@else
 				<ul class="rs-user-nav">
-					<a href="{{ url('user/login') }}"><li>{{ trans('app.banner.login') }}</li></a>
+					<a href="{{ url('user/login') }}">
+						<li id="tabUsr">{{ trans('app.banner.login') }}</li>
+					</a>
 				</ul>
 				@endif
 			</nav>
 		</div>
 	</div>
-	<!--[if lt IE 9]>
-	<div class="rs-message">
-		<div class="rs-container">
+	<!-- 主体内容 -->
+	<div class="rs-container">
+		<!-- 消息显示块 -->
+		<div class="rs-message">
+			<!--[if lt IE 9]>
 			<div class="rs-msg rs-msg-warning">
 				{{ trans('app.ie') }}<a href="http://browsehappy.com/" target="_blank">{{ trans('app.download') }}</a>
 			</div>
-		</div>
-	</div>
-	<![endif]-->
-	<!-- 消息显示块 -->
-	@if (Session::has('message'))
-	<div class="rs-message">
-		<div class="rs-container">
+			<![endif]-->
+			@if (Session::has('message'))
 			<div class="rs-msg rs-msg-{{ session('message')['type'] }}">
 				{{ session('message')['content'] }}
 			</div>
+			@endif
 		</div>
-	</div>
-	@endif
-	<!-- 主体内容 -->
-	<div class="rs-container">
 		@yield('content')
+		<!-- 二维码 -->
+		<div class="qrcode">
+			<img src="{{ asset('/img/qrcode_tw.png') }}"><img src="{{ asset('/img/qrcode_zfj.png') }}">
+		</div>
 	</div>
 	<!-- 页脚 -->
 	<div class="rs-footer center">
@@ -99,7 +100,7 @@
 			<div>{{ trans('app.powerby.0') }}</div>
 			<div>『<a href="http://my.nuaa.edu.cn" target="_blank">{{ trans('app.powerby.1') }}</a>』</div>
 			<div>{{ trans('app.powerby.2') }}</div>
-			<div>{{ trans('app.mail') }}<a href="mailto:nuaatw@163.com">nuaatw@163.com</div>
+			<div>{{ trans('app.mail') }}<a href="mailto:nuaatw@163.com">nuaatw@163.com</a></div>
 		</div>
 	</div>
 	<script>

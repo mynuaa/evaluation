@@ -19,6 +19,6 @@ Route::controllers([
 	'search' => 'SearchController'
 ]);
 
-Route::get('thumb/{name}', 'PhotoController@thumb');
-
 Route::get('photo/{name}', 'PhotoController@photo');
+Route::get('thumb/{name}', 'PhotoController@thumb');
+Route::get('storage/app/ueditor/{name}', 'PhotoController@ueditor');

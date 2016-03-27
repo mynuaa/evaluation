@@ -3,9 +3,10 @@
 @section('title'){{ trans('apply.title') }}@stop
 
 @section('content')
+@include('UEditor::head')
 <div class="page-title">{{ trans('apply.title') }}</div>
 <div class="rs-form-outer fullwidth">
-	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data" onsubmit="checkForm()">
+	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data" onsubmit="return checkForm()">
 		<fieldset class="form-group">
 			<legend>{{ trans('apply.basic') }}</legend>
 			<input name="name" type="text" value="{{ $apply['name'] or Auth::user()->name }}" placeholder="姓名" disabled>
@@ -38,27 +39,49 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>{{ trans('apply.description') }}</legend>
-			<textarea name="whoami" type="text" placeholder="{{ trans('apply.whoami_intro') }}" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
-			<textarea name="story" type="text" placeholder="{{ trans('apply.story_intro') }}" class="fullwidth" required>{{ $apply['story'] }}</textarea>
-			<textarea name="insufficient" type="text" placeholder="{{ trans('apply.disadvantages_intro') }}" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
+			<textarea name="whoami" id="whoami" type="text" placeholder="{{ trans('apply.whoami_intro') }}" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
+			<textarea name="story" id="story" type="text" placeholder="{{ trans('apply.story_intro') }}" class="fullwidth" required>{{ $apply['story'] }}</textarea>
+			<textarea name="insufficient" id="insufficient" type="text" placeholder="{{ trans('apply.disadvantages_intro') }}" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
+			<script>
+				window.UEDITOR_CONFIG.serverUrl = "/evaluation/laravel-u-editor-server/server";
+				window.UEDITOR_CONFIG.toolbars = [[
+					'undo', 'redo', '|',
+					'bold', 'italic', 'underline', 'removeformat', '|',
+					'fontsize', 'forecolor', '|', 'insertimage'
+				]];
+				window.UEDITOR_CONFIG.elementPathEnabled = false;
+				window.UEDITOR_CONFIG.indentValue = '2em';
+				var ue1 = UE.getEditor('whoami');
+				ue1.ready(function() { ue1.execCommand('serverparam', '_token', '{{ csrf_token() }}'); });
+				var ue2 = UE.getEditor('story');
+				ue2.ready(function() { ue2.execCommand('serverparam', '_token', '{{ csrf_token() }}'); });
+				var ue3 = UE.getEditor('insufficient');
+				ue3.ready(function() { ue3.execCommand('serverparam', '_token', '{{ csrf_token() }}'); });
+			</script>
 		</fieldset>
-		<legend>{{ trans('apply.photo') }}<span class="tip">&nbsp;&nbsp;{{ trans('apply.photo_sub') }}</span></legend>
+		<legend>{{ trans('apply.photo') }}</legend>
 		<div class="row">
+			<h5>{{ trans('apply.photo_sub') }}</h5>
 			@for ($i = 1; $i <= 3; $i++)
 			<div class="col-4">
-				@if ($apply['img' . $i] !== '')
-				<img src="{{ url('photo') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%;border-radius:5px">
+				@if ($apply['img' . $i] != '')
+				<img src="{{ url('thumb') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%;border-radius:5px">
 				@else
-				<div style="width:90%;height:150px;border:1px solid #BBB;border-radius:5px"></div>
+				<label for="image-upload{{ $i }}" class="photo-placeholder">+</label>
 				@endif
-				<p><input type="file" name="imgs[]"></p>
+				<p><input type="file" name="imgs[]" id="image-upload{{ $i }}"></p>
 				<p><input type="text" name="intros[]" placeholder="{{ trans('apply.photo_placeholder') }}" @if ($apply['intro' . $i] !== '') value="{{ $apply['intro' . $i] }}" @endif></p>
 			</div>
 			@endfor
 		</div>
 		@foreach(trans('apply.photo_intro') as $value)
-		<p class="tip" style="color:red">* {{ $value }}</p>
+		<div class="tip" style="color:red">* {{ $value }}</div>
 		@endforeach
+		<fieldset class="form-group">
+			<h5>{{ trans('apply.photo_sub_video') }}</h5>
+			<textarea class="fullwidth" name="video_url">{{ $apply['video_url'] }}</textarea>
+			<div class="tip">* {{ trans('apply.video_placeholder') }}</div>
+		</fieldset>
 		<fieldset class="form-group">
 			<legend>{{ trans('apply.tag') }}</legend>
 			<div class="rs-tabs" id="tags" style="height:auto;padding:0">
@@ -85,7 +108,7 @@
 			<label for="promise" style="width:auto;max-width:75%;line-height:1em;text-align:left;vertical-align:middle"><b>{{ trans('apply.promise') }}</b>:&nbsp;{{ trans('apply.promise_content') }}</label>
 		</p>
 		<div class="form-btns">
-			<input type="submit" class="btn-success" value="{{ trans('apply.submit') }}" disabled>
+			<input type="submit" class="btn-success" value="{{ trans('apply.submit') }}">
 		</div>
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	</form>

@@ -37,10 +37,13 @@ return [
 
 	'photo' => 'My Wonderful Youth',
 	'photo_sub' => 'Photo Show',
+	'photo_sub_video' => 'Video Show',
 	'photo_placeholder' => 'Write some introductions.',
 	'photo_intro' => [
 		'Please upload the photos which are closest to your own story; also photos that can show your colorful life and are full of positive energy are needed.',
 	],
+
+	'video_placeholder' => 'Use video to show yourself! Upload your video to Youku, Todou or other video site, and paste the url here (One url per line).',
 
 	'tag' => 'Tag',
 

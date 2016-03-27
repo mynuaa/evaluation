@@ -9,6 +9,8 @@ use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest;
 use Input, App\Recommendation, App\Http\Requests\RecommendPostRequest;
 use Session;
 
+use Intervention\Image\Facades\Image;
+
 class ApplyController extends Controller {
 
 	public function __construct()
@@ -18,12 +20,14 @@ class ApplyController extends Controller {
 
 	public function getApply()
 	{
-		return view('apply.apply')->withApply(Auth::user()->apply)->withStuid(Auth::user()->username);
+		$apply = Auth::user()->apply;
+		$apply->video_url_arr = explode("\n", $apply->video_url);
+		return view('apply.apply')->withApply($apply)->withStuid(Auth::user()->username);
 	}
 
 	public function postApply(ApplyPostRequest $request)
 	{
-		return view('apply.apply')->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+		// return view('apply.apply')->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
@@ -35,7 +39,9 @@ class ApplyController extends Controller {
 				}
 				if (in_array($file->getClientMimeType(), config('business.MIME'))){
 					$filename = md5($file->getClientOriginalName().$file->getClientSize()).'.'.$file->getClientOriginalExtension();
-					$file->move(storage_path() . "/app/photos", $filename);
+					$file->move(storage_path() . '/app/photos', $filename);
+					$img = Image::make(storage_path() . '/app/photos/' . $filename)->resize(null, 150, function ($constraint) { $constraint->aspectRatio(); });
+					$img->save(storage_path() . '/app/thumbs/' . $filename, 75);
 					$request->photos[$key] = $filename;
 				}
 				else{
@@ -73,6 +79,8 @@ class ApplyController extends Controller {
 		$apply->intro2 = isset($request->intros[1]) ? $request->intros[1] : '';
 		$apply->intro3 = isset($request->intros[2]) ? $request->intros[2] : '';
 
+		$apply->video_url = $request->video_url;
+
 		$user->apply()->save($apply);
 
 		return redirect('apply/apply')->withMessage(['type' => 'success', 'content' => trans('message.apply.success')]);
@@ -87,6 +95,7 @@ class ApplyController extends Controller {
 			$apply->increment('pageview');
 			$apply->isRecommended = Auth::check() ? Auth::user()->isRecommended($id) : true;
 			$apply->isVoted = Auth::check() ? Auth::user()->isVoted($id) : true;
+			$apply->video_url_arr = explode("\n", $apply->video_url);
 
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
@@ -103,15 +112,15 @@ class ApplyController extends Controller {
 
 		$user = Auth::user();
 
-		// if ($user->isRecommendTooMuch())
-		// {
-		// 	return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.too_much')]);
-		// }
+		if ($user->isRecommendTooMuch())
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.too_much')]);
+		}
 
-		// if ($user->isRecommended($request->applyid))
-		// {
-		// 	return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.before')]);
-		// }
+		if ($user->isRecommended($request->applyid))
+		{
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.before')]);
+		}
 
 		$user->recommendations()->attach($request->applyid, ['content' => $request->content]);
 		Apply::find($request->applyid)->increment('recommendations');

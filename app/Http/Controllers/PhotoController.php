@@ -40,4 +40,21 @@ class PhotoController extends Controller {
 			abort(404, trans('resource_not_found'));
 		}
 	}
+
+	public function ueditor($name)
+	{
+		$filename = '/ueditor/' . $name;
+
+		if(Storage::exists($filename))
+		{
+			$photo = Storage::get($filename);
+			return response($photo, 200)->header('Content-Type', config('business.MIME.' . strtolower(preg_replace('/^\w+\./', '', $name))));
+
+		}
+		else
+		{
+			abort(404, trans('resource_not_found'));
+		}
+	}
+
 }

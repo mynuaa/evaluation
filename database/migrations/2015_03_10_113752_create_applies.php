@@ -31,16 +31,18 @@ class CreateApplies extends Migration {
 			$table->longText('story');
 			$table->text('insufficient');
 
-			$table->string('img1');
-			$table->string('intro1');
-			$table->string('img2');
-			$table->string('intro2');
-			$table->string('img3');
-			$table->string('intro3');
+			$table->string('img1')->default('');
+			$table->string('intro1')->default('');
+			$table->string('img2')->default('');
+			$table->string('intro2')->default('');
+			$table->string('img3')->default('');
+			$table->string('intro3')->default('');
 
 			$table->string('tag1');
 			$table->string('tag2');
 			$table->string('tag3');
+
+			$table->text('video_url');
 
 			$table->integer('repost')->default(0);
 			$table->integer('pageview')->default(0);

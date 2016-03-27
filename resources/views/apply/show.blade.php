@@ -30,7 +30,7 @@
 <h5>{{ trans('apply.photo') }}</h5>
 <div class="row">
 	@for ($i = 1; $i <= 3; $i++)
-		@if ($apply['img' . $i] !== '')
+		@if ($apply['img' . $i] != '')
 		<div class="col-4">
 			<a href="{{ url('photo') . '/' . $apply['img' . $i] }}" target="_blank" title="点击看大图"><img src="{{ url('thumb') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%"></a>
 			<p>{{ $apply['intro' . $i] }}</p>
@@ -38,12 +38,22 @@
 		@endif
 	@endfor
 </div>
+<div class="row">
+	<div class="col-12">
+		@if (count($apply['video_url_arr']) > 0)
+			<h5>我的视频</h5>
+			@foreach ($apply['video_url_arr'] as $url)
+			<p><a href="{{ $url }}" class="video-url" target="_blank">{{ $url }}</a></p>
+			@endforeach
+		@endif
+	</div>
+</div>
 <h5>{{ trans('apply.whoami') }}</h5>
-<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->whoami) . "\n") !!}</p>
+{!! $apply->whoami !!}
 <h5>{{ trans('apply.story') }}</h5>
-<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->story) . "\n") !!}</p>
+{!! $apply->story !!}
 <h5>{{ trans('apply.disadvantages') }}</h5>
-<p class="indent">{!! preg_replace('/(.+)[\r\n]/', '<p class="indent">$1</p>', htmlspecialchars($apply->insufficient) . "\n") !!}</p>
+{!! $apply->insufficient !!}
 @if ($apply->tag1 != '')
 <div class="rs-tabs" style="height:auto">
 	<div class="rs-tab" title="{{ $apply->tag1 }}">{{ $apply->tag1 }}</div>

@@ -37,12 +37,15 @@ return [
 
 	'photo' => '我的青春最精彩',
 	'photo_sub' => '图片展示区',
+	'photo_sub_video' => '视频展示区',
 	'photo_placeholder' => '写点介绍吧！',
 	'photo_intro' => [
 		'请上传最能体现自己事迹特征、多彩生活、奋斗向上、充满正能量的照片。',
 		'点击下面提交整个网页后图片才会保存。',
 		'支持的图片格式：.jpg .png .jpeg .bmp',
 	],
+
+	'video_placeholder' => '用视频来展现你的风采！将视频上传到优酷、土豆或者其它视频网站后，在这里填写视频的地址（一行一个地址）。',
 
 	'tag' => '标签',
 
@@ -54,7 +57,7 @@ return [
 	'not_empty' => '标签内容不能为空！',
 	'max_three' => '最多只能添加三个标签哦~',
 
-	'professional' => ':name 专业',
+	'professional' => ':name专业',
 	'want_recommend' => '我要推荐',
 	'want_share' => '我要分享',
 	'pageview' => '浏览量: :time 次。',

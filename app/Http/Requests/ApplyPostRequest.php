@@ -33,7 +33,8 @@ class ApplyPostRequest extends Request {
 			'insufficient' => 'required',
 			'tags' => 'array',
 			'imgs' => 'array',
-			'intros' => 'array'
+			'intros' => 'array',
+			'video_url' => 'string'
 		];
 	}
 }
