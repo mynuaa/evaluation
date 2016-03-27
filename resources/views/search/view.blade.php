@@ -14,9 +14,12 @@
 		@endforeach
 	</div>
 	<div class="rs-message">
-		<div class="rs-msg rs-msg-info">
-			{{ trans('app.statistics', $statistics) }}
-		</div>
+		<div class="rs-msg rs-msg-info">{{ trans('app.statistics', $statistics) }}</div>
+		@if (trans('app.notice'))
+			@foreach (trans('app.notice') as $notice)
+				<div class="rs-msg rs-msg-{{ isset($notice['type']) ? $notice['type'] : 'info' }}">{!! $notice['content'] !!}</div>
+			@endforeach
+		@endif
 	</div>
 	<fieldset>
 		<legend><b>{{ trans('search.global') }}</b></legend>
