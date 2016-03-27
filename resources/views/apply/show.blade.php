@@ -64,7 +64,7 @@
 <hr>
 <h3>{{ trans('apply.want_recommend') }}</h3>
 @if (!Auth::check())
-<div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}锛</div>
+<div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}</div>
 @else
 <form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
