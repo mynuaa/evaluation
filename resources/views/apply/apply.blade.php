@@ -39,9 +39,12 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>{{ trans('apply.description') }}</legend>
-			<textarea name="whoami" id="whoami" type="text" placeholder="{{ trans('apply.whoami_intro') }}" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
-			<textarea name="story" id="story" type="text" placeholder="{{ trans('apply.story_intro') }}" class="fullwidth" required>{{ $apply['story'] }}</textarea>
-			<textarea name="insufficient" id="insufficient" type="text" placeholder="{{ trans('apply.disadvantages_intro') }}" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
+			<h5>{{ trans('apply.whoami_intro') }}</h5>
+			<textarea name="whoami" id="whoami" type="text" class="fullwidth" required>{{ $apply['whoami'] }}</textarea>
+			<h5>{{ trans('apply.story_intro') }}</h5>
+			<textarea name="story" id="story" type="text" class="fullwidth" required>{{ $apply['story'] }}</textarea>
+			<h5>{{ trans('apply.disadvantages_intro') }}</h5>
+			<textarea name="insufficient" id="insufficient" type="text" class="fullwidth" required>{{ $apply['insufficient'] }}</textarea>
 			<script>
 				window.UEDITOR_CONFIG.serverUrl = "/evaluation/laravel-u-editor-server/server";
 				window.UEDITOR_CONFIG.toolbars = [[

@@ -63,7 +63,6 @@ hr{
 h4,h5{margin:0.5em 0;}
 div{position:relative;}
 var{white-space:nowrap;}
-em{font-style:normal;color:#C00;}
 a{color:#800;text-decoration:none;}
 a:hover{text-decoration:underline;}
 a.no-underline:hover{text-decoration:none !important;}

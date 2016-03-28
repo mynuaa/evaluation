@@ -12,11 +12,11 @@ return [
 		'max' => 5
 	],
 	'vote' => [
-		'max' => 8,
-		'college' => 4,
-		'school' => 4,
-		'inner' => 4,
-		'outer' => 4
+		'max' => 6,
+		'college' => 3,
+		'school' => 3,
+		'inner' => 3,
+		'outer' => 3
 	],
 	'avatar' => [
 		'max' => 10
