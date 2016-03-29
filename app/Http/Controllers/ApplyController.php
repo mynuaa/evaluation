@@ -23,7 +23,7 @@ class ApplyController extends Controller {
 	public function getApply(HtmlAttributeFilter $filter)
 	{
 		$apply = Auth::user()->apply;
-		if ($apply->video_url !== null)
+		if (isset($apply['video_url'])
 			$apply->video_url_arr = explode("\n", $apply->video_url);
 		else
 			$apply->video_url_arr = [];
