@@ -107,8 +107,9 @@
 	left:0;
 }
 .user-avatar{
-	border:1px solid #FFF;
+	border:2px solid #FFF;
 	border-radius:50%;
+	background:#FFF;
 	overflow:hidden;
 	width:30px;
 	height:30px;
