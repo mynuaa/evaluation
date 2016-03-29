@@ -42,8 +42,6 @@ class CreateApplies extends Migration {
 			$table->string('tag2');
 			$table->string('tag3');
 
-			$table->text('video_url');
-
 			$table->integer('repost')->default(0);
 			$table->integer('pageview')->default(0);
 			$table->integer('like')->default(0);
