@@ -23,7 +23,10 @@ class ApplyController extends Controller {
 	public function getApply(HtmlAttributeFilter $filter)
 	{
 		$apply = Auth::user()->apply;
-		$apply->video_url_arr = explode("\n", $apply->video_url);
+		if ($apply->video_url !== null)
+			$apply->video_url_arr = explode("\n", $apply->video_url);
+		else
+			$apply->video_url_arr = [];
 		$filter->setAllow(['style']);
 		$filter->setException([
 			'span' => ['style'],
