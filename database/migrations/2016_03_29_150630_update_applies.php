@@ -13,7 +13,7 @@ class UpdateApplies extends Migration {
 	public function up()
 	{
 		Schema::table('applies', function ($table) {
-			$table->text('video_url');
+			$table->text('video_url')->nullable();
 		});
 	}
 
