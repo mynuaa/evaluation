@@ -26,7 +26,7 @@ class ApplyController extends Controller {
 		if (isset($apply['video_url']))
 			$apply->video_url_arr = explode("\n", $apply->video_url);
 		else
-			$apply->video_url_arr = [''];
+			$apply->video_url_arr = explode("\n", '');
 		$filter->setAllow(['style']);
 		$filter->setException([
 			'span' => ['style'],
