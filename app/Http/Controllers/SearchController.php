@@ -11,7 +11,14 @@ class SearchController extends Controller {
 
 	public function index()
 	{
-		$applies = Apply::order()->paginate(config('business.paginate'));
+		$applies = Apply::where('old', false)->order()->paginate(config('business.paginate'));
+
+		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
+	}
+
+	public function getOld()
+	{
+		$applies = Apply::where('old', true)->order()->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}

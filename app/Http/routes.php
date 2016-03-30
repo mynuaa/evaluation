@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'SearchController@index');
+Route::get('/old', 'SearchController@getOld');
 
 Route::controllers([
 	'user' => 'UserController',
