@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest;
 
-use App\Services\HtmlAttributeFilter;
-
 use Input, App\Recommendation, App\Http\Requests\RecommendPostRequest;
 use Session;
 
@@ -20,18 +18,9 @@ class ApplyController extends Controller {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
 	}
 
-	public function getApply(HtmlAttributeFilter $filter)
+	public function getApply()
 	{
 		$apply = Auth::user()->apply;
-		$apply->video_url_arr = explode("\n", $apply->video_url);
-		$filter->setAllow(['style']);
-		$filter->setException([
-			'span' => ['style'],
-			'img' => ['src', 'alt', 'title', 'width', 'height', 'border', 'vspace'],
-		]);
-		$apply->whoami = strip_tags($filter->strip($apply->whoami), '<strong><em><p><span><img>');
-		$apply->story = strip_tags($filter->strip($apply->story), '<strong><em><p><span><img>');
-		$apply->insufficient = strip_tags($filter->strip($apply->insufficient), '<strong><em><p><span><img>');
 		return view('apply.apply')->withApply($apply)->withStuid(Auth::user()->username);
 	}
 
@@ -105,15 +94,6 @@ class ApplyController extends Controller {
 			$apply->increment('pageview');
 			$apply->isRecommended = Auth::check() ? Auth::user()->isRecommended($id) : true;
 			$apply->isVoted = Auth::check() ? Auth::user()->isVoted($id) : true;
-			$apply->video_url_arr = explode("\n", $apply->video_url);
-			$filter->setAllow(['style']);
-			$filter->setException([
-				'span' => ['style'],
-				'img' => ['src', 'alt', 'title', 'width', 'height', 'border', 'vspace'],
-			]);
-			$apply->whoami = strip_tags($filter->strip($apply->whoami), '<strong><em><p><span><img>');
-			$apply->story = strip_tags($filter->strip($apply->story), '<strong><em><p><span><img>');
-			$apply->insufficient = strip_tags($filter->strip($apply->insufficient), '<strong><em><p><span><img>');
 
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
@@ -140,7 +120,7 @@ class ApplyController extends Controller {
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.before')]);
 		}
 
-		$user->recommendations()->attach($request->applyid, ['content' => $request->content]);
+		$user->recommendations()->attach($request->applyid, ['content' => $request->getContent()]);
 		Apply::find($request->applyid)->increment('recommendations');
 
 		$remain = $user->remain();
