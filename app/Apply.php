@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
+use App\Services\HtmlAttributeFilter;
 
 class Apply extends Model {
 
@@ -38,5 +39,21 @@ class Apply extends Model {
 	{
 		return $query->orderBy('votes', 'desc');
 		// return $query->orderByRaw('rand()');
+	}
+
+	public function getVideoUrlAttribute($value) {
+		return $value ? explode("\n", $value) : [];
+	}
+
+	public function getWhoamiAttribute($value, HtmlAttributeFilter $filter) {
+		return $value ? strip_tags($filter->strip($value), '<strong><em><p><span><img>') : "u";
+	}
+
+	public function getStoryAttribute($value, HtmlAttributeFilter $filter) {
+		return $value ? strip_tags($filter->strip($value), '<strong><em><p><span><img>') : "u";
+	}
+
+	public function getInsufficientAttribute($value, HtmlAttributeFilter $filter) {
+		return $value ? strip_tags($filter->strip($value), '<strong><em><p><span><img>') : "u";
 	}
 }

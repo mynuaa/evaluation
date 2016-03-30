@@ -40,9 +40,9 @@
 </div>
 <div class="row">
 	<div class="col-12">
-		@if (count($apply['video_url_arr']) > 0)
+		@if (count($apply['video_url']) > 0)
 			<h5>我的视频</h5>
-			@foreach ($apply['video_url_arr'] as $url)
+			@foreach ($apply['video_url'] as $url)
 			<p><a href="{{ $url }}" class="video-url" target="_blank">{{ $url }}</a></p>
 			@endforeach
 		@endif
