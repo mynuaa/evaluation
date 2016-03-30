@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 use App\Services\HtmlAttributeFilter;
+use App;
 
 class Apply extends Model {
 
@@ -45,15 +46,18 @@ class Apply extends Model {
 		return $value ? explode("\n", $value) : [];
 	}
 
-	public function getWhoamiAttribute($value, HtmlAttributeFilter $filter) {
+	public function getWhoamiAttribute($value) {
+		$filter = App::make('HtmlAttributeFilter');
 		return $value ? strip_tags($filter->strip($value), '<strong><em><p><span><img>') : "u";
 	}
 
-	public function getStoryAttribute($value, HtmlAttributeFilter $filter) {
+	public function getStoryAttribute($value) {
+		$filter = App::make('HtmlAttributeFilter');
 		return $value ? strip_tags($filter->strip($value), '<strong><em><p><span><img>') : "u";
 	}
 
-	public function getInsufficientAttribute($value, HtmlAttributeFilter $filter) {
+	public function getInsufficientAttribute($value) {
+		$filter = App::make('HtmlAttributeFilter');
 		return $value ? strip_tags($filter->strip($value), '<strong><em><p><span><img>') : "u";
 	}
 }

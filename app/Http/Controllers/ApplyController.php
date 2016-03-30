@@ -85,7 +85,7 @@ class ApplyController extends Controller {
 		return redirect('apply/apply')->withMessage(['type' => 'success', 'content' => trans('message.apply.success')]);
 	}
 
-	public function getShow($id, Request $request, HtmlAttributeFilter $filter)
+	public function getShow($id, Request $request)
 	{
 		$apply = Apply::find($id);
 
