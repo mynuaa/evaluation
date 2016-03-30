@@ -82,7 +82,7 @@
 		@endforeach
 		<fieldset class="form-group">
 			<h5>{{ trans('apply.photo_sub_video') }}</h5>
-			<textarea class="fullwidth" name="video_url">{{ $apply['video_url'] }}</textarea>
+			<textarea class="fullwidth" name="video_url">{{ implode("\n", $apply['video_url']) }}</textarea>
 			<div class="tip">* {{ trans('apply.video_placeholder') }}</div>
 		</fieldset>
 		<fieldset class="form-group">
