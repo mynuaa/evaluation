@@ -64,7 +64,7 @@
 </div>
 @endif
 <hr>
-@if ($apply->old)
+@if (!$apply->old)
 <h3>{{ trans('apply.want_recommend') }}</h3>
 @if (!Auth::check())
 <div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}</div>
