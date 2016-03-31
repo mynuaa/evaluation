@@ -5,7 +5,9 @@
 @section('content')
 <h3>{{ $apply->title }}</h3>
 <div class="card-author cl">
+	@if ($apply->user)
 	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
+	@endif
 	<div class="fl">
 		<div>{{ $apply->name }}，{{ $apply->stuid }}，{{ trans("app.type." . config("business.type." . $apply->type)) }}</div>
 		<div>{{ trans('apply.professional', ['name' => $apply->major]) }}</div>
