@@ -41,7 +41,7 @@
 			<!-- <a href="{{ url('/') }}"><h1 class="fl pointer white">{{ trans('app.name') }}</h1></a> -->
 			<a href="{{ url('/') }}"><img src="{{ asset('/img/nuaa_logo.png') }}" height="100%"></a>
 			<nav id="nav-main" class="rs-nav fl">
-				<ul class="rs-main-nav">
+				<ul class="rs-main-nav" onclick="this.classList.toggle('expand')">
 					<a href="{{ url('/') }}">
 						<li id="tabMain">{{ trans('app.banner.recommend') }}</li>
 					</a>

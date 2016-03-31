@@ -25,21 +25,8 @@ return [
 	'mail' => 'If you have any questions, please mail to ',
 	'notice' => [
 		[
-			'type' => 'info',
-			'content' => 'wrong file type error, fixed.'
-		],
-		[
-			'type' => 'info',
-			'content' => 'Retry upload your images, mail to 532000663@qq.com and ask for help.'
-		],
-		[
-			'type' => 'info',
-			'content' => 'Images with extensions like .jpg .png .bmp .jpeg are permitted.'
-		],
-		[
-			'type' => 'warning',
-			'content' => '图片上传错误请换校园网，外网上传存在不明错误。'
-		],
+			'content' =>'You can vote at most 8 person, and total votes of person outside your college should not less than that inside your college.',
+		]
 	],
 	'statistics' => 'Up to now, we have :apply application(s), :recommendation recommendation(s), :vote vote(s).',
 ];

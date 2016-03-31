@@ -205,7 +205,7 @@ body>.rs-container{
 	.rs-main-nav li{
 		float:left;
 	}
-	.rs-main-nav:hover{
+	.rs-main-nav.expand{
 		background:#800;
 		height:200px;
 	}
