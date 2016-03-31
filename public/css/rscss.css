@@ -206,7 +206,7 @@ body>.rs-container{
 		float:left;
 	}
 	.rs-main-nav.expand{
-		background:#800;
+		background:#A00;
 		height:200px;
 	}
 }
@@ -232,10 +232,10 @@ body>.rs-container{
 	cursor:pointer;
 }
 .rs-nav li:hover{
-	background:#800;
+	background:#A00;
 }
 .rs-nav-selected{
-	background:#800 !important;
+	background:#A00 !important;
 }
 .rs-nav-selected:after{
 	position:absolute;
@@ -267,7 +267,7 @@ body>.rs-container{
 }
 .user-logged.rs-user-nav:hover{
 	height:150px;
-	background:#800;
+	background:#A00;
 	transition:all 200ms;
 }
 .rs-user-nav:hover li{
@@ -403,7 +403,7 @@ textarea{
 .btn-cancel{background:#95A5A6;}
 .btn-cancel:hover{background:#7F8C8D;}
 .btn-danger{background:#E74C3C;}
-.btn-danger:hover{background:#800;}
+.btn-danger:hover{background:#A00;}
 /*网格*/
 .row{width:100%;display:block;overflow:hidden;}
 .col-1{width:8.333333333%;}
