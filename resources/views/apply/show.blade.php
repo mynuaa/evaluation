@@ -5,7 +5,7 @@
 @section('content')
 <h3>{{ $apply->title }}</h3>
 <div class="card-author cl">
-	@if ($apply->user)
+	@if (!$apply->old)
 	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
 	@endif
 	<div class="fl">
@@ -64,6 +64,7 @@
 </div>
 @endif
 <hr>
+@if ($apply->old)
 <h3>{{ trans('apply.want_recommend') }}</h3>
 @if (!Auth::check())
 <div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}</div>
@@ -89,6 +90,7 @@
 	</div>
 	@endforeach
 </div>
+@endif
  <p class="tip">
  	<span>{{ trans('apply.pageview', ['time' => $apply->pageview < 3000 ? $apply->pageview : '3000+']) }}</span>
 	@if ($is_wechat)
