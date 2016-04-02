@@ -167,7 +167,7 @@ h6{font-size:0.83em;}
 	padding:0 10px;
 }
 body>.rs-container{
-	margin-bottom:130px;
+	margin-bottom:260px;
 }
 .rs-header h1{
 	font-size:1.2em;
@@ -193,21 +193,15 @@ body>.rs-container{
 		z-index:10;
 		transition:all 200ms;
 	}
-	.rs-main-nav:before{
-		content:"≡";
+	#tabMenu{
 		display:block;
-		height:50px;
-		text-align:center;
-		font-family:"Courier New","SimHei";
-		font-size:2em;
-		font-weight:bold;
 	}
 	.rs-main-nav li{
 		float:left;
 	}
 	.rs-main-nav.expand{
 		background:#A00;
-		height:200px;
+		height:250px;
 	}
 }
 .rs-nav{

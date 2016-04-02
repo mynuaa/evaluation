@@ -356,9 +356,7 @@
 .qrcode{
 	position:relative;
 	overflow:auto;
-	border-top:1px solid #E5E5E5;
 	text-align: center;
-	margin-top:1em;
 }
 .qrcode img{
 	width:150px;

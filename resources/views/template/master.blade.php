@@ -42,6 +42,9 @@
 			<a href="{{ url('/') }}"><img src="{{ asset('/img/nuaa_logo.png') }}" height="100%"></a>
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav" onclick="this.classList.toggle('expand')">
+					<a href="#">
+						<li id="tabMenu">{{ trans('app.banner.menu') }}</li>
+					</a>
 					<a href="{{ url('/') }}">
 						<li id="tabMain">{{ trans('app.banner.recommend') }}</li>
 					</a>
@@ -89,18 +92,17 @@
 			@endif
 		</div>
 		@yield('content')
+	</div>
+	<!-- 页脚 -->
+	<div class="rs-footer center">
 		<!-- 二维码 -->
 		<div class="qrcode">
 			<img src="{{ asset('/img/qrcode_tw.png') }}"><img src="{{ asset('/img/qrcode_zfj.png') }}">
 		</div>
-	</div>
-	<!-- 页脚 -->
-	<div class="rs-footer center">
 		<div class="rs-container">
-			<div>{{ trans('app.powerby.0') }}</div>
-			<div>『<a href="http://my.nuaa.edu.cn" target="_blank">{{ trans('app.powerby.1') }}</a>』</div>
-			<div>{{ trans('app.powerby.2') }}</div>
-			<div>{{ trans('app.mail') }}<a href="mailto:nuaatw@163.com">nuaatw@163.com</a></div>
+			<div>{{ trans('app.moreinfo') }}</div>
+			<div>{!! trans('app.powerby') !!}</div>
+			<!-- <div>{{ trans('app.mail') }}<a href="mailto:nuaatw@163.com">nuaatw@163.com</a></div> -->
 		</div>
 	</div>
 	<script>

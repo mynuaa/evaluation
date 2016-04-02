@@ -14,7 +14,7 @@ class AddOldToAppliesTable extends Migration {
 	{
 		Schema::table('applies', function($table)
 		{
-			$table->boolean('old')->default(true);
+			$table->boolean('old')->default(false);
 		});
 	}
 

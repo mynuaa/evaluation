@@ -145,14 +145,21 @@ class ApplyController extends Controller {
 			}
 		}
 
+		// 最大票数限制
+		if ($user->votes() >= config('business.vote.max')) {
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much')]);
+		}
+
 		//同学院 || 不同学院
 		if ($user->college == $apply->college){
-			if ($user->countInner() >= config('business.vote.inner')){
+			// if ($user->countInner() >= config('business.vote.inner')){
+			if ($user->countInner() + 1 > $user->countOuter() * 2){
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_inner')]);
 			}
 		}
 		else{
-			if ($user->countOuter() >= config('business.vote.outer')){
+			// if ($user->countOuter() >= config('business.vote.outer')){
+			if ($user->countInner() > ($user->countOuter + 1) * 2){
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_outer')]);
 			}
 		}

@@ -4,6 +4,7 @@ return [
 	'nuaa' => 'Nuaa ',
 	'name' => 'May Fourth Youth Election',
 	'banner' => [
+		'menu' => 'Menu',
 		'recommend' => 'Recommend',
 		'apply' => 'Apply',
 		'recommendation' => 'My Records',
@@ -13,11 +14,8 @@ return [
 	],
 	'ie' => 'Please use modern browser like Chrome, Firefox, IE(≥9), etc. to access this page.',
 	'download' => 'Click here',
-	'powerby' => [
-		'Proudly powered by',
-		'my.nuaa.edu.cn',
-		'',
-	],
+	'powerby' => 'Full powered by <a href="http://my.nuaa.edu.cn" target="_blank">my.nuaa.edu.cn</a>',
+	'moreinfo' => 'For more info follow wechat Youth League Committee',
 	'lang' => [
 		'name' => '简体中文',
 		'value' => 'zh'
