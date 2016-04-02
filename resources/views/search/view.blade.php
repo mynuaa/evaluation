@@ -23,7 +23,7 @@
 	</div>
 	<fieldset>
 		<legend><b>{{ trans('search.global') }}</b></legend>
-		<select name="type" id="type" style="width:5em">
+		<select name="type" id="type" style="width:7em">
 			<option value="stuid">{{ trans('search.stuid') }}</option>
 			<option value="name">{{ trans('search.name') }}</option>
 		</select>

@@ -193,9 +193,6 @@ body>.rs-container{
 		z-index:10;
 		transition:all 200ms;
 	}
-	#tabMenu{
-		display:block;
-	}
 	.rs-main-nav li{
 		float:left;
 	}

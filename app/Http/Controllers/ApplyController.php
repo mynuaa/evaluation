@@ -120,7 +120,7 @@ class ApplyController extends Controller {
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.before')]);
 		}
 
-		$user->recommendations()->attach($request->applyid, ['content' => $request->getContent()]);
+		$user->recommendations()->attach($request->applyid, ['content' => $request->content]);
 		Apply::find($request->applyid)->increment('recommendations');
 
 		$remain = $user->remain();

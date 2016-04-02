@@ -16,7 +16,7 @@ return [
 		'success' => 'Update Successed!',
 	],
 	'recommend' => [
-		'seccess' => 'Recommend Successed!',
+		'success' => 'Recommend Successed!',
 		'too_much' => 'Recommend Too Much!',
 		'before' => 'You Have Recommend This Person Before!',
 	],

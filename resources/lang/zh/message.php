@@ -16,7 +16,7 @@ return [
 		'success' => '资料更新！',
 	],
 	'recommend' => [
-		'seccess' => '推荐成功！',
+		'success' => '推荐成功！',
 		'too_much' => '哎呀，你推荐的太多了！',
 		'before' => '已经推荐过了呦~',
 	],

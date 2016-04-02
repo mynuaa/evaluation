@@ -385,6 +385,9 @@
 	display:inline-block;
 	cursor:pointer;
 }
+#tabMenu{
+	display:none;
+}
 @media screen and (max-width:640px){
 	.rs-nav li{
 		width:100%;
@@ -407,6 +410,9 @@
 	}
 	.rs-tabs-expand{
 		height:auto !important;
+	}
+	#tabMenu{
+		display:block;
 	}
 }
 @media screen and (max-width:810px){
