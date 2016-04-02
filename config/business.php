@@ -17,7 +17,7 @@ return [
 		'outer' => 4
 	],
 	'avatar' => [
-		'max' => 10
+		'max' => 13
 	],
 	'deadline' => [
 		'apply' => '',

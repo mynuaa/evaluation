@@ -50,7 +50,7 @@ class SearchController extends Controller {
 	private function statistics()
 	{
 		return [
-			'apply' => Apply::count(),
+			'apply' => Apply::where('old', false)->count(),
 			'recommendation' => Recommendation::count(),
 			'vote' => Vote::count(),
 			// 'visit' => Cache::get('visit', '10000+'),
