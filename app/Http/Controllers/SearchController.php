@@ -25,14 +25,14 @@ class SearchController extends Controller {
 
 	public function getSchool()
 	{
-		$applies = Apply::type(config('business.type.school'))->order()->paginate(config('business.paginate'));
+		$applies = Apply::type(config('business.type.school'))->where('old', false)->order()->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
 
 	public function getCollege($cid)
 	{
-		$applies = Apply::type(config('business.type.college'))->college($cid)->order()->paginate(config('business.paginate'));
+		$applies = Apply::type(config('business.type.college'))->where('old', false)->college($cid)->order()->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
