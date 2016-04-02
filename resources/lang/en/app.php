@@ -24,6 +24,9 @@ return [
 	'notice' => [
 		[
 			'content' =>'You can vote at most 8 person, and total votes of person outside your college should not less than that inside your college.',
+		],
+		[
+			'content' => '<br>Before activity, please read <b><a href="/evaluation/notes.doc">Notes</a></b> first.',
 		]
 	],
 	'statistics' => 'Up to now, we have :apply application(s), :recommendation recommendation(s), :vote vote(s).',

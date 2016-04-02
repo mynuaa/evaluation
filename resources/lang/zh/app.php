@@ -23,7 +23,10 @@ return [
 	'mail' => '如有疑问请发邮件或回复校团委微信消息，会有老师为你解答。',
 	'notice' => [
 		[
-			'content' =>'实名登陆师生每人可投满8票，其中外院数量不得少于本院的一半。',
+			'content' => '实名登陆师生每人可投满8票，其中外院数量不得少于本院的一半。',
+		],
+		[
+			'content' => '<br>五四评优开始前，请先阅读<b><a href="/evaluation/notes.doc">活动须知</a></b>。',
 		]
 	],
 	'statistics' => '截止至目前，一共有:apply名候选人，:recommendation条推荐，累计投票:vote人次。',
