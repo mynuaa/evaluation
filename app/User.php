@@ -55,6 +55,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->votes()->where('apply_id', $applyid)->exists();
 	}
 
+	public function voteDetail()
+	{
+		return [
+			'vote' => $this->votes()->count(),
+			'inner' => $this->countInner(),
+			'outer' => $this->countOuter(),
+		];
+	}
+
 	public function remain()
 	{
 		return [

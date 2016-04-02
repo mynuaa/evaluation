@@ -153,13 +153,13 @@ class ApplyController extends Controller {
 		//同学院 || 不同学院
 		if ($user->college == $apply->college){
 			// if ($user->countInner() >= config('business.vote.inner')){
-			if ($user->countInner() + 1 > $user->countOuter() * 2){
+			if ($user->countInner() >= config('business.vote.inner') || $user->countInner() + 1 > $user->countOuter() * 2){
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_inner')]);
 			}
 		}
 		else{
 			// if ($user->countOuter() >= config('business.vote.outer')){
-			if ($user->countInner() > ($user->countOuter + 1) * 2){
+			if ($user->countOuter() >= config('business.vote.outer') || $user->countInner() > ($user->countOuter + 1) * 2){
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_outer')]);
 			}
 		}
