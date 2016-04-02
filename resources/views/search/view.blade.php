@@ -38,7 +38,11 @@
 <a href="{{ url('apply/show/' . $stu['id']) }}" class="no-underline" target="_blank">
 	<div class="card-outer">
 		<div class="card-inner">
+			@if (!$stu->old)
 			<div class="card-titles fullwidth">
+			@else
+			<div class="card-titles fullwidth no-padding">
+			@endif
 				<div class="card-title">{{ $stu->title }}</div>
 				<div class="card-content card-author">{{ $stu->name }}，{{ trans('apply.professional', ['name' => $stu->major]) }}</div>
 			</div>
