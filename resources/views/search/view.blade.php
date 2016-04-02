@@ -3,7 +3,7 @@
 @section('title'){{ trans('app.name') }}@stop
 
 @section('content')
-<img src="{{ asset('/img/banner.png') }}" width="100%" alt="{{ trans('app.name') }}" id="banner" class="hidden-phone">
+<img src="{{ asset('/img/banner.jpg') }}" width="100%" alt="{{ trans('app.name') }}" id="banner" class="hidden-phone">
 <form action="{{ url('search/details') }}" method="get" class="rs-form">
 	<div class="rs-tabs">
 		<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer fa fa-chevron-down" onclick="toggleExpand(this)"></div>
