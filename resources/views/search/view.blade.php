@@ -14,12 +14,12 @@
 		@endforeach
 	</div>
 	<div class="rs-message">
-		<div class="rs-msg rs-msg-info">{{ trans('app.statistics', $statistics) }}</div>
 		@if (trans('app.notice'))
-			<div class="rs-msg rs-msg-{{ isset($notice['type']) ? $notice['type'] : 'info' }}">
+			<div class="rs-msg rs-msg-info">
 			@foreach (trans('app.notice') as $notice)
-				{!! $notice['content'] !!}
+				{!! $notice !!}<br>
 			@endforeach
+			{{ trans('app.statistics', $statistics) }}
 			</div>
 		@endif
 	</div>
