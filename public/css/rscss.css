@@ -172,7 +172,8 @@ body>.rs-container{
 .rs-header h1{
 	font-size:1.2em;
 	line-height:50px;
-	margin:0;
+	margin:0 0.5em 0 0;
+	font-weight:normal;
 }
 .rs-main-nav{
 	list-style:none;
@@ -184,22 +185,6 @@ body>.rs-container{
 }
 .rs-main-nav>a{
 	overflow:hidden;
-}
-@media screen and (max-width:525px){
-	.rs-main-nav{
-		position:absolute;
-		height:50px;
-		overflow:hidden;
-		z-index:10;
-		transition:all 200ms;
-	}
-	.rs-main-nav li{
-		float:left;
-	}
-	.rs-main-nav.expand{
-		background:#A00;
-		height:250px;
-	}
 }
 .rs-nav{
 	height:50px;

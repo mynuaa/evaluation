@@ -38,18 +38,18 @@
 	<!-- 页眉 -->
 	<div class="rs-header">
 		<div class="rs-container">
-			<!-- <a href="{{ url('/') }}"><h1 class="fl pointer white">{{ trans('app.name') }}</h1></a> -->
 			<a href="{{ url('/') }}"><img src="{{ asset('/img/nuaa_logo.png') }}" height="100%"></a>
+			<a href="{{ url('/') }}"><h1 class="fl pointer white" class="fl">“五四”青年评优专题网站</h1></a>
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav" onclick="this.classList.toggle('expand')">
 					<a href="#">
 						<li id="tabMenu">{{ trans('app.banner.menu') }}</li>
 					</a>
-					<a href="{{ url('/') }}">
-						<li id="tabMain">{{ trans('app.banner.recommend') }}</li>
-					</a>
 					<a href="{{ url('apply/apply') }}">
 						<li id="tabApp">{{ trans('app.banner.apply') }}</li>
+					</a>
+					<a href="{{ url('/') }}">
+						<li id="tabMain">{{ trans('app.banner.recommend') }}</li>
 					</a>
 					<a href="{{ url('user/recommendations') }}">
 						<li id="tabRec">{{ trans('app.banner.recommendation') }}</li>

@@ -22,10 +22,10 @@ return [
 	],
 	'mail' => '如有疑问请发邮件或回复校团委微信消息，会有老师为你解答。',
 	'notice' => [
-		'1. 五四评优活动必读：<b><a href="/evaluation/notes.doc">活动须知</a></b>。',
-		'2. 时间节点：',
+		'1. 五四评优活动必读：<b><a href="/evaluation/notes.doc">活动须知（请点击下载）</a></b>。',
+		'2. 时间节点：个人申报、师生推荐（4.5-4.8），网络投票（4.12-4.15）',
 	],
-	'statistics' => '截至目前，一共有 :apply 名候选人，:recommendation 条推荐，累计投票 :vote 人次。',
+	'statistics' => '3. 截至目前，一共有 :apply 名候选人，:recommendation 条推荐，累计投票 :vote 人次。',
 	'type' => [
 		'college' => '院级评选',
 		'school' => '校级评选'
