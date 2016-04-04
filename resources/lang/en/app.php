@@ -25,7 +25,7 @@ return [
 		'1. Before activity, please read <b><a href="/evaluation/notes.doc">Notes (Click to download)</a></b> first.',
 		'2. Timeline: Apply &amp; recommendation during 4.5-4.8, vote during 4.12-4.15',
 	],
-	'statistics' => '3. Up to now, we have :apply application(s), :recommendation recommendation(s), :vote vote(s).',
+	'statistics' => '3. Up to now, we have :apply application(s), :recommendation recommendation(s).',
 	'type' => [
 		'college' => 'College level',
 		'school' => 'University level'
