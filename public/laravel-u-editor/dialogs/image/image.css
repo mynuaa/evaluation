@@ -10,6 +10,9 @@
     position: relative;
     font-family: sans-serif;
 }
+[data-content-id=online]{
+    display:none;
+}
 
 /*tab样式框大小*/
 .tabhead {
