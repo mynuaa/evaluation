@@ -392,6 +392,9 @@
 .no-padding{
 	padding:0 !important;
 }
+[data-content-id=online]{
+	display:none;
+}
 @media screen and (max-width:640px){
 	.rs-nav li{
 		width:100%;
