@@ -23,9 +23,10 @@ return [
 	'mail' => 'If you have any questions, please mail to ',
 	'notice' => [
 		'1. Before activity, please read <b><a href="/evaluation/notes.doc">Notes (Click to download)</a></b> first.',
-		'2. Timeline: Apply &amp; recommendation during 4.5-4.8, vote during 4.12-4.15',
+		'2. Timeline: Apply &amp; recommendation during 4.5-4.8, vote during 4.12-4.15.',
+		'3. Consultation and complaint please mail to <a href="mailto:nuaa52113085@126.com">nuaa52113085@126.com</a>.',
 	],
-	'statistics' => '3. Up to now, we have :apply application(s), :recommendation recommendation(s).',
+	'statistics' => '4. Up to now, we have :apply application(s), :recommendation recommendation(s).',
 	'type' => [
 		'college' => 'College level',
 		'school' => 'University level'

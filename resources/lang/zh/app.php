@@ -23,9 +23,10 @@ return [
 	'mail' => '如有疑问请发邮件或回复校团委微信消息，会有老师为你解答。',
 	'notice' => [
 		'1. 五四评优活动必读：<b><a href="/evaluation/notes.doc">活动须知（请点击下载）</a></b>。',
-		'2. 时间节点：个人申报、师生推荐（4.5-4.8），网络投票（4.12-4.15）',
+		'2. 时间节点：个人申报、师生推荐（4.5-4.8），网络投票（4.12-4.15）。',
+		'3. 咨询及投诉邮箱：<a href="mailto:nuaa52113085@126.com">nuaa52113085@126.com</a>。',
 	],
-	'statistics' => '3. 截至目前，一共有 :apply 名同学申报，共 :recommendation 条推荐。',
+	'statistics' => '4. 截至目前，一共有 :apply 名同学申报，共 :recommendation 条推荐。',
 	'type' => [
 		'college' => '院级评选',
 		'school' => '校级评选'
