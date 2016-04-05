@@ -33,7 +33,7 @@
 <div class="row">
 	@for ($i = 1; $i <= 3; $i++)
 		@if ($apply['img' . $i] != '')
-		<div class="col-4">
+		<div class="col-4 col-photo">
 			<a href="{{ url('photo') . '/' . $apply['img' . $i] }}" target="_blank" title="点击看大图"><img src="{{ url('thumb') . '/' . $apply['img' . $i] }}" height="150" style="max-width:90%"></a>
 			<p>{{ $apply['intro' . $i] }}</p>
 		</div>

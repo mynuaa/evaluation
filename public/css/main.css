@@ -277,6 +277,10 @@
 .avatar-chosen{
 	border-color:#E74C3C;
 }
+.col-photo{
+	padding:0 0.2em;
+	box-sizing:border-box;
+}
 @media screen and (max-width:480px){.card-fluid{width:100%;}}
 @media screen and (min-width:481px) and (max-width:720px){.card-fluid{width:50%;}}
 @media screen and (min-width:721px) and (max-width:960px){.card-fluid{width:33.33333333%;}}
