@@ -2,6 +2,7 @@
 
 return [
 	'title' => 'Individual Application',
+	'old' => 'Click here to show last year\'s applies.',
 
 	'basic' => 'Basic Information',
 	'self_title' => 'your own special title',

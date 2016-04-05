@@ -6,7 +6,7 @@
 @include('UEditor::head')
 <div class="page-title">{{ trans('apply.title') }}</div>
 <div class="rs-message">
-	<p><a href="/evaluation/old" target="_blank">点击这里看看去年学长学姐们的优秀事迹！</a></p>
+	<p><a href="/evaluation/old" target="_blank">{{ trans('apply.old') }}</a></p>
 </div>
 <div class="rs-form-outer fullwidth">
 	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data" onsubmit="return checkForm()">
