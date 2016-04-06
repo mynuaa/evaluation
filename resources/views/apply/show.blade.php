@@ -73,7 +73,7 @@
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
 	<input name="_token" type="hidden" value="{{ csrf_token() }}">
 	<textarea name="content" id="applyContent" class="fullwidth" placeholder="在这里写上你的推荐吧！"></textarea>
-
+	<div class="tip red">* 推荐词至少50字，一定要言之有物，无意义的简单字符、重复性内容可能会被审核为无效推荐！实名推荐，请对自己的名誉负责哈！</div>
 	<div class="rs-form-btns">
 		<input type="submit" value="{{ trans('apply.submit') }}" class="btn-success">
 	</div>
