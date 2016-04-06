@@ -69,7 +69,7 @@
 @if (!Auth::check())
 <div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}</div>
 @else
-<form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth">
+<form action='{{ url("apply/recommendation") }}' method="post" class="rs-form fullwidth" onsubmit="return checkForm()">
 	<input name='applyid' type='hidden' value="{{ $apply->id }}">
 	<input name="_token" type="hidden" value="{{ csrf_token() }}">
 	<textarea name="content" id="applyContent" class="fullwidth" placeholder="在这里写上你的推荐吧！"></textarea>

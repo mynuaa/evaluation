@@ -155,7 +155,7 @@ function removeTag(dom){
 	dom.parentNode.removeChild(dom);
 }
 function checkForm(){
-	if(document.getElementById("story").length<400){
+	if(ue2.getPlainTxt().length<400){
 		alert("“我的青春故事”必须大于400字！");
 		return false;
 	}
