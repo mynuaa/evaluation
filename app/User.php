@@ -42,7 +42,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function isRecommended($applyid)
 	{
-		return $this->recommendations()->where('apply_id', $applyid)->exists();
+		return $this->recommendations()->where('apply_id', $applyid)->whereNull('recommendations.deleted_at')->exists();
 	}
 
 	public function isRecommendTooMuch()
