@@ -6,9 +6,10 @@
 <h3>我的推荐</h3>
 @if ($recommendations->count() != 0)
 	@foreach ($recommendations as $rec)
-	<div class="card-outer" onclick="location.href='{{ url('apply/show/' . $rec->apply_id) . '#apply_a_' . $rec->id }}'">
+	<div class="card-outer">
 		<div class="card-inner">
-			<h5 class="card-content">
+			<i class="del-recommendations fa fa-close" onclick="del_rec({{ $rec->id }},event)"></i>
+			<h5 class="card-content" onclick="location.href='{{ url('apply/show/' . $rec->apply_id) . '#apply_a_' . $rec->id }}'">
 				{{ trans('recommend.where', ['title' => $rec->apply->title, 'name' => $rec->apply->name]) }}
 			</h5>
 			<blockquote class="card-content card-describtion">{{ $rec->content }}</blockquote>
@@ -49,4 +50,13 @@
 		<div class="rs-msg rs-msg-warning">{{ trans('vote.none') }}</div>
 	</div>
 @endif
+@stop
+
+@section('scripts')
+function del_rec(id,event){
+	event.preventDefault();
+	if(!confirm("确定要删除该条推荐？"))return false;
+	location.href="deleterecommendation?id="+id;
+	return false;
+}
 @stop

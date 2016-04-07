@@ -281,6 +281,15 @@
 	padding:0 0.2em;
 	box-sizing:border-box;
 }
+.del-recommendations{
+	position:absolute;
+	top:0;
+	right:0;
+	padding:0.4em 0.5em;
+}
+.del-recommendations:hover{
+	color:#E74C3C;
+}
 @media screen and (max-width:480px){.card-fluid{width:100%;}}
 @media screen and (min-width:481px) and (max-width:720px){.card-fluid{width:50%;}}
 @media screen and (min-width:721px) and (max-width:960px){.card-fluid{width:33.33333333%;}}

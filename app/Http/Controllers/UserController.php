@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Recommendation;
+
 use Illuminate\Http\Request;
 
 use App\Services\DedVerify;
@@ -88,6 +90,20 @@ class UserController extends Controller {
 			->withRecommendations(Auth::user()->myRecommendations)
 			->withVotes(Auth::user()->Votes)
 			->withDetails(Auth::user()->voteDetail());
+	}
+
+	public function getDeleterecommendation(Request $request)
+	{
+		$id = $request->id;
+		if (Auth::user() && intval($id) > 0)
+		{
+			Recommendation::find($id)->delete();
+			return redirect('user/recommendations');
+		}
+		else
+		{
+			abort(404);
+		}
 	}
 
 	public function getSwitch($username)
