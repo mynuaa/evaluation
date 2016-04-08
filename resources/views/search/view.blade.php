@@ -14,6 +14,7 @@
 		@endforeach
 	</div>
 	<div class="rs-message">
+		<div class="rs-msg rs-msg-info">应广大同学要求，申报截止时间为4月9日8：00。</div>
 		@if (trans('app.notice'))
 			<div class="rs-msg rs-msg-info">
 			@foreach (trans('app.notice') as $notice)
