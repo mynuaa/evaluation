@@ -105,7 +105,7 @@
 		<fieldset class="hidden" id="hiddens">
 			@for ($i = 1; $i <= 3; $i++)
 				@if ($apply['tag' . $i] != '')
-					<input type="hidden" name="tags[]" value="{{ $apply['tag' . $i] }}">
+					<input type="hidden" name="tags[]" id="tag_{{ $apply['tag' . $i] }}" value="{{ $apply['tag' . $i] }}">
 				@endif
 			@endfor
 		</fieldset>
@@ -148,7 +148,7 @@ function addTag(){
 }
 function removeTag(dom){
 	var tagName=dom.innerText.replace("×","");
-	var list=document.querySelectorAll(".tag_"+tagName);
+	var list=document.querySelectorAll("#tag_"+tagName);
 	for(var i=0;i<list.length;i++){
 		list[i].parentNode.removeChild(list[i]);
 	}
