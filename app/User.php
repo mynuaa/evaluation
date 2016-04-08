@@ -27,12 +27,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function recommendations()
 	{
-		return $this->belongsToMany('App\Apply', 'recommendations');
+		return $this->belongsToMany('App\Apply', 'recommendations')->whereNull('recommendations.deleted_at');
 	}
 
 	public function votes()
 	{
-		return $this->belongsToMany('App\Apply', 'votes')->withTimestamps();
+		return $this->belongsToMany('App\Apply', 'votes')->whereNull('votes.deleted_at')->withTimestamps();
 	}
 
 	public function myRecommendations()
@@ -42,7 +42,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function isRecommended($applyid)
 	{
-		return $this->recommendations()->where('apply_id', $applyid)->whereNull('recommendations.deleted_at')->exists();
+		return $this->recommendations()->where('apply_id', $applyid)->exists();
 	}
 
 	public function isRecommendTooMuch()
