@@ -106,14 +106,14 @@ class UserController extends Controller {
 		}
 	}
 
-	public function getSwitch($username)
+	public function getSwitch(Request $request)
 	{
 		if ( !Auth::check() || !Auth::user()->isAdmin())
 		{
 			abort(404);
 		}
 
-		Auth::login(User::where('username', $username)->first());
+		Auth::login(User::where('username', $request->username)->first());
 
 		return redirect('apply/apply');
 	}
