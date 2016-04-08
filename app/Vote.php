@@ -5,6 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 class Vote extends Model {
 
 	public function apply(){
-		return $this->belongsTo('App\Apply');
+		return $this->belongsTo('App\Apply')->whereNull('votes.deleted_at');
 	}
 }
