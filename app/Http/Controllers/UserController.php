@@ -112,7 +112,7 @@ class UserController extends Controller {
 		{
 			abort(404);
 		}
-dd($request);
+
 		Auth::login(User::where('username', $request->username)->first());
 
 		return redirect('apply/apply');
