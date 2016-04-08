@@ -51,11 +51,11 @@
 	</div>
 </div>
 <h5>{{ trans('apply.whoami') }}</h5>
-{!! $apply->whoami !!}
+<div class="rs-content-wrapper">{!! $apply->whoami !!}</div>
 <h5>{{ trans('apply.story') }}</h5>
-{!! $apply->story !!}
+<div class="rs-content-wrapper">{!! $apply->story !!}</div>
 <h5>{{ trans('apply.disadvantages') }}</h5>
-{!! $apply->insufficient !!}
+<div class="rs-content-wrapper">{!! $apply->insufficient !!}</div>
 @if ($apply->tag1 != '')
 <div class="rs-tabs" style="height:auto">
 	<div class="rs-tab" title="{{ $apply->tag1 }}">{{ $apply->tag1 }}</div>

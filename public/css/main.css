@@ -44,6 +44,10 @@
 	width:60px;
 	padding:0;
 }
+.rs-content-wrapper{
+	overflow:auto;
+	position:relative;
+}
 .iconed-text input[type=text],.iconed-text input[type=password],.iconed-text input[type=email],.iconed-text input[type=tel]{
 	padding-left:36px !important;
 	width:100%;
