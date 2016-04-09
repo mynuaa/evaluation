@@ -14,6 +14,7 @@
 <style>
 th{white-space:nowrap;text-align:center;}
 td{word-break:break-all;}
+td:nth-child(2){white-space:nowrap;}
 </style>
 <table>
 <tr>
