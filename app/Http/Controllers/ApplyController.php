@@ -220,7 +220,7 @@ class ApplyController extends Controller {
 				'籍贯' => $apply->native_place,
 				'政治面貌' => $apply->political,
 				'专业' => $apply->major,
-				'事迹' => preg_replace('/[\ \t\n]+/', ' ', strip_tags($apply->story))
+				'事迹' => preg_replace('/([\ \t\n]|&nbsp;)+/', ' ', strip_tags($apply->story))
 			];
 		}
 		Excel::create($request->college ? $request->college : '汇总', function($excel) use($data) {
