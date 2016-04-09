@@ -13,6 +13,7 @@
 </div>
 <style>
 th{white-space:nowrap;text-align:center;}
+td{word-break:break-all;}
 </style>
 <table>
 <tr>
