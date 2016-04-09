@@ -64,8 +64,8 @@
 </div>
 @endif
 <hr>
-@if (!$apply->old && !$is_stop)
 <h3>{{ trans('apply.want_recommend') }}</h3>
+@if (!$apply->old && !$is_stop)
 @if (!Auth::check())
 <div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}</div>
 @else
@@ -79,6 +79,7 @@
 	</div>
 </form>
 @endif
+@endif
 <div id="card-transition" class="card-transition">
 	@foreach ($apply->recommendations()->get() as $rec)
 	<div class="card-outer" id="apply_a_{{ $rec->id }}">
@@ -90,7 +91,6 @@
 	</div>
 	@endforeach
 </div>
-@endif
  <p class="tip">
  	<span>{{ trans('apply.pageview', ['time' => $apply->pageview < 3000 ? $apply->pageview : '3000+']) }}</span>
 	@if ($is_wechat)
