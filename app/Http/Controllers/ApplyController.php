@@ -204,6 +204,14 @@ class ApplyController extends Controller {
 		}
 	}
 
+	private function excel_translate($str)
+	{
+		if (strpos($str, '=') === 0) {
+			return "'" . $str;
+		}
+		return $str;
+	}
+
 	public function getAll(Request $request)
 	{
 		if ($request->college)
@@ -214,13 +222,13 @@ class ApplyController extends Controller {
 		$data = [];
 		foreach ($result as $apply) {
 			$data []= [
-				'姓名' => $apply->name,
-				'学号' => $apply->stuid,
-				'学院' => $apply->user->college,
-				'籍贯' => $apply->native_place,
-				'政治面貌' => $apply->political,
-				'专业' => $apply->major,
-				'事迹' => preg_replace('/([\ \t\n]|(&nbsp;))+/', ' ', strip_tags($apply->story))
+				'姓名' => $this->excel_translate($apply->name),
+				'学号' => $this->excel_translate($apply->stuid),
+				'学院' => $this->excel_translate($apply->user->college),
+				'籍贯' => $this->excel_translate($apply->native_place),
+				'政治面貌' => $this->excel_translate($apply->political),
+				'专业' => $this->excel_translate($apply->major),
+				'事迹' => $this->excel_translate(preg_replace('/([\ \t\n]|(&nbsp;))+/', ' ', strip_tags($apply->story)))
 			];
 		}
 		Excel::create($request->college ? $request->college : '汇总', function($excel) use($data) {
