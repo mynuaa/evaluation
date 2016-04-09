@@ -198,4 +198,20 @@ class ApplyController extends Controller {
 			abort(403, 'Access denied.');
 		}
 	}
+
+	public function getAll(Request $request)
+	{
+		if (Auth::user()->isAdmin())
+		{
+			if (isset($request->college))
+				$data = Apply::where('college', $request->college)->where('old', 0);
+			else
+				$data = Apply::where('old', 0);
+			return view('apply.all')->withData($data);
+		}
+		else
+		{
+			abort(403, 'Access denied.');
+		}
+	}
 }
