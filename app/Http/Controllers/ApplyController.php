@@ -204,9 +204,9 @@ class ApplyController extends Controller {
 		if (Auth::user()->isAdmin())
 		{
 			if ($request->college)
-				$data = Apply::where('college', $request->college)->where('old', false)->order('stuid')->paginate(config('business.paginate'));
+				$data = Apply::where('college', $request->college)->where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
 			else
-				$data = Apply::where('old', false)->order('stuid')->paginate(config('business.paginate'));
+				$data = Apply::where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
 			return view('apply.all')->withData($data);
 		}
 		else
