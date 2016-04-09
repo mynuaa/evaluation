@@ -228,7 +228,7 @@ class ApplyController extends Controller {
 				'籍贯' => $this->excel_translate($apply->native_place),
 				'政治面貌' => $this->excel_translate($apply->political),
 				'专业' => $this->excel_translate($apply->major),
-				'事迹' => $this->excel_translate(preg_replace('/([\ \t\n]|(&nbsp;))+/', ' ', strip_tags($apply->story)))
+				'事迹' => $this->excel_translate(preg_replace('/[\ \t\n]+/', ' ', html_entity_decode(strip_tags($apply->story))))
 			];
 		}
 		Excel::create($request->college ? $request->college : '汇总', function($excel) use($data) {
