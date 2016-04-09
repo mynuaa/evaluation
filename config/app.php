@@ -149,6 +149,7 @@ return [
 		'Stevenyangecho\UEditor\UEditorServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 
+		'Maatwebsite\Excel\ExcelServiceProvider',
 	],
 
 	/*
@@ -198,6 +199,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 		'Image' => 'Intervention\Image\Facades\Image::class',
+
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 	],
 
 ];

@@ -11,6 +11,8 @@ use Session;
 
 use Intervention\Image\Facades\Image;
 
+use Maatwebsite\Excel\Facades\Excel;
+
 class ApplyController extends Controller {
 
 	public function __construct()
@@ -204,17 +206,28 @@ class ApplyController extends Controller {
 
 	public function getAll(Request $request)
 	{
-		// if (Auth::user()->isAdmin())
-		// {
-			if ($request->college)
-				$data = Apply::where('college', $request->college)->where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
-			else
-				$data = Apply::where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
-			return view('apply.all')->withData($data);
-		// }
-		// else
-		// {
-			// abort(403, 'Access denied.');
-		// }
+		if ($request->college)
+			$result = Apply::where('college', $request->college)->where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
+		else
+			$result = Apply::where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
+		// return view('apply.all')->withData($data);
+		$data = [];
+		foreach ($result as $apply) {
+			$data []= [
+				'姓名' => $apply->name,
+				'学号' => $apply->stuid,
+				'学院' => $apply->user->college,
+				'籍贯' => $apply->native_place,
+				'政治面貌' => $apply->political,
+				'专业' => $apply->major,
+				'事迹' => preg_replace('/[\ \t\n]+/', ' ', strip_tags($apply->story))
+			];
+		}
+		Excel::create($request->college ? $request->college : '汇总', function($excel) use($data) {
+			$excel->sheet('申报数据', function($sheet) use($data) {
+				$sheet->fromArray($data);
+			});
+		})->export('xls');
+		return 'ok';
 	}
 }
