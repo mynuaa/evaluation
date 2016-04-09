@@ -20,13 +20,15 @@ class ApplyController extends Controller {
 
 	public function getApply()
 	{
+		return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+
 		$apply = Auth::user()->apply;
 		return view('apply.apply')->withApply($apply)->withStuid(Auth::user()->username);
 	}
 
 	public function postApply(ApplyPostRequest $request)
 	{
-		// return view('apply.apply')->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+		return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
@@ -97,7 +99,7 @@ class ApplyController extends Controller {
 
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
-			);
+			)->withIsStop(true);
 		}
 		else{
 			abort(404, 'Application not found.');
@@ -106,7 +108,7 @@ class ApplyController extends Controller {
 
 	public function postRecommendation(RecommendPostRequest $request)
 	{
-		// return redirect()->back()->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+		return redirect()->back()->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$user = Auth::user();
 
