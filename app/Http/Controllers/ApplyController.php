@@ -207,9 +207,9 @@ class ApplyController extends Controller {
 	public function getAll(Request $request)
 	{
 		if ($request->college)
-			$result = Apply::where('college', $request->college)->where('old', false)->orderBy('stuid');
+			$result = Apply::where('college', $request->college)->where('old', false)->orderBy('stuid')->paginate(23333);
 		else
-			$result = Apply::where('old', false)->orderBy('stuid');
+			$result = Apply::where('old', false)->orderBy('stuid')->paginate(23333);
 		// return view('apply.all')->withData($data);
 		$data = [];
 		foreach ($result as $apply) {
@@ -220,7 +220,7 @@ class ApplyController extends Controller {
 				'籍贯' => $apply->native_place,
 				'政治面貌' => $apply->political,
 				'专业' => $apply->major,
-				'事迹' => preg_replace('/([\ \t\n]|&nbsp;)+/', ' ', strip_tags($apply->story))
+				'事迹' => preg_replace('/([\ \t\n]|(&nbsp;))+/', ' ', strip_tags($apply->story))
 			];
 		}
 		Excel::create($request->college ? $request->college : '汇总', function($excel) use($data) {
