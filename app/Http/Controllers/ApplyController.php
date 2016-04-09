@@ -207,9 +207,9 @@ class ApplyController extends Controller {
 	public function getAll(Request $request)
 	{
 		if ($request->college)
-			$result = Apply::where('college', $request->college)->where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
+			$result = Apply::where('college', $request->college)->where('old', false)->orderBy('stuid');
 		else
-			$result = Apply::where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
+			$result = Apply::where('old', false)->orderBy('stuid');
 		// return view('apply.all')->withData($data);
 		$data = [];
 		foreach ($result as $apply) {
