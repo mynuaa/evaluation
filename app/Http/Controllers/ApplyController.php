@@ -201,17 +201,17 @@ class ApplyController extends Controller {
 
 	public function getAll(Request $request)
 	{
-		if (Auth::user()->isAdmin())
-		{
+		// if (Auth::user()->isAdmin())
+		// {
 			if ($request->college)
 				$data = Apply::where('college', $request->college)->where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
 			else
 				$data = Apply::where('old', false)->orderBy('stuid')->paginate(config('business.paginate'));
 			return view('apply.all')->withData($data);
-		}
-		else
-		{
-			abort(403, 'Access denied.');
-		}
+		// }
+		// else
+		// {
+			// abort(403, 'Access denied.');
+		// }
 	}
 }
