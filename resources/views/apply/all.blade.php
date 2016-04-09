@@ -32,7 +32,7 @@ th{white-space:nowrap;text-align:center;}
 	<td>{{ $apply->native_place }}</td>
 	<td>{{ $apply->political }}</td>
 	<td>{{ $apply->major }}</td>
-	<td>{{ strip_tags($apply->story) }}</td>
+	<td>{{ preg_replace('/[\ \t\n]+/', ' ', strip_tags($apply->story)) }}</td>
 </tr>
 @endforeach
 </table>
