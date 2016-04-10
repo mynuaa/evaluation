@@ -57,7 +57,7 @@ class ApplyController extends Controller {
 
 		$user = Auth::user();
 
-		$apply = Apply::firstOrNew(['user_id' => $user->id]);
+		$apply = Apply::firstOrNew(['user_id' => $user->id, 'old' => false]);
 
 		$apply->type = $request->type;
 		$apply->stuid = $user->username;
