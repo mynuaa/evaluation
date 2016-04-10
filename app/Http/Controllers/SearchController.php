@@ -42,7 +42,7 @@ class SearchController extends Controller {
 		$type = $request->type;
 		$key = $request->key;
 
-		$applies = Apply::where($type, $key)->order()->paginate(config('business.paginate'));
+		$applies = Apply::where('old', false)->where($type, $key)->order()->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
