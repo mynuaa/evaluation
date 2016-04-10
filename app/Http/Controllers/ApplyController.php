@@ -22,7 +22,7 @@ class ApplyController extends Controller {
 
 	public function getApply()
 	{
-		if (Auth::user()->username != '051210530')
+		if (!in_array(Auth::user()->username, ['051210530', 'sx1509070']))
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$apply = Auth::user()->apply;
@@ -31,7 +31,7 @@ class ApplyController extends Controller {
 
 	public function postApply(ApplyPostRequest $request)
 	{
-		if (Auth::user()->username != '051210530')
+		if (!in_array(Auth::user()->username, ['051210530', 'sx1509070']))
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$request->photos = [];
@@ -112,7 +112,7 @@ class ApplyController extends Controller {
 
 	public function postRecommendation(RecommendPostRequest $request)
 	{
-		if (Apply::find($request->applyid)->user->username != '051210530')
+		if (!in_array(Apply::find($request->applyid)->user->username, ['051210530', 'sx1509070']))
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$user = Auth::user();
