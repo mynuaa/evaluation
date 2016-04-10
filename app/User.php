@@ -22,7 +22,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function apply()
 	{
-		return $this->hasOne('App\Apply')->where('old', false);
+		return $this->hasOne('App\Apply')->where('applies.old', false);
 	}
 
 	public function recommendations()
