@@ -25,9 +25,10 @@ return [
 		'1. Before activity, please read <b><a href="/evaluation/notes.doc">Notes (Click to download)</a></b> first.',
 		'2. Timeline: Apply &amp; recommendation during 4.5-4.8, vote during 4.12-4.15.',
 		'3. Consultation and complaint please mail to <a href="mailto:nuaa52113085@126.com">nuaa52113085@126.com</a>.',
-		'4. You can now delete your recommendations in page "My Records".',
+		'4. Up to now, we have 805 applies, 12976 recommendations. You can vote for 660 applies which have not less than 10 recommendations.',
 	],
-	'statistics' => '5. Up to now, we have :apply application(s), :recommendation recommendation(s).',
+	// 'statistics' => '5. Up to now, we have :apply application(s), :recommendation recommendation(s).',
+	'statistics' => '',
 	'type' => [
 		'college' => 'College level',
 		'school' => 'University level'
