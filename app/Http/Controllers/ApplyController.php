@@ -15,6 +15,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ApplyController extends Controller {
 
+	private $backdoor = ['051210530', 'sx1509070', '121310307'];
+
 	public function __construct()
 	{
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
@@ -22,7 +24,7 @@ class ApplyController extends Controller {
 
 	public function getApply()
 	{
-		if (!in_array(Auth::user()->username, ['051210530', 'sx1509070']))
+		if (!in_array(Auth::user()->username, $this->backdoor))
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$apply = Auth::user()->apply;
@@ -31,7 +33,7 @@ class ApplyController extends Controller {
 
 	public function postApply(ApplyPostRequest $request)
 	{
-		if (!in_array(Auth::user()->username, ['051210530', 'sx1509070']))
+		if (!in_array(Auth::user()->username, $this->backdoor))
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$request->photos = [];
@@ -103,7 +105,7 @@ class ApplyController extends Controller {
 
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
-			)->withIsStop($apply->old || !in_array($apply->user->username, ['051210530', 'sx1509070']));
+			)->withIsStop($apply->old || !in_array($apply->user->username, $this->backdoor));
 		}
 		else{
 			abort(404, 'Application not found.');
@@ -112,7 +114,7 @@ class ApplyController extends Controller {
 
 	public function postRecommendation(RecommendPostRequest $request)
 	{
-		if (!in_array(Apply::find($request->applyid)->user->username, ['051210530', 'sx1509070']))
+		if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$user = Auth::user();
