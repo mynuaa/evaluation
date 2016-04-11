@@ -137,10 +137,23 @@ class ApplyController extends Controller {
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
 	}
 
+	private function checkLimit($voteInner, $voteOuter)
+	{
+		$limit = [
+			0 => [0, 7],
+			1 => [1, 7],
+			2 => [1, 6],
+			3 => [2, 5],
+			4 => [3, 4],
+			5 => [3, 3],
+		];
+		return isset($limit[$voteInner]) && $voteOuter >= $limit[$voteInner][0] && $voteOuter <= $limit[$voteInner][1];
+	}
+
 	public function getVote($id)
 	{
 
-		return redirect()->back()->withMessage(['type' => 'warning', 'content' => '还没开放投票哦！']);
+		// return redirect()->back()->withMessage(['type' => 'warning', 'content' => '还没开放投票哦！']);
 
 		if (Auth::user()->isVoted($id))
 		{
@@ -158,20 +171,20 @@ class ApplyController extends Controller {
 		}
 
 		// 最大票数限制
-		if ($user->votes() >= config('business.vote.max')) {
+		if ($user->votes()->count() >= config('business.vote.max')) {
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much')]);
 		}
 
 		//同学院 || 不同学院
 		if ($user->college == $apply->college){
 			// if ($user->countInner() >= config('business.vote.inner')){
-			if ($user->countInner() >= config('business.vote.inner') || $user->countInner() + 1 > $user->countOuter() * 2){
+			if (!$this->checkLimit($user->countInner() + 1, $user->countOuter())){
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_inner')]);
 			}
 		}
 		else{
 			// if ($user->countOuter() >= config('business.vote.outer')){
-			if ($user->countOuter() >= config('business.vote.outer') || $user->countInner() > ($user->countOuter + 1) * 2){
+			if (!$this->checkLimit($user->countInner(), $user->countOuter() + 1)){
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_outer')]);
 			}
 		}
@@ -183,7 +196,7 @@ class ApplyController extends Controller {
 
 		return redirect()->back()->withMessage([
 			'type' => 'success',
-			'content' => trans('message.vote.success') . "同学院还可投${remain['inner']}票，不同学院还可投${remain['outer']}票。"
+			'content' => trans('message.vote.success')
 		]);
 	}
 

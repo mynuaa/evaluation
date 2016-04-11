@@ -20,9 +20,9 @@
 			<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
 		@else
 			@if ($apply->isVoted)
-			<!-- <input type="button" value="已投" class="fr" disabled> -->
+			<input type="button" value="已投" class="fr" disabled>
 			@else
-			<!-- <input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'"> -->
+			<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
 			@endif
 		@endif
 	@else
