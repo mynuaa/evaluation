@@ -253,4 +253,28 @@ class ApplyController extends Controller {
 		})->export('xls');
 		return 'ok';
 	}
+
+	public function getVotelike(Request $request)
+	{
+		if ($request->college)
+			$result = Apply::where('type', 1)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+		else
+			$result = Apply::where('type', 0)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+		$data = [];
+		foreach ($result as $apply) {
+			$data []= [
+				'姓名' => $this->excel_translate($apply->name),
+				'学号' => $this->excel_translate($apply->stuid),
+				'学院' => $this->excel_translate($apply->user->college),
+				'投票数' => $this->excel_translate($apply->votes),
+				'点赞数' => $this->excel_translate($apply->like),
+			];
+		}
+		Excel::create($request->college ? '院级' : '校级', function($excel) use($data) {
+			$excel->sheet('统计数据', function($sheet) use($data) {
+				$sheet->fromArray($data);
+			});
+		})->export('xls');
+		return 'ok';
+	}
 }
