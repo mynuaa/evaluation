@@ -179,13 +179,13 @@ class ApplyController extends Controller {
 		if ($user->college == $apply->college){
 			// if ($user->countInner() >= config('business.vote.inner')){
 			if (!$this->checkLimit($user->countInner() + 1, $user->countOuter())){
-				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_inner')]);
+				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.out_of_range', ['voteInner' => $user->countInner() + 1, 'voteOuter' => $user->countOuter()])]);
 			}
 		}
 		else{
 			// if ($user->countOuter() >= config('business.vote.outer')){
 			if (!$this->checkLimit($user->countInner(), $user->countOuter() + 1)){
-				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.too_much_outer')]);
+				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.out_of_range', ['voteInner' => $user->countInner(), 'voteOuter' => $user->countOuter() + 1])]);
 			}
 		}
 
@@ -196,7 +196,7 @@ class ApplyController extends Controller {
 
 		return redirect()->back()->withMessage([
 			'type' => 'success',
-			'content' => trans('message.vote.success')
+			'content' => trans('message.vote.success', ['voteInner' => $user->countInner(), 'voteOuter' => $user->countOuter()])
 		]);
 	}
 
