@@ -21,10 +21,11 @@ return [
 		'before' => 'You Have Recommend This Person Before!',
 	],
 	'vote' => [
-		'success' => 'Vote Successed!',
+		'success' => 'Vote Successed! Now you have :voteOuter for outer and :voteInner for inner.',
 		'too_much' => 'Vote Too Much!',
 		'too_much_inner' => 'You can\'t vote any other person inside your college!',
 		'too_much_outer' => 'You can\'t vote any other person outside your college!',
+		'out_of_range' => ':voteOuter/:voteInner doesn\'t fit the rule!',
 		'before' => 'You Have Voted This Person Before!',
 		'cross_college' => 'You Can Not Vote People Cross College!',
 	],
