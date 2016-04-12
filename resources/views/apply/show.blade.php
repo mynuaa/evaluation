@@ -15,18 +15,22 @@
 	@if (Auth::check() && Auth::user()->isAdmin())
 	<input type="button" value="删除" class="btn-danger fr" onclick="if(confirm('真特么要删？不考虑考虑了？'))window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
 	@endif
-	@if (Auth::check())
-		@if ((Auth::user()->name == $apply->name) || Auth::user()->isAdmin())
-			<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
-		@else
-			@if ($apply->isVoted)
-			<input type="button" value="已投" class="fr" disabled>
+	@if ($can_vote)
+		@if (Auth::check())
+			@if ((Auth::user()->name == $apply->name) || Auth::user()->isAdmin())
+				<button class="fr btn" disabled>共{{ $apply->votes }}票</button>
 			@else
-			<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
+				@if ($apply->isVoted)
+				<input type="button" value="已投" class="fr" disabled>
+				@else
+				<input type="button" value="投票" class="btn-success fr" onclick="window.location.href='{{ url('apply/vote/'.$apply->id) }}'">
+				@endif
 			@endif
+		@else
+			<!-- <a href="{{ url('user/login') }}"><input type="button" value="登录后投票" class="btn-success fr"></a> -->
 		@endif
 	@else
-		<!-- <a href="{{ url('user/login') }}"><input type="button" value="登录后投票" class="btn-success fr"></a> -->
+		<input type="button" value="推荐数不满10条，无法对其投票" class="fr" disabled>
 	@endif
 </div>
 <h5>{{ trans('apply.photo') }}</h5>

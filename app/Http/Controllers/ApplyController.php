@@ -105,7 +105,8 @@ class ApplyController extends Controller {
 
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
-			)->withIsStop($apply->old || !in_array($apply->user->username, $this->backdoor));
+			)->withIsStop($apply->old || !in_array($apply->user->username, $this->backdoor)
+			)->withCanVote($apply->recommendations >= 10);
 		}
 		else{
 			abort(404, 'Application not found.');
