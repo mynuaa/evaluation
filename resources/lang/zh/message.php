@@ -22,12 +22,12 @@ return [
 	],
 	'vote' => [
 		'success' => '投票成功！目前你的投票数为：院外同学/院内同学 = :voteOuter/:voteInner',
-		'too_much' => '哎呀，怎么可以投这么多票呢！',
-		'too_much_inner' => '院内投票已经投满了啊喂！',
-		'too_much_outer' => '院外投票已经投满了啊喂！',
-		'out_of_range' => '院外同学/院内同学 = :voteOuter/:voteInner，并不满足投票规则哦！',
-		'before' => '知道你俩关系好，可是你只能给他投一票哦~',
-		'cross_college' => '咳咳，院内评选中跨学院投票是不被允许的~~',
+		'too_much' => '你已投满8票，无法继续投票！',
+		'too_much_inner' => '院内投票已经投满了！',
+		'too_much_outer' => '院外投票已经投满了！',
+		'out_of_range' => '院外同学/院内同学 = :voteOuter/:voteInner不满足投票规则，请阅读活动须知！',
+		'before' => '只能给一个同学投一票！',
+		'cross_college' => '院内评选中跨学院投票是不被允许的！',
 	],
 	'user' => [
 		'info_need' => '先完善下个人信息好了~',
