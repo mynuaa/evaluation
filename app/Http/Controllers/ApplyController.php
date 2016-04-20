@@ -154,7 +154,7 @@ class ApplyController extends Controller {
 	public function getVote($id)
 	{
 
-		// return redirect()->back()->withMessage(['type' => 'warning', 'content' => '还没开放投票哦！']);
+		return redirect()->back()->withMessage(['type' => 'warning', 'content' => '还没开放投票哦！']);
 
 		if (Auth::user()->isVoted($id))
 		{
