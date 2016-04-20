@@ -15,7 +15,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ApplyController extends Controller {
 
-	private $backdoor = [];
+	private $backdoor = ['051230303'];
 
 	public function __construct()
 	{
