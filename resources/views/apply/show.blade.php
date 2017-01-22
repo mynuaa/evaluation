@@ -9,7 +9,11 @@
 	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.jpg') }}" alt="{{ $apply->name }}">
 	@endif
 	<div class="fl">
-		<div>{{ $apply->name }}，{{ $apply->stuid }}，{{ trans("app.type." . config("business.type." . $apply->type)) }}</div>
+		<div>{{ $apply->name }}，
+		@if (Auth::check())
+			{{ $apply->stuid }}，
+		@endif
+		{{ trans("app.type." . config("business.type." . $apply->type)) }}</div>
 		<div>{{ trans('apply.professional', ['name' => $apply->major]) }}</div>
 	</div>
 	@if (Auth::check() && Auth::user()->isAdmin())
@@ -89,7 +93,11 @@
 	<div class="card-outer" id="apply_a_{{ $rec->id }}">
 		<div class="card-inner">
 			<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.jpg') }}" alt="{{ $rec->user->name }}">
-			<h5 class="card-content cmt-author">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}, {{ $rec->user->username }}</h5>
+			<h5 class="card-content cmt-author">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}
+			@if (Auth::check())
+				，{{ $rec->user->username }}
+			@endif
+			</h5>
 			<div class="card-content card-describtion">{{ $rec->content }}</div>
 		</div>
 	</div>
