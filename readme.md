@@ -1,23 +1,22 @@
-## Laravel PHP Framework
+# evaluation
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## 安装
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+    1. 在自己喜欢的目录git clone
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+    2. 百度 下载composer,建议官网下载windows的msi版本
 
-## Official Documentation
+    3. 安装composer，换源或者翻墙随意
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+    4. 通过git bash进入evaluation项目文件夹，执行composer install
 
-## Contributing
+    5. 修改evaluation/config/database.php
+        'username' => env('DB_USERNAME', 'forge'),username改成 root(要改两处)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+    6. 确认bash可执行php命令，否则百度将php bin 目录添加到环境变量中
 
-### License
+    7. 执行php artisan migrate
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+    8. 注意evaluation/public 才是业务代码，所以应该浏览器访问evaluation/public/index.php，或者建立alias对应
+
+    9. 通过浏览器访问evaluation项目，看报错，dubug，一般情况下，会提示缺少evaluation/storage/log什么东西的，在对应位置建立文件夹即可。
