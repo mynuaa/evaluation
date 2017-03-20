@@ -1,9 +1,7 @@
 <?php namespace App\Services;
 
 class DedVerify {
-
-	public function verify($stuid, $password)
-	{
+	public function verify($stuid, $password) {
 		$url = "http://ded.nuaa.edu.cn/NetEAn/User/check.asp";
 		$post = "user=".$stuid."&pwd=".$password;
 		$cookie = tempnam(storage_path().'/framework/cache', 'COOKIE_');
@@ -31,5 +29,4 @@ class DedVerify {
 
 		return (strstr($response, 'switch (0){') != false);
 	}
-
 }

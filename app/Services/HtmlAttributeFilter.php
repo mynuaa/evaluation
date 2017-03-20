@@ -30,15 +30,15 @@ class HtmlAttributeFilter{ // class start
     * @param  String $str 源字符串
     * @return String
     */
-    public function strip($str){
+    public function strip($str) {
         $this->_str = $str;
 
-        if(is_string($this->_str) && strlen($this->_str)>0){ // 判断字符串
+        if(is_string($this->_str) && strlen($this->_str)>0) { // 判断字符串
 
             $this->_str = strtolower($this->_str); // 转成小写
 
             $res = $this->findElements();
-            if(is_string($res)){
+            if(is_string($res)) {
                 return $res;
             }
             $nodes = $this->findAttributes($res);
@@ -52,7 +52,7 @@ class HtmlAttributeFilter{ // class start
     /** 设置允许的属性
     * @param Array $param
     */
-    public function setAllow($param=array()){
+    public function setAllow($param=array()) {
         $this->_allow = $param;
     }
 
@@ -60,7 +60,7 @@ class HtmlAttributeFilter{ // class start
     /** 设置特例
     * @param Array $param
     */
-    public function setException($param=array()){
+    public function setException($param=array()) {
         $this->_exception = $param;
     }
 
@@ -68,27 +68,27 @@ class HtmlAttributeFilter{ // class start
     /** 设置忽略的标记
     * @param Array $param
     */
-    public function setIgnore($param=array()){
+    public function setIgnore($param=array()) {
         $this->_ignore = $param;
     }
 
 
     /** 搜寻需要处理的元素 */
-    private function findElements(){
+    private function findElements() {
         $nodes = array();
         preg_match_all("/<([^ !\/\>\n]+)([^>]*)>/i", $this->_str, $elements);
-        foreach($elements[1] as $el_key => $element){
-            if($elements[2][$el_key]){
+        foreach($elements[1] as $el_key => $element) {
+            if($elements[2][$el_key]) {
                 $literal = $elements[0][$el_key];
                 $element_name = $elements[1][$el_key];
                 $attributes = $elements[2][$el_key];
-                if(is_array($this->_ignore) && !in_array($element_name, $this->_ignore)){
+                if(is_array($this->_ignore) && !in_array($element_name, $this->_ignore)) {
                     $nodes[] = array('literal'=>$literal, 'name'=>$element_name, 'attributes'=>$attributes);
                 }
             }
         }
 
-        if(!isset($nodes[0]) || !$nodes[0]){
+        if(!isset($nodes[0]) || !$nodes[0]) {
             return $this->_str;
         }else{
             return $nodes;
@@ -99,12 +99,12 @@ class HtmlAttributeFilter{ // class start
     /** 搜寻属性
     *  @param Array $nodes 需要处理的元素
     */
-    private function findAttributes($nodes){
-        foreach($nodes as &$node){
+    private function findAttributes($nodes) {
+        foreach($nodes as &$node) {
             preg_match_all("/([^ =]+)\s*=\s*[\"|']{0,1}([^\"']*)[\"|']{0,1}/i", $node['attributes'], $attributes);
             $atts = null;
-            if($attributes[1]){
-                foreach($attributes[1] as $att_key=>$att){
+            if($attributes[1]) {
+                foreach($attributes[1] as $att_key=>$att) {
                     $literal = $attributes[0][$att_key];
                     $attribute_name = $attributes[1][$att_key];
                     $value = $attributes[2][$att_key];
@@ -123,13 +123,13 @@ class HtmlAttributeFilter{ // class start
     /** 移除属性
     *  @param Array $nodes 需要处理的元素
     */
-    private function removeAttributes($nodes){
-        foreach($nodes as $node){
+    private function removeAttributes($nodes) {
+        foreach($nodes as $node) {
             $node_name = $node['name'];
             $new_attributes = '';
-            if(is_array($node['attributes'])){
-                foreach($node['attributes'] as $attribute){
-                    if((is_array($this->_allow) && in_array($attribute['name'], $this->_allow)) || $this->isException($node_name, $attribute['name'], $this->_exception)){
+            if(is_array($node['attributes'])) {
+                foreach($node['attributes'] as $attribute) {
+                    if((is_array($this->_allow) && in_array($attribute['name'], $this->_allow)) || $this->isException($node_name, $attribute['name'], $this->_exception)) {
                         $new_attributes = $this->createAttributes($new_attributes, $attribute['name'], $attribute['value']);
                     }
                 }
@@ -146,9 +146,9 @@ class HtmlAttributeFilter{ // class start
     * @param Array  $exceptions     允许的特例
     * @return boolean
     */
-    private function isException($element_name, $attribute_name, $exceptions){
-        if(array_key_exists($element_name, $this->_exception)){
-            if(in_array($attribute_name, $this->_exception[$element_name])){
+    private function isException($element_name, $attribute_name, $exceptions) {
+        if(array_key_exists($element_name, $this->_exception)) {
+            if(in_array($attribute_name, $this->_exception[$element_name])) {
                 return true;
             }
         }
@@ -162,8 +162,8 @@ class HtmlAttributeFilter{ // class start
     * @param  String $value
     * @return String
     */
-    private function createAttributes($new_attributes, $name, $value){
-        if($new_attributes){
+    private function createAttributes($new_attributes, $name, $value) {
+        if($new_attributes) {
             $new_attributes .= " ";
         }
         $new_attributes .= "$name=\"$value\"";
@@ -175,7 +175,7 @@ class HtmlAttributeFilter{ // class start
     * @param  String $str 源字符串
     * @return String
     */
-    private function protect($str){
+    private function protect($str) {
         $conversions = array(
             "^" => "\^",
             "[" => "\[",

@@ -18,29 +18,22 @@ use App\Http\Requests\UpdatePostRequest;
 
 class UserController extends Controller {
 
-	public function __construct()
-	{
+	public function __construct() {
 		$this->middleware('auth', ['only' => ['getUpdate', 'postUpdate', 'getLogout', 'getRecommendations']]);
 	}
 
-	public function getLogin()
-	{
+	public function getLogin() {
 		return view('user.login');
 	}
 
-	public function postLogin(HrVerify $hr, DedVerify $ded, GsmVerify $gsm, LoginPostRequest $request)
-	{
+	public function postLogin(HrVerify $hr, DedVerify $ded, GsmVerify $gsm, LoginPostRequest $request) {
 		$username = $request->username;
 		$password = $request->password;
 
-		if (Auth::attempt(['username' => $username, 'password' => $password], true))
-		{
+		if (Auth::attempt(['username' => $username, 'password' => $password], true)) {
 			return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
-		}
-		else
-		{
-			if ($ded->verify($username, $password) || $gsm->verify($username, $password) || $hr->verify($username, $password))
-			{
+		} else {
+			if ($ded->verify($username, $password) || $gsm->verify($username, $password) || $hr->verify($username, $password)) {
 				$user = User::firstOrNew(['username' => $username]);
 				$user->password = bcrypt($password);
 				$user->avatar = intval($username) % config('business.avatar.max');
@@ -49,9 +42,7 @@ class UserController extends Controller {
 				Auth::login($user, true);
 
 				return redirect('user/update')->withMessage(['type' => 'info', 'content' => trans('message.user.info_need')]);
-			}
-			else
-			{
+			} else {
 				return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login.failed')]);
 			}
 		}
@@ -59,20 +50,17 @@ class UserController extends Controller {
 		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
 	}
 
-	public function getLogout()
-	{
+	public function getLogout() {
 		Auth::logout();
 
 		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.logout.success')]);
 	}
 
-	public function getUpdate()
-	{
+	public function getUpdate() {
 		return view('user.update')->withUser(Auth::user());
 	}
 
-	public function postUpdate(UpdatePostRequest $request)
-	{
+	public function postUpdate(UpdatePostRequest $request) {
 		$user = Auth::user();
 
 		$user->name = $request->name;
@@ -84,19 +72,16 @@ class UserController extends Controller {
 		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.update.success')]);
 	}
 
-	public function getRecommendations()
-	{
+	public function getRecommendations() {
 		return view('user/recommendations')
 			->withRecommendations(Auth::user()->myRecommendations)
 			->withVotes(Auth::user()->Votes)
 			->withDetails(Auth::user()->voteDetail());
 	}
 
-	public function getDeleterecommendation(Request $request)
-	{
+	public function getDeleterecommendation(Request $request) {
 		$id = $request->id;
-		if (Auth::user() && intval($id) > 0)
-		{
+		if (Auth::user() && intval($id) > 0) {
 			Recommendation::find($id)->delete();
 			return redirect('user/recommendations');
 		}
@@ -106,10 +91,8 @@ class UserController extends Controller {
 		}
 	}
 
-	public function getSwitch(Request $request)
-	{
-		if ( !Auth::check() || !Auth::user()->isAdmin())
-		{
+	public function getSwitch(Request $request) {
+		if ( !Auth::check() || !Auth::user()->isAdmin()) {
 			abort(404);
 		}
 
