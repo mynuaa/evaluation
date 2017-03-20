@@ -6,3 +6,4 @@
 .settings
 /public/photos
 /storage
+composer.lock
