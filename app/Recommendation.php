@@ -16,18 +16,15 @@ class Recommendation extends Model {
 	// 	return $query->whereUserId($userid);
 	// }
 
-	public function scopeApply($query, $applyid)
-	{
+	public function scopeApply($query, $applyid) {
 		return $query->whereApplyId($applyid);
 	}
 
-	public function user()
-	{
+	public function user() {
 		return $this->belongsTo('App\User');
 	}
 
-	public function apply()
-	{
+	public function apply() {
 		return $this->belongsTo('App\Apply');
 	}
 

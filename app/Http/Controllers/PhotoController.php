@@ -9,12 +9,10 @@ use Storage;
 
 class PhotoController extends Controller {
 
-	public function photo($name)
-	{
+	public function photo($name) {
 		$filename = '/photos/' . $name;
 
-		if(Storage::exists($filename))
-		{
+		if(Storage::exists($filename)) {
 			$photo = Storage::get($filename);
 			return response($photo, 200)->header('Content-Type', config('business.MIME.' . strtolower(preg_replace('/^\w+\./', '', $name))));
 
@@ -25,12 +23,10 @@ class PhotoController extends Controller {
 		}
 	}
 
-	public function thumb($name)
-	{
+	public function thumb($name) {
 		$filename = '/thumbs/' . $name;
 
-		if(Storage::exists($filename))
-		{
+		if(Storage::exists($filename)) {
 			$photo = Storage::get($filename);
 			return response($photo, 200)->header('Content-Type', config('business.MIME.' . strtolower(preg_replace('/^\w+\./', '', $name))));
 
@@ -41,12 +37,10 @@ class PhotoController extends Controller {
 		}
 	}
 
-	public function ueditor($name)
-	{
+	public function ueditor($name) {
 		$filename = '/ueditor/' . $name;
 
-		if(Storage::exists($filename))
-		{
+		if(Storage::exists($filename)) {
 			$photo = Storage::get($filename);
 			return response($photo, 200)->header('Content-Type', config('business.MIME.' . strtolower(preg_replace('/^\w+\./', '', $name))));
 

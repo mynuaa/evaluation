@@ -1,9 +1,7 @@
 <?php namespace App\Services;
 
 class HrVerify {
-
-	public function verify($tid, $password)
-	{
+	public function verify($tid, $password) {
 		$url = "http://net.nuaa.edu.cn/api/verifyUser.do?token=dd64533c961eb9d527a608f9cd13fb06&username="
 			.urlencode($tid)
 			."&password="
@@ -21,5 +19,4 @@ class HrVerify {
 		$response = json_decode($response, true);
 		return $response['status'] == 0;
 	}
-
 }
