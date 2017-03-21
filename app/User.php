@@ -20,43 +20,35 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	protected $hidden = ['password', 'remember_token'];
 
-	public function apply()
-	{
+	public function apply() {
 		return $this->hasOne('App\Apply')->where('applies.old', false);
 	}
 
-	public function recommendations()
-	{
+	public function recommendations() {
 		return $this->belongsToMany('App\Apply', 'recommendations')->whereNull('recommendations.deleted_at');
 	}
 
-	public function votes()
-	{
+	public function votes() {
 		return $this->belongsToMany('App\Apply', 'votes')->whereNull('votes.deleted_at')->withTimestamps();
 	}
 
-	public function myRecommendations()
-	{
+	public function myRecommendations() {
 		return $this->hasMany('App\Recommendation');
 	}
 
-	public function isRecommended($applyid)
-	{
+	public function isRecommended($applyid) {
 		return $this->recommendations()->where('apply_id', $applyid)->exists();
 	}
 
-	public function isRecommendTooMuch()
-	{
+	public function isRecommendTooMuch() {
 		return $this->recommendations()->count() >= config('business.recommend.max');
 	}
 
-	public function isVoted($applyid)
-	{
+	public function isVoted($applyid) {
 		return $this->votes()->where('apply_id', $applyid)->exists();
 	}
 
-	public function voteDetail()
-	{
+	public function voteDetail() {
 		return [
 			'vote' => $this->votes()->count(),
 			'inner' => $this->countInner(),
@@ -64,8 +56,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		];
 	}
 
-	public function remain()
-	{
+	public function remain() {
 		return [
 			'vote' => config('business.vote.max') - $this->votes()->count(),
 			'inner' => config('business.vote.inner') - $this->countInner(),
@@ -74,23 +65,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		];
 	}
 
-	public function isAdmin()
-	{
+	public function isAdmin() {
 		return $this->admin == 1;
 	}
 
-	public function voteTypeCount($type)
-	{
+	public function voteTypeCount($type) {
 		return $this->votes()->where('votes.type', $type)->count();
 	}
 
-	public function countInner()
-	{
+	public function countInner() {
 		return $this->votes()->where('college', $this->college)->count();
 	}
 
-	public function countOuter()
-	{
+	public function countOuter() {
 		return $this->votes()->where('college', '!=', $this->college)->count();
 	}
 }

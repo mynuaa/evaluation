@@ -1,12 +1,10 @@
 <?php namespace App\Services;
 
 class GsmVerify {
-
-	public function verify($gsmid, $password)
-	{
+	public function verify($gsmid, $password) {
 		$prepare_curl = curl_init();
 		curl_setopt_array($prepare_curl, [
-			CURLOPT_URL => "http://gsmis.nuaa.edu.cn/nuaapyxx/login.aspx",
+			CURLOPT_URL => "http://gsmis.nuaa.edu.cn/pyxx/login.aspx",
 			CURLOPT_RETURNTRANSFER => 1,
 		]);
 		preg_match('/name="__VIEWSTATE" value=".+?"/', curl_exec($prepare_curl), $viewstate);
@@ -17,7 +15,7 @@ class GsmVerify {
 		$x = intval(rand(0, 60));
 		$y = intval(rand(0, 60));
 		$post = "__VIEWSTATE={$viewstate}&_ctl0%3Atxtusername={$gsmid}&_ctl0%3AImageButton1.x={$x}&_ctl0%3AImageButton1.y={$y}&_ctl0%3Atxtpassword={$password}";
-		$url = "http://gsmis.nuaa.edu.cn/nuaapyxx/login.aspx";
+		$url = "http://gsmis.nuaa.edu.cn/pyxx/login.aspx";
 		$curl = curl_init();
 		curl_setopt_array($curl, [
 			CURLOPT_HTTPHEADER, array(
@@ -32,7 +30,6 @@ class GsmVerify {
 		$response = curl_exec($curl);
 		$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
-		return $http_code == 302;
+		return $http_code == 302 || preg_match('/您已超过学习期限/', $response);
 	}
-
 }

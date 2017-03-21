@@ -11,18 +11,15 @@ class Apply extends Model {
 
 	protected $guarded = ['id', 'deleted_at', 'created_at', 'updated_at'];
 
-	public function user()
-	{
+	public function user() {
 		return $this->belongsTo('App\User');
 	}
 
-	public function scopeType($query, $type)
-	{
+	public function scopeType($query, $type) {
 		return $query->whereType($type);
 	}
 
-	public function scopeCollege($query, $collegeid)
-	{
+	public function scopeCollege($query, $collegeid) {
 		return $query->whereCollege($collegeid);
 	}
 
@@ -31,13 +28,11 @@ class Apply extends Model {
 	// 	return $this->belongsToMany('App\User', 'recommendations');
 	// }
 
-	public function recommendations()
-	{
+	public function recommendations() {
 		return $this->hasMany('App\Recommendation');
 	}
 
-	public function scopeOrder($query)
-	{
+	public function scopeOrder($query) {
 		return $query->orderBy('votes', 'desc');
 		// return $query->orderByRaw('rand()');
 	}

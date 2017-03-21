@@ -9,36 +9,31 @@ use Cache;
 
 class SearchController extends Controller {
 
-	public function index()
-	{
+	public function index() {
 		$applies = Apply::where('old', false)->orderByRaw("RAND()")->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
 
-	public function getOld()
-	{
+	public function getOld() {
 		$applies = Apply::where('old', true)->orderByRaw("RAND()")->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
 
-	public function getSchool()
-	{
+	public function getSchool() {
 		$applies = Apply::type(config('business.type.school'))->where('old', false)->orderByRaw("RAND()")->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
 
-	public function getCollege($cid)
-	{
+	public function getCollege($cid) {
 		$applies = Apply::type(config('business.type.college'))->where('old', false)->college($cid)->orderByRaw("RAND()")->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
 
-	public function getDetails(DetailsGetRequest $request)
-	{
+	public function getDetails(DetailsGetRequest $request) {
 		$type = $request->type;
 		$key = $request->key;
 
@@ -47,8 +42,7 @@ class SearchController extends Controller {
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
 
-	private function statistics()
-	{
+	private function statistics() {
 		return [
 			'apply' => Apply::where('old', false)->count(),
 			'recommendation' => Recommendation::count(),

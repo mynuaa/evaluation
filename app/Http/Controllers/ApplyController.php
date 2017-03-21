@@ -17,34 +17,31 @@ class ApplyController extends Controller {
 
 	private $backdoor = ['051230303', 'SX1411003', 'sx1411003'];
 
-	public function __construct()
-	{
+	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
 	}
 
-	public function getApply()
-	{
-		if (!in_array(Auth::user()->username, $this->backdoor))
+	public function getApply() {
+		if (!in_array(Auth::user()->username, $this->backdoor)) {
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+		}
 
 		$apply = Auth::user()->apply;
 		return view('apply.apply')->withApply($apply)->withStuid(Auth::user()->username);
 	}
 
-	public function postApply(ApplyPostRequest $request)
-	{
-		if (!in_array(Auth::user()->username, $this->backdoor))
+	public function postApply(ApplyPostRequest $request) {
+		if (!in_array(Auth::user()->username, $this->backdoor)) {
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+		}
 
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
-			if ($file)
-			{
-				if ( ! $file->isValid() )
-				{
+			if ($file) {
+				if (!$file->isValid()) {
 					return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.file.fail')]);
 				}
-				if (in_array($file->getClientMimeType(), config('business.MIME'))){
+				if (in_array($file->getClientMimeType(), config('business.MIME'))) {
 					$filename = md5($file->getClientOriginalName().$file->getClientSize()).'.'.$file->getClientOriginalExtension();
 					$file->move(storage_path() . '/app/photos', $filename);
 					$img = Image::make(storage_path() . '/app/photos/' . $filename)->resize(null, 150, function ($constraint) { $constraint->aspectRatio(); });
@@ -93,11 +90,10 @@ class ApplyController extends Controller {
 		return redirect('apply/apply')->withMessage(['type' => 'success', 'content' => trans('message.apply.success')]);
 	}
 
-	public function getShow($id, Request $request)
-	{
+	public function getShow($id, Request $request) {
 		$apply = Apply::find($id);
 
-		if ($apply){
+		if ($apply) {
 
 			$apply->increment('pageview');
 			$apply->isRecommended = Auth::check() ? Auth::user()->isRecommended($id) : true;
@@ -113,20 +109,17 @@ class ApplyController extends Controller {
 		}
 	}
 
-	public function postRecommendation(RecommendPostRequest $request)
-	{
+	public function postRecommendation(RecommendPostRequest $request) {
 		if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 
 		$user = Auth::user();
 
-		if ($user->isRecommendTooMuch())
-		{
+		if ($user->isRecommendTooMuch()) {
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.too_much')]);
 		}
 
-		if ($user->isRecommended($request->applyid))
-		{
+		if ($user->isRecommended($request->applyid)) {
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.recommend.before')]);
 		}
 
@@ -138,8 +131,7 @@ class ApplyController extends Controller {
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
 	}
 
-	private function checkLimit($voteInner, $voteOuter)
-	{
+	private function checkLimit($voteInner, $voteOuter) {
 		$limit = [
 			0 => [0, 7],
 			1 => [1, 7],
@@ -151,13 +143,11 @@ class ApplyController extends Controller {
 		return isset($limit[$voteInner]) && $voteOuter >= $limit[$voteInner][0] && $voteOuter <= $limit[$voteInner][1];
 	}
 
-	public function getVote($id)
-	{
+	public function getVote($id) {
 
 		return redirect()->back()->withMessage(['type' => 'warning', 'content' => '还没开放投票哦！']);
 
-		if (Auth::user()->isVoted($id))
-		{
+		if (Auth::user()->isVoted($id)) {
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.before')]);
 		}
 
@@ -165,8 +155,8 @@ class ApplyController extends Controller {
 		$user = Auth::user();
 
 		//院级评选只能本院投票
-		if ($apply->type == config('business.type.college')){
-			if ($apply->college != $user->college){
+		if ($apply->type == config('business.type.college')) {
+			if ($apply->college != $user->college) {
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.cross_college')]);
 			}
 		}
@@ -177,15 +167,15 @@ class ApplyController extends Controller {
 		}
 
 		//同学院 || 不同学院
-		if ($user->college == $apply->college){
-			// if ($user->countInner() >= config('business.vote.inner')){
-			if (!$this->checkLimit($user->countInner() + 1, $user->countOuter())){
+		if ($user->college == $apply->college) {
+			// if ($user->countInner() >= config('business.vote.inner')) {
+			if (!$this->checkLimit($user->countInner() + 1, $user->countOuter())) {
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.out_of_range', ['voteInner' => $user->countInner() + 1, 'voteOuter' => $user->countOuter()])]);
 			}
 		}
 		else{
-			// if ($user->countOuter() >= config('business.vote.outer')){
-			if (!$this->checkLimit($user->countInner(), $user->countOuter() + 1)){
+			// if ($user->countOuter() >= config('business.vote.outer')) {
+			if (!$this->checkLimit($user->countInner(), $user->countOuter() + 1)) {
 				return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.out_of_range', ['voteInner' => $user->countInner(), 'voteOuter' => $user->countOuter() + 1])]);
 			}
 		}
@@ -201,15 +191,12 @@ class ApplyController extends Controller {
 		]);
 	}
 
-	public function getLike($id)
-	{
+	public function getLike($id) {
 		Apply::find($id)->increment('like');
 	}
 
-	public function getDelete($id)
-	{
-		if (Auth::user()->isAdmin())
-		{
+	public function getDelete($id) {
+		if (Auth::user()->isAdmin()) {
 			Apply::find($id)->delete();
 
 			return redirect('/')->withMessage(['type' => 'success', 'content' => '删除成功 =。=']);
@@ -220,16 +207,14 @@ class ApplyController extends Controller {
 		}
 	}
 
-	private function excel_translate($str)
-	{
+	private function excel_translate($str) {
 		if (strpos($str, '=') === 0) {
 			return "'" . $str;
 		}
 		return $str;
 	}
 
-	public function getAll(Request $request)
-	{
+	public function getAll(Request $request) {
 		if ($request->college)
 			$result = Apply::where('college', $request->college)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		else
@@ -254,8 +239,7 @@ class ApplyController extends Controller {
 		return 'ok';
 	}
 
-	public function getVotelike(Request $request)
-	{
+	public function getVotelike(Request $request) {
 		if ($request->college)
 			$result = Apply::where('type', 1)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		else
