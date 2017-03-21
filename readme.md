@@ -11,7 +11,7 @@
     4. 通过git bash进入evaluation项目文件夹，执行composer install
 
     5. 修改evaluation/config/database.php
-        'username' => env('DB_USERNAME', 'forge'),username改成 root(要改两处)
+        'username' => env('DB_USERNAME', 'forge'),forge改成 root(要改两处)
 
     6. 确认bash可执行php命令，否则百度将php bin 目录添加到环境变量中
 
