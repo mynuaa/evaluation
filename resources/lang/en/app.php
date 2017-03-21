@@ -10,7 +10,8 @@ return [
 		'recommendation' => 'My Records',
 		'login' => 'Log in',
 		'update' => 'Update',
-		'logout' => 'Log out'
+		'logout' => 'Log out',
+		'detail' => 'Detail'
 	],
 	'ie' => 'Please use modern browser like Chrome, Firefox, IE(≥9), etc. to access this page.',
 	'download' => 'Click here',
