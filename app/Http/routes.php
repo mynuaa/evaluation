@@ -17,7 +17,8 @@ Route::get('/old', 'SearchController@getOld');
 Route::controllers([
 	'user' => 'UserController',
 	'apply' => 'ApplyController',
-	'search' => 'SearchController'
+	'search' => 'SearchController',
+	'call' => 'CallController'
 ]);
 
 Route::get('photo/{name}', 'PhotoController@photo');
