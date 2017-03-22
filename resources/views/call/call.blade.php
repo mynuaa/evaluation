@@ -3,6 +3,7 @@
 @section('title'){{ "我觉得TA可以！" }}@stop
 
 @section('content')
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
 @include('UEditor::head')
 <div class="page-title">{{ trans('call.title') }}</div>
 
@@ -13,8 +14,9 @@
 <form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data">
 	<fieldset class="form-group">
 		<legend>基本信息</legend>
-		<input name="name" type="text" placeholder="姓名">
-		<input name="id" type="text" placeholder="学号(点我自动补全)" oninput="fillID()" id="schoolId"><!--这里需要悬浮层出学号-->
+		<input name="name" type="text" placeholder="姓名" id="studentName">
+		<input name="id" type="text" placeholder="学号(点我自动补全)" oninput="fillID()" id="schoolId">
+		<!--这里需要悬浮层出学号-->
 	</fieldset>
 	<script>
 	</script>
@@ -35,7 +37,12 @@
 
 <script type="text/javascript">
 function fillID(){
-	console.log(document.getElementById('schoolId').value);
+	studentName=document.getElementById('studentName').value;
+	$.post('http://192.168.121.117/zhifeiji/evaluation/public/index.php/apply/studentid', {name: studentName}, function(data, textStatus, xhr) {
+		console.log(data,textStatus,xhr);
+	});
+
+	//console.log(document.getElementById('schoolId').value);
 }
 </script>
 
