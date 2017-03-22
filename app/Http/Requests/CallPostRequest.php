@@ -22,9 +22,8 @@ class CallPostRequest extends Request {
 	public function rules()
 	{
 		return [
-			'anonymous' => 'required',
 			'name' => 'required',
-			'id' => 'required',
+			'id' => 'required|alpha_num',
 			'reason' =>'required'
 		];
 	}
