@@ -14,7 +14,7 @@ class CreateCall extends Migration {
 		Schema::create('call', function($table){
 			$table->increments('id');
 			$table->integer('fromId');
-			$table->integer('toId');
+			$table->string('toId');
 			$table->integer('anonymous');
 
 			$table->tinyInteger('type');

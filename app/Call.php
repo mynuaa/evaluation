@@ -9,5 +9,11 @@ class Call extends Model {
 
 	use SoftDeletes;
 	protected $table = 'call';
+	
+	/*
+	public function callnum(){
 
+		return $this->hasMany('App\Call','toId');
+
+	}*/
 }

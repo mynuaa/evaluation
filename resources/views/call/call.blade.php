@@ -38,7 +38,8 @@ function fillID(){
 	console.log(document.getElementById('schoolId').value);
 }
 </script>
-{{ $isAnonymous }}
+{{ $debug }}
+
 @stop
 
 @section('scripts')

@@ -20,10 +20,16 @@ class CallController extends Controller {
 
 
 	public function getMain(){
-		$allCall=DB::table('call')->lists('toId');
+		//$allCall=DB::table('call')->lists('toId');
+		$heHas=Call::where('toId','=',1)->count();
+		$allCall=Call::select('toId',DB::raw('COUNT(*) AS `cnt`'))->groupBy('toId')->orderBy('cnt','desc')->get();
+		$callNum=$allCall->count();
+		/*
+		foreach ($allCall as $key => $value) {
+			echo $value['original']['toId']." ".$value['original']['cnt']."\n";
+		}*/
 
-		var_dump($allCall);
-		return view('call.main')->withDebug('0');
+		return view('call.main')->withAllcall($allCall)->withDebug('0');
 
 	}
 
@@ -31,7 +37,7 @@ class CallController extends Controller {
 
 		//$db=DB:table('call')->list('id');
 		//var_dump(Auth::user()->id);
-		return view('call.call')->withDebug('0')->withisAnonymous('0');
+		return view('call.call')->withDebug('0');
 	}
 
 
@@ -56,7 +62,7 @@ class CallController extends Controller {
 		//todo 这里验证学号和姓名是否匹配 API
 		$call->save();
 
-		return redirect()->back()->withMessage(['type' => 'success', 'content' => "揭发成功" ])->withIsAnonymous($request->anonymous?1:0);
+		return redirect('call/call')->withMessage(['type' => 'success', 'content' => "揭发成功" ])->withIsAnonymous($request->anonymous?1:0);
 	}
 
 }
