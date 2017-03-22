@@ -14,14 +14,14 @@
 				<div class="card-title">{{ $value['toId'] }}</div>
 				<div class="card-content card-author">card-content</div>
 			</div>
-			<div class="card-content card-describtion"></div>
+			<div class="card-content card-describtion">描述</div>
+			<a onclick="like('{{ $value['toId'] }}')" id="like-{{ $value['toId'] }}">点赞</a>
 		</div>
 	</div>
 @endforeach
 
 
 <br>
-{{ $debug }}
 
 @stop
 
@@ -29,6 +29,8 @@
 
 
 @section('scripts')
-
+function like(id){
+	console.log(id);
+}
 
 @stop

@@ -38,7 +38,6 @@ function fillID(){
 	console.log(document.getElementById('schoolId').value);
 }
 </script>
-{{ $debug }}
 
 @stop
 
