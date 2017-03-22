@@ -9,6 +9,8 @@ use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest;
 use Input, App\Recommendation, App\Http\Requests\RecommendPostRequest;
 use Session;
 
+use App\Http\Requests\GetNameRequest;
+
 use Intervention\Image\Facades\Image;
 
 use Maatwebsite\Excel\Facades\Excel;
@@ -129,6 +131,13 @@ class ApplyController extends Controller {
 		$remain = $user->remain();
 
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
+	}
+
+	public function postStudentid(GetNameRequest $request) {
+		$name = $request->name;
+		$studentDb = DB::table('studentinfo');
+		$studentinfos = $studentDb->select('studentId')->where('name',$name);
+		echo 111;
 	}
 
 	private function checkLimit($voteInner, $voteOuter) {
