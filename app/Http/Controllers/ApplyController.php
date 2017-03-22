@@ -17,7 +17,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ApplyController extends Controller {
 
-	private $backdoor = ['051230303', 'SX1411003', 'sx1411003'];
+	private $backdoor = ['051230303', 'SX1411003', 'sx1411003', '031630226'];
 
 	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
@@ -36,7 +36,6 @@ class ApplyController extends Controller {
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 		}
-
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
 			if ($file) {
