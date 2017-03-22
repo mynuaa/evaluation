@@ -45,7 +45,7 @@
 					<a href="#">
 						<li id="tabMenu">{{ trans('app.banner.menu') }}</li>
 					</a>
-					<a href="{{ url('call/call') }}">
+					<a href="{{ url('call/main') }}">
 						<li id="tabCall">{{ trans('app.banner.call') }}</li>
 					</a>
 					<a href="{{ url('apply/apply') }}">
@@ -118,7 +118,7 @@
 			if(url.indexOf("user/recommendations")>=0)document.getElementById("tabRec").className+=" rs-nav-selected";
 			else if(url.indexOf("apply/apply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
 			else if(url.indexOf("user")>=0)document.getElementById("tabUsr").className+=" rs-nav-selected";
-			else if(url.indexOf("call/call")>=0)document.getElementById("tabCall").className+=" rs-nav-selected";
+			else if(url.indexOf("call")>=0)document.getElementById("tabCall").className+=" rs-nav-selected";
 			else document.getElementById("tabMain").className+=" rs-nav-selected";
 		})(window);
 	</script>
