@@ -3,12 +3,13 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Auth, App\User, App\Apply;
 
-use Auth, App\User, App\Apply, App\Http\Requests\CallPostRequest;
-
-use Input, App\Recommendation;
+use Input;
 use Session;
+
+use Illuminate\Http\Request, App\Http\Requests\CallPostRequest;
+use DB;
 
 class CallController extends Controller {
 /*
@@ -18,8 +19,9 @@ class CallController extends Controller {
 	}*/
 
 	public function getCall() {
-
-		return view('call.call')->withDebug('6');
+		$db=DB::table('call')->get();
+		var_dump($db);
+		return view('call.call')->withDebug('0');
 	}
 
 	public function postCall (CallPostRequest $request){

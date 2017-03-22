@@ -13,13 +13,12 @@ class CreateCall extends Migration {
 	public function up(){
 		Schema::create('call', function($table){
 			$table->increments('id');
-			$table->string('fromId');
+			$table->integer('fromId');
+			$table->integer('toId');
 			$table->integer('anonymous');
 
 			$table->tinyInteger('type');
 
-			$table->string('toName');
-			$table->string('toStuid');
 			$table->integer('college');
 
 			$table->string('mainText');
