@@ -34,7 +34,6 @@ class ApplyController extends Controller {
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 		}
-
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
 			if ($file) {

@@ -6,6 +6,7 @@ return [
 	'banner' => [
 		'menu' => '菜单',
 		'recommend' => '我要推荐',
+		'call' => '我要揭发',
 		'apply' => '我要申报',
 		'recommendation' => '推荐记录',
 		'login' => '登录',
