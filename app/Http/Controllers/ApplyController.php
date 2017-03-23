@@ -14,10 +14,11 @@ use App\Http\Requests\GetNameRequest;
 use Intervention\Image\Facades\Image;
 
 use Maatwebsite\Excel\Facades\Excel;
+use DB;
 
 class ApplyController extends Controller {
 
-	private $backdoor = ['051230303', 'SX1411003', 'sx1411003', '031630226'];
+	private $backdoor = ['051230303', 'SX1411003', 'sx1411003'];
 
 	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
@@ -36,6 +37,7 @@ class ApplyController extends Controller {
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 		}
+
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
 			if ($file) {
@@ -132,11 +134,13 @@ class ApplyController extends Controller {
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
 	}
 
-	public function postStudentid(GetNameRequest $request) {
-		$name = $request->name;
+	public function getStudentid() {
+		$name = 'wiwry';
 		$studentDb = DB::table('studentinfo');
-		$studentinfos = $studentDb->select('studentId')->where('name',$name);
-		echo 111;
+		$studentinfos = $studentDb->select('studentId')->where('name',$name)->get();
+		var_dump($studentinfos);
+		return;
+		echo json_encode($studentinfos);//我猜的
 	}
 
 	private function checkLimit($voteInner, $voteOuter) {
