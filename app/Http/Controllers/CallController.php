@@ -8,7 +8,7 @@ use Auth, App\User, App\Call;
 use Input;
 use Session;
 
-use Illuminate\Http\Request, App\Http\Requests\CallPostRequest;
+use Illuminate\Http\Request, App\Http\Requests\CallPostRequest, App\Http\Requests\CallLikePostRequest;
 use DB;
 
 class CallController extends Controller {
@@ -34,14 +34,22 @@ class CallController extends Controller {
 	}
 
 	public function getCall() {
+		if(!isset(Auth::user()->username)){
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
+		}
 
 		//$db=DB:table('call')->list('id');
 		//var_dump(Auth::user()->id);
-		return view('call.call')->withDebug('0');
+		//var_dump(Auth::user()->username);
+
+		return view('call.call');
 	}
 
 
 	public function postCall (CallPostRequest $request){
+		if(!isset(Auth::user()->username)){
+			return redirect('/')->withMessage(['type' => 'warning', 'content' => '请登陆']);
+		}
 /*
 		$insertCall['toId']=$request->id;
 		$insertCall['fromId']=Auth::user()->id;
@@ -63,6 +71,16 @@ class CallController extends Controller {
 		$call->save();
 
 		return redirect('call/call')->withMessage(['type' => 'success', 'content' => "揭发成功" ])->withIsAnonymous($request->anonymous?1:0);
+	}
+
+	public function postLike(CallLikePostRequest $request){
+		if(!isset(Auth::user()->username)){
+			return redirect('/')->withMessage(['type' => 'warning', 'content' => '请登陆']);
+		}
+		//todo 在request中验证是否存在学号
+		$addLike['studyId']=$request->id;
+		$addLike['like']=+1;
+		
 	}
 
 }
