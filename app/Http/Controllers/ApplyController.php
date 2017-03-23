@@ -18,7 +18,7 @@ use DB;
 
 class ApplyController extends Controller {
 
-	private $backdoor = ['051230303', 'SX1411003', 'sx1411003'];
+	private $backdoor = ['051230303', 'SX1411003', 'sx1411003', '161510125'];
 
 	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
@@ -134,13 +134,18 @@ class ApplyController extends Controller {
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
 	}
 
-	public function getStudentid() {
-		$name = 'wiwry';
+	public function getStudentid(GetNameRequest $request) {
+		$name = $request->input('name');
 		$studentDb = DB::table('studentinfo');
 		$studentinfos = $studentDb->select('studentId')->where('name',$name)->get();
-		var_dump($studentinfos);
-		return;
-		echo json_encode($studentinfos);//我猜的
+		if($studentinfos) {
+			$return['code'] = '-1';
+			$return['message'] = 'failed';
+			echo json_encode($return);
+		}
+		else {
+			echo json_encode($studentinfos);//我猜的
+		}
 	}
 
 	private function checkLimit($voteInner, $voteOuter) {
