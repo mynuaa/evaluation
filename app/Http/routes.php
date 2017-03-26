@@ -18,9 +18,13 @@ Route::controllers([
 	'user' => 'UserController',
 	'apply' => 'ApplyController',
 	'search' => 'SearchController',
-	'call' => 'CallController'
+	'call' => 'CallController',
+	'admin'	=>	'AdminController'
 ]);
 
 Route::get('photo/{name}', 'PhotoController@photo');
 Route::get('thumb/{name}', 'PhotoController@thumb');
 Route::get('storage/app/ueditor/{name}', 'PhotoController@ueditor');
+Route::get('admin/showonerecommendations/{apply_id}', function($apply_id){
+return $apply_id;
+});

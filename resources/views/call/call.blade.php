@@ -4,11 +4,10 @@
 
 @section('content')
 <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
-@include('UEditor::head')
 <div class="page-title">{{ trans('call.title') }}</div>
 
 <div class="rs-message">
-	<div class="rs-msg rs-msg-info">如果你觉得谁好，就揭发他吧来参加评选吧，爸爸啦吧。</br>{{ trans('call.shortTitle') }}截止时间为4月9日8：00。</div>
+	<div class="rs-msg rs-msg-info">如果你觉得谁棒棒，就推荐他吧来参加评选吧，</br>{{ trans('call.shortTitle') }}截止时间为4月9日8：00。</div>
 </div>
 
 <form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data">
@@ -22,11 +21,11 @@
 	</script>
 	<fieldset class="form-group">
 		<legend>为啥推荐他</legend>
-		<textarea name="reason" id="callReason" type="text" class="fullwidth" required></textarea>
+		<textarea name="reason" id="callReason" type="text" class="fullwidth" required maxlength="144"></textarea>
 	</fieldset>
 	<fieldset class="form-group">
 		<legend>匿名设置</legend>
-		<input type="checkbox" name="anonymous" checked="">我要匿名检举
+		<input type="checkbox" name="anonymous" checked="">我要匿名
 	</fieldset>
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-btns">
@@ -38,8 +37,8 @@
 <script type="text/javascript">
 function fillID(){
 	studentName=document.getElementById('studentName').value;
-	$.post('http://192.168.121.117/zhifeiji/evaluation/public/index.php/apply/studentid', {name: studentName}, function(data, textStatus, xhr) {
-		console.log(data,textStatus,xhr);
+	$.get('http://54.gg/call/studentid?name='+studentName, function(data) {
+		console.log(data);
 	});
 
 	//console.log(document.getElementById('schoolId').value);
@@ -49,16 +48,5 @@ function fillID(){
 @stop
 
 @section('scripts')
-
-window.UEDITOR_CONFIG.serverUrl = "/evaluation/laravel-u-editor-server/server";
-window.UEDITOR_CONFIG.toolbars = [[
-	'undo', 'redo', '|',
-	'bold', 'italic', 'underline', 'removeformat', '|',
-	'fontsize', 'forecolor', '|', 'insertimage'
-]];
-window.UEDITOR_CONFIG.elementPathEnabled = false;
-window.UEDITOR_CONFIG.indentValue = '2em';
-var ue1 = UE.getEditor('callReason');
-ue1.ready(function() { ue1.execCommand('serverparam', '_token', '{{ csrf_token() }}'); });
 
 @stop

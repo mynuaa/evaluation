@@ -28,6 +28,13 @@
 	<link rel="stylesheet" href="{{ asset('/css/rscss.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
+	<style type="text/css">
+		li.show{
+			height: 150px !important;
+			background: #AA0000;
+		}
+
+	</style>
 	<title>@yield('title') - {{ trans('app.nuaa').trans('app.name') }}</title>
 	<!--[if lt IE 9]>
 	<script src="{{ asset('/js/html5.js') }}"></script>
@@ -45,15 +52,16 @@
 					<a href="#">
 						<li id="tabMenu">{{ trans('app.banner.menu') }}</li>
 					</a>
-					<a href="{{ url('call/main') }}">
-						<li id="tabCall">{{ trans('app.banner.call') }}</li>
-					</a>
 					<a href="{{ url('apply/apply') }}">
 						<li id="tabApp">{{ trans('app.banner.apply') }}</li>
 					</a>
-					<a href="{{ url('/') }}">
-						<li id="tabMain">{{ trans('app.banner.recommend') }}</li>
-					</a>
+					<li id="tabMain" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0" onclick="this.classList.toggle('show')">
+						<div>{{ trans('app.banner.recommend') }}</div>
+						<ul style="margin: 0;padding: 0">
+							<a href="{{ url('/') }}"><li style="width: 100%;" >已参评推荐</li></a>
+							<a href="{{ url('call/main') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">未参评推荐</li></a>
+						</ul>
+					</li>
 					<a href="{{ url('user/recommendations') }}">
 						<li id="tabRec">{{ trans('app.banner.recommendation') }}</li>
 					</a>
@@ -67,6 +75,9 @@
 				<ul class="rs-user-nav user-logged" id="tabUsr">
 					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.jpg') }}" class="user-avatar"></li>
 					<a href="{{ url('user/update') }}"><li>{{ trans('app.banner.update') }}</li></a>
+					@if (Auth::user()->isAdmin())
+					<a href="{{ url('admin/showrecommendation')}}"><li>{{ trans('app.banner.detail') }}</li></a>
+					@endif
 					<a href="{{ url('user/logout') }}"><li>{{ trans('app.banner.logout') }}</li></a>
 				</ul>
 				@else
@@ -118,7 +129,6 @@
 			if(url.indexOf("user/recommendations")>=0)document.getElementById("tabRec").className+=" rs-nav-selected";
 			else if(url.indexOf("apply/apply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
 			else if(url.indexOf("user")>=0)document.getElementById("tabUsr").className+=" rs-nav-selected";
-			else if(url.indexOf("call")>=0)document.getElementById("tabCall").className+=" rs-nav-selected";
 			else document.getElementById("tabMain").className+=" rs-nav-selected";
 		})(window);
 	</script>

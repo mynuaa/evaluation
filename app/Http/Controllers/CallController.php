@@ -12,24 +12,37 @@ use Illuminate\Http\Request, App\Http\Requests\CallPostRequest, App\Http\Request
 use DB;
 
 class CallController extends Controller {
-/*
-	public function index() {
-		
-		return view('call.call')->withText1('23333');
-	}*/
-
 
 	public function getMain(){
 		//$allCall=DB::table('call')->lists('toId');
 		$heHas=Call::where('toId','=',1)->count();
 		$allCall=Call::select('toId',DB::raw('COUNT(*) AS `cnt`'))->groupBy('toId')->orderBy('cnt','desc')->get();
-		$callNum=$allCall->count();
+		$allId = [];
+		foreach ($allCall as $key => $value) {
+			$allId[]=$value['toId'];
+		}
+		$allId=implode(',', $allId);
+		$allId='('.$allId.')';
+		$content = Call::select("toId","mainText")->whereRaw("`toId` in {$allId}")->get();
+		$contentAll=[];
+		foreach ($content as $value) {
+			if (!isset($contentAll[$value['toId']])) {
+				$contentAll[$value['toId']] = [$value['mainText']];
+			} else if (count($contentAll) <= 5) {
+				$contentAll[$value['toId']] []= $value['mainText'];
+			}
+		}
+		foreach ($contentAll as &$value) {
+			$value = implode(' | ', $value); 
+		}
+		
+		//todo 联合查询（学号）
 		/*
 		foreach ($allCall as $key => $value) {
 			echo $value['original']['toId']." ".$value['original']['cnt']."\n";
 		}*/
 
-		return view('call.main')->withAllcall($allCall)->withDebug('0');
+		return view('call.main')->withAllcall($allCall)->withAllcontent($contentAll);
 
 	}
 
@@ -80,9 +93,12 @@ class CallController extends Controller {
 		//todo 在request中验证是否存在学号
 		$addLike['studyId']=$request->id;
 		$addLike['like']=+1;
-		
+
+	}
+
+	public function getStudentid(Request $request) {
+		$name = $request->input('name');
+		echo $name;
 	}
 
 }
-
-?>
