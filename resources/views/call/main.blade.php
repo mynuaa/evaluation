@@ -9,7 +9,7 @@
 <a href="{{ url('call/call') }}">点击这里对心仪的人进行实名/匿名揭发！</a>
 
 @foreach( $allcall as $key => $value)
-	<div class="card-outer">
+	<!--<div class="card-outer">
 		<div class="card-inner">
 			<div class="card-titles fullwidth">
 				<div class="card-title">{{ $value['toId'] }}</div>
@@ -18,10 +18,23 @@
 			<div class="card-content card-describtion">描述</div>
 			<a onclick="like(this)" id="{{ $value['toId'] }}">点赞！！</a>
 		</div>
-	</div>
+	</div>-->
 @endforeach
 
+@foreach( $allcall as $key => $value)
+	<div class="card-outer">
+		<div class="card-inner">
+			<h5 class="card-content cmt-author"><名字>，{{ $value['toId'] }}，<学院>
+			@if (Auth::check())
+				，{{ $value['toId'] }}
+			@endif
+			</h5>
+			<div class="card-content card-describtion">{{ $allcontent[$value['toId']] }}</div>
+		</div>
+	</div>
 
+
+@endforeach
 <br>
 
 @stop

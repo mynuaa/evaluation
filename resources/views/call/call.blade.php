@@ -4,7 +4,6 @@
 
 @section('content')
 <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
-@include('UEditor::head')
 <div class="page-title">{{ trans('call.title') }}</div>
 
 <div class="rs-message">
@@ -38,8 +37,8 @@
 <script type="text/javascript">
 function fillID(){
 	studentName=document.getElementById('studentName').value;
-	$.post('http://192.168.121.117/zhifeiji/evaluation/public/index.php/apply/studentid', {name: studentName}, function(data, textStatus, xhr) {
-		console.log(data,textStatus,xhr);
+	$.get('http://54.gg/call/studentid?name='+studentName, function(data) {
+		console.log(data);
 	});
 
 	//console.log(document.getElementById('schoolId').value);
@@ -49,16 +48,5 @@ function fillID(){
 @stop
 
 @section('scripts')
-
-window.UEDITOR_CONFIG.serverUrl = "/evaluation/laravel-u-editor-server/server";
-window.UEDITOR_CONFIG.toolbars = [[
-	'undo', 'redo', '|',
-	'bold', 'italic', 'underline', 'removeformat', '|',
-	'fontsize', 'forecolor', '|', 'insertimage'
-]];
-window.UEDITOR_CONFIG.elementPathEnabled = false;
-window.UEDITOR_CONFIG.indentValue = '2em';
-var ue1 = UE.getEditor('callReason');
-ue1.ready(function() { ue1.execCommand('serverparam', '_token', '{{ csrf_token() }}'); });
 
 @stop
