@@ -7,7 +7,7 @@
 <div class="page-title">{{ trans('call.title') }}</div>
 
 <div class="rs-message">
-	<div class="rs-msg rs-msg-info">如果你觉得谁好，就揭发他吧来参加评选吧，爸爸啦吧。</br>{{ trans('call.shortTitle') }}截止时间为4月9日8：00。</div>
+	<div class="rs-msg rs-msg-info">如果你觉得谁棒棒，就推荐他吧来参加评选吧，</br>{{ trans('call.shortTitle') }}截止时间为4月9日8：00。</div>
 </div>
 
 <form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data">
@@ -21,11 +21,11 @@
 	</script>
 	<fieldset class="form-group">
 		<legend>为啥推荐他</legend>
-		<textarea name="reason" id="callReason" type="text" class="fullwidth" required></textarea>
+		<textarea name="reason" id="callReason" type="text" class="fullwidth" required maxlength="144"></textarea>
 	</fieldset>
 	<fieldset class="form-group">
 		<legend>匿名设置</legend>
-		<input type="checkbox" name="anonymous" checked="">我要匿名检举
+		<input type="checkbox" name="anonymous" checked="">我要匿名
 	</fieldset>
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-btns">
