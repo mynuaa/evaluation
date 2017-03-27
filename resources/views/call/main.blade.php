@@ -2,7 +2,8 @@
 
 @section('title'){{ "我觉得TA可以！" }}@stop
 
-@section('content') 
+@section('content')
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
 <div class="page-title">未参评同学排行榜</div>
 
 <a href="{{ url('call/call') }}" ><div class="rs-msg rs-msg-info" style="text-align: center;">点击这里 实名/匿名 推荐还未参加五四评优的同学上榜！</div></a>
@@ -46,11 +47,11 @@
 <script type="text/javascript">
 
 function like(e) {
-	/*
+	
 	$.post('/call/like', {id: e.parentNode.parentNode.id ,_token:"{{ csrf_token() }}" }, function(data, textStatus, xhr) {
 		console.log(data,textStatus,xhr);
-	});*/
-
+	});
+/*
 	fetch("./call/like", {
 	  method: "POST",
 	  body: "id="+e.parentNode.parentNode.id+"&_token={{ csrf_token() }}"
@@ -63,7 +64,7 @@ function like(e) {
 	  }
 	}, function(e) {
 	  console.log('error');
-	});
+	});*/
 }
 
 
