@@ -17,6 +17,7 @@ class ApplyController extends Controller {
 
 	private $backdoor = ['051230303', 'SX1411003', 'sx1411003','161540205'];
 
+
 	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
 	}

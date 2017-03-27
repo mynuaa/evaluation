@@ -100,4 +100,11 @@ class UserController extends Controller {
 
 		return redirect('apply/apply');
 	}
+	public function getMyrecommendations()
+	{
+		var_dump(Auth::user()->id);
+		$user_id = Auth:user()->id;
+	//	 $myrec = Auth::login(User::where('apply_id', $user_id));
+		return view('user.myrecommendations');
+	}
 }
