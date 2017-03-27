@@ -9,9 +9,12 @@ use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest;
 use Input, App\Recommendation, App\Http\Requests\RecommendPostRequest;
 use Session;
 
+use App\Http\Requests\GetNameRequest;
+
 use Intervention\Image\Facades\Image;
 
 use Maatwebsite\Excel\Facades\Excel;
+use DB;
 
 class ApplyController extends Controller {
 
@@ -34,6 +37,7 @@ class ApplyController extends Controller {
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
 		}
+
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
 			if ($file) {
@@ -128,6 +132,20 @@ class ApplyController extends Controller {
 		$remain = $user->remain();
 
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
+	}
+
+	public function getStudentid(GetNameRequest $request) {
+		$name = $request->input('name');
+		$studentDb = DB::table('studentinfo');
+		$studentinfos = $studentDb->select('studentId')->where('name',$name)->get();
+		if($studentinfos) {
+			$return['code'] = '-1';
+			$return['message'] = 'failed';
+			echo json_encode($return);
+		}
+		else {
+			echo json_encode($studentinfos);//我猜的
+		}
 	}
 
 	private function checkLimit($voteInner, $voteOuter) {
