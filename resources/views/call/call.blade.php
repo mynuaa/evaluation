@@ -1,10 +1,10 @@
 @extends('template.master')
 
-@section('title'){{ "我觉得TA可以！" }}@stop
+@section('title')我觉得TA可以！@stop
 
 @section('content')
 <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
-<div class="page-title">{{ trans('call.title') }}</div>
+<div class="page-title">我觉得TA可以！</div>
 
 <div class="rs-message">
 	<div class="rs-msg rs-msg-info">如果你觉得谁棒棒，就推荐他吧来参加评选吧，</br>{{ trans('call.shortTitle') }}截止时间为4月9日8：00。</div>
@@ -21,7 +21,7 @@
 	</script>
 	<fieldset class="form-group">
 		<legend>为啥推荐他</legend>
-		<textarea name="reason" id="callReason" type="text" class="fullwidth" required maxlength="144"></textarea>
+		<textarea name="reason" id="callReason" type="text" class="fullwidth" required maxlength="1"></textarea>
 	</fieldset>
 	<fieldset class="form-group">
 		<legend>匿名设置</legend>
