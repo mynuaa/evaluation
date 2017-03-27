@@ -59,7 +59,7 @@ class ApplyController extends Controller {
 
 		$user = Auth::user();
 
-		$apply = Apply::firstOrNew(['user_id' => $user->id, 'old' => false]);
+		$apply = Apply::firstOrNew(['user_id' => $user->id, 'year' => 2017]);
 
 		$apply->type = $request->type;
 		$apply->stuid = $user->username;
@@ -104,7 +104,7 @@ class ApplyController extends Controller {
 
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
-			)->withIsStop($apply->old || !in_array($apply->user->username, $this->backdoor)
+ 			)->withIsStop($apply->year || !in_array($apply->user->username, $this->backdoor)
 			)->withCanVote($apply->recommendations >= 10);
 		}
 		else{
@@ -233,9 +233,9 @@ class ApplyController extends Controller {
 
 	public function getAll(Request $request) {
 		if ($request->college)
-			$result = Apply::where('college', $request->college)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('college', $request->college)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		else
-			$result = Apply::where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('year', 2017 )->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		$data = [];
 		foreach ($result as $apply) {
 			$data []= [
@@ -258,9 +258,9 @@ class ApplyController extends Controller {
 
 	public function getVotelike(Request $request) {
 		if ($request->college)
-			$result = Apply::where('type', 1)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('type', 1)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		else
-			$result = Apply::where('type', 0)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('type', 0)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		$data = [];
 		foreach ($result as $apply) {
 			$data []= [
