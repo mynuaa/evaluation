@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Recommendation;
+use App\Call;
 
 use Illuminate\Http\Request;
 
@@ -103,7 +104,7 @@ class UserController extends Controller {
 	public function getMyrecommendations()
 	{
 		$user = Auth::user();
-		 $myrec = Recommendation::where('apply_id', 2)->join('users', 'users.id', '=', 'user_id')->get();
-		return view('user/myrecommendations')->withOne($myrec);
+		$myrec = Call::where('toId', $user->id)->join('users', 'users.id', '=', 'fromId')->get();
+		return view('user/myrecommendations')->withReal($myrec);
 	}
 }

@@ -11,10 +11,14 @@
 	<th>推荐时间</th>
 </thead>
 <tbody>
-	@foreach ($one as $rec)
+	@foreach ($real as $rec)
 	<tr>
-		<td>{{ $rec->name }}</td>
-		<td>{{ $rec->content }}</td>
+	@if ($rec->anonymous === 1)
+    	<td>{{ $rec->name }}</td>
+	@else
+	   <td>他偷偷推荐了我</td>
+	@endif
+		<td>{{ $rec->mainText }}</td>
 		<td>{{ $rec->created_at }}</td>
 	</tr>
 	@endforeach
