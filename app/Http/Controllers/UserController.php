@@ -102,9 +102,8 @@ class UserController extends Controller {
 	}
 	public function getMyrecommendations()
 	{
-		var_dump(Auth::user()->id);
-		$user_id = Auth:user()->id;
-	//	 $myrec = Auth::login(User::where('apply_id', $user_id));
-		return view('user.myrecommendations');
+		$user = Auth::user();
+		 $myrec = Recommendation::where('apply_id', 2)->join('users', 'users.id', '=', 'user_id')->get();
+		return view('user/myrecommendations')->withOne($myrec);
 	}
 }
