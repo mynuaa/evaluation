@@ -9,13 +9,16 @@ use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest;
 use Input, App\Recommendation, App\Http\Requests\RecommendPostRequest;
 use Session;
 
+use App\Http\Requests\GetNameRequest;
+
 use Intervention\Image\Facades\Image;
 
 use Maatwebsite\Excel\Facades\Excel;
+use DB;
 
 class ApplyController extends Controller {
 
-	private $backdoor = ['051230303', 'SX1411003', 'sx1411003'];
+	private $backdoor = ['051230303', 'SX1411003', 'sx1411003', '031630226', '161510126'];
 
 	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
@@ -56,7 +59,7 @@ class ApplyController extends Controller {
 
 		$user = Auth::user();
 
-		$apply = Apply::firstOrNew(['user_id' => $user->id, 'old' => false]);
+		$apply = Apply::firstOrNew(['user_id' => $user->id, 'year' => 2017]);
 
 		$apply->type = $request->type;
 		$apply->stuid = $user->username;
@@ -101,7 +104,7 @@ class ApplyController extends Controller {
 
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
-			)->withIsStop($apply->old || !in_array($apply->user->username, $this->backdoor)
+ 			)->withIsStop($apply->year || !in_array($apply->user->username, $this->backdoor)
 			)->withCanVote($apply->recommendations >= 10);
 		}
 		else{
@@ -129,6 +132,22 @@ class ApplyController extends Controller {
 		$remain = $user->remain();
 
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
+	}
+
+	public function getStudentid(GetNameRequest $request) {
+		$name = $request->input('name');
+		$studentDb = DB::table('studentinfo');
+		$studentinfos = $studentDb->select('studentId')->where('name',$name)->get();
+		if($studentinfos) {
+			$return['code'] = '-1';
+			$return['message'] = 'failed';
+			echo json_encode($return);
+		}
+		else {
+			$return['code'] = '1';
+			$return['message'] = 'success';
+			echo json_encode($studentinfos);//我猜的
+		}
 	}
 
 	private function checkLimit($voteInner, $voteOuter) {
@@ -216,9 +235,9 @@ class ApplyController extends Controller {
 
 	public function getAll(Request $request) {
 		if ($request->college)
-			$result = Apply::where('college', $request->college)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('college', $request->college)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		else
-			$result = Apply::where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('year', 2017 )->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		$data = [];
 		foreach ($result as $apply) {
 			$data []= [
@@ -241,9 +260,9 @@ class ApplyController extends Controller {
 
 	public function getVotelike(Request $request) {
 		if ($request->college)
-			$result = Apply::where('type', 1)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('type', 1)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		else
-			$result = Apply::where('type', 0)->where('old', false)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('type', 0)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		$data = [];
 		foreach ($result as $apply) {
 			$data []= [

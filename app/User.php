@@ -21,7 +21,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 	public function apply() {
-		return $this->hasOne('App\Apply')->where('applies.old', false);
+		return $this->hasOne('App\Apply')->where('applies.year', 2017);
 	}
 
 	public function recommendations() {

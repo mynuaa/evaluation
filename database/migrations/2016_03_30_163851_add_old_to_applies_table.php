@@ -14,7 +14,7 @@ class AddOldToAppliesTable extends Migration {
 	{
 		Schema::table('applies', function($table)
 		{
-			$table->boolean('old')->default(false);
+			$table->integer('year')->default(2017);
 		});
 	}
 

@@ -6,11 +6,13 @@ return [
 	'banner' => [
 		'menu' => '菜单',
 		'recommend' => '我要推荐',
+		'call' => '我要揭发',
 		'apply' => '我要申报',
 		'recommendation' => '推荐记录',
 		'login' => '登录',
 		'update' => '更新资料',
-		'logout' => '注销'
+		'logout' => '注销',
+		'detail' => '推荐详情'
 	],
 	'ie' => '需要使用Chrome、Firefox、IE≥9等现代浏览器访问本页面。',
 	'download' => '点此下载',
