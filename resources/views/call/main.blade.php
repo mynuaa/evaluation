@@ -24,15 +24,17 @@
 @foreach( $allcall as $key => $value)
 	<div class="card-outer" id="{{ $value['toId'] }}">
 		<div class="card-inner" style="position: relative;">
-			<h5 class="card-content cmt-author"><名字> ，<学院>
+			<h5 class="card-content cmt-author">{{ $value['name'] }} ， {{ $value['college'] }}
 			@if (Auth::check())
 				，{{ $value['toId'] }}
 			@endif
 			</h5>
-			<div style="float: right; position: absolute;top: 5px;right: 10px" onclick="like(this)"><i class="fa fa-heart fa-2x" aria-hidden="true" style="color: #E74C3C"></i></div>
+			<div style="float: right; position: absolute;top: 5px;right: 10px;text-align: center;" onclick="like(this)">
+				<i class="fa fa-heart fa-2x" aria-hidden="true" style="color: #E74C3C"></i>
+				<br>
+				<div>{{ $value['likeAdd'] + $value['cnt'] }}</div>
+			</div>
 			<div class="card-content card-describtion">{{ $allcontent[$value['toId']] }}</div>
-
-
 		</div>
 	</div>
 
@@ -47,9 +49,12 @@
 <script type="text/javascript">
 
 function like(e) {
-	
+
 	$.post('/call/like', {id: e.parentNode.parentNode.id ,_token:"{{ csrf_token() }}" }, function(data, textStatus, xhr) {
 		console.log(data,textStatus,xhr);
+		numDom=e.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling
+		numDom.innerHTML=parseInt(numDom.innerHTML)+1
+		e.onclick='';
 	});
 /*
 	fetch("./call/like", {

@@ -16,7 +16,7 @@ class CallController extends Controller {
 	public function getMain(){
 		//$allCall=DB::table('call')->lists('toId');
 		$heHas=Call::where('toId','=',1)->count();
-		$allCall=Call::select('toId',DB::raw('COUNT(*) AS `cnt`'))->groupBy('toId')->orderBy('cnt','desc')->get();
+		$allCall=Call::select('toId','name','studentid.college','studentid.likeAdd',DB::raw('COUNT(*) AS `cnt`'))->join('studentid','toId','=','studentid.studentid')->groupBy('toId')->orderBy('cnt','desc')->get();
 		$allId = [];
 		foreach ($allCall as $key => $value) {
 			$allId[]=$value['toId'];
@@ -90,10 +90,12 @@ class CallController extends Controller {
 		if(!isset(Auth::user()->username)){
 			return redirect('/')->withMessage(['type' => 'warning', 'content' => '请登陆']);
 		}
-		//todo 在request中验证是否存在学号
-		$addLike['studyId']=$request->id;
-		$addLike['like']=+1;
 
+		$addLike['studyId']=$request->id;
+		$dbre=DB::table('studentid')->select('likeAdd')->where('studentid',$request->id)->get();
+		$addLike['like']=$dbre[0]->likeAdd;
+		$addLike['like']+=1;
+		DB::table('studentid')->where('studentid',$request->id)->update(['likeAdd'=>$addLike['like']]);
 	}
 
 	public function getStudentid(Request $request) {
