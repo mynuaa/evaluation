@@ -18,7 +18,7 @@ use DB;
 
 class ApplyController extends Controller {
 
-	private $backdoor = ['051230303', 'SX1411003', 'sx1411003', '161510125'];
+	private $backdoor = ['051230303', 'SX1411003', 'sx1411003', '031630226', '161510126'];
 
 	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
@@ -144,6 +144,8 @@ class ApplyController extends Controller {
 			echo json_encode($return);
 		}
 		else {
+			$return['code'] = '1';
+			$return['message'] = 'success';
 			echo json_encode($studentinfos);//我猜的
 		}
 	}
