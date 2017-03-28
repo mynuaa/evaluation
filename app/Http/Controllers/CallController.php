@@ -15,8 +15,8 @@ class CallController extends Controller {
 
 	public function getMain(){
 		//$allCall=DB::table('call')->lists('toId');
-		$heHas=Call::where('toId','=',1)->count();
-		$allCall=Call::select('toId',DB::raw('COUNT(*) AS `cnt`'))->groupBy('toId')->orderBy('cnt','desc')->get();
+		//$heHas=Call::where('toId','=',1)->count();
+		$allCall=Call::select('toId','name','studentid.college','studentid.likeAdd',DB::raw('COUNT(*) AS `cnt`'))->join('studentid','toId','=','studentid.studentid')->groupBy('toId')->orderBy('cnt','desc')->get();
 		$allId = [];
 		foreach ($allCall as $key => $value) {
 			$allId[]=$value['toId'];
@@ -35,12 +35,6 @@ class CallController extends Controller {
 		foreach ($contentAll as &$value) {
 			$value = implode(' | ', $value); 
 		}
-		
-		//todo 联合查询（学号）
-		/*
-		foreach ($allCall as $key => $value) {
-			echo $value['original']['toId']." ".$value['original']['cnt']."\n";
-		}*/
 
 		return view('call.main')->withAllcall($allCall)->withAllcontent($contentAll);
 
@@ -69,7 +63,6 @@ class CallController extends Controller {
 		$insertCall['anonymous']=$request->anonymous?1:0;
 		$insertCall['mainText']=$request->reason;
 		
-
 		
 		DB::table('call')->insert($insertCall);
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => "揭发成功", 'isAnonymous' => $insertCall['anonymous']]);*/
@@ -80,25 +73,46 @@ class CallController extends Controller {
 		$call->fromId=Auth::user()->id;
 		$call->anonymous=$request->anonymous?1:0;
 		$call->mainText=$request->reason;
-		//todo 这里验证学号和姓名是否匹配 API
-		$call->save();
+		
+		$dbre=DB::table('studentid')->select('name')->where('studentid',$call->toId)->get();
 
-		return redirect('call/call')->withMessage(['type' => 'success', 'content' => "揭发成功" ])->withIsAnonymous($request->anonymous?1:0);
+		if (!isset($dbre[0])) {
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => '数据错误！']);
+		} else if ($dbre[0]->name != $request->name) {
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => '数据错误！']);
+		}
+
+		$call->save();
+		return redirect('call/call')->withMessage(['type' => 'success', 'content' => "推荐成功" ])->withIsAnonymous($request->anonymous?1:0);
 	}
 
 	public function postLike(CallLikePostRequest $request){
 		if(!isset(Auth::user()->username)){
 			return redirect('/')->withMessage(['type' => 'warning', 'content' => '请登陆']);
 		}
-		//todo 在request中验证是否存在学号
-		$addLike['studyId']=$request->id;
-		$addLike['like']=+1;
 
+		$addLike['studyId']=$request->id;
+		$dbre=DB::table('studentid')->select('likeAdd')->where('studentid',$request->id)->get();
+		$addLike['like']=$dbre[0]->likeAdd;
+		$addLike['like']+=1;
+		DB::table('studentid')->where('studentid',$request->id)->update(['likeAdd'=>$addLike['like']]);
 	}
 
 	public function getStudentid(Request $request) {
 		$name = $request->input('name');
-		echo $name;
+		$studentinfos = DB::table('studentid')->select('studentid')->where('name',$name)->get();
+		if(!isset($studentinfos[0])) {
+			$return['code'] = -1;
+			$return['message'] = 'failed';
+			echo json_encode($return);
+		}
+		else {
+			$return['code'] = 1;
+			$return['message'] = 'success';
+			$return['num'] = count($studentinfos);
+			$return['data'] = $studentinfos;
+			echo json_encode($return);
+		}
 	}
 
 }

@@ -3,6 +3,23 @@
 @section('title')我觉得TA可以！@stop
 
 @section('content')
+<style type="text/css">
+li{
+	list-style:none;  
+}
+#idShow{
+	border:1px solid;
+	border-color:#BBB;
+	border-radius:4px;
+	line-height:2.5em;
+	max-height: 200px;
+	overflow-y: auto;
+	transition:border-color 200ms;
+	padding: 5px;
+	margin: 3px;
+	font-size: 1em;
+}
+</style>
 <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
 <div class="page-title">我觉得TA可以！</div>
 
@@ -14,14 +31,20 @@
 	<fieldset class="form-group">
 		<legend>基本信息</legend>
 		<input name="name" type="text" placeholder="姓名" id="studentName">
-		<input name="id" type="text" placeholder="学号(点我自动补全)" oninput="fillID()" id="schoolId">
-		<!--这里需要悬浮层出学号-->
+		<div style="position: relative;width: 100px;margin: 12px 0 0 0">
+			<input name="id" type="text" placeholder="学号(点我自动补全)" oninput="fillID()" id="schoolId" onclick="fillID();$('#idShow').show();" autocomplete="off" readonly="readonly">
+			<div id="idShow" style="width: 156px;text-align: center;position: relative;" onclick="fillID()">
+				<ul id="fillul" style="width: auto; padding: 0">
+					<li>点击学号框进行补全~</li>
+				</ul>
+			</div>
+		</div>
 	</fieldset>
 	<script>
 	</script>
 	<fieldset class="form-group">
 		<legend>为啥推荐他</legend>
-		<textarea name="reason" id="callReason" type="text" class="fullwidth" required maxlength="1"></textarea>
+		<textarea name="reason" id="callReason" type="text" class="fullwidth" required maxlength="144"></textarea>
 	</fieldset>
 	<fieldset class="form-group">
 		<legend>匿名设置</legend>
@@ -35,12 +58,31 @@
 </form>
 
 <script type="text/javascript">
+document.querySelector('#idShow').addEventListener('click',function(e){
+	targetLi = e.srcElement||e.target;
+	selectId = targetLi.innerText;
+	console.log(selectId)
+	$('#schoolId').val(selectId);
+	$('#idShow').hide();
+});
 function fillID(){
 	studentName=document.getElementById('studentName').value;
-	$.get('http://54.gg/call/studentid?name='+studentName, function(data) {
+	$.get('/call/studentid?name='+studentName, function(data) {
+		data = JSON.parse(data);
 		console.log(data);
-	});
+		var fillhtml = "";
+		fillul=$('#fillul');
+		if (data.code == 1) {
+			for (var i = 0; i < data.num; i++) {
+				id = data.data[i].studentid;
+				fillhtml+="<li>"+id+"</li>";
+			}
+			fillul.html(fillhtml);
 
+		} else if (data.code == -1){
+			fillul.html("<li>没有这个人的呢</li>");
+		}
+	});
 	//console.log(document.getElementById('schoolId').value);
 }
 </script>
@@ -50,3 +92,5 @@ function fillID(){
 @section('scripts')
 
 @stop
+
+

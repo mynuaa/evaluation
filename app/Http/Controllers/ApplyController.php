@@ -18,7 +18,7 @@ use DB;
 
 class ApplyController extends Controller {
 
-	private $backdoor = ['051230303', 'SX1411003', 'sx1411003', '161510125'];
+	private $backdoor = ['051230303', 'SX1411003', 'sx1411003', '031630226', '161510126'];
 
 	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
@@ -136,14 +136,17 @@ class ApplyController extends Controller {
 
 	public function getStudentid(GetNameRequest $request) {
 		$name = $request->input('name');
-		$studentDb = DB::table('studentinfo');
-		$studentinfos = $studentDb->select('studentId')->where('name',$name)->get();
+		$studentDb = DB::table('studentid');
+		$studentinfos = $studentDb->select('studentid')->where('name',$name)->get();
+		var_dump($studentinfos);
 		if($studentinfos) {
 			$return['code'] = '-1';
 			$return['message'] = 'failed';
 			echo json_encode($return);
 		}
 		else {
+			$return['code'] = '1';
+			$return['message'] = 'success';
 			echo json_encode($studentinfos);//我猜的
 		}
 	}
