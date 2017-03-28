@@ -21,7 +21,7 @@
 		</p>
 		<div class="avatar-choose-outer">
 			@for ($i = 0; $i < config('business.avatar.max'); $i++)
-			<img src="{{ asset('/img/avatar-' . $i . '.jpg') }}" class="avatar-choose @if ($user->avatar == $i) avatar-chosen @endif" onclick="setChosen(this)" alt="{{ trans('update.avatar') . $i }}">
+			<img src="{{ asset('/img/avatar-' . $i . '.png') }}" class="avatar-choose @if ($user->avatar == $i) avatar-chosen @endif" onclick="setChosen(this)" alt="{{ trans('update.avatar') . $i }}">
 			@endfor
 		</div>
 		<div class="form-btns">

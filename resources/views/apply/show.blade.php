@@ -6,7 +6,7 @@
 <h3>{{ $apply->title }}</h3>
 <div class="card-author cl">
 	@if (!$apply->old)
-	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.jpg') }}" alt="{{ $apply->name }}">
+	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
 	@endif
 	<div class="fl">
 		<div>{{ $apply->name }}，
@@ -92,7 +92,7 @@
 	@foreach ($apply->recommendations()->get() as $rec)
 	<div class="card-outer" id="apply_a_{{ $rec->id }}">
 		<div class="card-inner">
-			<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.jpg') }}" alt="{{ $rec->user->name }}">
+			<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
 			<h5 class="card-content cmt-author">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}
 			@if (Auth::check())
 				，{{ $rec->user->username }}
