@@ -16,22 +16,24 @@ class CallController extends Controller {
 	public function getMain(){
 		//$allCall=DB::table('call')->lists('toId');
 		//$heHas=Call::where('toId','=',1)->count();
-		$allCall=Call::select('toId','name','studentid.college','studentid.likeAdd',DB::raw('COUNT(*) AS `cnt`'))->join('studentid','toId','=','studentid.studentid')->groupBy('toId')->orderBy('cnt	','desc')->get();
+		$allCall=Call::select('toId','name','studentid.college','studentid.likeAdd',DB::raw('COUNT(*) AS `cnt`'))->join('studentid','toId','=','studentid.studentid')->groupBy('toId')->orderBy('cnt','desc')->get();
 		$allId = [];
 		foreach ($allCall as $key => $value) {
 			$allId[]=$value['toId'];
 		}
 		$allId=implode(',', $allId);
 		$allId='('.$allId.')';
-		$content = Call::select("toId","mainText")->whereRaw("`toId` in {$allId}")->get();
+		$content = Call::select("toId","mainText")->whereRaw("`toId` in {$allId}")->orderBy('id','desc')->get();
 		$contentAll=[];
+
 		foreach ($content as $value) {
 			if (!isset($contentAll[$value['toId']])) {
 				$contentAll[$value['toId']] = [$value['mainText']];
-			} else if (count($contentAll) <= 5) {
+			} else if (count($contentAll[$value['toId']]) <= 20) { //这里Rex写挂过
 				$contentAll[$value['toId']] []= $value['mainText'];
 			}
 		}
+
 		foreach ($contentAll as &$value) {
 			$value = implode(' | ', $value); 
 		}
