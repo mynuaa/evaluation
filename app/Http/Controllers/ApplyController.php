@@ -136,8 +136,9 @@ class ApplyController extends Controller {
 
 	public function getStudentid(GetNameRequest $request) {
 		$name = $request->input('name');
-		$studentDb = DB::table('studentinfo');
-		$studentinfos = $studentDb->select('studentId')->where('name',$name)->get();
+		$studentDb = DB::table('studentid');
+		$studentinfos = $studentDb->select('studentid')->where('name',$name)->get();
+		var_dump($studentinfos);
 		if($studentinfos) {
 			$return['code'] = '-1';
 			$return['message'] = 'failed';

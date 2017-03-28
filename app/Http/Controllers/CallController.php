@@ -75,14 +75,14 @@ class CallController extends Controller {
 		$call->mainText=$request->reason;
 		
 		$dbre=DB::table('studentid')->select('name')->where('studentid',$call->toId)->get();
-		// || $dbre[0]->name != $call->
+
 		if (!isset($dbre[0])) {
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => '数据错误！']);
+		} else if ($dbre[0]->name != $request->name) {
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => '数据错误！']);
 		}
 
-		//todo 这里验证学号和姓名是否匹配 API
 		$call->save();
-
 		return redirect('call/call')->withMessage(['type' => 'success', 'content' => "推荐成功" ])->withIsAnonymous($request->anonymous?1:0);
 	}
 
@@ -100,7 +100,19 @@ class CallController extends Controller {
 
 	public function getStudentid(Request $request) {
 		$name = $request->input('name');
-		echo $name;
+		$studentinfos = DB::table('studentid')->select('studentid')->where('name',$name)->get();
+		if(!isset($studentinfos[0])) {
+			$return['code'] = -1;
+			$return['message'] = 'failed';
+			echo json_encode($return);
+		}
+		else {
+			$return['code'] = 1;
+			$return['message'] = 'success';
+			$return['num'] = count($studentinfos);
+			$return['data'] = $studentinfos;
+			echo json_encode($return);
+		}
 	}
 
 }

@@ -50,7 +50,7 @@
 
 function like(e) {
 
-	$.post('/call/like', {id: e.parentNode.parentNode.id ,_token:"{{ csrf_token() }}" }, function(data, textStatus, xhr) {
+	$.post('/evaluation/call/like', {id: e.parentNode.parentNode.id ,_token:"{{ csrf_token() }}" }, function(data, textStatus, xhr) {
 		console.log(data,textStatus,xhr);
 		numDom=e.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling
 		numDom.innerHTML=parseInt(numDom.innerHTML)+1
