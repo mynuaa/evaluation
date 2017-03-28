@@ -73,7 +73,7 @@
 			<nav id="nav-user" class="rs-nav fr">
 				@if (Auth::check())
 				<ul class="rs-user-nav user-logged" id="tabUsr">
-					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.jpg') }}" class="user-avatar"></li>
+					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar"></li>
 					<a href="{{ url('user/update') }}"><li>{{ trans('app.banner.update') }}</li></a>
 					@if (Auth::user()->isAdmin())
 					<a href="{{ url('admin/showrecommendation')}}"><li>{{ trans('app.banner.detail') }}</li></a>
