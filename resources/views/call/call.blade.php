@@ -67,7 +67,7 @@ document.querySelector('#idShow').addEventListener('click',function(e){
 });
 function fillID(){
 	studentName=document.getElementById('studentName').value;
-	$.get('/evalution/call/studentid?name='+studentName, function(data) {
+	$.get('/evaluation/call/studentid?name='+studentName, function(data) {
 		data = JSON.parse(data);
 		console.log(data);
 		var fillhtml = "";
