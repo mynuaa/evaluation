@@ -16,7 +16,7 @@ class CallController extends Controller {
 	public function getMain(){
 		//$allCall=DB::table('call')->lists('toId');
 		//$heHas=Call::where('toId','=',1)->count();
-		$allCall=Call::select('toId','name','studentid.college','studentid.likeAdd',DB::raw('COUNT(*) AS `cnt`'))->join('studentid','toId','=','studentid.studentid')->groupBy('toId')->orderBy('cnt','desc')->get();
+		$allCall=Call::select('toId','name','studentid.college','studentid.likeAdd',DB::raw('COUNT(*) AS `cnt`'))->join('studentid','toId','=','studentid.studentid')->groupBy('toId')->orderBy('cnt	','desc')->get();
 		$allId = [];
 		foreach ($allCall as $key => $value) {
 			$allId[]=$value['toId'];
@@ -67,6 +67,13 @@ class CallController extends Controller {
 		DB::table('call')->insert($insertCall);
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => "揭发成功", 'isAnonymous' => $insertCall['anonymous']]);*/
 
+		$callNum = DB::table('users')->select('callNum')->where('username',Auth::user()->username)->get();
+
+		$callNum = $callNum[0]->callNum;
+		if ($callNum == 0) {
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => '推荐次数已用尽!']);
+		}
+
 		$call = new Call;
 
 		$call->toId=$request->id;
@@ -74,6 +81,7 @@ class CallController extends Controller {
 		$call->anonymous=$request->anonymous?1:0;
 		$call->mainText=$request->reason;
 		
+
 		$dbre=DB::table('studentid')->select('name')->where('studentid',$call->toId)->get();
 
 		if (!isset($dbre[0])) {
@@ -83,6 +91,9 @@ class CallController extends Controller {
 		}
 
 		$call->save();
+
+		DB::table('users')->where('username',Auth::user()->username)->update(['callNum' => $callNum-1]);
+		
 		return redirect('call/call')->withMessage(['type' => 'success', 'content' => "推荐成功" ])->withIsAnonymous($request->anonymous?1:0);
 	}
 
