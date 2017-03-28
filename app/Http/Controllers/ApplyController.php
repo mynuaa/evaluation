@@ -134,22 +134,6 @@ class ApplyController extends Controller {
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
 	}
 
-	public function getStudentid(GetNameRequest $request) {
-		$name = $request->input('name');
-		$studentDb = DB::table('studentid');
-		$studentinfos = $studentDb->select('studentid')->where('name',$name)->get();
-		var_dump($studentinfos);
-		if($studentinfos) {
-			$return['code'] = '-1';
-			$return['message'] = 'failed';
-			echo json_encode($return);
-		}
-		else {
-			$return['code'] = '1';
-			$return['message'] = 'success';
-			echo json_encode($studentinfos);//我猜的
-		}
-	}
 
 	private function checkLimit($voteInner, $voteOuter) {
 		$limit = [
