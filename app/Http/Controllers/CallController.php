@@ -23,15 +23,17 @@ class CallController extends Controller {
 		}
 		$allId=implode(',', $allId);
 		$allId='('.$allId.')';
-		$content = Call::select("toId","mainText")->whereRaw("`toId` in {$allId}")->get();
+		$content = Call::select("toId","mainText")->whereRaw("`toId` in {$allId}")->orderBy('id','desc')->get();
 		$contentAll=[];
+
 		foreach ($content as $value) {
 			if (!isset($contentAll[$value['toId']])) {
 				$contentAll[$value['toId']] = [$value['mainText']];
-			} else if (count($contentAll) <= 5) {
+			} else if (count($contentAll[$value['toId']]) <= 20) { //这里Rex写挂过
 				$contentAll[$value['toId']] []= $value['mainText'];
 			}
 		}
+
 		foreach ($contentAll as &$value) {
 			$value = implode(' | ', $value); 
 		}
@@ -67,6 +69,13 @@ class CallController extends Controller {
 		DB::table('call')->insert($insertCall);
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => "揭发成功", 'isAnonymous' => $insertCall['anonymous']]);*/
 
+		$callNum = DB::table('users')->select('callNum')->where('username',Auth::user()->username)->get();
+
+		$callNum = $callNum[0]->callNum;
+		if ($callNum == 0) {
+			return redirect()->back()->withMessage(['type' => 'error', 'content' => '推荐次数已用尽!']);
+		}
+
 		$call = new Call;
 
 		$call->toId=$request->id;
@@ -74,6 +83,7 @@ class CallController extends Controller {
 		$call->anonymous=$request->anonymous?1:0;
 		$call->mainText=$request->reason;
 		
+
 		$dbre=DB::table('studentid')->select('name')->where('studentid',$call->toId)->get();
 
 		if (!isset($dbre[0])) {
@@ -83,6 +93,9 @@ class CallController extends Controller {
 		}
 
 		$call->save();
+
+		DB::table('users')->where('username',Auth::user()->username)->update(['callNum' => $callNum-1]);
+		
 		return redirect('call/call')->withMessage(['type' => 'success', 'content' => "推荐成功" ])->withIsAnonymous($request->anonymous?1:0);
 	}
 
