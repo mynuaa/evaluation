@@ -26,8 +26,8 @@ return [
 	'notice' => [
 		'1. 五四评优活动必读：<b><a href="/evaluation/notes.doc">活动须知（请点击下载）</a></b>。',
 		'2. 时间节点：个人申报、师生推荐（4.1-4.9），网络投票（4.12-4.15）。',
-		'3. 咨询及投诉邮箱：<a href="mailto:nuaa52113085@126.com">nuaa52113085@126.com</a>。',
-		'4. 若在操作过程中出现错误，请将错误信息截图，发到<a href="mailto:nuaa52113085@126.com">nuaa52113085@126.com</a>，方便技术人员定位错误，及时解决并回复。',
+		'3. 咨询及投诉邮箱：<a href="mailto:nuaatw@163.com">nuaatw@163.com</a>。',
+		'4. 若在操作过程中出现错误，请将错误信息截图，发到<a href="mailto:nuaatw@163.com">nuaatw@163.com</a>，方便技术人员定位错误，及时解决并回复。',
 		'5. <b>院外投票不得少于院内投票的50%</b>，你可以先为院外同学投一票。'
 	],
 	// 'statistics' => '6. 截至目前，一共有 :apply 名同学申报，共 :recommendation 条推荐。',
