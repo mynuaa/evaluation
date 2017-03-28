@@ -55,11 +55,11 @@
 					<a href="{{ url('apply/apply') }}">
 						<li id="tabApp">{{ trans('app.banner.apply') }}</li>
 					</a>
-					<li id="tabMain" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0" onclick="this.classList.toggle('show')">
+					<li id="tabMain" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
 						<div>{{ trans('app.banner.recommend') }}</div>
 						<ul style="margin: 0;padding: 0">
-							<a href="{{ url('/') }}"><li style="width: 100%;" >已参评推荐</li></a>
-							<a href="{{ url('call/main') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">未参评推荐</li></a>
+							<a href="{{ url('/') }}"><li style="width: 100%;" >已参评的推荐</li></a>
+							<a href="{{ url('call/main') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">未参评的推荐</li></a>
 						</ul>
 					</li>
 					<a href="{{ url('user/recommendations') }}">
@@ -130,6 +130,11 @@
 			else if(url.indexOf("apply/apply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
 			else if(url.indexOf("user")>=0)document.getElementById("tabUsr").className+=" rs-nav-selected";
 			else document.getElementById("tabMain").className+=" rs-nav-selected";
+			var tabMain=document.getElementById("tabMain");
+			tabMain.onclick=function(e){
+				tabMain.classList.toggle('show');
+				e.stopPropagation();
+			};
 		})(window);
 	</script>
 </body>
