@@ -3,7 +3,8 @@
 @section('title'){{ trans('update.title') }}@stop
 
 @section('content')
-<div class="page-title">{{ trans('update.title') }}</div>
+<div class="page-title">{{ trans('update.title') }}<a href="{{ url('user/myrecommendations')}}"><li>有人推荐我</li></a></div>
+
 <div class="rs-form-outer">
 	<form action="#" method="post" class="rs-form-aligned center">
 		<p>

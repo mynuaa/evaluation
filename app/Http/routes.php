@@ -18,8 +18,8 @@ Route::controllers([
 	'user' => 'UserController',
 	'apply' => 'ApplyController',
 	'search' => 'SearchController',
-	'call' => 'CallController',
-	'admin'	=>	'AdminController'
+	'admin'	=>	'AdminController',
+	'call' => 'CallController'
 ]);
 
 Route::get('photo/{name}', 'PhotoController@photo');
