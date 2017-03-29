@@ -73,13 +73,13 @@
 			<nav id="nav-user" class="rs-nav fr">
 				@if (Auth::check())
 					@if (Auth::user()->isAdmin())
-					<ul class="rs-user-nav user-logged" id="tabUsr" style="height:200px">
+					<ul class="rs-user-nav user-logged superAdmin" id="tabUsr">
 						<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar"></li>
 						<a href="{{ url('user/update') }}"><li>{{ trans('app.banner.update') }}</li></a>
 						<a href="{{ url('admin/showrecommendation')}}"><li>{{ trans('app.banner.detail') }}</li></a>
 						<a href="{{ url('user/logout') }}"><li>{{ trans('app.banner.logout') }}</li></a>
 					@else
-					<ul class="rs-user-nav user-logged" id="tabUsr" style="height=200px">
+					<ul class="rs-user-nav user-logged" id="tabUsr">
 						<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar"></li>
 						<a href="{{ url('user/update') }}"><li>{{ trans('app.banner.update') }}</li></a>
 					<a href="{{ url('user/logout') }}"><li>{{ trans('app.banner.logout') }}</li></a>

@@ -246,6 +246,9 @@ body>.rs-container{
 	background:#A00;
 	transition:all 200ms;
 }
+.user-logged.rs-user-nav.superAdmin:hover{
+	height:200px;
+}
 .rs-user-nav:hover li{
 	height:50px;
 	z-index:10;
