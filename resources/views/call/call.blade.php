@@ -89,8 +89,8 @@ function dispose(dom) {
 }
 // add event listener
 var input = document.querySelector('.rs-autocomplete-input');
-input.addEventListener('keydown', throttle(getData, input, 200));
-input.addEventListener('click', function () { getData(input); });
+input.addEventListener('input', throttle(getData, input, 300));
+input.addEventListener('click', function () {if(input==document.activeElement) getData(input); });
 input.addEventListener('blur', function () { setTimeout(function () { dispose(input); }, 500); });
 </script>
 @stop
