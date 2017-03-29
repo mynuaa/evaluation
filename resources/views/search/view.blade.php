@@ -70,14 +70,5 @@
 @stop
 
 @section('scripts')
-function toggleExpand(dom){
-	dom.className=(dom.className.indexOf("-up")>=0)?dom.className.replace("-up","-down"):dom.className.replace("-down","-up");
-	dom=dom.parentNode;
-	if(dom.className.indexOf("rs-tabs-expand")>=0){
-		dom.className=dom.className.replace(" rs-tabs-expand","");
-	}
-	else{
-		dom.className+=" rs-tabs-expand";
-	}
-}
+
 @stop

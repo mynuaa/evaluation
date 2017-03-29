@@ -72,13 +72,18 @@
 			</nav>
 			<nav id="nav-user" class="rs-nav fr">
 				@if (Auth::check())
-				<ul class="rs-user-nav user-logged" id="tabUsr">
-					<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar"></li>
-					<a href="{{ url('user/update') }}"><li>{{ trans('app.banner.update') }}</li></a>
 					@if (Auth::user()->isAdmin())
-					<a href="{{ url('admin/showrecommendation')}}"><li>{{ trans('app.banner.detail') }}</li></a>
-					@endif
+					<ul class="rs-user-nav user-logged" id="tabUsr" style="height:200px">
+						<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar"></li>
+						<a href="{{ url('user/update') }}"><li>{{ trans('app.banner.update') }}</li></a>
+						<a href="{{ url('admin/showrecommendation')}}"><li>{{ trans('app.banner.detail') }}</li></a>
+						<a href="{{ url('user/logout') }}"><li>{{ trans('app.banner.logout') }}</li></a>
+					@else
+					<ul class="rs-user-nav user-logged" id="tabUsr" style="height=200px">
+						<li class="user-avatar-outer"><img src="{{ asset('/img/avatar-' . Auth::user()->avatar . '.png') }}" class="user-avatar"></li>
+						<a href="{{ url('user/update') }}"><li>{{ trans('app.banner.update') }}</li></a>
 					<a href="{{ url('user/logout') }}"><li>{{ trans('app.banner.logout') }}</li></a>
+					@endif
 				</ul>
 				@else
 				<ul class="rs-user-nav">
@@ -134,6 +139,16 @@
 			tabMain.onclick=function(e){
 				tabMain.classList.toggle('show');
 				e.stopPropagation();
+			};
+			window.toggleExpand = function(dom){
+				dom.className=(dom.className.indexOf("-up")>=0)?dom.className.replace("-up","-down"):dom.className.replace("-down","-up");
+				dom=dom.parentNode;
+				if(dom.className.indexOf("rs-tabs-expand")>=0){
+					dom.className=dom.className.replace(" rs-tabs-expand","");
+				}
+				else{
+					dom.className+=" rs-tabs-expand";
+				}
 			};
 		})(window);
 	</script>

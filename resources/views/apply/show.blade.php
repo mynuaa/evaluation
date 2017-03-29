@@ -110,6 +110,17 @@
 	<a class="pointer" id="btnLike">
 		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
+	<script>
+		document.getElementById("btnLike").onclick=function(){
+			var xhr=new XMLHttpRequest();
+			xhr.open("GET",'{{ url('apply/like/' . $apply->id) }}',true);
+			xhr.withCredentials=true;
+			xhr.timeout=5000;
+			xhr.send("");
+			this.innerHTML='<i class="fa fa-thumbs-up"></i>&nbsp;已赞';
+			this.onclick=function(){return false;};
+		};
+	</script>
 	@endif
 </p>
 <h3>{{ trans('apply.want_share') }}</h3>
@@ -139,13 +150,4 @@ function checkForm(){
 		return false;
 	}
 }
-document.getElementById("btnLike").onclick=function(){
-	var xhr=new XMLHttpRequest();
-	xhr.open("GET",'{{ url('apply/like/' . $apply->id) }}',true);
-	xhr.withCredentials=true;
-	xhr.timeout=5000;
-	xhr.send("");
-	this.innerHTML='<i class="fa fa-thumbs-up"></i>&nbsp;已赞';
-	this.onclick=function(){return false;};
-};
 @stop
