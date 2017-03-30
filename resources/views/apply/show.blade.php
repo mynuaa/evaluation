@@ -73,7 +73,6 @@
 @endif
 <hr>
 <h3>{{ trans('apply.want_recommend') }}</h3>
-<h3>{{$is_stop}}</h3>
 @if ($apply->year == 2017 && !$is_stop)
 @if (!Auth::check())
 <div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}</div>
