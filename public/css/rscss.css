@@ -267,6 +267,7 @@ body>.rs-container{
 	font-size:80%;
 	border-top:1px dashed #E74C3C;
 	color:#E74C3C;
+	height: 160px;
 }
 /*表单*/
 .rs-form{
