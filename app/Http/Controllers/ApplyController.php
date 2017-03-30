@@ -101,10 +101,17 @@ class ApplyController extends Controller {
 			$apply->increment('pageview');
 			$apply->isRecommended = Auth::check() ? Auth::user()->isRecommended($id) : true;
 			$apply->isVoted = Auth::check() ? Auth::user()->isVoted($id) : true;
-
+			$isStop;
+			if($apply->year == 2016 && !in_array($apply->user->username, $this->backdoor)) {
+				$isStop = 1;
+			}
+			else {
+				$isStop = 0;
+			}
+			var_dump($isStop);
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
- 			)->withIsStop($apply->year || !in_array($apply->user->username, $this->backdoor)
+ 			)->withIsStop($isStop
 			)->withCanVote($apply->recommendations >= 10);
 		}
 		else{
