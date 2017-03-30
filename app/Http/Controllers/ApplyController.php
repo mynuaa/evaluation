@@ -108,7 +108,6 @@ class ApplyController extends Controller {
 			else {
 				$isStop = 0;
 			}
-			var_dump($isStop);
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
  			)->withIsStop($isStop
