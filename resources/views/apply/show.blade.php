@@ -6,7 +6,7 @@
 <h3>{{ $apply->title }}</h3>
 <div class="card-author cl">
 	@if (!$apply->old)
-	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.jpg') }}" alt="{{ $apply->name }}">
+	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
 	@endif
 	<div class="fl">
 		<div>{{ $apply->name }}，
@@ -73,7 +73,7 @@
 @endif
 <hr>
 <h3>{{ trans('apply.want_recommend') }}</h3>
-@if (!$apply->old && !$is_stop)
+@if ($apply->year == 2017 && !$is_stop)
 @if (!Auth::check())
 <div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}</div>
 @else
@@ -92,7 +92,7 @@
 	@foreach ($apply->recommendations()->get() as $rec)
 	<div class="card-outer" id="apply_a_{{ $rec->id }}">
 		<div class="card-inner">
-			<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.jpg') }}" alt="{{ $rec->user->name }}">
+			<img class="cmt-avatar fr" src="{{ asset('/img/avatar-' . $rec->user->avatar . '.png') }}" alt="{{ $rec->user->name }}">
 			<h5 class="card-content cmt-author">{{ $rec->user->name }}，{{ trans('college')[$rec->user->college] }}
 			@if (Auth::check())
 				，{{ $rec->user->username }}
@@ -110,6 +110,17 @@
 	<a class="pointer" id="btnLike">
 		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
+	<script>
+		document.getElementById("btnLike").onclick=function(){
+			var xhr=new XMLHttpRequest();
+			xhr.open("GET",'{{ url('apply/like/' . $apply->id) }}',true);
+			xhr.withCredentials=true;
+			xhr.timeout=5000;
+			xhr.send("");
+			this.innerHTML='<i class="fa fa-thumbs-up"></i>&nbsp;已赞';
+			this.onclick=function(){return false;};
+		};
+	</script>
 	@endif
 </p>
 <h3>{{ trans('apply.want_share') }}</h3>
@@ -139,13 +150,4 @@ function checkForm(){
 		return false;
 	}
 }
-document.getElementById("btnLike").onclick=function(){
-	var xhr=new XMLHttpRequest();
-	xhr.open("GET",'{{ url('apply/like/' . $apply->id) }}',true);
-	xhr.withCredentials=true;
-	xhr.timeout=5000;
-	xhr.send("");
-	this.innerHTML='<i class="fa fa-thumbs-up"></i>&nbsp;已赞';
-	this.onclick=function(){return false;};
-};
 @stop

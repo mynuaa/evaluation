@@ -3,7 +3,8 @@
 @section('title'){{ trans('update.title') }}@stop
 
 @section('content')
-<div class="page-title">{{ trans('update.title') }}</div>
+<div class="page-title">{{ trans('update.title') }}<a href="{{ url('user/myrecommendations')}}"><li>有人推荐我</li></a></div>
+
 <div class="rs-form-outer">
 	<form action="#" method="post" class="rs-form-aligned center">
 		<p>
@@ -20,7 +21,7 @@
 		</p>
 		<div class="avatar-choose-outer">
 			@for ($i = 0; $i < config('business.avatar.max'); $i++)
-			<img src="{{ asset('/img/avatar-' . $i . '.jpg') }}" class="avatar-choose @if ($user->avatar == $i) avatar-chosen @endif" onclick="setChosen(this)" alt="{{ trans('update.avatar') . $i }}">
+			<img src="{{ asset('/img/avatar-' . $i . '.png') }}" class="avatar-choose @if ($user->avatar == $i) avatar-chosen @endif" onclick="setChosen(this)" alt="{{ trans('update.avatar') . $i }}">
 			@endfor
 		</div>
 		<div class="form-btns">

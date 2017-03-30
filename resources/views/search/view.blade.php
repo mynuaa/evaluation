@@ -46,19 +46,19 @@
 				<div class="card-title">
 					<span style="float: left">{{ $stu->title }}</span>
 					@if ($stu->tag1)
-					<div class="rs-tab" style="font-size:80%;margin:0 0 0 8px">{{ $stu->tag1}}</div>
+					<div class="rs-tab">{{ $stu->tag1}}</div>
 					@endif
 					@if ($stu->tag2)
-					<div class="rs-tab" style="font-size:80%;margin:0 0 0 8px">{{ $stu->tag2}}</div>
+					<div class="rs-tab">{{ $stu->tag2}}</div>
 					@endif
 					@if ($stu->tag3)
-					<div class="rs-tab" style="font-size:80%;margin:0 0 0 8px">{{ $stu->tag3}}</div>
+					<div class="rs-tab">{{ $stu->tag3}}</div>
 					@endif
 				</div>
 				<div class="card-content card-author">{{ $stu->name }}，{{ trans('apply.professional', ['name' => $stu->major]) }}</div>
 			</div>
 			@if (!$stu->old)
-			<img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.jpg') }}" alt="{{ $stu->name }}" class="card-avatar">
+			<img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}" class="card-avatar">
 			@endif
 			<div class="card-content card-describtion">{{ substr(strip_tags($stu->whoami), 0, 150) . "..." }}</div>
 		</div>
@@ -70,14 +70,5 @@
 @stop
 
 @section('scripts')
-function toggleExpand(dom){
-	dom.className=(dom.className.indexOf("-up")>=0)?dom.className.replace("-up","-down"):dom.className.replace("-down","-up");
-	dom=dom.parentNode;
-	if(dom.className.indexOf("rs-tabs-expand")>=0){
-		dom.className=dom.className.replace(" rs-tabs-expand","");
-	}
-	else{
-		dom.className+=" rs-tabs-expand";
-	}
-}
+
 @stop

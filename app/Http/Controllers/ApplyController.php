@@ -26,7 +26,7 @@ class ApplyController extends Controller {
 
 	public function getApply() {
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
 		}
 
 		$apply = Auth::user()->apply;
@@ -35,7 +35,7 @@ class ApplyController extends Controller {
 
 	public function postApply(ApplyPostRequest $request) {
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
 		}
 
 		$request->photos = [];
@@ -101,10 +101,16 @@ class ApplyController extends Controller {
 			$apply->increment('pageview');
 			$apply->isRecommended = Auth::check() ? Auth::user()->isRecommended($id) : true;
 			$apply->isVoted = Auth::check() ? Auth::user()->isVoted($id) : true;
-
+			$isStop;
+			if($apply->year == 2016 && !in_array($apply->user->username, $this->backdoor)) {
+				$isStop = 1;
+			}
+			else {
+				$isStop = 0;
+			}
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
- 			)->withIsStop($apply->year || !in_array($apply->user->username, $this->backdoor)
+ 			)->withIsStop($isStop
 			)->withCanVote($apply->recommendations >= 10);
 		}
 		else{
@@ -114,7 +120,7 @@ class ApplyController extends Controller {
 
 	public function postRecommendation(RecommendPostRequest $request) {
 		if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
-			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '时间截止，停止申报。']);
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
 
 		$user = Auth::user();
 
@@ -134,21 +140,6 @@ class ApplyController extends Controller {
 		return redirect()->back()->withMessage(['type' => 'success', 'content' => trans('message.recommend.success')]);
 	}
 
-	public function getStudentid(GetNameRequest $request) {
-		$name = $request->input('name');
-		$studentDb = DB::table('studentinfo');
-		$studentinfos = $studentDb->select('studentId')->where('name',$name)->get();
-		if($studentinfos) {
-			$return['code'] = '-1';
-			$return['message'] = 'failed';
-			echo json_encode($return);
-		}
-		else {
-			$return['code'] = '1';
-			$return['message'] = 'success';
-			echo json_encode($studentinfos);//我猜的
-		}
-	}
 
 	private function checkLimit($voteInner, $voteOuter) {
 		$limit = [

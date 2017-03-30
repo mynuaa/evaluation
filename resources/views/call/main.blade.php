@@ -6,7 +6,7 @@
 <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
 <div class="page-title">未参评同学排行榜</div>
 
-<a href="{{ url('call/call') }}" ><div class="rs-msg rs-msg-info" style="text-align: center;">点击这里 实名/匿名 推荐还未参加五四评优的同学上榜！</div></a>
+<a href="{{ url('call/call') }}" style="color: white;"><div class="rs-msg rs-msg-info" style="text-align: center;font-size:1.1em;">点击这里 实名/匿名 推荐还未参加五四评优的同学上榜！</div></a>
 
 @foreach( $allcall as $key => $value)
 	<!--<div class="card-outer">
@@ -34,7 +34,7 @@
 				<br>
 				<div>{{ $value['likeAdd'] + $value['cnt'] }}</div>
 			</div>
-			<div class="card-content card-describtion">{{ $allcontent[$value['toId']] }}</div>
+			<div class="card-content card-describtion" style="width: 85%">{{ $allcontent[$value['toId']] }}</div>
 		</div>
 	</div>
 
@@ -50,7 +50,7 @@
 
 function like(e) {
 
-	$.post('/call/like', {id: e.parentNode.parentNode.id ,_token:"{{ csrf_token() }}" }, function(data, textStatus, xhr) {
+	$.post('/evaluation/call/like', {id: e.parentNode.parentNode.id ,_token:"{{ csrf_token() }}" }, function(data, textStatus, xhr) {
 		console.log(data,textStatus,xhr);
 		numDom=e.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling
 		numDom.innerHTML=parseInt(numDom.innerHTML)+1
