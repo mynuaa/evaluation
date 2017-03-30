@@ -46,13 +46,13 @@
 				<div class="card-title">
 					<span style="float: left">{{ $stu->title }}</span>
 					@if ($stu->tag1)
-					<div class="rs-tab" style="font-size:80%;margin:0 0 0 8px">{{ $stu->tag1}}</div>
+					<div class="rs-tab">{{ $stu->tag1}}</div>
 					@endif
 					@if ($stu->tag2)
-					<div class="rs-tab" style="font-size:80%;margin:0 0 0 8px">{{ $stu->tag2}}</div>
+					<div class="rs-tab">{{ $stu->tag2}}</div>
 					@endif
 					@if ($stu->tag3)
-					<div class="rs-tab" style="font-size:80%;margin:0 0 0 8px">{{ $stu->tag3}}</div>
+					<div class="rs-tab">{{ $stu->tag3}}</div>
 					@endif
 				</div>
 				<div class="card-content card-author">{{ $stu->name }}，{{ trans('apply.professional', ['name' => $stu->major]) }}</div>
