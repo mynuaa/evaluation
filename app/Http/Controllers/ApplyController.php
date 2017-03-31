@@ -57,6 +57,7 @@ class ApplyController extends Controller {
 			$classes = DB::table('studentid')->select('class','name')->where('studentid',$request->id1)->get();
 			$ifAdd = DB::table('masterapplys')->select('class')->where('studentid',$request->id1)->get();
 			if($ifAdd) {
+				return redirect('apply/apply')->withMessage(['type' => 'error', 'content' => '信息错误']);
 			}
 			else if($classes) {
 				if($classes[0]->class != $request->class) {

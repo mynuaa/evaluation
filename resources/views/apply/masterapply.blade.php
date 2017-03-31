@@ -15,8 +15,8 @@
             @if(isset($students[0]))
             <div class="rs-autocomplete-outer">
                 <input name="class" type="hidden" value="{{$class}}" required>
-                <input name="name1" type="text" placeholder="姓名" value="{{$students[0]->name}}" class="rs-autocomplete-input" autocomplete="off" required disabled>
-                <input name="id1" type="text" placeholder="学号" value="{{$students[0]->studentid}}" required disabled>
+                <input name="name1" type="text" placeholder="姓名" value="{{$students[0]->name}}" class="rs-autocomplete-input" autocomplete="off" disabled>
+                <input name="id1" type="text" placeholder="学号" value="{{$students[0]->studentid}}" disabled>
             </div>
             @else
             <div class="rs-autocomplete-outer">
@@ -29,16 +29,11 @@
         <fieldset class="form-group">
             @if(isset($students[1]))
             <div class="rs-autocomplete-outer">
-                <input name="name2" type="text" placeholder="姓名" value="{{$students[1]->name}}" class="rs-autocomplete-input" autocomplete="off" required disabled>
-                <input name="id2" type="text" placeholder="学号" value="{{$students[1]->studentid}}" required disabled>
-            </div>
-            <div class="rs-autocomplete-outer">
-                <input name="name2" type="text" placeholder="姓名" class="rs-autocomplete-input" autocomplete="off">
-                <input name="id2" type="text" placeholder="学号">
+                <input name="name2" type="text" placeholder="姓名" value="{{$students[1]->name}}" class="rs-autocomplete-input" autocomplete="off" disabled>
+                <input name="id2" type="text" placeholder="学号" value="{{$students[1]->studentid}}" disabled>
             </div>
             @else
             <div class="rs-autocomplete-outer">
-                <input name="class" type="hidden" value="{{$class}}" required>
                 <input name="name2" type="text" placeholder="姓名" class="rs-autocomplete-input" autocomplete="off">
                 <input name="id2" type="text" placeholder="学号">
             </div>
@@ -47,16 +42,11 @@
         <fieldset class="form-group">
             @if(isset($students[2]))
             <div class="rs-autocomplete-outer">
-                <input name="name3" type="text" placeholder="姓名" value="{{$students[2]->name}}" class="rs-autocomplete-input" autocomplete="off" required disabled>
-                <input name="id3" type="text" placeholder="学号" value="{{$students[2]->studentid}}" required disabled>
-            </div>
-            <div class="rs-autocomplete-outer">
-                <input name="name3" type="text" placeholder="姓名" class="rs-autocomplete-input" autocomplete="off">
-                <input name="id3" type="text" placeholder="学号">
+                <input name="name3" type="text" placeholder="姓名" value="{{$students[2]->name}}" class="rs-autocomplete-input" autocomplete="off" disabled>
+                <input name="id3" type="text" placeholder="学号" value="{{$students[2]->studentid}}" disabled>
             </div>
             @else
             <div class="rs-autocomplete-outer">
-                <input name="class" type="hidden" value="{{$class}}" required>
                 <input name="name3" type="text" placeholder="姓名" class="rs-autocomplete-input" autocomplete="off">
                 <input name="id3" type="text" placeholder="学号">
             </div>

@@ -22,8 +22,6 @@ class MasterapplyRequest extends Request {
     public function rules()
     {
         return [
-            'name1' => 'required',
-            'id1' => 'required'
         ];
     }
 }
