@@ -200,10 +200,18 @@ class ApplyController extends Controller {
 			else {
 				$isStop = 0;
 			}
+			$masterapply = DB::table('masterapplys')->select('class')->where('studentid',Auth::user()->username)->get();
+			if($masterapply) {
+				$masterapply = 1;
+			}
+			$canvote;
+			if($masterapply || $apply->recommendations >= 10) {
+				$canvote = 1;
+			}
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
  			)->withIsStop($isStop
-			)->withCanVote($apply->recommendations >= 10);
+			)->withCanVote($canvote);
 		}
 		else{
 			abort(404, 'Application not found.');
