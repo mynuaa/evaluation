@@ -1,6 +1,6 @@
 @extends('template.master')
 
-@section('title'){{ trans('login.title') }}@stop
+@section('title')这些人推荐了我@stop
 
 @section('content')
 
@@ -13,7 +13,7 @@
 <tbody>
 	@foreach ($real as $rec)
 	<tr>
-	@if ($rec->anonymous === 1)
+	@if ($rec->anonymous === 0)
     	<td>{{ $rec->name }}</td>
 	@else
 	   <td>一个偷偷推荐我的人</td>
