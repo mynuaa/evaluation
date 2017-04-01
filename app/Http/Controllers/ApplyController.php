@@ -198,10 +198,7 @@ class ApplyController extends Controller {
 	}
 
 	public function getShow($id, Request $request) {
-		if(!isset(Auth::user()->username)){
-			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
-		}
-		
+
 		$apply = Apply::find($id);
 
 		if ($apply) {
@@ -216,21 +213,25 @@ class ApplyController extends Controller {
 			else {
 				$isStop = 0;
 			}
-			$masterapply = DB::table('masterapplys')->select('class')->where('studentid',Auth::user()->username)->get();
-			if($masterapply) {
-				$masterapply = 1;
-			}
-			else {
-				$masterapply = 0;
-			}
+			
+			$masterapply = 0;
 			$canvote = 0;
+
+			if(isset(Auth::user()->username)){
+				$masterapply = DB::table('masterapplys')->select('class')->where('studentid',Auth::user()->username)->get();
+				
+				if($masterapply) {
+					$masterapply = 1;
+				}
+			}
+
 			if($masterapply || $apply->recommendations >= 10) {
 				$canvote = 1;
 			}
+
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
- 			)->withIsStop($isStop
-			)->withCanVote($canvote);
+ 			)->withIsStop($isStop)->withCanVote($canvote);
 		}
 		else{
 			abort(404, 'Application not found.');
