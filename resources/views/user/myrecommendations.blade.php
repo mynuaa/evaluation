@@ -13,7 +13,7 @@
 <tbody>
 	@foreach ($real as $rec)
 	<tr>
-	@if ($rec->anonymous === 1)
+	@if ($rec->anonymous === 0)
     	<td>{{ $rec->name }}</td>
 	@else
 	   <td>一个偷偷推荐我的人</td>
