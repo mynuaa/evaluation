@@ -20,6 +20,11 @@ class CallController extends Controller {
 
 		//调节少于多少不上墙
 		
+		$contentAll=[];
+		if (!isset($allCall[0])) {
+			return view('call.main')->withAllcall($allCall)->withAllcontent($contentAll);
+		}
+
 		$allId = [];
 		foreach ($allCall as $key => $value) {
 			$allId[]=$value['toId'];
@@ -27,7 +32,7 @@ class CallController extends Controller {
 		$allId=implode(',', $allId);
 		$allId='('.$allId.')';
 		$content = Call::select("toId","mainText")->whereRaw("`toId` in {$allId}")->orderBy('id','desc')->get();
-		$contentAll=[];
+		
 
 		foreach ($content as $value) {
 			if (!isset($contentAll[$value['toId']])) {
