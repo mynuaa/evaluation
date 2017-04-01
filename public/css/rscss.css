@@ -38,7 +38,6 @@ html,body{
 	position:absolute;
 	width:100%;
 	min-height:100%;
-	overflow-x:hidden;
 }
 html{
 	background:#F9F9F9;
