@@ -204,6 +204,9 @@ class ApplyController extends Controller {
 			if($masterapply) {
 				$masterapply = 1;
 			}
+			else {
+				$masterapply = 0;
+			}
 			$canvote = 0;
 			if($masterapply || $apply->recommendations >= 10) {
 				$canvote = 1;
