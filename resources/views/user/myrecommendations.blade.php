@@ -1,6 +1,6 @@
 @extends('template.master')
 
-@section('title'){{ trans('login.title') }}@stop
+@section('title')这些人推荐了我@stop
 
 @section('content')
 
