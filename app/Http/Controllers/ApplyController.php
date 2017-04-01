@@ -34,12 +34,12 @@ class ApplyController extends Controller {
 	}
 
 	public function getMasterapply() {
-		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			//return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
-		}
-
 		if(!isset(Auth::user()->username)){
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
+		}
+
+		if (!in_array(Auth::user()->username, $this->backdoor)) {
+			//return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
 		}
 
 		$apply = Auth::user()->apply;
@@ -134,12 +134,12 @@ class ApplyController extends Controller {
 	}
 
 	public function postApply(ApplyPostRequest $request) {
-		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			//return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
-		}
-
 		if(!isset(Auth::user()->username)){
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
+		}
+
+		if (!in_array(Auth::user()->username, $this->backdoor)) {
+			//return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
 		}
 
 		$request->photos = [];
@@ -365,6 +365,9 @@ class ApplyController extends Controller {
 	}
 
 	public function getVotelike(Request $request) {
+		if(!isset(Auth::user()->username)){
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
+		}
 		
 		if ($request->college)
 			$result = Apply::where('type', 1)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
