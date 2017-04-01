@@ -104,7 +104,7 @@ class UserController extends Controller {
 	public function getMyrecommendations()
 	{
 		$user = Auth::user();
-		$myrec = Call::where('toId', $user->username)->join('users', 'users.id', '=', 'fromId')->get();
+		$myrec = Call::select('users.name','mainText','call.created_at','anonymous')->where('toId', $user->username)->join('users', 'users.id', '=', 'call.fromId')->get();
 		return view('user/myrecommendations')->withReal($myrec);
 	}
 }

@@ -16,7 +16,7 @@
 	@if ($rec->anonymous === 1)
     	<td>{{ $rec->name }}</td>
 	@else
-	   <td>他偷偷推荐了我</td>
+	   <td>一个偷偷推荐我的人</td>
 	@endif
 		<td>{{ $rec->mainText }}</td>
 		<td>{{ $rec->created_at }}</td>
