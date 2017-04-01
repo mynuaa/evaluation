@@ -34,7 +34,7 @@
 			<!-- <a href="{{ url('user/login') }}"><input type="button" value="登录后投票" class="btn-success fr"></a> -->
 		@endif
 	@else
-		<input type="button" value="推荐数不满10条，无法对其投票" class="fr" disabled>
+		<input type="button" value="推荐数不满10条，或未获得团支部推荐，无法对其投票" class="fr" disabled>
 	@endif
 </div>
 <h5>{{ trans('apply.photo') }}</h5>

@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest;
+use Auth, App\User, App\Apply, App\Http\Requests\ApplyPostRequest, App\Http\Requests\MasterapplyRequest;
 
 use Input, App\Recommendation, App\Http\Requests\RecommendPostRequest;
 use Session;
@@ -33,6 +33,98 @@ class ApplyController extends Controller {
 		return view('apply.apply')->withApply($apply)->withStuid(Auth::user()->username);
 	}
 
+	public function getMasterapply() {
+		if (!in_array(Auth::user()->username, $this->backdoor)) {
+			//return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
+		}
+
+		$apply = Auth::user()->apply;
+		$userid = Auth::user()->username;
+		$classes = DB::table('studentid')->select('class')->where('studentid',$userid)->get();
+		if($classes) {
+			$class = $classes[0]->class;
+		}
+		else {
+			$class = "未知班级";
+		}
+		$students = $classes = DB::table('masterapplys')->select('studentid','name')->where('class',$class)->get();
+		return view('apply.masterapply')->withApply($apply)->withStuid(Auth::user()->username)->withClass($class)->withStudents($students);
+	}
+
+	public function postMasterapply(MasterapplyRequest $request) {
+		$addStudent = [];
+		if($request->name1 != '' && $request->id1 != '') {
+			$classes = DB::table('studentid')->select('class','name')->where('studentid',$request->id1)->get();
+			$ifAdd = DB::table('masterapplys')->select('class')->where('studentid',$request->id1)->get();
+			if($ifAdd) {
+				return redirect('apply/apply')->withMessage(['type' => 'error', 'content' => '信息错误']);
+			}
+			else if($classes) {
+				if($classes[0]->class != $request->class) {
+					return redirect('apply/masterapply')->withMessage(['type' => 'error', 'content' => '该同学不在你的班级']);
+				}
+				else if($classes[0]->name != $request->name1) {
+					return redirect('apply/masterapply')->withMessage(['type' => 'error', 'content' => '信息错误']);
+				}
+				else {
+					$add['studentid'] = $request->id1;
+					$add['class'] = $request->class;
+					$add['name'] = $request->name1;
+					DB::table('masterapplys')->insert($add);
+				}
+			}
+			else {
+				return redirect('apply/masterapply')->withMessage(['type' => 'error', 'content' => '信息错误']);
+			}
+		}
+		if($request->name2 != '' && $request->id2 != '') {
+			$classes = DB::table('studentid')->select('class','name')->where('studentid',$request->id2)->get();
+			$ifAdd = DB::table('masterapplys')->select('class')->where('studentid',$request->id2)->get();
+			if($ifAdd) {
+			}
+			else if($classes) {
+				if($classes[0]->class != $request->class) {
+					return redirect('apply/masterapply')->withMessage(['type' => 'error', 'content' => '该同学不在你的班级']);
+				}
+				else if($classes[0]->name != $request->name2){
+					return redirect('apply/masterapply')->withMessage(['type' => 'error', 'content' => '信息错误']);
+				}
+				else {
+					$add['studentid'] = $request->id2;
+					$add['class'] = $request->class;
+					$add['name'] = $request->name2;
+					DB::table('masterapplys')->insert($add);
+				}
+			}
+			else {
+				return redirect('apply/masterapply')->withMessage(['type' => 'error', 'content' => '信息错误']);
+			}
+		}
+		if($request->name3 != '' && $request->id3 != '') {
+			$classes = DB::table('studentid')->select('class','name')->where('studentid',$request->id3)->get();
+			$ifAdd = DB::table('masterapplys')->select('class')->where('studentid',$request->id3)->get();
+			if($ifAdd) {
+			}
+			else if($classes) {
+				if($classes[0]->class != $request->class) {
+					return redirect('apply/masterapply')->withMessage(['type' => 'error', 'content' => '该同学不在你的班级']);
+				}
+				else if($classes[0]->name != $request->name3){
+					return redirect('apply/masterapply')->withMessage(['type' => 'error', 'content' => '信息错误']);
+				}
+				else {
+					$add['studentid'] = $request->id3;
+					$add['class'] = $request->class;
+					$add['name'] = $request->name3;
+					DB::table('masterapplys')->insert($add);
+				}
+			}
+			else {
+				return redirect('apply/masterapply')->withMessage(['type' => 'error', 'content' => '信息错误']);
+			}
+		}
+		return redirect('apply/masterapply')->withMessage(['type' => 'success', 'content' => '推荐成功']);
+	}
 	public function postApply(ApplyPostRequest $request) {
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
 			//return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
@@ -108,10 +200,18 @@ class ApplyController extends Controller {
 			else {
 				$isStop = 0;
 			}
+			$masterapply = DB::table('masterapplys')->select('class')->where('studentid',Auth::user()->username)->get();
+			if($masterapply) {
+				$masterapply = 1;
+			}
+			$canvote;
+			if($masterapply || $apply->recommendations >= 10) {
+				$canvote = 1;
+			}
 			return view('apply.show')->withApply($apply)->withIsWechat(
 				strstr($request->header('user-agent'), config('business.WeChat_UA')) != false
  			)->withIsStop($isStop
-			)->withCanVote($apply->recommendations >= 10);
+			)->withCanVote($canvote);
 		}
 		else{
 			abort(404, 'Application not found.');
