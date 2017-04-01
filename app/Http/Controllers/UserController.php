@@ -105,7 +105,6 @@ class UserController extends Controller {
 	{
 		$user = Auth::user();
 		$myrec = Call::select('users.name','mainText','call.created_at','anonymous')->where('toId', $user->username)->join('users', 'users.id', '=', 'call.fromId')->get();
-		var_dump($myrec);
 		return view('user/myrecommendations')->withReal($myrec);
 	}
 }
