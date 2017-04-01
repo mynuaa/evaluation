@@ -353,6 +353,10 @@ class ApplyController extends Controller {
 	}
 
 	public function getVotelike(Request $request) {
+		if(!isset(Auth::user()->username)){
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
+		}
+		
 		if ($request->college)
 			$result = Apply::where('type', 1)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		else
