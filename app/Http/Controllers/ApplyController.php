@@ -198,6 +198,10 @@ class ApplyController extends Controller {
 	}
 
 	public function getShow($id, Request $request) {
+		if(!isset(Auth::user()->username)){
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
+		}
+		
 		$apply = Apply::find($id);
 
 		if ($apply) {
