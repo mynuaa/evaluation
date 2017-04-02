@@ -35,8 +35,8 @@ class AdminController extends Controller {
 	}
 	public function getShowonerecommendations($apply_id=1)
 	{
-		$records = DB::table('recommendations')->join('applies', 'applies.id', '=', 'apply_id')->where('apply_id',$apply_id)->get();
-		$Owner = DB::table('users')->select('name')->where('id',$apply_id)->get();
+		$records = DB::table('recommendations')->join('users', 'users.id', '=', 'user_id')->where('apply_id',$apply_id)->get();
+		$Owner = DB::table('applies')->select('name')->where('id',$apply_id)->get();
 		return view('admin/showonerecommendations')->withRecords($records)->withOwner($Owner[0]);
 	}
 
