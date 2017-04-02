@@ -75,7 +75,7 @@ class UserController extends Controller {
 
 	public function getRecommendations() {
 		return view('user/recommendations')
-			->withRecommendations(Auth::user()->myRecommendations)
+			->withRecommendations(Auth::user()->myrecommendations)
 			->withVotes(Auth::user()->Votes)
 			->withDetails(Auth::user()->voteDetail());
 	}
@@ -104,7 +104,7 @@ class UserController extends Controller {
 	public function getMyrecommendations()
 	{
 		$user = Auth::user();
-		$myrec = Call::select('users.name','mainText','call.created_at','anonymous')->where('toId', $user->username)->join('users', 'users.id', '=', 'call.fromId')->get();
+		$myrec = Call::select('users.name','mainText','call.created_at','anonymous')->where('toId', $user->username)->->where('year',2017)join('users', 'users.id', '=', 'call.fromId')->get();
 		return view('user/myrecommendations')->withReal($myrec);
 	}
 }
