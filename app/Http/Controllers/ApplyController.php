@@ -242,6 +242,9 @@ class ApplyController extends Controller {
 		if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
 			//return redirect()->back()->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
 
+		if(!isset(Auth::user()->username)){
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '登入失效']);
+		}
 		$user = Auth::user();
 
 		if ($user->isRecommendTooMuch()) {
