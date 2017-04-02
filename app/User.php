@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	public function myRecommendations() {
-		return $this->hasMany('App\Recommendation');
+		return $this->hasMany('App\Recommendation')->where('years', 2017);
 	}
 
 	public function isRecommended($applyid) {
