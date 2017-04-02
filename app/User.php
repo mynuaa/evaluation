@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	public function myRecommendations() {
-		return $this->hasMany('App\Recommendation')->join('applies', 'applies.id', '=', 'apply_id')->where('year',2017);
+		return $this->hasMany('App\Recommendation')->join('applies', 'recommendations.apply_id', '=', 'applies.id')->select('apply_id','recommendations.id','content','title')->where('year',2017);
 	}
 
 	public function isRecommended($applyid) {
