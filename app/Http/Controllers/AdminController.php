@@ -30,7 +30,7 @@ class AdminController extends Controller {
 	public function getShowrecommendation()
 	{
 		$records = DB::table('recommendations')
-		->join('applies', 'applies.id', '=', 'apply_id')->select('apply_id',DB::raw('COUNT(apply_id) as num'),'users.name')->where('year',2017)->groupBy('apply_id')->get();
+		->join('applies', 'applies.id', '=', 'apply_id')->select('apply_id',DB::raw('COUNT(apply_id) as num'),'applies.name')->where('year',2017)->groupBy('apply_id')->get();
 		return view('admin/showrecommendation')->withRecords($records);
 	}
 	public function getShowonerecommendations($apply_id=1)
