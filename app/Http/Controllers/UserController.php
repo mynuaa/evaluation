@@ -74,7 +74,6 @@ class UserController extends Controller {
 	}
 
 	public function getRecommendations() {
-		var_dump(Auth::user()->myRecommendations);
 		return view('user/recommendations')
 			->withRecommendations(Auth::user()->myRecommendations)
 			->withVotes(Auth::user()->Votes)
