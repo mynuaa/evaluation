@@ -17,7 +17,7 @@ class Recommendation extends Model {
 	// }
 
 	public function scopeApply($query, $applyid) {
-		return $query->whereApplyId($applyid);
+		return $query->whereApplyId($applyid)->whereYear(2017);
 	}
 
 	public function user() {
