@@ -25,7 +25,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	public function recommendations() {
-		return $this->belongsToMany('App\Apply', 'recommendations')->whereNull('recommendations.deleted_at');
+		return $this->belongsToMany('App\Apply', 'recommendations')->where('year',2017)->whereNull('recommendations.deleted_at');
 	}
 
 	public function votes() {
