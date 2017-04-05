@@ -219,7 +219,6 @@ class ApplyController extends Controller {
 
 			if(isset(Auth::user()->username)){
 				$masterapply = DB::table('masterapplys')->select('class')->where('studentid',Auth::user()->username)->get();
-				
 				if($masterapply) {
 					$masterapply = 1;
 				}
