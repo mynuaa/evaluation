@@ -16,7 +16,7 @@ class CallController extends Controller {
 	public function getMain(){
 		//$allCall=DB::table('call')->lists('toId');
 		//$heHas=Call::where('toId','=',1)->count();
-		$allCall=Call::select('toId','name','studentid.college','studentid.likeAdd',DB::raw('COUNT(*) AS `cnt`'))->join('studentid','toId','=','studentid.studentid')->groupBy('toId')->having('cnt', '>' , 5)->orderBy('cnt','desc')->get();
+		$allCall=Call::select('toId','name','studentid.college','studentid.likeAdd',DB::raw('COUNT(*) AS `cnt`'))->join('studentid','toId','=','studentid.studentid')->groupBy('toId')->having('cnt', '>' , 0)->orderBy('cnt','desc')->get();
 
 		//调节少于多少不上墙
 		
