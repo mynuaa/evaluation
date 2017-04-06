@@ -30,7 +30,7 @@ class UserController extends Controller {
 	public function postLogin(HrVerify $hr, DedVerify $ded, GsmVerify $gsm, LoginPostRequest $request) {
 		$username = $request->username;
 		$password = $request->password;
-		print_r($ded->verify($username, $password));
+
 		if (Auth::attempt(['username' => $username, 'password' => $password], true)) {
 			return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
 		} else {
