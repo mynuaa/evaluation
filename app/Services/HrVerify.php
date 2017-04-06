@@ -1,22 +1,38 @@
 <?php namespace App\Services;
 
 class HrVerify {
-	public function verify($tid, $password) {
-		$url = "http://net.nuaa.edu.cn/api/verifyUser.do?token=dd64533c961eb9d527a608f9cd13fb06&username="
-			.urlencode($tid)
-			."&password="
-			.urlencode($password);
+	public function verify($stuid, $password) {
+		$url = "http://ded.nuaa.edu.cn/NetEAn/User/check.asp";
+		$post = "user=".urlencode($stuid)."&pwd=".urlencode($password);
+		$cookie = tempnam(storage_path().'/framework/cache', 'COOKIE_');
 
 		$curl = curl_init();
 		curl_setopt_array($curl, [
 			CURLOPT_URL => $url,
+			CURLOPT_POST => 1,
+			CURLOPT_POSTFIELDS => $post,
+			CURLOPT_COOKIEJAR => $cookie,
 			CURLOPT_RETURNTRANSFER => 1,
+		]);
+
+		curl_exec($curl);
+
+		curl_setopt_array($curl, [
+			CURLOPT_COOKIEFILE => $cookie,
+			CURLOPT_REFERER => 'http://ded.nuaa.edu.cn'
 		]);
 
 		$response = curl_exec($curl);
 		curl_close($curl);
 
-		$response = json_decode($response, true);
-		return $response['status'] == 0;
+		$status =  !((strstr($response, 'switch (1){') != false) ||
+					(strstr($response, 'switch (77){') != false) || 
+					(strstr($response, 'switch (88){') != false) ||
+					(strstr($response, 'switch (99){') != false) ||
+					(strstr($response, 'switch (100){') != false)||
+					(strstr($response, 'switch (19){') != false));
+		// return $response;
+		return $status;
+		// return (strstr($response, 'switch (1){') != false);
 	}
 }
