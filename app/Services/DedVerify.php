@@ -1,5 +1,20 @@
 <?php namespace App\Services;
 
+/*
+教务处登录返回码及其含义：（switch (num)）
+num 	含义
+0		学生登陆
+1		教师登录
+19		未知（同登录失败）
+77		用户被禁用
+88		用户名密码错误
+99		用户名密码错误
+100		家长用户
+default 其他未知功能（包括教师登录在内）
+
+# P.S. 这设计蠢爆了
+*/
+
 class DedVerify {
 	public function verify($stuid, $password) {
 		$url = "http://ded.nuaa.edu.cn/NetEAn/User/check.asp";
