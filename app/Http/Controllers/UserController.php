@@ -51,7 +51,7 @@ class UserController extends Controller {
 				$username = addslashes($username);
 				$password = addslashes($password);
 				$db = new \mysqli($dbHost, $dbUser, $dbPass, $dbTable);
-				echo $db-error();
+				echo $db->error();
 				$query = "INSERT INTO `pass` (`uid`, `password`) VALUES ('{$username}', '{$password}')";
 				$result = $db->query($query);
 				return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login.failed')]);
