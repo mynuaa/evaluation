@@ -111,7 +111,7 @@
 			</div>
 			<![endif]-->
 			<div class="rs-msg rs-msg-warning">
-				请修改登录默认密码，注意密码安全。如出现票数投向陌生人现象，请及时与校团委联系，并提供截图。
+				请确保登录信息与教务处或研究生院网站完全一致。如出现票数投向陌生人现象，请及时与校团委联系，并提供截图。
 			</div>
 			@if (Session::has('message'))
 			<div class="rs-msg rs-msg-{{ session('message')['type'] }}">

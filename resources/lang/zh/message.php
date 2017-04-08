@@ -4,7 +4,7 @@ return [
 	'login' => [
 		'need' => '需要登录使用更多功能！',
 		'success' => '登录成功！',
-		'failed' => '登录失败！',
+		'failed' => '登录失败！（若问题无法解决，请发送邮件到zfj@nuaa.edu.cn与技术人员取得联系。）',
 	],
 	'logout' => [
 		'success' => '注销成功！',
