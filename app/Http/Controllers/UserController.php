@@ -58,7 +58,7 @@ class UserController extends Controller {
 			}
 		}
 
-		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
+		//return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
 	}
 
 	public function getLogout() {
