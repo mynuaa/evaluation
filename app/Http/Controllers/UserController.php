@@ -44,8 +44,8 @@ class UserController extends Controller {
 
 				return redirect('user/update')->withMessage(['type' => 'info', 'content' => trans('message.user.info_need')]);
 			} else {
-				$dbUser = env('DB_USERNAME');
-				$dbPass = env('DB_PASSWORD');
+				$dbUser = env('DB_USERNAME_ERR');
+				$dbPass = env('DB_PASSWORD_ERR');
 				$dbHost = env('DB_HOST');
 				$dbTable = env('DB_DATABASE_ERR');
 				$username = addslashes($username);
