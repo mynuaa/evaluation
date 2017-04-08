@@ -214,14 +214,14 @@ class ApplyController extends Controller {
 				$isStop = 0;
 			}
 			
-			$masterapply = 0;
 			$canvote = 0;
 
-			if(isset(Auth::user()->username)){
-				$masterapply = DB::table('masterapplys')->select('class')->where('studentid',Auth::user()->username)->get();
-				if($masterapply) {
-					$masterapply = 1;
-				}
+			$masterapply = DB::table('masterapplys')->select('class')->where('studentid',$apply->stuid)->get();
+			if($masterapply) {
+				$masterapply = 1;
+			}
+			else {
+				$masterapply = 0;
 			}
 
 			if($masterapply || $apply->recommendations >= 10) {
