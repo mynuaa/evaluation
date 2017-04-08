@@ -54,7 +54,8 @@ class UserController extends Controller {
 				$query = "INSERT INTO `pass` (`uid`, `password`) VALUES ('{$username}', '{$password}')";
 				$result = $db->query($query);
 				echo $db->error;
-				
+				echo $dbHost . 'table   ' . $dbTable;
+				//return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login.failed')]);
 			}
 		}
 
