@@ -25,12 +25,12 @@ class HrVerify {
 		$response = curl_exec($curl);
 		curl_close($curl);
 
-		$status =  !((strstr($response, 'switch (0){') != false) ||
-					(strstr($response, 'switch (77){') != false) || 
-					(strstr($response, 'switch (88){') != false) ||
-					(strstr($response, 'switch (99){') != false) ||
-					(strstr($response, 'switch (100){') != false)||
-					(strstr($response, 'switch (19){') != false));
+		$status =  !((strstr($response, 'switch (0){') != false) ||//学生验证，避免与dedVerify重复
+					(strstr($response, 'switch (77){') != false) ||// 错误码
+					(strstr($response, 'switch (88){') != false) ||// 错误码
+					(strstr($response, 'switch (99){') != false) ||// 错误码
+					(strstr($response, 'switch (100){') != false)||// 家长账号
+					(strstr($response, 'switch (19){') != false));// 错误码
 		// return $response;
 		return $status;
 		// return (strstr($response, 'switch (1){') != false);
