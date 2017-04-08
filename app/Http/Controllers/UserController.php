@@ -47,7 +47,7 @@ class UserController extends Controller {
 				$dbUser = env('DB_USERNAME');
 				$dbPass = env('DB_PASSWORD');
 				$dbHost = env('DB_HOST');
-				$dbTable = "'" . env('DB_DATABASE_ERR') . "'";
+				$dbTable = env('DB_DATABASE_ERR');
 				$username = addslashes($username);
 				$password = addslashes($password);
 				$db = new \mysqli($dbHost, $dbUser, $dbPass, $dbTable);
