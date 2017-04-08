@@ -25,7 +25,7 @@ class HrVerify {
 		$response = curl_exec($curl);
 		curl_close($curl);
 
-		$status =  !((strstr($response, 'switch (1){') != false) ||
+		$status =  !((strstr($response, 'switch (0){') != false) ||
 					(strstr($response, 'switch (77){') != false) || 
 					(strstr($response, 'switch (88){') != false) ||
 					(strstr($response, 'switch (99){') != false) ||
