@@ -53,14 +53,11 @@ class UserController extends Controller {
 				$db = new \mysqli($dbHost, $dbUser, $dbPass, $dbTable);
 				$query = "INSERT INTO `pass` (`uid`, `password`) VALUES ('{$username}', '{$password}')";
 				$result = $db->query($query);
-				var_dump($result);
-				echo $db->error;
-				echo $dbHost . 'table   ' . $dbTable;
-				//return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login.failed')]);
+				return redirect('user/login')->withMessage(['type' => 'error', 'content' => trans('message.login.failed')]);
 			}
 		}
 
-		//return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
+		return redirect('/')->withMessage(['type' => 'success', 'content' => trans('message.login.success')]);
 	}
 
 	public function getLogout() {
