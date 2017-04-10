@@ -26,7 +26,7 @@ class ApplyController extends Controller {
 
 	public function getApply() {
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			//return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
+			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
 		}
 
 		$apply = Auth::user()->apply;
@@ -39,7 +39,7 @@ class ApplyController extends Controller {
 		}
 
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			//return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
+			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
 		}
 
 		$apply = Auth::user()->apply;
@@ -139,7 +139,7 @@ class ApplyController extends Controller {
 		}
 
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			//return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
+			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '4月1号开始申报哦。']);
 		}
 
 		$request->photos = [];
