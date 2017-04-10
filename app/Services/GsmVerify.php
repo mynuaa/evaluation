@@ -14,6 +14,8 @@ class GsmVerify {
 		curl_close($prepare_curl);
 		$x = intval(rand(0, 60));
 		$y = intval(rand(0, 60));
+		$gsmid = urlencode($gsmid);
+		$password = urlencode($password);
 		$post = "__VIEWSTATE={$viewstate}&_ctl0%3Atxtusername={$gsmid}&_ctl0%3AImageButton1.x={$x}&_ctl0%3AImageButton1.y={$y}&_ctl0%3Atxtpassword={$password}";
 		$url = "http://gsmis.nuaa.edu.cn/pyxx/login.aspx";
 		$curl = curl_init();
