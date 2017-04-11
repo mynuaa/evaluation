@@ -239,7 +239,7 @@ class ApplyController extends Controller {
 
 	public function postRecommendation(RecommendPostRequest $request) {
 		if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
-			//return redirect()->back()->withMessage(['type' => 'warning', 'content' => '申报结束。']);
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '推荐已经截止了']);
 
 		if(!isset(Auth::user()->username)){
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '登入失效']);
@@ -277,7 +277,7 @@ class ApplyController extends Controller {
 
 	public function getVote($id) {
 
-		return redirect()->back()->withMessage(['type' => 'warning', 'content' => '还没开放投票哦！']);
+		//return redirect()->back()->withMessage(['type' => 'warning', 'content' => '还没开放投票哦！']);
 
 		if (Auth::user()->isVoted($id)) {
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.before')]);
