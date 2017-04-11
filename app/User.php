@@ -70,14 +70,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	public function voteTypeCount($type) {
-		return $this->votes()->where('votes.type', $type)->count();
+		return $this->votes()->where('votes.type', $type)->where('year',2017)->count();
 	}
 
 	public function countInner() {
-		return $this->votes()->where('college', $this->college)->count();
+		return $this->votes()->where('college', $this->college)->where('year',2017)->count();
 	}
 
 	public function countOuter() {
-		return $this->votes()->where('college', '!=', $this->college)->count();
+		return $this->votes()->where('college', '!=', $this->college)->where('year',2017)->count();
 	}
 }
