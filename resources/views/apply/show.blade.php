@@ -112,6 +112,13 @@
 	</a>
 	<script>
 		document.getElementById("btnLike").onclick=function(){
+			if (localStorage.like.indexOf(',{{$apply->id}}')!=-1) {
+				return;
+			}else{
+				likeArr=localStorage.like.split(",");
+				likeArr.push('{{$apply->id}}');
+				localStorage.like=likeArr.join();
+			}
 			var xhr=new XMLHttpRequest();
 			xhr.open("GET",'{{ url('apply/like/' . $apply->id) }}',true);
 			xhr.withCredentials=true;
@@ -125,6 +132,15 @@
 </p>
 <h3>{{ trans('apply.want_share') }}</h3>
 @include('template.share')
+<script type="text/javascript">
+
+if (typeof localStorage.like == 'undefined') {
+	likeArr=new Array();
+	likeArr[0]='ZFJ-Seiry'
+	localStorage.like=likeArr.join();
+}
+
+</script>
 @stop
 
 @section('scripts')
