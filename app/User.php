@@ -30,6 +30,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function votes() {
 		return $this->belongsToMany('App\Apply', 'votes')->where('year',2017)->whereNull('votes.deleted_at')->withTimestamps();
+		/*触发webhook*/
 	}
 
 	public function myRecommendations() {
