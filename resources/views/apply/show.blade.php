@@ -110,21 +110,42 @@
 	<a class="pointer" id="btnLike">
 		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
-	<script>
-		document.getElementById("btnLike").onclick=function(){
-			var xhr=new XMLHttpRequest();
-			xhr.open("GET",'{{ url('apply/like/' . $apply->id) }}',true);
-			xhr.withCredentials=true;
-			xhr.timeout=5000;
-			xhr.send("");
-			this.innerHTML='<i class="fa fa-thumbs-up"></i>&nbsp;已赞';
-			this.onclick=function(){return false;};
-		};
-	</script>
 	@endif
 </p>
 <h3>{{ trans('apply.want_share') }}</h3>
 @include('template.share')
+<script type="text/javascript">
+
+if (typeof localStorage.like == 'undefined') {
+	likeArr=new Array();
+	likeArr[0]='ZFJ-Seiry'
+	localStorage.like=likeArr.join();
+}
+
+if (localStorage.like.indexOf(',{{$apply->id}}')!=-1) {
+	document.getElementById("btnLike").innerHTML = '<i class="fa fa-thumbs-up"></i>&nbsp;已赞';
+}
+
+if(localStorage.like.indexOf(',{{$apply->id}}')==-1){
+	document.getElementById("btnLike").onclick=function(){
+		if (localStorage.like.indexOf(',{{$apply->id}}')!=-1) {
+			return false;
+		}else{
+			likeArr=localStorage.like.split(",");
+			likeArr.push('{{$apply->id}}');
+			localStorage.like=likeArr.join();
+		}
+		var xhr=new XMLHttpRequest();
+		xhr.open("GET",'{{ url('apply/like/' . $apply->id) }}',true);
+		xhr.withCredentials=true;
+		xhr.timeout=5000;
+		xhr.send("");
+		this.innerHTML='<i class="fa fa-thumbs-up"></i>&nbsp;已赞';
+		this.onclick=function(){return false;};
+	};
+}
+
+</script>
 @stop
 
 @section('scripts')
