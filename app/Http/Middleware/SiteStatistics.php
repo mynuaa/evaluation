@@ -35,9 +35,9 @@ class SiteStatistics {
 
 		$response = $next($request);
 
-		Bus::dispatch(
-			new SaveStatistics($data)
-		);
+		// Bus::dispatch(
+		// 	new SaveStatistics($data)
+		// );
 
 		return $response;
 	}
