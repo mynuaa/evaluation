@@ -8,12 +8,14 @@
 <tr>
 	<th>姓名</th>
 	<th>被推荐数</th>
+	<th>投票数</th>
 	<th>查看详情</th>
 </tr>
 @foreach ($records as $rec)
 <tr>
 	<td>{{ $rec->name }}</td>
 	<td>{{ $rec->num }}</td>
+	<td>{{ $rec->votes }}</td>
 	<td><a href="{{ url('admin/showonerecommendations/' . $rec->apply_id) }}">查看详情</a></td>
 </tr>
 @endforeach
