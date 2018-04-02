@@ -21,20 +21,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 	public function apply() {
-		return $this->hasOne('App\Apply')->where('applies.year', 2017);
+		return $this->hasOne('App\Apply')->where('applies.year', D_YEAR);
 	}
 
 	public function recommendations() {
-		return $this->belongsToMany('App\Apply', 'recommendations')->where('year',2017)->whereNull('recommendations.deleted_at');
+		return $this->belongsToMany('App\Apply', 'recommendations')->where('year',D_YEAR)->whereNull('recommendations.deleted_at');
 	}
 
 	public function votes() {
-		return $this->belongsToMany('App\Apply', 'votes')->where('year',2017)->whereNull('votes.deleted_at')->withTimestamps();
+
+		return $this->belongsToMany('App\Apply', 'votes')->where('year',D_YEAR)->whereNull('votes.deleted_at')->withTimestamps();
 		/*触发webhook*/
 	}
 
 	public function myRecommendations() {
-		return $this->hasMany('App\Recommendation')->join('applies', 'recommendations.apply_id', '=', 'applies.id')->select('apply_id','recommendations.id','content','title')->where('year',2017);
+		return $this->hasMany('App\Recommendation')->join('applies', 'recommendations.apply_id', '=', 'applies.id')->select('apply_id','recommendations.id','content','title')->where('year',D_YEAR);
 	}
 
 	public function isRecommended($applyid) {
@@ -71,14 +72,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	public function voteTypeCount($type) {
-		return $this->votes()->where('votes.type', $type)->where('year',2017)->count();
+		return $this->votes()->where('votes.type', $type)->where('year',D_YEAR)->count();
 	}
 
 	public function countInner() {
-		return $this->votes()->where('college', $this->college)->where('year',2017)->count();
+		return $this->votes()->where('college', $this->college)->where('year',D_YEAR)->count();
 	}
 
 	public function countOuter() {
-		return $this->votes()->where('college', '!=', $this->college)->where('year',2017)->count();
+		return $this->votes()->where('college', '!=', $this->college)->where('year',D_YEAR)->count();
 	}
 }

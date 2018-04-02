@@ -73,7 +73,7 @@
 @endif
 <hr>
 <h3>{{ trans('apply.want_recommend') }}</h3>
-@if ($apply->year == 2017 && !$is_stop)
+@if ($apply->year == D_YEAR && !$is_stop)
 @if (!Auth::check())
 <div class="rs-msg rs-msg-warning"><a href="{{ url('user/login') }}">{{ trans('app.banner.login') }}</a>{{ trans('apply.need_login') }}</div>
 @else
@@ -106,7 +106,7 @@
  <p class="tip">
  	<span>{{ trans('apply.pageview', ['time' => $apply->pageview < 3000 ? $apply->pageview : '3000+']) }}</span>
 	@if ($is_wechat)
-	<span>收到了{{ $apply->like > 1000 ? '1000+' : $apply->like }}个赞。</span>	
+	<span>收到了{{ $apply->like > 1000 ? '1000+' : $apply->like }}个赞。</span>
 	<a class="pointer" id="btnLike">
 		<i class="fa fa-thumbs-o-up"></i>&nbsp;赞一下
 	</a>
