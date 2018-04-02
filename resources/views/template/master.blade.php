@@ -30,7 +30,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 	<style type="text/css">
 		li.show{
-			height: 100px !important;
+			height: 150px !important;
 			background: #AA0000;
 			/*ceshiweb*/
 		}
@@ -53,13 +53,20 @@
 					<a href="#">
 						<li id="tabMenu">{{ trans('app.banner.menu') }}</li>
 					</a>
-					<li id="tabApp" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
+					<a href="{{ url('apply/apply') }}">
+						<li id="tabApp" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
+							{{ trans('app.banner.apply') }}
+						</li>
+					</a>
+					<!--
 						<div>{{ trans('app.banner.apply') }}</div>
 						<ul style="margin: 0;padding: 0">
 							<a href="{{ url('apply/apply') }}"><li style="width: 100%;" >自我推荐</li></a>
-							<!-- <a href="{{ url('apply/masterapply') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">支部推荐</li></a> -->
+							<a href="{{ url('apply/masterapply') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">支部推荐</li></a>
 						</ul>
-					</li>
+						此处一大波倒车 ta改变了中国 ta又改了回去
+					-->
+					
 
 					<li id="tabMain" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
 						<div>{{ trans('app.banner.recommend') }}</div>
@@ -136,21 +143,22 @@
 	<script>
 		@yield('scripts')
 		(function(window){
-			var url=window.location.href;
+			const url=window.location.href;
 			if(url.indexOf("user/recommendations")>=0)document.getElementById("tabRec").className+=" rs-nav-selected";
 			else if(url.indexOf("apply/apply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
-			else if(url.indexOf("apply/masterapply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
+			/*else if(url.indexOf("apply/masterapply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";*/
 			else if(url.indexOf("user")>=0)document.getElementById("tabUsr").className+=" rs-nav-selected";
 			else document.getElementById("tabMain").className+=" rs-nav-selected";
-			var tabMain=document.getElementById("tabMain");
+			const tabMain=document.getElementById("tabMain");
 			tabMain.onclick=function(e){
 				tabMain.classList.toggle('show');
 				e.stopPropagation();
 			};
+			/*
 			tabApp.onclick=function(e){
 				tabApp.classList.toggle('show');
 				e.stopPropagation();
-			};
+			};*/
 			window.toggleExpand = function(dom){
 				dom.className=(dom.className.indexOf("-up")>=0)?dom.className.replace("-up","-down"):dom.className.replace("-down","-up");
 				dom=dom.parentNode;
