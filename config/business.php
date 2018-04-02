@@ -12,9 +12,9 @@ return [
 		'max' => 5
 	],
 	'vote' => [
-		'max' => 8,
-		'inner' => 5,
-		'outer' => 4
+		'max' => 6,
+		'inner' => 6,
+		'outer' => 6
 	],
 	'avatar' => [
 		'max' => 13

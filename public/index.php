@@ -34,6 +34,7 @@ require __DIR__.'/../bootstrap/autoload.php';
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
+define("D_YEAR", 2018);
 /*
 |--------------------------------------------------------------------------
 | Run The Application

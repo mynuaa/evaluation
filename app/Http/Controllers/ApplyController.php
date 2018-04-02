@@ -25,9 +25,9 @@ class ApplyController extends Controller {
 	}
 
 	public function getApply() {
-		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
-		}
+		// if (!in_array(Auth::user()->username, $this->backdoor)) {
+		// 	return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
+		// }
 
 		$apply = Auth::user()->apply;
 		return view('apply.apply')->withApply($apply)->withStuid(Auth::user()->username);
@@ -39,7 +39,7 @@ class ApplyController extends Controller {
 		}
 
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
+			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '本次评选不允许支部推荐。']);
 		}
 
 		$apply = Auth::user()->apply;
@@ -163,7 +163,7 @@ class ApplyController extends Controller {
 
 		$user = Auth::user();
 
-		$apply = Apply::firstOrNew(['user_id' => $user->id, 'year' => 2017]);
+		$apply = Apply::firstOrNew(['user_id' => $user->id, 'year' => D_YEAR]);
 
 		$apply->type = $request->type;
 		$apply->stuid = $user->username;
@@ -213,7 +213,7 @@ class ApplyController extends Controller {
 			else {
 				$isStop = 0;
 			}
-			
+
 			$canvote = 0;
 
 			$masterapply = DB::table('masterapplys')->select('class')->where('studentid',$apply->stuid)->get();
@@ -348,9 +348,9 @@ class ApplyController extends Controller {
 
 	public function getAll(Request $request) {
 		if ($request->college)
-			$result = Apply::where('college', $request->college)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('college', $request->college)->where('year', D_YEAR)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		else
-			$result = Apply::where('year', 2017 )->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('year', D_YEAR )->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		$data = [];
 		foreach ($result as $apply) {
 			$data []= [
@@ -375,11 +375,11 @@ class ApplyController extends Controller {
 		if(!isset(Auth::user()->username)){
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
 		}
-		
+
 		if ($request->college)
-			$result = Apply::where('type', 1)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('type', 1)->where('year', D_YEAR)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		else
-			$result = Apply::where('type', 0)->where('year', 2017)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
+			$result = Apply::where('type', 0)->where('year', D_YEAR)->where('recommendations', '>', 9)->orderBy('stuid')->paginate(23333);
 		$data = [];
 		foreach ($result as $apply) {
 			$data []= [
