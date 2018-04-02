@@ -30,7 +30,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 	<style type="text/css">
 		li.show{
-			height: 150px !important;
+			height: 100px !important;
 			background: #AA0000;
 			/*ceshiweb*/
 		}
@@ -57,7 +57,7 @@
 						<div>{{ trans('app.banner.apply') }}</div>
 						<ul style="margin: 0;padding: 0">
 							<a href="{{ url('apply/apply') }}"><li style="width: 100%;" >自我推荐</li></a>
-							<a href="{{ url('apply/masterapply') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">支部推荐</li></a>
+							<!-- <a href="{{ url('apply/masterapply') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">支部推荐</li></a> -->
 						</ul>
 					</li>
 

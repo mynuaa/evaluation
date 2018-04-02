@@ -25,9 +25,9 @@ class ApplyController extends Controller {
 	}
 
 	public function getApply() {
-		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
-		}
+		// if (!in_array(Auth::user()->username, $this->backdoor)) {
+		// 	return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
+		// }
 
 		$apply = Auth::user()->apply;
 		return view('apply.apply')->withApply($apply)->withStuid(Auth::user()->username);
@@ -39,7 +39,7 @@ class ApplyController extends Controller {
 		}
 
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
+			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '本次评选不允许支部推荐。']);
 		}
 
 		$apply = Auth::user()->apply;
