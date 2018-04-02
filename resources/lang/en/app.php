@@ -4,14 +4,18 @@ return [
 	'nuaa' => 'Nuaa ',
 	'name' => 'May Fourth Youth Election',
 	'banner' => [
+		'title' => 'May Fourth Youth Election',
 		'menu' => 'Menu',
 		'recommend' => 'Recommend',
+		'already' => 'participated',
+		'notjoin' => 'not participated',
 		'apply' => 'Apply',
 		'recommendation' => 'My Records',
 		'login' => 'Log in',
 		'update' => 'Update',
 		'logout' => 'Log out',
-		'detail' => 'Detail'
+		'detail' => 'Detail',
+		'warning' => 'Please ensure that the login information is exactly the same as the Academic Office or Graduate School website. If there is a phenomenon that the number of votes is cast to a stranger, please contact the Youth League Committee in time and provide screenshots.'
 	],
 	'ie' => 'Please use modern browser like Chrome, Firefox, IE(≥9), etc. to access this page.',
 	'download' => 'Click here',
@@ -24,10 +28,10 @@ return [
 	'mail' => 'If you have any questions, please mail to ',
 	'notice' => [
 		'1. Before activity, please read <b><a href="/evaluation/notes.docx">Notes (Click to download)</a></b> first.',
-		'2. Timeline: Apply &amp; recommendation during 4.1-4.9, vote during 4.12-4.15.',
+		'2. Timeline: Apply &amp; recommendation during 4.1-4.8; college verify during 4.9-4.12; vote during 4.13-4.15.',
 		'3. Consultation and complaint please mail to <a href="mailto:nuaa52113085@126.com">nuaa52113085@126.com</a>.',
-		'4. Up to now, we have 805 applies, 12976 recommendations. You can vote for 660 applies which have not less than 10 recommendations.',
-		'5. <b>Outer votes must not less than half of inner votes</b>, you can give your first vote to outer student.',
+		/*'4. Up to now, we have 805 applies, 12976 recommendations. You can vote for 660 applies which have not less than 10 recommendations.',*/
+		'4. <b>Outer votes must not less than half of inner votes</b>, you can give your first vote to outer student.',
 	],
 	// 'statistics' => '5. Up to now, we have :apply application(s), :recommendation recommendation(s).',
 	'statistics' => '',

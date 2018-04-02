@@ -30,7 +30,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 	<style type="text/css">
 		li.show{
-			height: 100px !important;
+			height: 150px !important;
 			background: #AA0000;
 			/*ceshiweb*/
 		}
@@ -47,25 +47,36 @@
 	<div class="rs-header">
 		<div class="rs-container">
 			<a href="{{ url('/') }}"><img src="{{ asset('/img/nuaa_logo.png') }}" height="100%"></a>
-			<a href="{{ url('/') }}"><h1 class="fl pointer white" class="fl">“五四”青年评优专题网站</h1></a>
+			<a href="{{ url('/') }}">
+				<h1 class="fl pointer white" class="fl">
+				{{ trans('app.banner.title') }}
+				</h1>
+			</a>
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav" onclick="this.classList.toggle('expand')">
 					<a href="#">
 						<li id="tabMenu">{{ trans('app.banner.menu') }}</li>
 					</a>
-					<li id="tabApp" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
+					<a href="{{ url('apply/apply') }}">
+						<li id="tabApp" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
+							{{ trans('app.banner.apply') }}
+						</li>
+					</a>
+					<!--
 						<div>{{ trans('app.banner.apply') }}</div>
 						<ul style="margin: 0;padding: 0">
 							<a href="{{ url('apply/apply') }}"><li style="width: 100%;" >自我推荐</li></a>
-							<!-- <a href="{{ url('apply/masterapply') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">支部推荐</li></a> -->
+							<a href="{{ url('apply/masterapply') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">支部推荐</li></a>
 						</ul>
-					</li>
+						此处一大波倒车 ta改变了中国 ta又改了回去
+					-->
+					
 
 					<li id="tabMain" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
 						<div>{{ trans('app.banner.recommend') }}</div>
 						<ul style="margin: 0;padding: 0">
-							<a href="{{ url('/') }}"><li style="width: 100%;" >已参评的推荐</li></a>
-							<a href="{{ url('call/main') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">未参评的推荐</li></a>
+							<a href="{{ url('/') }}"><li style="width: 100%;" >{{ trans('app.banner.already') }}</li></a>
+							<a href="{{ url('call/main') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">{{ trans('app.banner.notjoin') }}</li></a>
 						</ul>
 					</li>
 					<a href="{{ url('user/recommendations') }}">
@@ -111,7 +122,7 @@
 			</div>
 			<![endif]-->
 			<div class="rs-msg rs-msg-warning">
-				请确保登录信息与教务处或研究生院网站完全一致。如出现票数投向陌生人现象，请及时与校团委联系，并提供截图。
+				{{ trans('app.banner.warning') }}
 			</div>
 			@if (Session::has('message'))
 			<div class="rs-msg rs-msg-{{ session('message')['type'] }}">
@@ -136,21 +147,22 @@
 	<script>
 		@yield('scripts')
 		(function(window){
-			var url=window.location.href;
+			const url=window.location.href;
 			if(url.indexOf("user/recommendations")>=0)document.getElementById("tabRec").className+=" rs-nav-selected";
 			else if(url.indexOf("apply/apply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
-			else if(url.indexOf("apply/masterapply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
+			/*else if(url.indexOf("apply/masterapply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";*/
 			else if(url.indexOf("user")>=0)document.getElementById("tabUsr").className+=" rs-nav-selected";
 			else document.getElementById("tabMain").className+=" rs-nav-selected";
-			var tabMain=document.getElementById("tabMain");
+			const tabMain=document.getElementById("tabMain");
 			tabMain.onclick=function(e){
 				tabMain.classList.toggle('show');
 				e.stopPropagation();
 			};
+			/*
 			tabApp.onclick=function(e){
 				tabApp.classList.toggle('show');
 				e.stopPropagation();
-			};
+			};*/
 			window.toggleExpand = function(dom){
 				dom.className=(dom.className.indexOf("-up")>=0)?dom.className.replace("-up","-down"):dom.className.replace("-down","-up");
 				dom=dom.parentNode;
