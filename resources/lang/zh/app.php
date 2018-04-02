@@ -4,15 +4,19 @@ return [
 	'nuaa' => '南航',
 	'name' => '五四评优',
 	'banner' => [
+		'title' => '“五四”青年评优专题网站',
 		'menu' => '菜单',
 		'recommend' => '我要推荐',
+		'already' => '推荐已参评者',
+		'notjoin' => '推荐未参评者',
 		'call' => '我要揭发',
 		'apply' => '我要申报',
 		'recommendation' => '推荐记录',
 		'login' => '登录',
 		'update' => '更新资料',
 		'logout' => '注销',
-		'detail' => '推荐详情'
+		'detail' => '推荐详情',
+		'warning' => '请确保登录信息与教务处或研究生院网站完全一致。如出现票数投向陌生人的现象，请及时与校团委联系，并提供截图。'
 	],
 	'ie' => '需要使用Chrome、Firefox、IE≥9等现代浏览器访问本页面。',
 	'download' => '点此下载',

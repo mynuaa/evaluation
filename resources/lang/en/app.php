@@ -4,14 +4,18 @@ return [
 	'nuaa' => 'Nuaa ',
 	'name' => 'May Fourth Youth Election',
 	'banner' => [
+		'title' => 'May Fourth Youth Election',
 		'menu' => 'Menu',
 		'recommend' => 'Recommend',
+		'already' => 'participated',
+		'notjoin' => 'not participated',
 		'apply' => 'Apply',
 		'recommendation' => 'My Records',
 		'login' => 'Log in',
 		'update' => 'Update',
 		'logout' => 'Log out',
-		'detail' => 'Detail'
+		'detail' => 'Detail',
+		'warning' => 'Please ensure that the login information is exactly the same as the Academic Office or Graduate School website. If there is a phenomenon that the number of votes is cast to a stranger, please contact the Youth League Committee in time and provide screenshots.'
 	],
 	'ie' => 'Please use modern browser like Chrome, Firefox, IE(≥9), etc. to access this page.',
 	'download' => 'Click here',

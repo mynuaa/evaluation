@@ -47,7 +47,11 @@
 	<div class="rs-header">
 		<div class="rs-container">
 			<a href="{{ url('/') }}"><img src="{{ asset('/img/nuaa_logo.png') }}" height="100%"></a>
-			<a href="{{ url('/') }}"><h1 class="fl pointer white" class="fl">“五四”青年评优专题网站</h1></a>
+			<a href="{{ url('/') }}">
+				<h1 class="fl pointer white" class="fl">
+				{{ trans('app.banner.title') }}
+				</h1>
+			</a>
 			<nav id="nav-main" class="rs-nav fl">
 				<ul class="rs-main-nav" onclick="this.classList.toggle('expand')">
 					<a href="#">
@@ -71,8 +75,8 @@
 					<li id="tabMain" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
 						<div>{{ trans('app.banner.recommend') }}</div>
 						<ul style="margin: 0;padding: 0">
-							<a href="{{ url('/') }}"><li style="width: 100%;" >已参评的推荐</li></a>
-							<a href="{{ url('call/main') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">未参评的推荐</li></a>
+							<a href="{{ url('/') }}"><li style="width: 100%;" >{{ trans('app.banner.already') }}</li></a>
+							<a href="{{ url('call/main') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">{{ trans('app.banner.notjoin') }}</li></a>
 						</ul>
 					</li>
 					<a href="{{ url('user/recommendations') }}">
@@ -118,7 +122,7 @@
 			</div>
 			<![endif]-->
 			<div class="rs-msg rs-msg-warning">
-				请确保登录信息与教务处或研究生院网站完全一致。如出现票数投向陌生人现象，请及时与校团委联系，并提供截图。
+				{{ trans('app.banner.warning') }}
 			</div>
 			@if (Session::has('message'))
 			<div class="rs-msg rs-msg-{{ session('message')['type'] }}">
