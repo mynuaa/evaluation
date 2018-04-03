@@ -29,8 +29,11 @@
 	<link rel="stylesheet" href="{{ asset('/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 	<style type="text/css">
+		/*
+		这里稳稳地再开那么一波倒车
+		*/
 		li.show{
-			height: 150px !important;
+			height: 100px !important;
 			background: #AA0000;
 			/*ceshiweb*/
 		}
