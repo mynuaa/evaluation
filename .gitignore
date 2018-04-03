@@ -8,3 +8,4 @@
 /storage
 composer.lock
 .vscode
+yarn-error.log
