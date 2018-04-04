@@ -138,9 +138,10 @@ class ApplyController extends Controller {
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
 		}
 
+		/* 这个后门！！！注意！！！控制关闭！！
 		if (!in_array(Auth::user()->username, $this->backdoor)) {
 			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
-		}
+		}*/
 
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
