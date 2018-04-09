@@ -160,11 +160,11 @@ function removeTag(dom){
 	dom.parentNode.removeChild(dom);
 }
 function checkForm(){
-	if(ue2.getPlainTxt().length<200 || ue2.getPlainTxt().length>2000){
-		alert("“我的青春故事”必须在200-2000字之间！");
+	if(ue2.getPlainTxt().length<200){
+		alert("“我的青春故事”字数必须在200-2000之间！");
 		return false;
 	}
-	if($("#promise").checked !== true) {
+	if($("#promise").checked != true) {
 		alert("请承诺。");
 		return false;
 	}
