@@ -7,7 +7,8 @@
 <div class="page-title">{{ trans('apply.title') }}</div>
 <div class="rs-message">
 	<p><a href="/evaluation/old" target="_blank">{{ trans('apply.old') }}</a></p>
-	<div class="rs-msg rs-msg-info">申报截止时间为4月8日24:00。</div>
+	<div class="rs-msg rs-msg-info">平台维护中，请稍后访问。</div>
+	<!-- <div class="rs-msg rs-msg-info">申报截止时间为4月8日24:00。</div> -->
 </div>
 <div class="rs-form-outer fullwidth">
 	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data" onsubmit="return checkForm()">

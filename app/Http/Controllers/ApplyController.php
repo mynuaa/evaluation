@@ -25,9 +25,9 @@ class ApplyController extends Controller {
 	}
 
 	public function getApply() {
-		// if (!in_array(Auth::user()->username, $this->backdoor)) {
-		// 	return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
-		// }
+		if (!in_array(Auth::user()->username, $this->backdoor)) {
+			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '平台维护中，请稍后访问。']);
+		}
 
 		$apply = Auth::user()->apply;
 		return view('apply.apply')->withApply($apply)->withStuid(Auth::user()->username);
