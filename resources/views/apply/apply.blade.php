@@ -164,8 +164,9 @@ function checkForm(){
 		alert("“我的青春故事”字数必须在200-2000之间！");
 		return false;
 	}
-	if($("#promise").checked == false) {
-		alert("请承诺。");
+	
+	if(!document.querySelector('#promise').checked) {
+		alert("请阅读页面最下方的承诺哦~");
 		return false;
 	}
 }
