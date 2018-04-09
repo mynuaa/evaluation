@@ -58,6 +58,11 @@
 				<div class="card-content card-author">{{ $stu->name }}，{{ trans('apply.professional', ['name' => $stu->major]) }}</div>
 			</div>
 			@if (!$stu->old)
+			<?php
+			if(!isset($stu->user->avatar)){
+				$stu->user->avatar = 1;
+			}
+			?>
 			<img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}" class="card-avatar">
 			@endif
 			<div class="card-content card-describtion">{{ substr(strip_tags($stu->whoami), 0, 150) . "..." }}</div>
