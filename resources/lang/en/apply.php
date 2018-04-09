@@ -32,7 +32,7 @@ return [
 	'whoami' => 'Who am I',
 	'whoami_intro' => 'Please introduce yourself，your introduction will be shown on the front page so please consider your words carefully.',
 	'story' => 'My Story',
-	'story_intro' => 'My story.(At least 400 words, no limitation)',
+	'story_intro' => 'My story.(200-2000 words, pay attention to the layout)',
 	'disadvantages' => 'Disadvantages',
 	'disadvantages_intro' => 'My Disadvantages.(Aspects you want to make efforts in the future)',
 
@@ -49,7 +49,7 @@ return [
 	'tag' => 'Tag',
 
 	'promise' => 'Promise',
-	'promise_content' => 'If I am elected as one of the “Top 100 Outstanding Youth”, I promise I will be able to join at least one story sharing activity as the representative of outstanding youth. ',
+	'promise_content' => 'I am responsible for the authenticity of the above content, and I have never submitted false or exaggerated materials. ',
 
 	'submit' => 'Submit',
 

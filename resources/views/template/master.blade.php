@@ -76,7 +76,6 @@
 					<!-- <a href="{{ url('/') }}">
 						<li style="width: 100%;" >{{ trans('app.banner.already') }}</li>
 					</a> -->
-
 					<li id="tabMain" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
 						<div>{{ trans('app.banner.recommend') }}</div>
 						<ul style="margin: 0;padding: 0">
