@@ -115,7 +115,7 @@
 			@endfor
 		</fieldset>
 		<p>
-			<input type="checkbox" id="promise">
+			<input type="checkbox" id="promise" checked>
 			<label for="promise" style="width:auto;max-width:75%;line-height:1em;text-align:left;vertical-align:middle"><b>{{ trans('apply.promise') }}</b>:&nbsp;{{ trans('apply.promise_content') }}</label>
 		</p>
 		<div class="form-btns">
