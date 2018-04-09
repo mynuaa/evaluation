@@ -7,8 +7,8 @@
 <div class="page-title">{{ trans('apply.title') }}</div>
 <div class="rs-message">
 	<p><a href="/evaluation/old" target="_blank">{{ trans('apply.old') }}</a></p>
-	<div class="rs-msg rs-msg-info">平台维护中，请稍后访问。</div>
-	<!-- <div class="rs-msg rs-msg-info">申报截止时间为4月8日24:00。</div> -->
+	<!-- <div class="rs-msg rs-msg-info">平台维护中，请稍后访问。</div> -->
+	<div class="rs-msg rs-msg-info">申报截止时间为4月14日24:00。</div>
 </div>
 <div class="rs-form-outer fullwidth">
 	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data" onsubmit="return checkForm()">
@@ -28,14 +28,14 @@
 			<input name="sex" type="radio" value="男" @if ($apply['sex'] == "男" || $apply['sex'] == '') checked @endif id="male"><label for="male">{{ trans('apply.male') }}</label>
 			<input name="sex" type="radio" value="女" @if ($apply['sex'] == "女") checked @endif id="female"><label for="female">{{ trans('apply.famale') }}</label>
 		</fieldset>
-		<fieldset class="form-group">
+		<!-- <fieldset class="form-group">
 			<legend>{{ trans('apply.type_of_application') }}</legend>
 			<input name="type" type="radio" value="0" @if ($apply['type'] == 0 || $apply['type'] == '') checked @endif id="school"><label for="school">{{ trans('apply.university_vote') }}</label>
 			<input name="type" type="radio" value="1" @if ($apply['type'] == 1) checked @endif id="department"><label for="department">{{ trans('apply.college_vote') }}</label>
 			@foreach(trans('apply.type_intro') as $key => $value)
 				<p class="tip">* {{ $value }}</p>
 			@endforeach
-		</fieldset>
+		</fieldset> -->
 		<fieldset class="form-group">
 			<legend>{{ trans('apply.information') }}</legend>
 			<input name="native_place" type="text" value="{{ $apply['native_place'] }}" placeholder="{{ trans('apply.nationality') }}" required>
