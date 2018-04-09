@@ -27,7 +27,7 @@ return [
 	],
 	'mail' => 'If you have any questions, please mail to ',
 	'notice' => [
-		'1. Before activity, please read <b><a href="/evaluation/notes.docx">Notes (Click to download)</a></b> first.',
+		'1. Before activity, please read <b><a href="/evaluation/notes-2018.docx">Notes (Click to download)</a></b> first.',
 		'2. Timeline: Apply &amp; recommendation during 4.9-4.14; college verify during 4.9-4.16; vote during 4.17-4.19.',
 		'3. Consultation and complaint please mail to <a href="mailto:nuaa52113085@126.com">nuaa52113085@126.com</a>.',
 		/*'4. Up to now, we have 805 applies, 12976 recommendations. You can vote for 660 applies which have not less than 10 recommendations.',*/
