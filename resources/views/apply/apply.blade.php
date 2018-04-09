@@ -28,6 +28,9 @@
 			<input name="sex" type="radio" value="男" @if ($apply['sex'] == "男" || $apply['sex'] == '') checked @endif id="male"><label for="male">{{ trans('apply.male') }}</label>
 			<input name="sex" type="radio" value="女" @if ($apply['sex'] == "女") checked @endif id="female"><label for="female">{{ trans('apply.famale') }}</label>
 		</fieldset>
+		<fieldset>
+			<input name="type" type="hidden" value="0">
+		</fieldset>
 		<!-- <fieldset class="form-group">
 			<legend>{{ trans('apply.type_of_application') }}</legend>
 			<input name="type" type="radio" value="0" @if ($apply['type'] == 0 || $apply['type'] == '') checked @endif id="school"><label for="school">{{ trans('apply.university_vote') }}</label>
