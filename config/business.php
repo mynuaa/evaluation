@@ -13,8 +13,8 @@ return [
 	],
 	'vote' => [
 		'max' => 6,
-		'inner' => 3,
-		'outer' => 6
+		'inner' => 4,
+		'outer' => 2
 	],
 	'avatar' => [
 		'max' => 13
