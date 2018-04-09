@@ -16,7 +16,7 @@ class SearchController extends Controller {
 	}
 
 	public function getOld() {
-		$applies = Apply::where('year', 2016)->orderByRaw("RAND()")->paginate(config('business.paginate'));
+		$applies = Apply::where('year', '<', D_YEAR)->orderByRaw("RAND()")->paginate(config('business.paginate'));
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
@@ -28,8 +28,8 @@ class SearchController extends Controller {
 	}
 
 	public function getCollege($cid) {
-		$applies = Apply::type(config('business.type.college'))->where('year', D_YEAR)->college($cid)->orderByRaw("RAND()")->paginate(config('business.paginate'));
-
+		//$applies = Apply::type(config('business.type.college'))->where('year', D_YEAR)->college($cid)->orderByRaw("RAND()")->paginate(config('business.paginate'));
+		$applies = Apply::where('year', D_YEAR)->college($cid)->orderByRaw("RAND()")->paginate(config('business.paginate'));
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
 
