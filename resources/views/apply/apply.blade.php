@@ -164,7 +164,7 @@ function checkForm(){
 		alert("“我的青春故事”字数必须在200-2000之间！");
 		return false;
 	}
-	if($("#promise").checked != true) {
+	if($("#promise").checked == false) {
 		alert("请承诺。");
 		return false;
 	}
