@@ -32,12 +32,12 @@ return [
 	'whoami' => '我是这样的一个人',
 	'whoami_intro' => '介绍一下我是谁~将在评选网站首页出现，请字斟句酌。',
 	'story' => '我的青春故事',
-	'story_intro' => '我的青春故事（字数不少于400，没有上限）',
+	'story_intro' => '我的青春故事（字数200-2000字，注意排版美观）',
 	'disadvantages' => '我的不足',
 	'disadvantages_intro' => '我的不足（有待继续努力的地方）',
 
 	'photo' => '我的青春最精彩',
-	'photo_sub' => '图片展示区',
+	'photo_sub' => '图片展示区（会显示在展示内容的上方）',
 	'photo_sub_video' => '视频展示区',
 	'photo_placeholder' => '写点介绍吧！',
 	'photo_intro' => [
@@ -51,7 +51,7 @@ return [
 	'tag' => '标签',
 
 	'promise' => '本人承诺',
-	'promise_content' => '如果当选百佳青年学生，愿意作为优秀学生典型至少参加一次优秀学生事迹交流类活动。',
+	'promise_content' => '本人为以上内容的真实性负责，绝无提交虚假或浮夸材料。',
 
 	'submit' => '提交',
 

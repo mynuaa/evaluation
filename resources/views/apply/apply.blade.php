@@ -115,7 +115,7 @@
 			@endfor
 		</fieldset>
 		<p>
-			<input type="checkbox" id="promise" checked disabled>
+			<input type="checkbox" id="promise">
 			<label for="promise" style="width:auto;max-width:75%;line-height:1em;text-align:left;vertical-align:middle"><b>{{ trans('apply.promise') }}</b>:&nbsp;{{ trans('apply.promise_content') }}</label>
 		</p>
 		<div class="form-btns">
@@ -160,8 +160,12 @@ function removeTag(dom){
 	dom.parentNode.removeChild(dom);
 }
 function checkForm(){
-	if(ue2.getPlainTxt().length<400){
-		alert("“我的青春故事”必须大于400字！");
+	if(ue2.getPlainTxt().length<200 || ue2.getPlainTxt().length>2000){
+		alert("“我的青春故事”必须在200-2000字之间！");
+		return false;
+	}
+	if($("#promise").checked !== true) {
+		alert("请承诺。");
 		return false;
 	}
 }

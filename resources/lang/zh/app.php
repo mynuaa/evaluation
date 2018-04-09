@@ -11,7 +11,7 @@ return [
 		'notjoin' => '推荐未参评者',
 		'call' => '我要揭发',
 		'apply' => '我要申报',
-		'recommendation' => '推荐记录',
+		'recommendation' => '我的推荐',
 		'login' => '登录',
 		'update' => '更新资料',
 		'logout' => '注销',
@@ -28,10 +28,10 @@ return [
 	],
 	'mail' => '如有疑问请发邮件或回复校团委微信消息，会有老师为你解答。',
 	'notice' => [
-		'1. 五四评优活动必读：<b><a href="/evaluation/notes-2018.docx">活动须知（请点击下载）</a></b>。',
+		'1. 五四评优活动必读：<b><a href="/evaluation/notes-2018.docx">活动通知（请点击下载）</a></b>。',
 		'2. 时间节点：个人申报、师生推荐（4.9-4.14），学院审核（4.9-4.16），网络投票（4.17-4.19）。',
 		'3. 咨询及投诉邮箱：<a href="mailto:nuaatw@163.com">nuaatw@163.com</a>。',
-		'4. 若在操作过程中出现错误，请将错误信息截图，发到<a href="mailto:nuaatw@163.com">nuaatw@163.com</a>，方便技术人员定位错误，及时解决并回复。'
+		'4. 若在操作过程中出现错误，请将错误信息截图，发到<a href="mailto:zfj@nuaa.edu.cn">zfj@nuaa.edu.cn</a>，方便技术人员定位错误，及时解决并回复。'
 	],
 	// 'statistics' => '6. 截至目前，一共有 :apply 名同学申报，共 :recommendation 条推荐。',
 	'statistics' => '',
