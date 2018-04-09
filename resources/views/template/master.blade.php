@@ -61,7 +61,7 @@
 						<li id="tabMenu">{{ trans('app.banner.menu') }}</li>
 					</a>
 					<a href="{{ url('/') }}">
-						<li id="tabMain">
+						<li id="tabMains">
 							{{ trans('app.banner.already') }}
 						</li>
 					</a>
