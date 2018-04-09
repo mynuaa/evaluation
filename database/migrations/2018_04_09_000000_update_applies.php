@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddOldToAppliesTable extends Migration {
+class UpdateApplies extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,8 @@ class AddOldToAppliesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('applies', function($table)
-		{
-			$table->integer('year')->default(2018);
+		Schema::table('applies', function ($table) {
+			$table->text('year')->nullable();
 		});
 	}
 
@@ -25,9 +24,8 @@ class AddOldToAppliesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('applies', function($table)
-		{
-			$table->dropColumn('old');
+		Schema::table('applies', function ($table) {
+			$table->dropColumn('year');
 		});
 	}
 
