@@ -15,5 +15,7 @@ return [
 	'12' => 'Foreign Language',
 	'15' => 'Astronautics',
 	'16' => 'Computer Science and Technology',
-	'19' => 'International Education'
+	'17' => 'Marxism College',
+	'19' => 'International Education',
+	'20' => 'College of Continuing Education'
 ];
