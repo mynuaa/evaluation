@@ -60,11 +60,17 @@
 					<a href="#">
 						<li id="tabMenu">{{ trans('app.banner.menu') }}</li>
 					</a>
+					<a href="{{ url('/') }}">
+						<li id="tabMain">
+							{{ trans('app.banner.already') }}
+						</li>
+					</a>
 					<a href="{{ url('apply/apply') }}">
-						<li id="tabApp" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
+						<li id="tabApp">
 							{{ trans('app.banner.apply') }}
 						</li>
 					</a>
+
 					<!--
 						<div>{{ trans('app.banner.apply') }}</div>
 						<ul style="margin: 0;padding: 0">
@@ -76,13 +82,14 @@
 					<!-- <a href="{{ url('/') }}">
 						<li style="width: 100%;" >{{ trans('app.banner.already') }}</li>
 					</a> -->
-					<li id="tabMain" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
+					<!-- <li id="tabMain" style="height: 50px;width: 120px;z-index: 10;overflow: hidden;padding: 0">
 						<div>{{ trans('app.banner.recommend') }}</div>
 						<ul style="margin: 0;padding: 0">
 							<a href="{{ url('/') }}"><li style="width: 100%;" >{{ trans('app.banner.already') }}</li></a>
 							<a href="{{ url('call/main') }}"><li style="width: 100%;background: #AA0000;z-index: 1;">{{ trans('app.banner.notjoin') }}</li></a>
 						</ul>
 					</li>
+					-->
 					<a href="{{ url('user/recommendations') }}">
 						<li id="tabRec">{{ trans('app.banner.recommendation') }}</li>
 					</a>
