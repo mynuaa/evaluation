@@ -28,7 +28,7 @@
 		你已投同学院{{ $details['inner'] }}票，不同学院{{ $details['outer'] }}票。
 	</div>
 	<div class="rs-msg rs-msg-info">
-	按照规则，总票数一共{{ config('business.vote.max') }}票，其中同学院必须最少1票，最多{{ config('business.vote.inner') - $details['inner'] }}票，不同学院不能少于{{ intval($details['inner']) / 2 }}票。
+	按照规则，总票数一共{{ config('business.vote.max') }}票，投向其他学院票数不少于投向本学院票数的50%，其中同学院必须最少1票，最多{{ config('business.vote.inner') - $details['inner'] }}票，不同学院不能少于{{ intval($details['inner']) / 2 }}票。
 	</div>
 </div>
 @if ($votes->count() != 0)
