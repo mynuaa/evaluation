@@ -59,7 +59,7 @@
 			</div>
 			@if (!$stu->old)
 			<?php
-			if(!isset($stu->user->avatar)){
+			if(is_null($stu->user->avatar)){
 				$stu->user->avatar = 1;
 			}
 			?>
