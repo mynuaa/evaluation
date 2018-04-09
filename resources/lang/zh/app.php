@@ -7,7 +7,7 @@ return [
 		'title' => '“五四”青年评优专题网站',
 		'menu' => '菜单',
 		'recommend' => '我要推荐',
-		'already' => '推荐已参评者',
+		'already' => '个人推荐',
 		'notjoin' => '推荐未参评者',
 		'call' => '我要揭发',
 		'apply' => '我要申报',
