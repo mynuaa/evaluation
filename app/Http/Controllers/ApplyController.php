@@ -277,8 +277,12 @@ class ApplyController extends Controller {
 	}
 
 	public function getVote($id) {
-
-		return redirect()->back()->withMessage(['type' => 'warning', 'content' => '投票结束！']);
+		$beginDay = date("d");
+		if($beginDay < 17) {
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '投票还没开始！']);
+		} else if($beginDay > 19) {
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '投票结束！']);
+		}
 
 		if (Auth::user()->isVoted($id)) {
 			return redirect()->back()->withMessage(['type' => 'error', 'content' => trans('message.vote.before')]);
