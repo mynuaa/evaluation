@@ -61,7 +61,7 @@
 						<li id="tabMenu">{{ trans('app.banner.menu') }}</li>
 					</a>
 					<a href="{{ url('/') }}">
-						<li id="tabMains">
+						<li id="tabMain">
 							{{ trans('app.banner.already') }}
 						</li>
 					</a>
@@ -163,12 +163,12 @@
 			else if(url.indexOf("apply/apply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";
 			/*else if(url.indexOf("apply/masterapply")>=0)document.getElementById("tabApp").className+=" rs-nav-selected";*/
 			else if(url.indexOf("user")>=0)document.getElementById("tabUsr").className+=" rs-nav-selected";
-			else document.getElementById("tabMain").className+=" rs-nav-selected";
+			//else document.getElementById("tabMain").className+=" rs-nav-selected";
 			const tabMain=document.getElementById("tabMain");
-			tabMain.onclick=function(e){
-				tabMain.classList.toggle('show');
-				e.stopPropagation();
-			};
+			// tabMain.onclick=function(e){
+			// 	tabMain.classList.toggle('show');
+			// 	e.stopPropagation();
+			// };
 			/*
 			tabApp.onclick=function(e){
 				tabApp.classList.toggle('show');
