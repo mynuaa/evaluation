@@ -161,7 +161,7 @@ function removeTag(dom){
 }
 function checkForm(){
 	if(ue2.getPlainTxt().length<200){
-		alert("“我的青春故事”必须在200-2000字之间！");
+		alert("“我的青春故事”字数必须在200-2000之间！");
 		return false;
 	}
 	if($("#promise").checked != true) {
