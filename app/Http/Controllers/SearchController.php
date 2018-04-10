@@ -10,7 +10,11 @@ use Cache;
 class SearchController extends Controller {
 
 	public function index() {
-		$applies = Apply::where('year', D_YEAR)->orderByRaw("RAND()")->paginate(config('business.paginate'));
+		if(isset($_GET['page']) && intval($_GET['page']) > 1){//非首页（置page）则倒序输出
+			$applies = Apply::where('year', D_YEAR)->orderBy('id', 'desc')->paginate(config('business.paginate'));
+		}else{//之前的
+			$applies = Apply::where('year', D_YEAR)->orderByRaw("RAND()")->paginate(config('business.paginate'));
+		}
 
 		return view('search.view')->withApplies($applies)->withStatistics($this->statistics());
 	}
