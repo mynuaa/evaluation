@@ -8,6 +8,7 @@
 <div class="rs-message">
 	<p><a href="/evaluation/old" target="_blank">{{ trans('apply.old') }}</a></p>
 	<!-- <div class="rs-msg rs-msg-info">平台维护中，请稍后访问。</div> -->
+	<div class="rs-msg rs-msg-info">建议使用电脑而非手机编辑此页面哦~</div>
 	<div class="rs-msg rs-msg-info">申报截止时间为4月14日24:00。</div>
 </div>
 <div class="rs-form-outer fullwidth">
@@ -165,7 +166,7 @@ function checkForm(){
 		return false;
 	}
 	
-	if(!document.querySelector('#promise').checked) {
+	if(!document.getElementById('promise').checked) {
 		alert("请阅读页面最下方的承诺哦~");
 		return false;
 	}
