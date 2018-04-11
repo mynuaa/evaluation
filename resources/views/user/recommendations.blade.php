@@ -6,15 +6,17 @@
 <h3>我的推荐</h3>
 @if ($recommendations->count() != 0)
 	@foreach ($recommendations as $rec)
-	<div class="card-outer">
-		<i class="del-recommendations fa fa-close" onclick="del_rec({{ $rec->id }},event)"></i>
-		<div class="card-inner" onclick="location.href='{{ url('apply/show/' . $rec->apply_id) . '#apply_a_' . $rec->id }}'">
-			<h5 class="card-content">
-				{{ trans('recommend.where', ['title' => $rec->apply->title, 'name' => $rec->apply->name]) }}
-			</h5>
-			<blockquote class="card-content card-describtion">{{ $rec->content }}</blockquote>
+	@if (!is_null($rec->apply))
+		<div class="card-outer">
+			<i class="del-recommendations fa fa-close" onclick="del_rec({{ $rec->id }},event)"></i>
+			<div class="card-inner" onclick="location.href='{{ url('apply/show/' . $rec->apply_id) . '#apply_a_' . $rec->id }}'">
+				<h5 class="card-content">
+					{{ trans('recommend.where', ['title' => $rec->apply->title, 'name' => $rec->apply->name]) }}
+				</h5>
+				<blockquote class="card-content card-describtion">{{ $rec->content }}</blockquote>
+			</div>
 		</div>
-	</div>
+	@endif
 	@endforeach
 @else
 	<div class="rs-message">
