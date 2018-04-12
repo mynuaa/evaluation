@@ -32,7 +32,8 @@ return [
 	'whoami' => 'Who am I',
 	'whoami_intro' => 'Please introduce yourself，your introduction will be shown on the front page so please consider your words carefully.',
 	'story' => 'My Story',
-	'story_intro' => 'My story.(200-2000 words, pay attention to the layout)',
+	'story_intro' => 'My story.(200-2000 words, pay attention to the layout)(recommend to edit this part on your computer\'s Word to prevent the network false)',
+	'faildWarn' => 'for there are sooo many different kind of phones and browers, PLZ use Chrome/Safari on computer to submit',
 	'disadvantages' => 'Disadvantages',
 	'disadvantages_intro' => 'My Disadvantages.(Aspects you want to make efforts in the future)',
 
