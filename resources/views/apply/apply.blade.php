@@ -123,7 +123,6 @@
 			<input type="submit" class="btn-success" value="{{ trans('apply.submit') }}">
 		</div>
 		<div class="rs-msg rs-msg-warning">{{ trans('apply.faildWarn') }}</div>
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	</form>
 </div>
 @stop
@@ -166,7 +165,7 @@ function checkForm(){
 		alert("“我的青春故事”字数必须在200-2000之间！");
 		return false;
 	}
-	
+
 	if(!document.getElementById('promise').checked) {
 		alert("请阅读页面最下方的承诺哦~");
 		return false;
