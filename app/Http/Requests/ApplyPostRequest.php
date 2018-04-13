@@ -29,7 +29,7 @@ class ApplyPostRequest extends Request {
 			'major' => 'required',
 			'title' => 'required|max:15',
 			'whoami' => 'required',
-			'story' => 'required|min:400',
+			'story' => 'required|min:200',
 			'insufficient' => 'required',
 			'tags' => 'array',
 			'imgs' => 'array',
