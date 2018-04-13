@@ -9,7 +9,7 @@
 	<p><a href="/evaluation/old" target="_blank">{{ trans('apply.old') }}</a></p>
 	<!-- <div class="rs-msg rs-msg-info">平台维护中，请稍后访问。</div> -->
 	<div class="rs-msg rs-msg-info">建议使用电脑而非手机编辑此页面哦~</div>
-	<div class="rs-msg rs-msg-info">申报截止时间为4月14日24:00。</div>
+	<div class="rs-msg rs-msg-info">申报截止时间为4月15日12:00。</div>
 </div>
 <div class="rs-form-outer fullwidth">
 	<form action="#" method="post" class="rs-form left fullwidth" enctype="multipart/form-data" onsubmit="return checkForm()">
@@ -162,8 +162,19 @@ function removeTag(dom){
 	dom.parentNode.removeChild(dom);
 }
 function checkForm(){
+
+	if(ue1.getPlainTxt().length<2){
+		alert("呜 上帝啊 我的小可爱 总得填一点简介呀");
+		return false;
+	}
+
 	if(ue2.getPlainTxt().length<200){
 		alert("“我的青春故事”字数必须在200-2000之间！");
+		return false;
+	}
+
+	if(ue3.getPlainTxt().length<2){
+		alert("呜，人无完人，填一下自己的缺点吧");
 		return false;
 	}
 
