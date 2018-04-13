@@ -123,6 +123,7 @@
 			<input type="submit" class="btn-success" value="{{ trans('apply.submit') }}">
 		</div>
 		<div class="rs-msg rs-msg-warning">{{ trans('apply.faildWarn') }}</div>
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	</form>
 </div>
 @stop
