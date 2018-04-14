@@ -136,6 +136,9 @@
 			<div class="rs-msg rs-msg-warning">
 				{{ trans('app.banner.warning') }}
 			</div>
+			<div class="rs-msg rs-msg-warning">
+				{{ trans('app.banner.notes') }}
+			</div>
 			@if (Session::has('message'))
 			<div class="rs-msg rs-msg-{{ session('message')['type'] }}">
 				{{ session('message')['content'] }}
