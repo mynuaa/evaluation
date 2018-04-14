@@ -31,7 +31,9 @@
 		</select>
 		<input type="search" name="key" style="display:inline-block;width:8em">
 		<input type="submit" value="{{ trans('search.search') }}" class="btn-success">
+		<button class="btn-success btn" onclick="location.href='http://my.nuaa.edu.cn/evaluation/';return false;">{{ trans('search.random')}}</button>
 	</fieldset>
+	
 </form>
 @foreach ($applies as $stu)
 @if($stu)

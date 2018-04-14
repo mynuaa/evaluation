@@ -6,5 +6,6 @@ return [
 	'school' => 'School',
 	'name' => 'Name',
 	'stuid' => 'Student ID',
-	'search' => 'Search',	
+	'search' => 'Search',
+	'random' => 'Lucky Change'
 ];
