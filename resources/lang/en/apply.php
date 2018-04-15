@@ -21,6 +21,7 @@ return [
 		'If you think you will get support from all over the university besides your own college, you can choose "Accept Vote on University Level"; university level voting may help you to get more support, but the competition is more intense.',
 		'If you think your support may mainly inside the college and supporters are mostly from your own college, you can select “Accept Vote on College Level’; you will only need to compete within your college.',
 		'Application materials of all applicants can be seen by everyone, it will not affect your exposure rate no matter which level you choose. The numbers of people can be selected as “Top 100 Outstanding Youth “will be divided according to the applicants’ percentage of each level in all applicants.',
+		'Uploaded file size should not exceed 2MB'
 	],
 
 	'information' => 'Detailed Information',

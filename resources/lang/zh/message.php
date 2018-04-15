@@ -22,7 +22,7 @@ return [
 	],
 	'vote' => [
 		'success' => '投票成功！目前你的投票数为：院外同学/院内同学 = :voteOuter/:voteInner',
-		'too_much' => '你已投满8票，无法继续投票！',
+		'too_much' => '你已投满6票，无法继续投票！',
 		'too_much_inner' => '院内投票已经投满了！',
 		'too_much_outer' => '院外投票已经投满了！',
 		'out_of_range' => '院外同学/院内同学 = :voteOuter/:voteInner不满足投票规则，请阅读活动须知！',
