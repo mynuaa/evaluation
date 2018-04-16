@@ -239,8 +239,8 @@ class ApplyController extends Controller {
 	}
 
 	public function postRecommendation(RecommendPostRequest $request) {
-		// if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
-		// 	return redirect()->back()->withMessage(['type' => 'warning', 'content' => '推荐已经截止了']);
+		if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '推荐已经截止了']);
 
 		if(!isset(Auth::user()->username)){
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '登入失效']);
