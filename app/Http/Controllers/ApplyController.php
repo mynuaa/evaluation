@@ -278,7 +278,7 @@ class ApplyController extends Controller {
 
 	public function getVote($id) {
 		$beginDay = date("d");
-		if($beginDay < 16) {
+		if($beginDay < 17) {
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '投票还没开始！']);
 		} else if($beginDay > 19) {
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '投票结束！']);
