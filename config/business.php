@@ -14,7 +14,7 @@ return [
 	'vote' => [
 		'max' => 6,
 		'inner' => 4,
-		'outer' => 3
+		'outer' => 5
 	],
 	'avatar' => [
 		'max' => 13
