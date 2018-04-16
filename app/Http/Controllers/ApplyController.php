@@ -239,8 +239,8 @@ class ApplyController extends Controller {
 	}
 
 	public function postRecommendation(RecommendPostRequest $request) {
-		// if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
-		// 	return redirect()->back()->withMessage(['type' => 'warning', 'content' => '推荐已经截止了']);
+		if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '推荐已经截止了']);
 
 		if(!isset(Auth::user()->username)){
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '登入失效']);
@@ -278,7 +278,7 @@ class ApplyController extends Controller {
 
 	public function getVote($id) {
 		$beginDay = date("d");
-		if($beginDay < 17) {
+		if($beginDay < 16) {
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '投票还没开始！']);
 		} else if($beginDay > 19) {
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '投票结束！']);
