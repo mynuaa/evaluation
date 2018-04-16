@@ -265,13 +265,20 @@ class ApplyController extends Controller {
 
 
 	private function checkLimit($voteInner, $voteOuter) {
+		// $limit = [
+		// 	0 => [0, 7],
+		// 	1 => [1, 7],
+		// 	2 => [1, 6],
+		// 	3 => [2, 5],
+		// 	4 => [3, 4],
+		// 	5 => [3, 3],
+		// ];
 		$limit = [
-			0 => [0, 7],
-			1 => [1, 7],
-			2 => [1, 6],
-			3 => [2, 5],
-			4 => [3, 4],
-			5 => [3, 3],
+			0 => [0, 5],
+			1 => [0, 5],
+			2 => [1, 4],
+			3 => [2, 3],
+			4 => [2, 2]
 		];
 		return isset($limit[$voteInner]) && $voteOuter >= $limit[$voteInner][0] && $voteOuter <= $limit[$voteInner][1];
 	}
