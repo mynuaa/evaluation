@@ -17,5 +17,6 @@ return [
 	'16' => 'Computer Science and Technology',
 	'17' => 'NUAA of Marxism Studies',
 	'19' => 'International Education',
-	'20' => 'College of Continuing Education'
+	'20' => 'College of Continuing Education',
+	'99' => 'Other Department'
 ];

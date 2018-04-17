@@ -8,7 +8,7 @@
 	<div class="rs-tabs-toggle hidden-tablet hidden-desktop pointer fa fa-chevron-down" onclick="toggleExpand(this)"></div>
 	<a href="{{ url('apply/all') }}" class="rs-tab"><strong>全部</strong></a>
 	@foreach (trans('college') as $cid => $cname)
-	<a href="{{ url('apply/all?college=' . $cid) }}" class="rs-tab">{{ $cname }}</a>
+		<a href="{{ url('apply/all?college=' . $cid) }}" class="rs-tab">{{ $cname }}</a>
 	@endforeach
 </div>
 <style>

@@ -10,7 +10,9 @@
 		<a href="{{ url('/') }}" class="rs-tab"><strong>{{ trans('search.all') }}</strong></a>
 		<!-- <a href="{{ url('search/school') }}" class="rs-tab"><strong>{{ trans('search.school') }}</strong></a> -->
 		@foreach (trans('college') as $cid => $cname)
-		<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
+			@if ($cid != 99)
+				<a href="{{ url('search/college/' . $cid) }}" class="rs-tab">{{ $cname }}</a>
+			@endif
 		@endforeach
 	</div>
 	<div class="rs-message">
