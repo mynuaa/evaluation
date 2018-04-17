@@ -18,7 +18,7 @@ use DB;
 
 class ApplyController extends Controller {
 
-	private $backdoor = ['051230303', 'SX1411003', 'sx1411003', '031630226', '161510126', 'BX1401538'];
+	private $backdoor = ['051230303', 'SX1411003', '031630226', '161510126', '041400807'];
 
 	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
