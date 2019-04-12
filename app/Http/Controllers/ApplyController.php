@@ -18,16 +18,16 @@ use DB;
 
 class ApplyController extends Controller {
 
-	private $backdoor = ['051230303', 'SX1411003', '031630226', '161510126', '041400807'];
+	private $backdoor = ['051230303', 'SX1411003', '0316302260', '161510126', '041400807'];
 
 	public function __construct() {
 		$this->middleware('auth', ['only' => ['getApply', 'postApply', 'postRecommendation', 'getVote', 'getDelete']]);
 	}
 
 	public function getApply() {
-		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
-		}
+		// if (!in_array(Auth::user()->username, $this->backdoor)) {
+		// 	return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
+		// }
 
 		$apply = Auth::user()->apply;
 		return view('apply.apply')->withApply($apply)->withStuid(Auth::user()->username);
@@ -138,10 +138,10 @@ class ApplyController extends Controller {
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '请登陆']);
 		}
 
-		//这个后门！！！注意！！！控制关闭！！
-		if (!in_array(Auth::user()->username, $this->backdoor)) {
-			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
-		}
+		//TODO:这个后门！！！注意！！！控制关闭！！
+		// if (!in_array(Auth::user()->username, $this->backdoor)) {
+		// 	return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
+		// }
 
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
