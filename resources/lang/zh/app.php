@@ -31,7 +31,7 @@ return [
 	'notice' => [
 		'1. 五四评优活动必读：<b><a href="/evaluation/notes-2018.docx">活动通知（请点击下载）</a></b>。',
 		'2. 时间节点：个人申报、师生推荐截止时间延期到4月15日23：59，学院审核（4.9-4.16），网络投票（4.17-4.19）。',
-		'3. 咨询及投诉邮箱：<a href="mailto:nuaatw@163.com">nuaatw@163.com</a>。',
+		'3. 咨询及投诉邮箱：<a href="mailto:nuaatw@nuaa.edu.cn">nuaatw@nuaa.edu.cn</a>。',
 		'4. 若在操作过程中出现错误，请将错误信息截图，发到<a href="mailto:zfj@nuaa.edu.cn">zfj@nuaa.edu.cn</a>，方便技术人员定位错误，及时解决并回复。'
 	],
 	// 'statistics' => '6. 截至目前，一共有 :apply 名同学申报，共 :recommendation 条推荐。',
