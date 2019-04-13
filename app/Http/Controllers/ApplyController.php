@@ -239,6 +239,7 @@ class ApplyController extends Controller {
 	}
 
 	public function postRecommendation(RecommendPostRequest $request) {
+		//TODO: 开关
 		// if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
 		// 	return redirect()->back()->withMessage(['type' => 'warning', 'content' => '推荐已经截止了']);
 
