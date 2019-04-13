@@ -2,6 +2,7 @@
 
 class GsmVerify {
 	public function verify_old($gsmid, $password) {
+		//TODO: 过滤！
 		$prepare_curl = curl_init();
 		curl_setopt_array($prepare_curl, [
 			CURLOPT_URL => "http://gsmis.nuaa.edu.cn/pyxx/login.aspx",
