@@ -1,7 +1,7 @@
 <?php namespace App\Services;
 
 class GsmVerify {
-	public function verify($gsmid, $password) {
+	public function verify_old($gsmid, $password) {
 		$prepare_curl = curl_init();
 		curl_setopt_array($prepare_curl, [
 			CURLOPT_URL => "http://gsmis.nuaa.edu.cn/pyxx/login.aspx",
@@ -33,5 +33,29 @@ class GsmVerify {
 		$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
 		return $http_code == 302 || preg_match('/您已超过学习期限/', $response);
+	}
+
+	//http://weixin.nuaa.edu.cn/authapi/?token=5aaf524af486c781cca727a588c5d3bf&username=031630226&password=252875
+	//2019.4.13
+
+	public function verify($gsmid, $password){
+		$url = "http://weixin.nuaa.edu.cn/authapi/?token=5aaf524af486c781cca727a588c5d3bf&username=$gsmid&password=$password";
+		$curl = curl_init();
+		curl_setopt_array($curl, [
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => 1,
+		]);
+
+		$response = curl_exec($curl);
+		curl_close($curl);
+
+		$response = '{' . $response . '}';
+		$response = json_decode($response);
+
+		if($response->code !== 0){
+			return false;
+		}else{
+			return true;
+		}
 	}
 }
