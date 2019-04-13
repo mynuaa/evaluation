@@ -1,8 +1,9 @@
 <?php namespace App\Services;
 
 class GsmVerify {
+	//TODO: 过滤！
 	public function verify_old($gsmid, $password) {
-		//TODO: 过滤！
+		
 		$prepare_curl = curl_init();
 		curl_setopt_array($prepare_curl, [
 			CURLOPT_URL => "http://gsmis.nuaa.edu.cn/pyxx/login.aspx",
@@ -40,6 +41,8 @@ class GsmVerify {
 	//2019.4.13
 
 	public function verify($gsmid, $password){
+		$gsmid = urlencode($gsmid);
+		$password = urlencode($password);
 		$url = "http://weixin.nuaa.edu.cn/authapi/?token=5aaf524af486c781cca727a588c5d3bf&username=$gsmid&password=$password";
 		$curl = curl_init();
 		curl_setopt_array($curl, [
