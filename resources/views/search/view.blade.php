@@ -63,7 +63,12 @@
 			</div>
 			@if (!$stu->old)
 			<?php
-			$_avatar = $stu->user->avatar || mt_rand(0,12);
+			if(isset($stu->user->avatar)){
+				$_avatar = $stu->user->avatar;
+			}else{
+				$_avatar = mt_rand(0,12);
+			}
+			
 			// if(!isset($stu->user->avatar) || is_null($stu->user->avatar)){
 			// 	$stu->user->avatar = 1;
 			// }
