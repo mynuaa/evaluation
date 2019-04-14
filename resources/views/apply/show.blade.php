@@ -5,8 +5,8 @@
 @section('content')
 <h3>{{ $apply->title }}</h3>
 <div class="card-author cl">
-	@if (!$apply->old)
-	<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
+	@if (!$apply->old && isset($apply->user->avatar))
+		<img class="fl" src="{{ asset('/img/avatar-' . $apply->user->avatar . '.png') }}" alt="{{ $apply->name }}">
 	@endif
 	<div class="fl">
 		<div>{{ $apply->name }}，
