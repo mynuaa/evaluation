@@ -63,11 +63,17 @@
 			</div>
 			@if (!$stu->old)
 			<?php
-			if(!isset($stu->user->avatar) || is_null($stu->user->avatar)){
-				$stu->user->avatar = 1;
+			if(isset($stu->user->avatar)){
+				$_avatar = $stu->user->avatar;
+			}else{
+				$_avatar = mt_rand(0,12);
 			}
+			
+			// if(!isset($stu->user->avatar) || is_null($stu->user->avatar)){
+			// 	$stu->user->avatar = 1;
+			// }
 			?>
-			<img src="{{ asset('/img/avatar-' . $stu->user->avatar . '.png') }}" alt="{{ $stu->name }}" class="card-avatar">
+			<img src="{{ asset('/img/avatar-' . $_avatar . '.png') }}" alt="{{ $stu->name }}" class="card-avatar">
 			@endif
 			<div class="card-content card-describtion">{{ substr(strip_tags($stu->whoami), 0, 150) . "..." }}</div>
 		</div>
