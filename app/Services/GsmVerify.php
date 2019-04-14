@@ -51,6 +51,9 @@ class GsmVerify {
 		]);
 
 		$response = curl_exec($curl);
+		if(curl_errno($curl) != 0){
+			return false;
+		}
 		curl_close($curl);
 
 		$response = '{' . $response . '}';
