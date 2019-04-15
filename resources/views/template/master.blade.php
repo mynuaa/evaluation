@@ -203,9 +203,9 @@ const s = `┌┬┐┬ ┬┌┐┌┬ ┬┌─┐┌─┐
 │││└┬┘││││ │├─┤├─┤
 ┴ ┴ ┴ ┘└┘└─┘┴ ┴┴ ┴`
 console.log(s)
-console.log('%c', 'background:url(https://qzonestyle.gtimg.cn/qzone/em/e253.png)repeat-x;padding:15px 100% 20px 0;line-height:45px');
 
-console.log('%c欢迎小可爱采用F12评优大法！ 如果发现可以♂日的地方或者是bug或者是有任何意见建议可以投递简历到yuwenjie66#126.com哦 欢迎来纸飞机一起玩呀~', 'font-size:14px;font-family:"PingFang SC",微软雅黑,"WenQuanYi Micro Hei"');
+console.log('%c %c欢迎小可爱采用F12评优大法！ 如果发现可以♂日的地方或者是bug或者是有任何意见建议可以投递简历到yuwenjie66#126.com哦 欢迎来纸飞机一起玩呀~', 'background:url(https://qzonestyle.gtimg.cn/qzone/em/e253.png)repeat-x;padding:15px 100% 20px 0;line-height:15px', 'font-size:14px;font-family:"PingFang SC",微软雅黑,"WenQuanYi Micro Hei"');
+
 console.log = () => {}
 	</script>
 </body>
