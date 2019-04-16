@@ -17,7 +17,7 @@
 		<div>{{ trans('apply.professional', ['name' => $apply->major]) }}</div>
 	</div>
 	@if (Auth::check() && Auth::user()->isAdmin())
-	<input type="button" value="删除" class="btn-danger fr" onclick="if(confirm('真特么要删？不考虑考虑了？'))window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
+	<input type="button" value="删除" class="btn-danger fr" onclick="if(confirm('确定删除吗？真的确定吗？'))window.location.href='{{ url('apply/delete/'.$apply->id) }}'">
 	@endif
 	@if ($can_vote)
 		@if (Auth::check())
