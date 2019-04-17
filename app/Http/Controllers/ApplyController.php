@@ -139,9 +139,9 @@ class ApplyController extends Controller {
 		}
 
 		//TODO:这个后门！！！注意！！！控制关闭！！
-		// if (!in_array(Auth::user()->username, $this->backdoor)) {
-		// 	return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报结束。']);
-		// }
+		if (!in_array(Auth::user()->username, $this->backdoor)) {
+			return redirect()->back()->withApply(Auth::user()->apply)->withMessage(['type' => 'warning', 'content' => '申报已经结束。']);
+		}
 
 		$request->photos = [];
 		foreach ($request->file('imgs') as $key => $file) {
@@ -239,9 +239,9 @@ class ApplyController extends Controller {
 	}
 
 	public function postRecommendation(RecommendPostRequest $request) {
-		//TODO: 开关
-		// if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
-		// 	return redirect()->back()->withMessage(['type' => 'warning', 'content' => '推荐已经截止了']);
+		//TODO: 关闭开关
+		if (!in_array(Apply::find($request->applyid)->user->username, $this->backdoor))
+			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '推荐已经截止了']);
 
 		if(!isset(Auth::user()->username)){
 			return redirect()->back()->withMessage(['type' => 'warning', 'content' => '登入失效']);
